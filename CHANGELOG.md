@@ -5,6 +5,163 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - 2025-07-19
+
+### Fixed
+- Added spacing between breadcrumb and filter box in sidebar
+- Added margin-bottom to sidebar-header for better visual separation
+- Improved sidebar navigation layout with consistent spacing
+
+## [1.3.2] - 2025-07-19
+
+### Added
+- New `claude-hints` command to generate Claude.md documentation standards
+- Comprehensive guide for Claude AI to produce consistent markdown documentation
+- Support for both markdown and plain text output formats
+- Option to save hints directly to a file
+
+### Fixed
+- Further reduced top spacing to exactly 40px from the horizontal bar
+- Adjusted header height from 50px to 40px
+- Removed breadcrumb height entirely (0px) for minimal spacing
+- Set content top padding to fixed 40px for precise control
+
+### Features
+- Document structure standards with metadata requirements
+- Naming conventions for different document types
+- Mermaid diagram best practices
+- Information verification standards (✅/❓)
+- File organization patterns
+- Git commit practices
+- Markdown formatting guidelines
+- Security and maintenance considerations
+
+### Usage
+```bash
+doc-builder claude-hints                  # Display to console
+doc-builder claude-hints -o CLAUDE.md     # Save to file
+doc-builder claude-hints --format text    # Plain text format
+```
+
+## [1.3.1] - 2025-07-19
+
+### Fixed
+- Reduced excessive top spacing from ~104px to 80px total
+- Adjusted header height from 64px to 50px
+- Adjusted breadcrumb height from 40px to 30px
+- Applied changes to both style.css and notion-style.css for consistency
+
+### Improved
+- More compact header design for better content visibility
+- Better use of vertical space on all screen sizes
+
+## [1.3.0] - 2025-07-19
+
+### BREAKING CHANGE
+- **Default behavior changed**: Running `npx @knowcode/doc-builder` without arguments now shows help instead of building and deploying
+- To deploy, explicitly use: `npx @knowcode/doc-builder deploy`
+
+### Changed
+- Updated TL;DR in help text to show `npx @knowcode/doc-builder deploy`
+- Reordered commands in help to show deploy as the recommended action
+- Updated README.md to reflect the new default behavior
+
+### Why this change?
+- Prevents accidental deployments when users just want to see available commands
+- Makes the tool more predictable - no actions without explicit commands
+- Aligns with standard CLI tool behavior
+
+## [1.2.12] - 2025-07-19
+
+### Added
+- Support for alternative config file formats (site.title → siteName mapping)
+- Support for input/output directory mapping in config files
+- Debug logging for site name configuration
+
+### Fixed
+- Header now properly displays the project name from config instead of generic "Documentation"
+- Config loader now handles both old and new config formats
+
+### Documentation
+- Updated GasWorld config to use correct format with siteName: 'GasWorld'
+
+## [1.2.11] - 2025-07-19
+
+### Fixed
+- Reduced excessive top spacing in content area by adjusting padding from 1.5rem to 1rem
+- Improved visual layout by reducing the gap between header and content
+
+### Changed
+- Content area now uses asymmetric padding (1rem top, 2rem sides, 1.5rem bottom) for better visual balance
+
+## [1.2.10] - 2025-07-19
+
+### Fixed
+- **Critical fix**: Now properly replaces old directory listing index.html files
+- Detects and replaces index.html if it's under 3KB (likely a directory listing)
+- Detects and replaces index.html if it doesn't contain doc-builder markers
+- Fixes the issue where gasworld.vercel.app showed a directory listing instead of documentation
+
+### Added
+- Smart detection of outdated or non-doc-builder index.html files
+- Automatic replacement of directory listing pages with proper documentation
+- Clear logging when replacing an existing index.html file
+
+## [1.2.9] - 2025-07-19
+
+### Added
+- Comprehensive console logging for debugging index.html creation
+- Detailed file existence checks with paths and sizes
+- File copy verification with size comparison
+- List of HTML files found during build and deployment
+- Error handling with detailed error messages
+- Final verification step to confirm index.html exists
+
+### Improved
+- Much more verbose output to help diagnose deployment issues
+- Clear indication of what files are being processed
+- Better error reporting when file operations fail
+
+## [1.2.8] - 2025-07-19
+
+### Changed
+- Removed all JUNO references from documentation and code
+- Renamed `cybersolstice` preset to `notion-inspired`
+- Updated folder descriptions to be more generic
+- Changed default username from 'juno' to 'admin' in preset
+- Removed `juno-docs` binary alias from package.json
+- Updated keywords to remove 'juno' and add 'notion-style'
+- Cleaned up all internal references to use @knowcode/doc-builder
+
+### Fixed
+- Documentation now correctly references @knowcode/doc-builder instead of @juno/doc-builder
+- Updated GitHub URLs to use knowcode organization
+
+## [1.2.7] - 2025-07-19
+
+### Added
+- Comprehensive debugging output showing package version and file existence checks
+- Support for `index.md` as primary source for index.html (higher priority than README.md)
+- Informative default index.html page when no README.md or index.md exists
+- List of available HTML files in default index page
+- Version and debug information in generated pages
+
+### Fixed
+- Fixed infinite redirect loop in deploy.js when no README.html exists
+- Improved index.html creation reliability with better file detection
+- Better error messages and guidance when documentation is missing
+
+### Changed
+- Enhanced logging throughout build and deploy processes
+- Redirect to first available HTML file instead of infinite loop
+- More descriptive console output during index.html creation
+
+## [1.2.6] - 2025-07-19
+
+### Fixed
+- **Index.html creation** - Fixed root URL not serving documentation by creating index.html from README.html
+- Added index.html creation in both build and deploy processes for reliability
+
 ## [1.2.5] - 2025-07-19
 
 ### Fixed

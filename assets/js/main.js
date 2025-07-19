@@ -1,4 +1,4 @@
-// JUNO Documentation - Main JavaScript
+// Documentation Builder - Main JavaScript
 
 // Preview Banner Management
 // Set up banner state immediately to prevent flash
@@ -1261,7 +1261,6 @@ function generateBreadcrumbs() {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(' ')
       .replace(/\b(Api|Html|Css|Js|Pdf|Qa|Ai)\b/g, (match) => match.toUpperCase())
-      .replace(/\bJuno\b/g, 'JUNO')
       .replace(/\bReadme\b/g, 'Overview');
     
     // Get appropriate icon based on segment

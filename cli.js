@@ -15,11 +15,6 @@ const { execSync } = require('child_process');
 // Package info
 const packageJson = require('./package.json');
 
-// Default to build command if no args provided
-if (process.argv.length === 2) {
-  process.argv.push('build');
-}
-
 program
   .name('doc-builder')
   .description(packageJson.description)
@@ -27,7 +22,7 @@ program
   .addHelpText('before', `
 ${chalk.cyan('🚀 @knowcode/doc-builder')} - Transform your markdown into beautiful documentation sites
 
-${chalk.bgGreen.black(' TL;DR ')} ${chalk.green('Just run:')} ${chalk.cyan.bold('npx @knowcode/doc-builder')} ${chalk.green('→ Your docs are live on Vercel!')}
+${chalk.bgGreen.black(' TL;DR ')} ${chalk.green('Just run:')} ${chalk.cyan.bold('npx @knowcode/doc-builder deploy')} ${chalk.green('→ Your docs are live on Vercel!')}
 
 ${chalk.gray('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')}
 
@@ -36,7 +31,7 @@ ${chalk.yellow('What it does:')}
   • Automatically generates navigation from your folder structure
   • Supports mermaid diagrams, syntax highlighting, and dark mode
   • Deploys to Vercel with one command (zero configuration)
-  • ${chalk.green.bold('NEW:')} Deploys directly to production by default (v1.1.0+)
+  • ${chalk.green.bold('NEW:')} Shows help by default, use 'deploy' to publish (v1.3.0+)
   • Optional authentication to protect private documentation
 
 ${chalk.yellow('Requirements:')}
@@ -50,8 +45,8 @@ ${chalk.yellow('Quick Start:')}
      ${chalk.gray('$')} echo "# My Documentation" > docs/README.md
   
   ${chalk.cyan('2. Build and deploy:')}
-     ${chalk.gray('$')} npx @knowcode/doc-builder              ${chalk.gray('# Build and deploy to production')}
-     ${chalk.gray('   or')}
+     ${chalk.gray('$')} npx @knowcode/doc-builder              ${chalk.gray('# Show help and available commands')}
+     ${chalk.gray('$')} npx @knowcode/doc-builder deploy       ${chalk.gray('# Build and deploy to production')}
      ${chalk.gray('$')} npx @knowcode/doc-builder build        ${chalk.gray('# Build HTML files only')}
      ${chalk.gray('$')} npx @knowcode/doc-builder dev          ${chalk.gray('# Start development server')}
 
@@ -66,7 +61,7 @@ program
   .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
   .option('-i, --input <dir>', 'input directory containing markdown files (default: docs)')
   .option('-o, --output <dir>', 'output directory for HTML files (default: html)')
-  .option('--preset <preset>', 'use a preset configuration (available: cybersolstice)')
+  .option('--preset <preset>', 'use a preset configuration (available: notion-inspired)')
   .option('--legacy', 'use legacy mode for backward compatibility')
   .option('--no-auth', 'disable authentication even if configured')
   .option('--no-changelog', 'disable automatic changelog generation')
@@ -74,7 +69,7 @@ program
 ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder build                        ${chalk.gray('# Build with defaults')}
   ${chalk.gray('$')} doc-builder build --input docs --output dist
-  ${chalk.gray('$')} doc-builder build --preset cybersolstice ${chalk.gray('# Use JUNO platform preset')}
+  ${chalk.gray('$')} doc-builder build --preset notion-inspired ${chalk.gray('# Use Notion-inspired preset')}
   ${chalk.gray('$')} doc-builder build --config my-config.js  ${chalk.gray('# Use custom config')}
 `)
   .action(async (options) => {
@@ -186,10 +181,10 @@ ${chalk.yellow('First-time Vercel Setup:')}
      • Under "Deployment Protection", set to ${chalk.yellow('Disabled')}
      • This allows public access to your docs
      
-${chalk.yellow('Deployment Behavior (v1.1.0+):')}
+${chalk.yellow('Deployment Behavior:')}
   ${chalk.green.bold('🎯 DEFAULT: All deployments go to PRODUCTION')}
   
-  ${chalk.gray('$')} npx @knowcode/doc-builder          ${chalk.gray('# → yourdocs.vercel.app')}
+  ${chalk.gray('$')} npx @knowcode/doc-builder          ${chalk.gray('# → Shows help (v1.3.0+)')}
   ${chalk.gray('$')} npx @knowcode/doc-builder deploy   ${chalk.gray('# → yourdocs.vercel.app')}
   ${chalk.gray('$')} npx @knowcode/doc-builder deploy --no-prod  ${chalk.gray('# → preview URL only')}
 
@@ -476,77 +471,294 @@ ${chalk.yellow('What gets created:')}
     }
   });
 
-// Add a default command handler for when doc-builder is run without arguments
+// Claude hints command
 program
-  .action(async () => {
-    // Default action is build + deploy to production
-    console.log(chalk.cyan('\n🚀 Building and deploying your documentation to production...\n'));
+  .command('claude-hints')
+  .description('Generate Claude.md hints for documentation standards')
+  .option('-o, --output <path>', 'output file path (default: stdout)')
+  .option('--format <format>', 'output format: md or text (default: md)')
+  .addHelpText('after', `
+${chalk.yellow('What this does:')}
+  Generates a comprehensive guide for Claude.md configuration
+  that helps Claude produce well-structured markdown documentation
+  following best practices and consistent standards.
+
+${chalk.yellow('Usage:')}
+  ${chalk.gray('$')} doc-builder claude-hints                  ${chalk.gray('# Display to console')}
+  ${chalk.gray('$')} doc-builder claude-hints -o CLAUDE.md     ${chalk.gray('# Save to file')}
+  ${chalk.gray('$')} doc-builder claude-hints --format text    ${chalk.gray('# Plain text format')}
+
+${chalk.yellow('What gets included:')}
+  • Document structure standards
+  • Naming conventions for different doc types
+  • Mermaid diagram best practices
+  • Information verification standards (✅/❓)
+  • File organization patterns
+  • Git commit practices
+  • Markdown formatting guidelines
+`)
+  .action((options) => {
+    const claudeHints = `# Documentation Standards for Claude.md
+
+Add these instructions to your CLAUDE.md file to ensure consistent, high-quality documentation generation.
+
+## Document Standards and Conventions
+
+### Document Structure
+
+**Document Title Format**
+- Use \`# Document Title\`
+- Include metadata:
+  - **Generated**: YYYY-MM-DD HH:MM UTC
+  - **Status**: Draft/In Progress/Complete
+  - **Verified**: ✅ (for verified information) / ❓ (for speculated information)
+
+### Overview Section
+- Provide a brief description of the document's contents
+- Clearly explain the purpose and scope
+
+## Content Sections
+### Subsection
+Content with clear headings and logical flow.
+
+## Document History
+| Date | Author | Changes |
+|------|--------|---------|
+| YYYY-MM-DD | Name | Initial creation |
+| YYYY-MM-DD | Name | Updated section X |
+
+### Naming Conventions
+
+- Analysis documents: analysis-{topic}-{specifics}.md
+- Design documents: design-{component}-{feature}.md
+- Implementation plans: plan-{feature}-implementation.md
+- Technical guides: {component}-{topic}-guide.md
+- Overview documents: {system}-overview.md
+- Testing documents: test-{component}-{type}.md
+- Troubleshooting guides: troubleshoot-{issue}-guide.md
+- API documentation: api-{service}-reference.md
+
+## Content Standards
+
+### 1. Mermaid Diagrams
+- Include diagrams wherever they help explain complex concepts
+- Use consistent node naming and styling
+- Add clear labels and descriptions
+- Example:
+\`\`\`mermaid
+graph TD
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Process]
+    B -->|No| D[End]
     
-    try {
-      // Build first
-      const config = await loadConfig('doc-builder.config.js', { legacy: true });
-      const buildSpinner = ora('Building documentation...').start();
-      await build(config);
-      buildSpinner.succeed('Documentation built successfully!');
-      
-      // Then deploy
-      const deploySpinner = ora('Deploying to Vercel...').start();
-      
-      // Check if this is the first deployment
-      const vercelProjectPath = path.join(outputPath, '.vercel', 'project.json');
-      if (!fs.existsSync(vercelProjectPath)) {
-        deploySpinner.stop();
-        console.log(chalk.yellow('\n🚀 First time deploying to Vercel!\n'));
-        
-        // Show critical warning about Root Directory
-        console.log(chalk.bgRed.white.bold('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'));
-        console.log(chalk.bgRed.white.bold(' ⚠️  CRITICAL WARNING - READ BEFORE CONTINUING! '));
-        console.log(chalk.bgRed.white.bold('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'));
-        
-        console.log(chalk.yellow.bold('During setup, if Vercel asks about Root Directory:'));
-        console.log(chalk.red.bold('• LEAVE IT EMPTY (blank)'));
-        console.log(chalk.red.bold('• DO NOT ENTER "html"'));
-        console.log(chalk.red.bold('• We are ALREADY deploying from the html folder!\n'));
-        
-        const setupConfirm = await prompts({
-          type: 'confirm',
-          name: 'value',
-          message: 'Would you like to set up a new Vercel project?',
-          initial: true
-        });
-        
-        if (setupConfirm.value) {
-          await setupVercelProject(config);
-        } else {
-          console.log(chalk.gray('\nTo deploy manually, run: vercel'));
-          console.log(chalk.gray('To skip deployment, run: doc-builder build\n'));
-          process.exit(0);
-        }
-        deploySpinner.start('Deploying to Vercel...');
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+\`\`\`
+
+### 2. Information Verification
+- Mark all information as either verified (✅) or speculated (❓)
+- Include sources for verified information
+- Clearly indicate assumptions
+- Example:
+  - ✅ **Verified**: Based on official documentation
+  - ❓ **Speculated**: Assumed based on common patterns
+
+### 3. Code Examples
+- Use proper syntax highlighting
+- Include context and explanations
+- Show both correct and incorrect usage where applicable
+- Add comments explaining key concepts
+
+### 4. File Organization
+- Active files in appropriate directories
+- Unused files moved to archive/ with descriptive names
+- Temporary files include "temp" in filename
+- Create docs/ directory structure:
+  \`\`\`
+  docs/
+  ├── architecture/
+  ├── api/
+  ├── guides/
+  ├── troubleshooting/
+  └── README.md
+  \`\`\`
+
+### 5. Version Control
+- Commit after material changes or milestones
+- Use descriptive commit messages
+- Group related changes
+- Example commit messages:
+  - "Add API authentication guide"
+  - "Update deployment architecture diagram"
+  - "Fix broken links in troubleshooting guide"
+
+## Markdown Best Practices
+
+### Headers
+- Use hierarchical structure (H1 for title, H2 for main sections)
+- Don't skip header levels
+- Keep headers concise but descriptive
+
+### Lists
+- Use bullet points for unordered lists
+- Use numbers for sequential steps
+- Indent nested lists properly
+
+### Tables
+- Include headers and alignment
+- Keep tables readable in raw markdown
+- Example:
+  \`\`\`markdown
+  | Feature | Status | Notes |
+  |---------|--------|-------|
+  | Auth    | ✅ Done | Uses JWT |
+  | API     | 🚧 WIP  | In progress |
+  \`\`\`
+
+### Links
+- Use descriptive link text, not "click here"
+- Prefer relative links for internal docs
+- Check links regularly for validity
+
+### Images
+- Include alt text and captions
+- Store images in docs/assets/ or docs/images/
+- Use descriptive filenames
+
+## Documentation Requirements
+
+### Timestamp
+- Always include generation date at top
+- Format: **Generated**: YYYY-MM-DD HH:MM UTC
+
+### Status Tracking
+- Mark document status (Draft/Complete)
+- Include last review date
+- Note planned updates
+
+### Cross-references
+- Link to related documents
+- Create index/navigation pages
+- Maintain a documentation map
+
+### Examples
+- Include practical examples
+- Show real-world use cases
+- Provide sample configurations
+
+### Troubleshooting
+- Add common issues and solutions
+- Include error messages verbatim
+- Provide step-by-step resolution
+
+## Quality Standards
+
+### Clarity
+- Write for your audience's technical level
+- Define acronyms on first use
+- Avoid jargon without explanation
+
+### Completeness
+- Cover all aspects of the topic
+- Include edge cases
+- Document limitations
+
+### Accuracy
+- Verify technical details
+- Test code examples
+- Update when systems change
+
+### Consistency
+- Use same terminology throughout
+- Follow established patterns
+- Maintain style guide compliance
+
+### Maintenance
+- Review quarterly
+- Update version numbers
+- Archive outdated content
+
+## Special Considerations
+
+### Security
+- Never include credentials or sensitive data
+- Use placeholders for secrets
+- Document security implications
+
+### Performance
+- Document performance implications
+- Include benchmarks where relevant
+- Note resource requirements
+
+### Dependencies
+- List all dependencies and versions
+- Note compatibility requirements
+- Document upgrade paths
+
+### Compatibility
+- Note platform/version requirements
+- Document breaking changes
+- Provide migration guides
+
+### Accessibility
+- Use clear language and structure
+- Provide text alternatives
+- Consider screen reader users
+
+## Additional Claude.md Instructions
+
+### When Creating Documentation
+- Always put md documents in the docs/ directory
+- Use mermaid diagrams whenever it makes sense to explain something
+- Explain things diagrammatically when possible
+- Create any new md docs into the docs directory and put in a relevant folder
+
+### Git Practices
+- Do a git commit after material changes or milestone
+- After any material changes or a milestone commit the changes to git
+- As files become unused - move them to archive and rename
+
+### Testing and Temporary Files
+- When creating temporary temp files for testing - put "temp" in the file name
+- Create temp files with descriptive names like "temp-test-api-response.json"
+
+### Documentation Maintenance
+- Regularly remove outdated mermaid diagram files (.md) from docs/ directory
+- When diagram generation scripts are run, they should REPLACE existing MD files
+- Use clean, consistent naming without version suffixes
+
+This comprehensive guide ensures consistent, high-quality documentation that is easy to maintain and navigate.`;
+
+    // Output the hints
+    if (options.output) {
+      try {
+        fs.writeFileSync(options.output, claudeHints);
+        console.log(chalk.green(`✅ Claude hints saved to ${options.output}`));
+      } catch (error) {
+        console.error(chalk.red(`Error writing file: ${error.message}`));
+        process.exit(1);
       }
-      
-      // Default to production deployment
-      const url = await deployToVercel(config, true);
-      deploySpinner.succeed(`Deployed successfully!`);
-      
-      // Extract project name from URL
-      const projectName = url.match(/https:\/\/([^-]+)/)?.[1] || 'your-project';
-      
-      console.log(chalk.green('\n✅ Deployment Complete!\n'));
-      console.log(chalk.yellow('🌐 Your documentation is live at:'));
-      console.log(chalk.cyan.bold(`   ${projectName}.vercel.app`) + chalk.gray(' (Production URL - share this!)'));
-      console.log();
-      console.log(chalk.gray('This deployment also created a unique preview URL:'));
-      console.log(chalk.gray(`   ${url}`));
-      console.log(chalk.gray('   (This URL is specific to this deployment)'));
-      console.log();
-      
-    } catch (error) {
-      console.error(chalk.red('\nError: ' + error.message));
-      console.log(chalk.gray('\nTo build without deploying, run: doc-builder build'));
-      process.exit(1);
+    } else {
+      // Output to console
+      if (options.format === 'text') {
+        // Strip markdown formatting for plain text
+        const plainText = claudeHints
+          .replace(/#{1,6}\s/g, '')
+          .replace(/\*\*/g, '')
+          .replace(/`([^`]+)`/g, '$1')
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+        console.log(plainText);
+      } else {
+        console.log(claudeHints);
+      }
     }
   });
 
 // Parse arguments
 program.parse(process.argv);
+
+// Show help if no command was provided
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+  process.exit(0);
+}

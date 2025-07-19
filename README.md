@@ -31,23 +31,21 @@ Perfect for project documentation, API references, knowledge bases, or any conte
 No installation needed! Just run:
 
 ```bash
-# Build and deploy to Vercel (default action)
-npx @juno/doc-builder
+# Build and deploy to Vercel
+npx @knowcode/doc-builder deploy
 
-# Or use specific commands:
-npx @juno/doc-builder build   # Build HTML files only
-npx @juno/doc-builder dev      # Start development server
-npx @juno/doc-builder deploy   # Deploy to Vercel
+# Other available commands:
+npx @knowcode/doc-builder build   # Build HTML files only
+npx @knowcode/doc-builder dev      # Start development server
+npx @knowcode/doc-builder          # Show help (default behavior)
 ```
-
-The default action (no command specified) will build your documentation and deploy it to Vercel.
 
 ## Installation (Optional)
 
 For faster execution and offline use:
 
 ```bash
-npm install --save-dev @juno/doc-builder
+npm install --save-dev @knowcode/doc-builder
 ```
 
 Then use shorter commands:
@@ -108,10 +106,10 @@ module.exports = {
 
 ## Presets
 
-Use the `cybersolstice` preset for compatibility with existing JUNO projects:
+Use the `notion-inspired` preset for a clean, modern documentation style:
 
 ```bash
-npx @juno/doc-builder build --preset cybersolstice
+npx @knowcode/doc-builder build --preset notion-inspired
 ```
 
 ## Commands
@@ -133,7 +131,7 @@ Options:
 Examples:
   doc-builder build                        # Build with defaults
   doc-builder build --input docs --output dist
-  doc-builder build --preset cybersolstice # Use JUNO platform preset
+  doc-builder build --preset notion-inspired # Use Notion-inspired preset
   doc-builder build --config my-config.js  # Use custom config
 ```
 
@@ -218,7 +216,7 @@ While developing the doc-builder:
 npm link
 
 # In your other project
-npm link @juno/doc-builder
+npm link @knowcode/doc-builder
 ```
 
 ### Option 2: File Reference
@@ -228,7 +226,7 @@ In your project's `package.json`:
 ```json
 {
   "devDependencies": {
-    "@juno/doc-builder": "file:../path/to/doc-builder"
+    "@knowcode/doc-builder": "file:../path/to/doc-builder"
   }
 }
 ```
@@ -240,7 +238,7 @@ Once published:
 ```json
 {
   "devDependencies": {
-    "@juno/doc-builder": "git+https://github.com/juno/doc-builder.git"
+    "@knowcode/doc-builder": "git+https://github.com/knowcode/doc-builder.git"
   }
 }
 ```

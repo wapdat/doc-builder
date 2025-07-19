@@ -1,5 +1,5 @@
 /**
- * Post-install setup script for @juno/doc-builder
+ * Post-install setup script for @knowcode/doc-builder
  * This script runs after npm install to help users get started
  */
 
@@ -52,5 +52,5 @@ if (foundDir) {
   console.log(chalk.yellow(`ℹ️  No docs directory found. Create a 'docs' folder with markdown files to get started.\n`));
 }
 
-console.log(chalk.gray('For more information, visit: https://github.com/juno-platform/doc-builder'));
+console.log(chalk.gray('For more information, visit: https://github.com/knowcode/doc-builder'));
 console.log(chalk.gray('To create a config file, run: doc-builder init --config\n'));

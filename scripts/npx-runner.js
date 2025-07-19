@@ -9,14 +9,14 @@ const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-// Get the command from arguments
-const [,, command = 'build', ...args] = process.argv;
+// Get the command from arguments - no default command
+const [,, ...args] = process.argv;
 
 // Path to the actual CLI
 const cliPath = path.join(__dirname, '..', 'cli.js');
 
-// Build the command
-const fullCommand = `node "${cliPath}" ${command} ${args.join(' ')}`;
+// Build the command - pass all arguments through
+const fullCommand = `node "${cliPath}" ${args.join(' ')}`;
 
 try {
   // Execute the CLI with stdio inherited to preserve colors and interactivity

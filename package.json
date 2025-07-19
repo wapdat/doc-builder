@@ -1,12 +1,10 @@
 {
   "name": "@knowcode/doc-builder",
-  "version": "1.2.5",
+  "version": "1.3.3",
   "description": "Reusable documentation builder for markdown-based sites with Vercel deployment support",
   "main": "index.js",
   "bin": {
-    "doc-builder": "./cli.js",
-    "juno-docs": "./cli.js",
-    "@knowcode/doc-builder": "./scripts/npx-runner.js"
+    "doc-builder": "scripts/npx-runner.js"
   },
   "scripts": {
     "postinstall": "node scripts/setup.js || true",
@@ -17,7 +15,8 @@
     "markdown",
     "static-site-generator",
     "vercel",
-    "juno"
+    "notion-style",
+    "doc-builder"
   ],
   "author": "KnowCode",
   "license": "MIT",
