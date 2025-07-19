@@ -1,5 +1,6 @@
 # Test directories
 temp-test/
+test-auth/
 test/
 tests/
 coverage/
