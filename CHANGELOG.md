@@ -5,6 +5,34 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2025-07-19
+
+### Fixed
+- **Authentication system** - Fixed credentials mismatch between auth.js and config
+- Changed cookie name from 'juno-auth' to 'doc-auth' for consistency
+- Authentication now properly uses credentials from config file
+- Added comprehensive CSS styles for login/logout pages
+
+### Added
+- Complete authentication page styling with dark mode support
+- Form validation and error message display
+- Professional login/logout page design
+- Security notice in auth.js about client-side limitations
+
+### Improved
+- Authentication token validation is now more flexible
+- Better error handling for invalid credentials
+- Consistent cookie management across all auth operations
+
+### Verified
+- All JavaScript features confirmed working:
+  - Breadcrumbs generation
+  - Navigation filtering
+  - Collapsible navigation sections
+  - Preview banner with localStorage
+  - Theme switching
+  - Sidebar resizing
+
 ## [1.2.2] - 2025-07-19
 
 ### Fixed

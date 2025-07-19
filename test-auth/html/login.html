@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Protected Documentation</title>
+    <link rel="stylesheet" href="css/notion-style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1>Login to Protected Documentation</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="auth-button">Login</button>
+            </form>
+            <div id="error-message" class="error-message"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Validate credentials
+            if (username === 'testuser' && password === 'testpass123') {
+                // Set auth cookie
+                const token = btoa(username + ':' + password);
+                document.cookie = 'doc-auth=' + token + '; path=/';
+                
+                // Redirect
+                const params = new URLSearchParams(window.location.search);
+                const redirect = params.get('redirect') || '/';
+                window.location.href = redirect;
+            } else {
+                document.getElementById('error-message').textContent = 'Invalid username or password';
+            }
+        });
+    </script>
+</body>
+</html>
