@@ -1,49 +1,61 @@
-# @juno/doc-builder
+# @knowcode/doc-builder
 
-A reusable documentation builder for creating beautiful, Notion-inspired documentation sites from markdown files.
+A zero-configuration documentation builder for markdown-based sites with Vercel deployment support.
+
+## What It Does
+
+@knowcode/doc-builder transforms your markdown files into beautiful, static documentation websites. It:
+
+- **Scans** your markdown files and automatically generates navigation
+- **Converts** markdown to HTML with syntax highlighting and diagram support
+- **Styles** everything with a clean, Notion-inspired theme
+- **Deploys** to Vercel with a single command - no configuration needed
+- **Provides** optional features like authentication, dark mode, and changelog generation
+
+Perfect for project documentation, API references, knowledge bases, or any content written in markdown.
 
 ## Features
 
-- 📝 **Markdown to HTML** - Convert markdown files to beautiful HTML
-- 🎨 **Notion-inspired Design** - Clean, modern interface
-- 🔐 **Authentication** - Optional password protection
-- 📊 **Mermaid Diagrams** - Built-in support for diagrams
-- 🌓 **Dark Mode** - Automatic theme switching
-- 📅 **Changelog Generation** - Track recent changes
-- 🚀 **Vercel Deployment** - One-command deployment
-- 🔄 **Live Reload** - Development server with auto-rebuild
-
-## Installation
-
-```bash
-# As a dev dependency
-npm install --save-dev @juno/doc-builder
-
-# Or use without installation
-npx @juno/doc-builder build
-```
+- 🚀 **Zero Configuration** - Works out of the box with sensible defaults
+- 📝 **Markdown Support** - Write docs in markdown with full GitHub Flavored Markdown support
+- 🎨 **Beautiful Default Theme** - Clean, responsive design inspired by Notion
+- 🔐 **Optional Authentication** - Password-protect your documentation
+- 📊 **Mermaid Diagrams** - Built-in support for diagrams and charts
+- 🌙 **Dark Mode** - Automatic dark mode support
+- 🔄 **Live Reload** - Development server with hot reloading
+- ☁️ **Vercel Integration** - One-command deployment to Vercel
+- 📦 **Self-Contained** - No configuration or setup required
 
 ## Quick Start
 
-1. **Initialize configuration** (optional):
-   ```bash
-   npx @juno/doc-builder init --config
-   ```
+No installation needed! Just run:
 
-2. **Build documentation**:
-   ```bash
-   npx @juno/doc-builder build
-   ```
+```bash
+# Build and deploy to Vercel (default action)
+npx @juno/doc-builder
 
-3. **Start dev server**:
-   ```bash
-   npx @juno/doc-builder dev
-   ```
+# Or use specific commands:
+npx @juno/doc-builder build   # Build HTML files only
+npx @juno/doc-builder dev      # Start development server
+npx @juno/doc-builder deploy   # Deploy to Vercel
+```
 
-4. **Deploy to Vercel**:
-   ```bash
-   npx @juno/doc-builder deploy
-   ```
+The default action (no command specified) will build your documentation and deploy it to Vercel.
+
+## Installation (Optional)
+
+For faster execution and offline use:
+
+```bash
+npm install --save-dev @juno/doc-builder
+```
+
+Then use shorter commands:
+```bash
+doc-builder build
+doc-builder dev
+doc-builder deploy
+```
 
 ## First-Time Vercel Deployment
 
@@ -105,14 +117,24 @@ npx @juno/doc-builder build --preset cybersolstice
 ## Commands
 
 ### build
-Build the documentation site:
+Build the documentation site to static HTML:
 ```bash
 doc-builder build [options]
 
 Options:
   -c, --config <path>  Path to config file (default: "doc-builder.config.js")
-  --preset <preset>    Use a preset configuration
-  --legacy            Use legacy mode (auto-detect structure)
+  -i, --input <dir>    Input directory containing markdown files (default: docs)
+  -o, --output <dir>   Output directory for HTML files (default: html)
+  --preset <preset>    Use a preset configuration (available: cybersolstice)
+  --legacy             Use legacy mode for backward compatibility
+  --no-auth            Disable authentication even if configured
+  --no-changelog       Disable automatic changelog generation
+
+Examples:
+  doc-builder build                        # Build with defaults
+  doc-builder build --input docs --output dist
+  doc-builder build --preset cybersolstice # Use JUNO platform preset
+  doc-builder build --config my-config.js  # Use custom config
 ```
 
 ### dev
@@ -121,27 +143,54 @@ Start development server with live reload:
 doc-builder dev [options]
 
 Options:
-  -c, --config <path>  Path to config file
-  -p, --port <port>   Port to run dev server on (default: 3000)
+  -c, --config <path>  Path to config file (default: "doc-builder.config.js")
+  -p, --port <port>    Port to run dev server on (default: 3000)
+  -h, --host <host>    Host to bind to (default: localhost)
+  --no-open            Don't open browser automatically
+
+Examples:
+  doc-builder dev                    # Start on http://localhost:3000
+  doc-builder dev --port 8080        # Use custom port
+  doc-builder dev --host 0.0.0.0     # Allow external connections
 ```
 
 ### deploy
-Deploy to Vercel:
+Deploy documentation to Vercel (requires Vercel CLI):
 ```bash
 doc-builder deploy [options]
 
 Options:
-  -c, --config <path>  Path to config file
-  --prod              Deploy to production
+  -c, --config <path>  Path to config file (default: "doc-builder.config.js")
+  --prod               Deploy to production (default: preview deployment)
+  --no-build           Skip building before deployment
+  --force              Force deployment without confirmation
+
+Examples:
+  doc-builder deploy                 # Deploy preview to Vercel
+  doc-builder deploy --prod          # Deploy to production
+  doc-builder deploy --no-build      # Deploy existing build
+
+First-time setup:
+  The tool will guide you through:
+  1. Installing Vercel CLI (if needed)
+  2. Creating a new Vercel project
+  3. Configuring deployment settings
+  
+Important: After deployment, disable Vercel Authentication in project settings for public docs.
 ```
 
 ### init
-Initialize configuration:
+Initialize doc-builder in your project:
 ```bash
 doc-builder init [options]
 
 Options:
-  --config  Create configuration file
+  --config   Create configuration file
+  --example  Create example documentation structure
+
+Examples:
+  doc-builder init --config          # Create doc-builder.config.js
+  doc-builder init --example         # Create example docs folder
 ```
 
 ## Project Structure

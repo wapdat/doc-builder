@@ -1,12 +1,15 @@
 {
-  "name": "@juno/doc-builder",
-  "version": "1.0.0",
+  "name": "@knowcode/doc-builder",
+  "version": "1.2.2",
   "description": "Reusable documentation builder for markdown-based sites with Vercel deployment support",
   "main": "index.js",
   "bin": {
-    "doc-builder": "./cli.js"
+    "doc-builder": "./cli.js",
+    "juno-docs": "./cli.js",
+    "@knowcode/doc-builder": "./scripts/npx-runner.js"
   },
   "scripts": {
+    "postinstall": "node scripts/setup.js || true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,7 +19,7 @@
     "vercel",
     "juno"
   ],
-  "author": "JUNO Platform",
+  "author": "KnowCode",
   "license": "MIT",
   "dependencies": {
     "marked": "^15.0.12",

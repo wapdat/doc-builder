@@ -1,0 +1,41 @@
+# Test directories
+temp-test/
+test/
+tests/
+coverage/
+.nyc_output/
+
+# Development files
+.vscode/
+.idea/
+*.log
+*.swp
+.DS_Store
+
+# Build artifacts
+.aws-sam/
+dist/
+build/
+
+# Documentation that shouldn't be in package
+docs/
+examples/
+
+# Git files
+.git/
+.gitignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Environment files
+.env
+.env.*
+env.json
+
+# Editor configs
+.editorconfig
+.eslintrc*
+.prettierrc*
