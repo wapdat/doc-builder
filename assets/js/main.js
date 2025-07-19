@@ -1208,7 +1208,8 @@ function generateBreadcrumbs() {
   const breadcrumbContainer = document.getElementById('breadcrumbs');
   if (!breadcrumbContainer) return;
   
-  const currentPath = window.location.pathname;
+  // Decode the URL to handle special characters and spaces
+  const currentPath = decodeURIComponent(window.location.pathname);
   let pathSegments = currentPath.split('/').filter(segment => segment !== '');
   
   // Find the index of 'html' directory and slice from there
