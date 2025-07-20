@@ -704,7 +704,7 @@ function initSidebarResize() {
   const savedWidth = localStorage.getItem('sidebarWidth');
   if (savedWidth && savedWidth >= 200 && savedWidth <= 500) {
     sidebar.style.width = `${savedWidth}px`;
-    content.style.marginLeft = `${savedWidth}px`;
+    // Don't set margin-left - flexbox handles the layout
   }
   
   // Mouse down on resize handle
@@ -733,7 +733,7 @@ function initSidebarResize() {
     const constrainedWidth = Math.max(200, Math.min(500, width));
     
     sidebar.style.width = `${constrainedWidth}px`;
-    content.style.marginLeft = `${constrainedWidth}px`;
+    // Don't set margin-left - flexbox handles the layout
     
     e.preventDefault();
   }
@@ -775,7 +775,7 @@ function initSidebarResize() {
     const constrainedWidth = Math.max(200, Math.min(500, width));
     
     sidebar.style.width = `${constrainedWidth}px`;
-    content.style.marginLeft = `${constrainedWidth}px`;
+    // Don't set margin-left - flexbox handles the layout
     
     e.preventDefault();
   }
@@ -1059,7 +1059,6 @@ function exportToPDF() {
   const mainWrapper = document.querySelector('.main-wrapper');
   
   if (content) {
-    content.style.marginLeft = '0';
     content.style.padding = '20px';
     content.style.maxWidth = 'none';
   }
@@ -1174,7 +1173,6 @@ function exportToPDF() {
       
       // Restore content styles
       if (content) {
-        content.style.marginLeft = '';
         content.style.padding = '';
         content.style.maxWidth = '';
       }

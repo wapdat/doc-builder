@@ -5,6 +5,232 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.2] - 2025-01-20
+
+### Fixed
+- Fixed excessive left padding on content area by removing JavaScript margin-left assignments
+- Content layout now properly uses flexbox spacing without manual margin adjustments
+- The JavaScript was adding inline `style="margin-left: 200px;"` which was causing the issue
+
+## [1.4.1] - 2025-07-20
+
+### Fixed
+- **Critical CSS layout fix** - Content no longer appears too far right when sidebar is hidden
+- Removed incorrect `margin-left: var(--sidebar-width)` from `.content` class
+- Fixed responsive layout issues where content had excessive right spacing
+- Simplified responsive styles to match original working version
+- Fixed mobile padding to use single value `var(--space-4)` instead of directional padding
+
+### Technical Details
+- Content now uses flexbox `flex: 1` without margin-left
+- Removed unnecessary `transition: margin-left` from content
+- Mobile styles simplified to only adjust padding, no margin overrides needed
+- Layout now properly responds when sidebar is hidden on mobile/tablet
+
+## [1.4.0] - 2025-07-20
+
+### Added
+- **Tooltip functionality restored** - Added summary extraction from markdown files
+- Tooltips now appear on hover for navigation items showing content preview
+- `extractSummary()` function looks for Overview/Summary sections or first paragraph
+- Summaries are collected in first pass and added as `data-tooltip` attributes
+
+### Fixed
+- **CSS layout restored to match original** - Reverted all layout changes to original values
+- Header height restored to 64px (was 56px)
+- Main wrapper uses margin-top approach (not absolute positioning)
+- Content uses original padding values (var(--space-6) var(--space-8))
+- Content-inner uses centered layout (margin: 0 auto)
+- Navigation padding restored to all sides
+
+### Removed
+- Removed unused style.css file - only notion-style.css is used
+- Eliminated dual CSS file confusion
+
+### Technical Details
+- Summary extraction matches original build.js implementation
+- Navigation generation passes summaries through recursive renderSection calls
+- Tooltips use same CSS implementation as original with fixed positioning
+
+## [1.3.14] - 2025-07-20
+
+### Fixed
+- Fixed excessive gap between breadcrumb and content area
+- Changed `.main-wrapper` from using `margin-top` to `padding-top` to eliminate double spacing
+- Reduced content top padding from `var(--space-4)` (16px) to `var(--space-2)` (8px)
+- Removed duplicate `.sidebar-header` CSS definition
+- Fixed mobile responsive padding to match desktop changes
+
+### Changed
+- Main wrapper now uses `height: 100vh` with `padding-top` instead of calculated height
+- Content padding changed to `8px 32px 16px` for tighter vertical spacing
+- Consistent padding reduction across all responsive breakpoints
+
+## [1.3.13] - 2025-07-19
+
+### Fixed
+- Made content body left-aligned instead of centered
+- Made navigation menu top-aligned by removing top padding
+- Simplified layout for better compatibility
+
+### Changed
+- `.content-inner` now uses `margin: 0` instead of `margin: 0 auto` for left alignment
+- `.navigation` padding changed from all sides to only bottom/left/right
+- Removed unnecessary centering that was causing layout issues
+
+## [1.3.12] - 2025-07-19
+
+### Fixed
+- Fixed tooltip positioning by using `position: fixed` to match original implementation
+- Updated tooltip JavaScript to match simpler original approach
+- Fixed content-inner wrapper already present in HTML generation
+- Improved tooltip initialization with console logging for debugging
+
+### Technical Details
+- Tooltips now use fixed positioning with CSS variables for placement
+- Simplified event handling for tooltip hover events
+- Added debug logging to help diagnose tooltip initialization issues
+- Content structure matches original with proper content-inner wrapper
+
+## [1.3.11] - 2025-07-19
+
+### Fixed
+- **CRITICAL FIX**: Removed duplicate CSS file loading that was causing style conflicts
+- Now only loads `notion-style.css` matching the original working build
+- This fixes both tooltip functionality and spacing issues
+
+### Root Cause
+- The npm package was loading both `notion-style.css` AND `style.css`
+- The `style.css` file was overriding proper styles from `notion-style.css`
+- This caused spacing conflicts and broke tooltip positioning
+- The original cybersolstice build only loads `notion-style.css`
+
+### Impact
+- Tooltips now work correctly with proper positioning
+- Navigation spacing matches the original design
+- No more CSS variable conflicts between themes
+- Consistent styling throughout the application
+
+## [1.3.10] - 2025-07-19
+
+### Fixed
+- Reduced excessive top spacing in content area (changed from 40px to 16px)
+- Fixed tooltip implementation with event delegation for better performance
+- Added native `title` attribute as fallback for tooltips
+- Applied spacing fixes to both default and notion themes
+
+### Improved
+- Content now starts closer to the header/breadcrumb area
+- Tooltips use simpler event delegation instead of individual listeners
+- Better tooltip support with both custom CSS tooltips and native browser tooltips
+- Removed unnecessary MutationObserver for cleaner code
+
+### Technical Details
+- Content padding reduced from 40px to var(--space-lg) (16px) 
+- Event delegation on navigation container captures all tooltip events
+- Native title attributes ensure tooltips work even if CSS/JS fails
+- More efficient event handling with capture phase listeners
+
+## [1.3.9] - 2025-07-19
+
+### Fixed
+- Fixed tooltip JavaScript positioning implementation
+- Removed invalid getComputedStyle call on pseudo-elements
+- Added mouseleave handler to clean up CSS variables
+- Fixed tooltip arrow positioning with proper transform
+- Added event listener cleanup to prevent duplicates
+- Added console logging for tooltip debugging
+
+### Improved
+- Tooltips now properly use fixed positioning as per lessons learned
+- Added MutationObserver to handle dynamically updated navigation
+- Better event handling with proper cleanup on element replacement
+- More robust tooltip initialization that works with dynamic content
+
+### Technical Details
+- JavaScript now correctly sets `--tooltip-left` and `--tooltip-top` CSS variables
+- Fixed positioning allows tooltips to escape overflow containers
+- Event listeners are properly cleaned up to prevent memory leaks
+- Console logging helps debug tooltip initialization issues
+
+## [1.3.8] - 2025-07-19
+
+### Fixed
+- Added missing tooltip styles to default theme (style.css)
+- Tooltips now appear on hover for navigation folders with descriptions
+- Matched tooltip styling between default and notion themes
+
+### Added
+- Complete tooltip CSS implementation for default theme
+- Tooltip arrow for better visual connection
+- Dark mode tooltip styling
+- Mobile tooltip suppression (disabled on screens < 768px)
+
+### Technical Details
+- Tooltips use fixed positioning to escape overflow containers
+- High z-index (10000) ensures tooltips appear above all content
+- JavaScript positioning via CSS custom properties (--tooltip-left, --tooltip-top)
+- Smooth fade transitions for professional appearance
+
+## [1.3.7] - 2025-07-19
+
+### Fixed
+- Fixed content area not collapsing when sidebar is hidden on mobile
+- Content now properly takes full width when sidebar is closed
+- Added !important to margin-left: 0 for mobile breakpoints to ensure proper override
+- Fixed issue where content appeared too far right on mobile devices
+
+### Improved
+- Content area now properly responds to sidebar state on all screen sizes
+- Better use of available screen space on mobile devices
+- Consistent behavior across both default and notion-style themes
+
+## [1.3.6] - 2025-07-19
+
+### Fixed
+- Fixed responsive menu toggle button not being visible on mobile devices
+- Added mobile overlay for sidebar with proper click-to-close functionality
+- Improved sidebar z-index stacking for proper mobile display
+- Added smooth transitions and shadow effects for mobile sidebar
+- Fixed body scroll prevention when mobile menu is open
+- Menu toggle button now shows close icon (X) when menu is open
+- Sidebar properly closes when clicking navigation items on mobile
+- Escape key now properly closes mobile menu and overlay
+
+### Added
+- Semi-transparent overlay background when sidebar is open on mobile
+- Visual feedback for menu toggle button state (hamburger/close icon)
+- Box shadow on mobile sidebar for better depth perception
+- Proper ARIA attributes for accessibility
+
+### Improved
+- Better mobile user experience with standard mobile navigation patterns
+- Consistent behavior across different mobile breakpoints
+- Smoother animations and transitions for mobile menu
+- Applied fixes to both default and notion-style themes
+
+## [1.3.5] - 2025-07-19
+
+### Fixed
+- Restored proper header and breadcrumb heights for better visual hierarchy
+- Header height increased from 40px to 56px
+- Breadcrumb height restored from 0px to 40px
+- Removed duplicate "Home" link from sidebar to eliminate confusion
+- Cleaned up orphaned CSS styles for removed sidebar breadcrumbs
+
+### Improved
+- Better spacing and visual weight for header components
+- Cleaner sidebar with single-purpose filter input
+- More professional appearance with proper proportions
+
+## [1.3.4] - 2025-07-19
+
+### Fixed
+- Properly fixed spacing between breadcrumb and filter box in sidebar
+- Increased sidebar-breadcrumbs margin-bottom to 24px for better separation
+- Removed unnecessary margin from sidebar-header elements
+- Applied consistent spacing across both style themes
+
 ## [1.3.3] - 2025-07-19
 
 ### Fixed
