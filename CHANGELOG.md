@@ -5,6 +5,19 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.13] - 2025-07-21
+
+### Added
+- Created comprehensive DOCUMENT-STANDARDS.md defining documentation conventions
+- Added documentation index file for better navigation
+- Established docs/guides/ directory structure for organized documentation
+
+### Documentation
+- Document standards cover naming conventions, content guidelines, and quality standards
+- Includes templates for different document types (features, technical guides, API docs)
+- Defines metadata requirements and verification indicators (✅/❓)
+- Establishes changelog maintenance practices
+
 ## [1.4.12] - 2025-07-21
 
 ### Fixed
