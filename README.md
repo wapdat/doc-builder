@@ -119,6 +119,9 @@ module.exports = {
   siteName: 'My Documentation',
   siteDescription: 'Documentation for my project',
   
+  // Production URL (optional)
+  productionUrl: 'https://my-docs.vercel.app',  // Custom URL to display after deployment
+  
   // Features
   features: {
     authentication: true,
@@ -144,6 +147,18 @@ npx @knowcode/doc-builder build --preset notion-inspired
 ```
 
 ## Commands
+
+### set-production-url
+Set a custom production URL to display after deployment:
+```bash
+# Set your custom production URL
+npx @knowcode/doc-builder set-production-url doc-builder-delta.vercel.app
+
+# Or with full protocol
+npx @knowcode/doc-builder set-production-url https://my-custom-domain.com
+```
+
+This is useful when you have a custom domain or Vercel alias that differs from the auto-detected URL.
 
 ### build
 Build the documentation site to static HTML:
@@ -189,15 +204,15 @@ Deploy documentation to Vercel (requires Vercel CLI):
 doc-builder deploy [options]
 
 Options:
-  -c, --config <path>  Path to config file (default: "doc-builder.config.js")
-  --prod               Deploy to production (default: preview deployment)
-  --no-build           Skip building before deployment
-  --force              Force deployment without confirmation
+  -c, --config <path>         Path to config file (default: "doc-builder.config.js")
+  --no-prod                   Deploy as preview instead of production
+  --force                     Force deployment without confirmation
+  --production-url <url>      Override production URL for this deployment
 
 Examples:
-  doc-builder deploy                 # Deploy preview to Vercel
-  doc-builder deploy --prod          # Deploy to production
-  doc-builder deploy --no-build      # Deploy existing build
+  doc-builder deploy                                    # Deploy to production
+  doc-builder deploy --no-prod                          # Deploy as preview only
+  doc-builder deploy --production-url my-docs.vercel.app  # Use custom URL display
 
 First-time setup:
   The tool will guide you through:
@@ -323,6 +338,25 @@ npx @knowcode/doc-builder@1.4.22
 - Run `npx @knowcode/doc-builder reset-vercel` to clear settings
 - Ensure Vercel CLI is installed: `npm install -g vercel`
 - Check that the `html/` directory was created by build command
+
+**Wrong production URL displayed**
+- The deployment may show a deployment-specific URL instead of your custom domain
+- Solution 1: Set production URL in config:
+  ```javascript
+  // doc-builder.config.js
+  module.exports = {
+    productionUrl: 'https://my-docs.vercel.app',
+    // ... other config
+  };
+  ```
+- Solution 2: Use command to set it:
+  ```bash
+  npx @knowcode/doc-builder set-production-url my-docs.vercel.app
+  ```
+- Solution 3: Override for a single deployment:
+  ```bash
+  npx @knowcode/doc-builder deploy --production-url my-docs.vercel.app
+  ```
 
 ## Using in Other Projects
 

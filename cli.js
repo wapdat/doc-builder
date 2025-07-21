@@ -118,6 +118,67 @@ ${chalk.yellow('Examples:')}
     }
   });
 
+// Set Production URL command
+program
+  .command('set-production-url <url>')
+  .description('Set the production URL to display after deployment')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .addHelpText('after', `
+${chalk.yellow('Examples:')}
+  ${chalk.gray('$')} doc-builder set-production-url doc-builder-delta.vercel.app
+  ${chalk.gray('$')} doc-builder set-production-url https://my-custom-domain.com
+
+${chalk.yellow('This URL will be displayed after deployment instead of auto-detected URLs.')}
+`)
+  .action(async (url, options) => {
+    try {
+      const configPath = path.join(process.cwd(), options.config || 'doc-builder.config.js');
+      
+      // Ensure URL has protocol
+      if (!url.startsWith('http')) {
+        url = 'https://' + url;
+      }
+      
+      if (fs.existsSync(configPath)) {
+        // Update existing config
+        let configContent = fs.readFileSync(configPath, 'utf8');
+        
+        if (configContent.includes('productionUrl:')) {
+          // Update existing productionUrl
+          configContent = configContent.replace(
+            /productionUrl:\s*['"][^'"]*['"]/,
+            `productionUrl: '${url}'`
+          );
+        } else {
+          // Add productionUrl to config
+          configContent = configContent.replace(
+            /module\.exports = {/,
+            `module.exports = {\n  productionUrl: '${url}',`
+          );
+        }
+        
+        fs.writeFileSync(configPath, configContent);
+        console.log(chalk.green(`✅ Production URL set to: ${url}`));
+        console.log(chalk.gray(`\nThis URL will be displayed after deployment.`));
+      } else {
+        console.log(chalk.yellow('⚠️  No config file found. Creating one...'));
+        await createDefaultConfig();
+        
+        // Add production URL to newly created config
+        let configContent = fs.readFileSync(configPath, 'utf8');
+        configContent = configContent.replace(
+          /module\.exports = {/,
+          `module.exports = {\n  productionUrl: '${url}',`
+        );
+        fs.writeFileSync(configPath, configContent);
+        console.log(chalk.green(`✅ Created config with production URL: ${url}`));
+      }
+    } catch (error) {
+      console.error(chalk.red('Failed to set production URL:'), error.message);
+      process.exit(1);
+    }
+  });
+
 // Deploy command
 program
   .command('deploy')
@@ -125,6 +186,7 @@ program
   .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
   .option('--no-prod', 'deploy as preview instead of production')
   .option('--force', 'force deployment without confirmation')
+  .option('--production-url <url>', 'override production URL for this deployment')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder deploy                 ${chalk.gray('# Deploy to production')}
@@ -267,6 +329,13 @@ ${chalk.yellow('Troubleshooting:')}
         process.exit(1);
       }
       
+      // Handle production URL option
+      if (options.productionUrl) {
+        config.productionUrl = options.productionUrl.startsWith('http') 
+          ? options.productionUrl 
+          : 'https://' + options.productionUrl;
+      }
+      
       // Always build first
       spinner.stop();
       console.log(chalk.blue('\n📦 Building documentation first...\n'));
@@ -329,8 +398,8 @@ ${chalk.yellow('Troubleshooting:')}
         productionUrl = result.productionUrl;
       }
       
-      // Use the production URL if available, otherwise show the deployment URL
-      const displayUrl = productionUrl || deployUrl;
+      // Use the configured production URL if available, then detected, then deployment URL
+      const displayUrl = config.productionUrl || productionUrl || deployUrl;
       
       console.log(chalk.green('\n✅ Deployment Complete!\n'));
       
