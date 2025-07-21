@@ -126,7 +126,7 @@
   --container-padding-mobile: 20px;
   --container-padding-desktop: 40px;
   --header-height: 40px;
-  --breadcrumb-height: 0px;
+  --breadcrumb-height: 40px;
   --sidebar-width: 280px;
 }
 
@@ -532,40 +532,6 @@ pre code {
   margin-bottom: var(--space-4);
 }
 
-/* Already defined above, but ensure consistency */
-.sidebar-breadcrumbs {
-  margin-bottom: var(--space-3);
-}
-
-.filter-box {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.filter-input {
-  width: 100%;
-  padding: var(--space-2) var(--space-8) var(--space-2) var(--space-3);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  background: var(--color-bg-default);
-  color: var(--color-text-primary);
-  font-size: var(--text-sm);
-  transition: all var(--duration-fast);
-}
-
-.filter-input:focus {
-  outline: none;
-  border-color: var(--color-border-focus);
-  box-shadow: 0 0 0 2px var(--color-accent-blue-bg);
-}
-
-.filter-icon {
-  position: absolute;
-  right: var(--space-3);
-  color: var(--color-text-tertiary);
-  pointer-events: none;
-}
 
 /* Navigation */
 .navigation {
