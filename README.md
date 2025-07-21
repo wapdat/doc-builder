@@ -41,6 +41,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - 🔄 **Live Reload** - Development server with hot reloading
 - ☁️ **Vercel Integration** - One-command deployment to Vercel
 - 📦 **Self-Contained** - No configuration or setup required
+- 🤖 **Claude Code Ready** - Optimized for AI-generated documentation workflows
 
 ## Quick Start
 
@@ -220,6 +221,50 @@ my-project/
 ├── doc-builder.config.js  # Configuration (optional)
 └── package.json
 ```
+
+## Working with Claude Code
+
+Many users leverage Claude Code to create and maintain their documentation. Claude Code is particularly effective at:
+
+### Generating Documentation
+Claude Code can analyze your codebase and automatically generate comprehensive documentation:
+- API documentation from code comments and function signatures
+- User guides based on your application structure
+- Installation and setup instructions
+- Troubleshooting guides
+
+### Documentation Conventions
+When using Claude Code to generate documentation, it typically follows these patterns:
+- Creates properly structured markdown files with hierarchical headings
+- Includes code examples with syntax highlighting
+- Generates Mermaid diagrams for visual representations
+- Follows consistent naming conventions (e.g., `component-guide.md`, `api-reference.md`)
+- Adds metadata headers for document tracking
+
+### Example Claude Code Workflow
+1. **Initial Documentation Generation**
+   ```
+   "Create comprehensive API documentation for this project"
+   ```
+   Claude Code will scan your codebase and generate appropriate markdown files in your `docs/` directory.
+
+2. **Updating Documentation**
+   ```
+   "Update the API documentation to reflect the new authentication methods"
+   ```
+   Claude Code will modify existing files while preserving structure and formatting.
+
+3. **Adding Visual Documentation**
+   ```
+   "Add a Mermaid diagram showing the application architecture"
+   ```
+   Claude Code will create diagrams that are automatically rendered by doc-builder.
+
+### Best Practices with Claude Code
+- **Structured Requests**: Be specific about what documentation you need
+- **Iterative Updates**: Claude Code can update existing docs without starting from scratch
+- **Review Generated Content**: Always review AI-generated documentation for accuracy
+- **Maintain CLAUDE.md**: Keep project-specific instructions in a CLAUDE.md file for consistent documentation style
 
 ## Using in Other Projects
 
