@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.5] - 2025-07-21
+
+### Fixed
+- Removed all references to non-existent style.css file
+- Fixed CSS rendering issues where root page appeared different from other pages
+- Updated CSS existence check in deploy.js to verify notion-style.css instead
+
+### Background
+- style.css was removed in v1.4.0 but code references remained
+- This caused 404 errors and potential CSS loading failures
+- All pages now correctly load only notion-style.css as intended
+
 ## [1.4.4] - 2025-07-21
 
 ### Added
