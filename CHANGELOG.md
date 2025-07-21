@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.25] - 2025-07-21
+
+### Fixed
+- Improved production URL detection with multiple fallback methods
+- Tries to extract project name and construct standard Vercel URL
+- Better handling of different Vercel URL formats
+
+### Background
+- Previous version didn't correctly parse Vercel's output
+- Now uses multiple methods to determine the production URL
+- Extracts project name from deployment URL as fallback
+
 ## [1.4.24] - 2025-07-21
 
 ### Fixed
