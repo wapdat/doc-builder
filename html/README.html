@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Documentation site built with @knowcode/doc-builder">
-    <title>Test Documentation - Documentation</title>
+    <title>@knowcode/doc-builder - Documentation</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.4.9">Last updated: Jul 21, 2025, 12:05 PM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.10">Last updated: Jul 21, 2025, 12:11 PM UTC</span>
                 </div>
                 
                 
@@ -78,7 +78,7 @@
           <i class="fas fa-home"></i> Documentation
         </a>
         <div class="nav-content" >
-        <a href="/README.html" class="nav-item active" data-tooltip="This is a test document to verify the doc-builder version tooltip."><i class="fas fa-file-alt"></i> Overview</a>
+        <a href="/README.html" class="nav-item active" data-tooltip="&gt; Transform your markdown documentation into beautiful, searchable websites with Notion-inspired styling Create stunning documentation sites in minute..."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/claude-workflow-guide.html" class="nav-item" data-tooltip="**Generated**: 2025-07-21 10:00 UTC **Status**: Complete **Verified**: ✅ This guide demonstrates an efficient workflow for using Claude Code with a re..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a></div></div>
             </nav>
             <div class="resize-handle"></div>
@@ -87,8 +87,141 @@
         <!-- Content Area -->
         <main class="content">
             <div class="content-inner">
-                <h1>Test Documentation</h1>
-<p>This is a test document to verify the doc-builder version tooltip.</p>
+                <h1>@knowcode/doc-builder</h1>
+<blockquote>
+<p>Transform your markdown documentation into beautiful, searchable websites with Notion-inspired styling</p>
+</blockquote>
+<p><a href="https://www.npmjs.com/package/@knowcode/doc-builder"><img src="https://img.shields.io/npm/v/@knowcode/doc-builder" alt="npm version"></a><br><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a></p>
+<h2>🚀 Quick Start</h2>
+<p>Create stunning documentation sites in minutes:</p>
+<pre><code class="language-bash"># Install globally
+npm install -g @knowcode/doc-builder
+
+# Or use with npx
+npx @knowcode/doc-builder@latest init
+</code></pre>
+<h2>✨ Features</h2>
+<h3>🎨 Beautiful Design</h3>
+<ul>
+<li><strong>Notion-inspired UI</strong> - Clean, modern interface that users love</li>
+<li><strong>Dark mode support</strong> - Automatic theme switching</li>
+<li><strong>Responsive layout</strong> - Perfect on desktop and mobile</li>
+<li><strong>Syntax highlighting</strong> - Beautiful code blocks with language support</li>
+</ul>
+<h3>🔍 Powerful Search &amp; Navigation</h3>
+<ul>
+<li><strong>Full-text search</strong> - Find anything instantly</li>
+<li><strong>Smart navigation</strong> - Hierarchical folder structure</li>
+<li><strong>Breadcrumbs</strong> - Always know where you are</li>
+<li><strong>Keyboard shortcuts</strong> - Navigate like a pro</li>
+</ul>
+<h3>📊 Rich Content Support</h3>
+<ul>
+<li><strong>Mermaid diagrams</strong> - Flowcharts, sequence diagrams, and more</li>
+<li><strong>GitHub-flavored markdown</strong> - Tables, task lists, and strikethrough</li>
+<li><strong>Interactive tooltips</strong> - Document summaries on hover</li>
+<li><strong>Version tracking</strong> - Know which version built your docs</li>
+</ul>
+<h3>🚀 Easy Deployment</h3>
+<ul>
+<li><strong>One-command deploy</strong> - Push to Vercel instantly</li>
+<li><strong>Static site generation</strong> - Fast, secure, and scalable</li>
+<li><strong>Custom domains</strong> - Your docs, your brand</li>
+<li><strong>Preview deployments</strong> - Test before going live</li>
+</ul>
+<h2>📖 Documentation</h2>
+<p>Visit our <a href="https://www.npmjs.com/package/@knowcode/doc-builder">official documentation</a> for detailed guides and API reference.</p>
+<h2>🎯 Perfect For</h2>
+<ul>
+<li><strong>Open source projects</strong> - Beautiful docs for your community</li>
+<li><strong>Technical teams</strong> - Internal documentation that developers actually use</li>
+<li><strong>API documentation</strong> - Clear, searchable API references</li>
+<li><strong>Knowledge bases</strong> - Organize and share team knowledge</li>
+</ul>
+<h2>🛠️ Simple Workflow</h2>
+<h3>1. Initialize Your Project</h3>
+<pre><code class="language-bash">npx @knowcode/doc-builder init
+</code></pre>
+<h3>2. Write Your Documentation</h3>
+<p>Create markdown files in your <code>docs</code> folder:</p>
+<pre><code class="language-markdown"># Getting Started
+
+Welcome to our documentation!
+
+## Installation
+
+\`\`\`bash
+npm install amazing-package
+\`\`\`
+
+## Features
+
+- ✅ Feature one
+- ✅ Feature two
+- ✅ Feature three
+</code></pre>
+<h3>3. Build &amp; Preview</h3>
+<pre><code class="language-bash"># Build your site
+npx doc-builder build
+
+# Preview locally
+npx doc-builder serve
+</code></pre>
+<h3>4. Deploy to Vercel</h3>
+<pre><code class="language-bash">npx doc-builder deploy
+</code></pre>
+<h2>🎨 Customization</h2>
+<p>Configure your site with <code>doc-builder.config.js</code>:</p>
+<pre><code class="language-javascript">module.exports = {
+  siteName: &#39;Your Amazing Docs&#39;,
+  siteDescription: &#39;Documentation that developers love&#39;,
+  features: {
+    mermaid: true,
+    darkMode: true,
+    authentication: false
+  }
+};
+</code></pre>
+<h2>📊 Mermaid Diagram Support</h2>
+<p>Create beautiful diagrams in your markdown:</p>
+<div class="mermaid-wrapper">
+      <div class="mermaid-title">Diagram</div>
+      <div class="mermaid">graph LR
+    A[Write Docs] --> B[Build Site]
+    B --> C[Deploy]
+    C --> D[Share Knowledge]
+    
+    style A fill:#e1f5fe
+    style D fill:#c8e6c9</div>
+    </div>
+<h2>🔒 Optional Authentication</h2>
+<p>Protect sensitive documentation with built-in authentication:</p>
+<pre><code class="language-javascript">features: {
+  authentication: true
+}
+</code></pre>
+<h2>🌟 Why doc-builder?</h2>
+<ul>
+<li><strong>Zero configuration</strong> - Works out of the box</li>
+<li><strong>Lightning fast</strong> - Static site generation for instant loading</li>
+<li><strong>SEO friendly</strong> - Optimized for search engines</li>
+<li><strong>Accessible</strong> - WCAG compliant</li>
+<li><strong>Version control</strong> - Track changes with Git</li>
+<li><strong>Open source</strong> - MIT licensed</li>
+</ul>
+<h2>🤝 Contributing</h2>
+<p>We welcome contributions! Check out our <a href="https://github.com/knowcode/doc-builder">contribution guide</a> to get started.</p>
+<h2>📝 License</h2>
+<p>MIT © KnowCode</p>
+<hr>
+<div align="center">
+  <p>Built with ❤️ by developers, for developers</p>
+  <p>
+    <a href="https://www.npmjs.com/package/@knowcode/doc-builder">npm</a> •
+    <a href="https://github.com/knowcode/doc-builder">GitHub</a> •
+    <a href="https://knowcode.com">Website</a>
+  </p>
+</div>
 
             </div>
         </main>

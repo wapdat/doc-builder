@@ -5,6 +5,12 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.11] - 2025-07-21
+
+### Added
+- Added live example site link to npm README.md (https://doc-builder-delta.vercel.app)
+- Users can now preview what their documentation will look like before building
+
 ## [1.4.10] - 2025-07-21
 
 ### Fixed

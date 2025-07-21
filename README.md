@@ -2,6 +2,8 @@
 
 Beautiful documentation with the least effort possible. A zero-configuration documentation builder that transforms markdown files into stunning static sites.
 
+🔗 **[View Live Example](https://doc-builder-delta.vercel.app)** - See what your documentation will look like!
+
 ## Why This Project Exists
 
 The main premise of @knowcode/doc-builder is simple: **create beautiful documentation with the least effort possible**. We believe great documentation shouldn't require complex setup, configuration files, or deployment headaches. Just write markdown, run one command, and get a professional documentation site live on the web.
