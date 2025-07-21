@@ -476,6 +476,186 @@ ${chalk.yellow('When to use:')}
     }
   });
 
+// Setup SEO command
+program
+  .command('setup-seo')
+  .description('Configure SEO settings for your documentation')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .addHelpText('after', `
+${chalk.yellow('What this does:')}
+  • Configures meta tags for search engines
+  • Sets up social media previews (Open Graph, Twitter Cards)
+  • Enables automatic sitemap.xml generation
+  • Creates robots.txt for search engines
+  • Adds structured data (JSON-LD)
+
+${chalk.yellow('What you\'ll configure:')}
+  • Site URL (your production URL)
+  • Author name and organization
+  • Twitter handle for social cards
+  • Default keywords
+  • Open Graph image
+
+${chalk.yellow('After setup:')}
+  • Run ${chalk.cyan('npx @knowcode/doc-builder build')} to generate with SEO
+  • Check meta tags in generated HTML files
+  • Submit sitemap.xml to search engines
+`)
+  .action(async (options) => {
+    try {
+      const configPath = path.join(process.cwd(), options.config || 'doc-builder.config.js');
+      let config = {};
+      
+      // Load existing config if it exists
+      if (fs.existsSync(configPath)) {
+        try {
+          delete require.cache[require.resolve(configPath)];
+          config = require(configPath);
+        } catch (e) {
+          console.log(chalk.yellow('⚠️  Could not load existing config, starting fresh'));
+        }
+      }
+      
+      console.log(chalk.blue('\n🔍 SEO Setup for @knowcode/doc-builder\n'));
+      console.log(chalk.gray('This wizard will help you configure SEO settings for better search engine visibility.\n'));
+      
+      // Interactive prompts
+      const answers = await prompts([
+        {
+          type: 'text',
+          name: 'siteUrl',
+          message: 'What is your site\'s URL?',
+          initial: config.seo?.siteUrl || config.productionUrl || 'https://my-docs.vercel.app',
+          validate: value => {
+            try {
+              new URL(value);
+              return true;
+            } catch {
+              return 'Please enter a valid URL (e.g., https://example.com)';
+            }
+          }
+        },
+        {
+          type: 'text',
+          name: 'author',
+          message: 'Author name?',
+          initial: config.seo?.author || ''
+        },
+        {
+          type: 'text',
+          name: 'twitterHandle',
+          message: 'Twitter handle?',
+          initial: config.seo?.twitterHandle || '',
+          format: value => {
+            if (!value) return '';
+            return value.startsWith('@') ? value : '@' + value;
+          }
+        },
+        {
+          type: 'text',
+          name: 'language',
+          message: 'Site language?',
+          initial: config.seo?.language || 'en-US'
+        },
+        {
+          type: 'text',
+          name: 'organizationName',
+          message: 'Organization name (optional)?',
+          initial: config.seo?.organization?.name || ''
+        },
+        {
+          type: prev => prev ? 'text' : null,
+          name: 'organizationUrl',
+          message: 'Organization URL?',
+          initial: config.seo?.organization?.url || ''
+        },
+        {
+          type: 'text',
+          name: 'ogImage',
+          message: 'Default Open Graph image URL/path?',
+          initial: config.seo?.ogImage || '/og-default.png',
+          hint: 'Recommended: 1200x630px PNG or JPG'
+        },
+        {
+          type: 'text',
+          name: 'keywords',
+          message: 'Site keywords (comma-separated)?',
+          initial: Array.isArray(config.seo?.keywords) ? config.seo.keywords.join(', ') : 'documentation, guide, api'
+        },
+        {
+          type: 'confirm',
+          name: 'generateSitemap',
+          message: 'Generate sitemap.xml?',
+          initial: config.seo?.generateSitemap !== false
+        },
+        {
+          type: 'confirm',
+          name: 'generateRobotsTxt',
+          message: 'Generate robots.txt?',
+          initial: config.seo?.generateRobotsTxt !== false
+        }
+      ]);
+      
+      // Build SEO config
+      const seoConfig = {
+        enabled: true,
+        siteUrl: answers.siteUrl,
+        author: answers.author,
+        twitterHandle: answers.twitterHandle,
+        language: answers.language,
+        keywords: answers.keywords.split(',').map(k => k.trim()).filter(k => k),
+        generateSitemap: answers.generateSitemap,
+        generateRobotsTxt: answers.generateRobotsTxt,
+        ogImage: answers.ogImage
+      };
+      
+      // Add organization if provided
+      if (answers.organizationName) {
+        seoConfig.organization = {
+          name: answers.organizationName,
+          url: answers.organizationUrl || answers.siteUrl
+        };
+      }
+      
+      // Update config
+      config.seo = seoConfig;
+      
+      // Also update productionUrl if not set
+      if (!config.productionUrl && answers.siteUrl) {
+        config.productionUrl = answers.siteUrl;
+      }
+      
+      // Write config file
+      const configContent = `module.exports = ${JSON.stringify(config, null, 2)};\n`;
+      fs.writeFileSync(configPath, configContent);
+      
+      console.log(chalk.green('\n✅ SEO configuration saved to ' + path.basename(configPath)));
+      
+      console.log(chalk.blue('\nYour documentation will now include:'));
+      console.log(chalk.gray('• Meta tags for search engines'));
+      console.log(chalk.gray('• Open Graph tags for social media previews'));
+      console.log(chalk.gray('• Twitter Card tags for Twitter sharing'));
+      console.log(chalk.gray('• JSON-LD structured data'));
+      if (answers.generateSitemap) {
+        console.log(chalk.gray('• Automatic sitemap.xml generation'));
+      }
+      if (answers.generateRobotsTxt) {
+        console.log(chalk.gray('• robots.txt for crawler instructions'));
+      }
+      
+      console.log(chalk.yellow('\n💡 Tips:'));
+      if (answers.ogImage) {
+        console.log(chalk.gray(`- Add an image at ${answers.ogImage} (1200x630px) for social previews`));
+      }
+      console.log(chalk.gray('- Run \'npx @knowcode/doc-builder build\' to generate with SEO'));
+      console.log(chalk.gray('- Check your SEO at: https://metatags.io'));
+      
+    } catch (error) {
+      console.error(chalk.red('Failed to configure SEO:'), error.message);
+      process.exit(1);
+    }
+  });
+
 // Init command
 program
   .command('init')

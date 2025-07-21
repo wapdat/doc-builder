@@ -974,7 +974,7 @@ tr:hover {
   
   .content {
     margin-left: 0;
-    padding: var(--space-6) var(--space-4);
+    padding: var(--space-3) var(--space-4); /* Reduced top/bottom padding on mobile */
   }
   
   .menu-toggle {
@@ -1596,7 +1596,7 @@ tr:hover {
   /* Sidebar positioning handled in earlier media query */
   
   .content {
-    padding: var(--space-4);
+    padding: var(--space-3) var(--space-4); /* Consistent reduced padding on mobile */
   }
   
   .content-inner {
@@ -1609,10 +1609,7 @@ tr:hover {
     padding: 0 var(--space-4);
   }
   
-  .preview-banner {
-    position: relative;
-    top: 0;
-  }
+  /* Keep preview banner fixed on mobile */
   
   /* Keep breadcrumbs fixed on mobile to prevent double spacing */
 }
