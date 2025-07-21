@@ -5,6 +5,19 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.3] - 2025-07-20
+
+### Fixed
+- Restored tooltip functionality by adding back the extractSummary function
+- Added data-tooltip attributes to navigation items showing document summaries
+- Removed unwanted Home link from sidebar breadcrumbs section
+- Navigation items now display helpful summaries on hover
+
+### Technical Details
+- extractSummary function extracts first 150 characters of meaningful content
+- Tooltips are properly escaped for HTML safety
+- Sidebar header simplified by removing redundant breadcrumb navigation
+
 ## [1.4.2] - 2025-01-20
 
 ### Fixed
