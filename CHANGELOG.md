@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.8] - 2025-07-21
+
+### Fixed
+- Fixed excessive spacing between breadcrumbs and navigation menu
+- Changed breadcrumb default positioning from `calc(var(--header-height) + 3.5rem)` to `var(--header-height)`
+- Removed duplicate `.sidebar` and `.main-wrapper` CSS definitions causing layout conflicts
+
+### Background
+- The breadcrumb bar was incorrectly adding banner height (3.5rem) even when no banner was visible
+- Duplicate CSS definitions for `.main-wrapper` were using conflicting spacing approaches (padding vs margin)
+- This fixes the final spacing issue in the CSS cleanup series from v1.4.5-v1.4.7
+
 ## [1.4.7] - 2025-07-21
 
 ### Fixed

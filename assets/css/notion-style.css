@@ -450,7 +450,7 @@ pre code {
   border-bottom: 1px solid var(--color-border-default);
   padding: var(--space-2) 0;
   position: fixed;
-  top: calc(var(--header-height) + 3.5rem);
+  top: var(--header-height);
   left: 0;
   right: 0;
   z-index: 900;
@@ -504,16 +504,6 @@ pre code {
 .main-wrapper.banner-visible {
   height: calc(100vh - var(--header-height) - var(--breadcrumb-height) - 3.5rem);
   margin-top: calc(var(--header-height) + var(--breadcrumb-height) + 3.5rem);
-}
-
-/* Sidebar */
-.sidebar {
-  width: var(--sidebar-width);
-  background: var(--color-bg-secondary);
-  border-right: 1px solid var(--color-border-default);
-  display: flex;
-  flex-direction: column;
-  position: relative;
 }
 
 .sidebar-header {
@@ -681,18 +671,6 @@ pre code {
 }
 
 /* Main Content */
-.main-wrapper {
-  display: flex;
-  padding-top: calc(var(--header-height) + var(--breadcrumb-height));
-  min-height: 100vh;
-  transition: padding-top var(--duration-normal);
-}
-
-/* Adjust layout when banner is visible */
-.main-wrapper.banner-visible {
-  padding-top: calc(var(--header-height) + var(--breadcrumb-height) + 3.5rem);
-}
-
 .content {
   flex: 1;
   padding: 40px var(--space-8);
