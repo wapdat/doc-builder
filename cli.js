@@ -48,6 +48,11 @@ ${chalk.yellow('Quick Start:')}
      ${chalk.gray('$')} npx @knowcode/doc-builder              ${chalk.gray('# Show help and available commands')}
      ${chalk.gray('$')} npx @knowcode/doc-builder deploy       ${chalk.gray('# Build and deploy to production')}
      ${chalk.gray('$')} npx @knowcode/doc-builder build        ${chalk.gray('# Build HTML files only')}
+
+${chalk.yellow('Troubleshooting npx cache issues:')}
+  ${chalk.red('If you see an old version after updating:')}
+     ${chalk.gray('$')} npx clear-npx-cache                    ${chalk.gray('# Clear the npx cache')}
+     ${chalk.gray('$')} npx @knowcode/doc-builder@latest       ${chalk.gray('# Force latest version')}
      ${chalk.gray('$')} npx @knowcode/doc-builder dev          ${chalk.gray('# Start development server')}
 
 ${chalk.yellow('No docs folder yet?')}

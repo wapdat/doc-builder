@@ -16,8 +16,9 @@ docs/
 ├── documentation-index.md       # This file - documentation map
 ├── claude-workflow-guide.md     # AI workflow guide
 └── guides/                      # How-to guides and standards
-    ├── DOCUMENT-STANDARDS.md    # Documentation standards
-    └── authentication-guide.md  # Authentication setup and usage
+    ├── authentication-guide.md  # Authentication setup and usage
+    ├── documentation-standards.md # Documentation standards
+    └── troubleshooting-guide.md # Common issues and solutions
 ```
 
 ## Documentation Categories
@@ -34,17 +35,18 @@ docs/
 
 | Document | Location | Description |
 |----------|----------|-------------|
-| Document Standards | [guides/DOCUMENT-STANDARDS.md](./guides/DOCUMENT-STANDARDS.md) | How to write docs for this project |
+| Document Standards | [guides/documentation-standards.md](./guides/documentation-standards.md) | How to write docs for this project |
 | Authentication Guide | [guides/authentication-guide.md](./guides/authentication-guide.md) | Setting up password protection |
+| Troubleshooting Guide | [guides/troubleshooting-guide.md](./guides/troubleshooting-guide.md) | Common issues and solutions |
 | Claude Workflow | [claude-workflow-guide.md](./claude-workflow-guide.md) | Using Claude with doc-builder |
 
 ### 🔜 Coming Soon
 
 - **API Reference** - Detailed API documentation
 - **Architecture Guide** - System design and components
-- **Troubleshooting** - Common issues and solutions
 - **Plugin Development** - Extending doc-builder
 - **Migration Guide** - Upgrading from older versions
+- **Performance Guide** - Optimizing large documentation sites
 
 ## Quick Start Guides
 
@@ -110,3 +112,4 @@ Documentation should be reviewed:
 |------|---------|--------|---------|
 | 2025-07-21 | 1.0 | System | Initial documentation index |
 | 2025-07-21 | 1.1 | System | Added authentication guide |
+| 2025-07-21 | 1.2 | System | Added troubleshooting guide |

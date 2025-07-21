@@ -280,6 +280,50 @@ When using Claude Code to generate documentation, it typically follows these pat
 - **Review Generated Content**: Always review AI-generated documentation for accuracy
 - **Maintain CLAUDE.md**: Keep project-specific instructions in a CLAUDE.md file for consistent documentation style
 
+## Troubleshooting
+
+### NPX Cache Issues
+
+The npx command caches packages to speed up subsequent runs. However, this can sometimes cause you to run an older version even after updating. 
+
+**Symptoms:**
+- Running `npx @knowcode/doc-builder` shows an old version number
+- New features aren't available despite updating
+- Changes don't appear after publishing a new version
+
+**Solution:**
+```bash
+# Clear the npx cache
+npx clear-npx-cache
+
+# Force the latest version
+npx @knowcode/doc-builder@latest
+
+# Or specify an exact version
+npx @knowcode/doc-builder@1.4.22
+```
+
+**Prevention:**
+- Always use `@latest` when you want the newest version
+- Clear cache periodically when developing/testing new versions
+- Use `npm install` for projects where you need a specific version
+
+### Other Common Issues
+
+**"Command not found" error**
+- Ensure Node.js 14+ is installed: `node --version`
+- Try with full package name: `npx @knowcode/doc-builder`
+
+**Build fails with "No markdown files found"**
+- Check that your docs are in the `docs/` folder (or specified input directory)
+- Ensure files have `.md` extension
+- Use `--input` flag to specify a different directory
+
+**Vercel deployment fails**
+- Run `npx @knowcode/doc-builder reset-vercel` to clear settings
+- Ensure Vercel CLI is installed: `npm install -g vercel`
+- Check that the `html/` directory was created by build command
+
 ## Using in Other Projects
 
 ### Option 1: NPM Link (Development)

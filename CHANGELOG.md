@@ -5,6 +5,20 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.23] - 2025-07-21
+
+### Added
+- Added npx cache clearing instructions to CLI help
+- Added troubleshooting section to README
+- Created comprehensive troubleshooting guide
+- Documented `npx clear-npx-cache` solution prominently
+
+### Background
+- Users frequently encounter npx cache issues causing old versions to run
+- The npx cache doesn't automatically update when new versions are published
+- This causes confusion when bug fixes or new features don't appear
+- Clear documentation helps users resolve this common issue quickly
+
 ## [1.4.22] - 2025-07-21
 
 ### Fixed
