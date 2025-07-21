@@ -14,7 +14,7 @@ Create stunning documentation sites in minutes:
 npm install -g @knowcode/doc-builder
 
 # Or use with npx
-npx @knowcode/doc-builder@latest init
+npx @knowcode/doc-builder@latest deploy
 ```
 
 ## ✨ Features

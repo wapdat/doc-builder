@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.15] - 2025-07-21
+
+### Fixed
+- Fixed index.html not being regenerated with current doc-builder version
+- index.html is now always regenerated from README.html to ensure version consistency
+- This prevents stale version numbers from being shown in deployed documentation
+
+### Background
+- Previously, index.html was preserved if it existed and looked valid
+- This caused version numbers to be stuck at older versions
+- Now ensures index.html always reflects the current build version
+
 ## [1.4.14] - 2025-07-21
 
 ### Fixed

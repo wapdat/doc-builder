@@ -4,6 +4,18 @@ Beautiful documentation with the least effort possible. A zero-configuration doc
 
 🔗 **[View Live Example](https://doc-builder-delta.vercel.app)** - See what your documentation will look like!
 
+## Recent Documentation Updates (Last 14 Days)
+
+### 🚀 System & Deployment (docs:)
+- 🔄 **UPDATE**: [Claude + CLAUDE.md Documentation Workflow Guide](docs/claude-workflow-guide.md) - Documentation updates and improvements
+- 🔄 **MAJOR UPDATE**: [Documentation Index](docs/documentation-index.md) - Significant updates with enhanced functionality and coverage
+- 🔄 **MAJOR UPDATE**: [Document Standards for @knowcode/doc-builder](docs/guides/DOCUMENT-STANDARDS.md) - Significant updates with enhanced functionality and coverage
+- 🔄 **UPDATE**: [@knowcode/doc-builder](docs/README.md) - Documentation updates and improvements
+- 🔄 **UPDATE**: [Document Standards for @knowcode/doc-builder](docs/guides/document-standards.md) - Documentation updates and improvements
+
+**Total Changes**: 0+ new documents, 5+ updates and improvements across 5 files
+
+
 ## Why This Project Exists
 
 The main premise of @knowcode/doc-builder is simple: **create beautiful documentation with the least effort possible**. We believe great documentation shouldn't require complex setup, configuration files, or deployment headaches. Just write markdown, run one command, and get a professional documentation site live on the web.
