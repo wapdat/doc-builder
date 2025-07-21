@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.10] - 2025-07-21
+
+### Fixed
+- Fixed mermaid diagram rendering by preventing HTML escaping of diagram content
+- Implemented placeholder system to protect mermaid blocks from markdown parser interference
+- Mermaid diagrams now render correctly without "Syntax error" messages
+
+### Background
+- Mermaid content was being HTML-escaped (e.g., `-->` became `--&gt;`)
+- Markdown parser was breaking up mermaid blocks by interpreting indented lines as code blocks
+- Fixed by processing mermaid blocks before markdown parsing and using placeholders
+
 ## [1.4.9] - 2025-07-21
 
 ### Fixed

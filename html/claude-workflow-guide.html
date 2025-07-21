@@ -29,7 +29,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.4.8">Last updated: Jul 21, 2025, 11:41 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.9">Last updated: Jul 21, 2025, 12:05 PM UTC</span>
                 </div>
                 
                 
@@ -95,27 +95,24 @@
 <div class="mermaid-wrapper">
       <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
-    A[Start Project] --&gt; B[Setup CLAUDE.md]
-    B --&gt; C[Configure doc-builder]
-    C --&gt; D[Create Documentation with Claude]
-    D --&gt; E[Build Static Site]
-    E --&gt; F[Deploy to Vercel]
-    F --&gt; G[Live Documentation]
+    A[Start Project] --> B[Setup CLAUDE.md]
+    B --> C[Configure doc-builder]
+    C --> D[Create Documentation with Claude]
+    D --> E[Build Static Site]
+    E --> F[Deploy to Vercel]
+    F --> G[Live Documentation]
     
-<pre><code>B -.-&amp;gt; H[Refine Instructions]
-H -.-&amp;gt; D
-
-D --&amp;gt; I{Review Quality}
-I --&amp;gt;|Needs Improvement| H
-I --&amp;gt;|Good| E
-
-style A fill:#e1f5fe
-style G fill:#c8e6c9
-style H fill:#fff3e0
-</code></pre>
-</div>
+    B -.-> H[Refine Instructions]
+    H -.-> D
+    
+    D --> I{Review Quality}
+    I -->|Needs Improvement| H
+    I -->|Good| E
+    
+    style A fill:#e1f5fe
+    style G fill:#c8e6c9
+    style H fill:#fff3e0</div>
     </div>
-
 <h2>Step 1: Setting Up CLAUDE.md</h2>
 <h3>1.1 Project-Level CLAUDE.md</h3>
 <p>Create a <code>CLAUDE.md</code> file in your project root with specific instructions for documentation:</p>
@@ -150,27 +147,24 @@ style H fill:#fff3e0
 <div class="mermaid-wrapper">
       <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph LR
-    A[Global CLAUDE.md] --&gt; B[Document Standards]
-    A --&gt; C[Git Workflow]
-    A --&gt; D[Quality Checks]
-    A --&gt; E[Security Practices]
+    A[Global CLAUDE.md] --> B[Document Standards]
+    A --> C[Git Workflow]
+    A --> D[Quality Checks]
+    A --> E[Security Practices]
     
-<pre><code>B --&amp;gt; B1[Naming Conventions]
-B --&amp;gt; B2[Markdown Standards]
-B --&amp;gt; B3[Diagram Requirements]
-
-C --&amp;gt; C1[Commit Frequency]
-C --&amp;gt; C2[Branch Strategy]
-
-D --&amp;gt; D1[Verification Marks]
-D --&amp;gt; D2[Changelog Updates]
-
-E --&amp;gt; E1[No Credentials]
-E --&amp;gt; E2[Access Controls]
-</code></pre>
-</div>
+    B --> B1[Naming Conventions]
+    B --> B2[Markdown Standards]
+    B --> B3[Diagram Requirements]
+    
+    C --> C1[Commit Frequency]
+    C --> C2[Branch Strategy]
+    
+    D --> D1[Verification Marks]
+    D --> D2[Changelog Updates]
+    
+    E --> E1[No Credentials]
+    E --> E2[Access Controls]</div>
     </div>
-
 <h2>Step 2: Initialize doc-builder</h2>
 <pre><code class="language-bash"># Install doc-builder
 npm install -D @knowcode/doc-builder
@@ -202,17 +196,14 @@ npx doc-builder init
     participant CLAUDE.md
     participant Documentation
     
-<pre><code>User-&amp;gt;&amp;gt;Claude: Request documentation
-Claude-&amp;gt;&amp;gt;CLAUDE.md: Check project standards
-CLAUDE.md--&amp;gt;&amp;gt;Claude: Return guidelines
-Claude-&amp;gt;&amp;gt;Documentation: Create/Update docs
-Claude-&amp;gt;&amp;gt;User: Confirm completion
-User-&amp;gt;&amp;gt;Claude: Review &amp;amp; refine
-Claude-&amp;gt;&amp;gt;Documentation: Apply refinements
-</code></pre>
-</div>
+    User->>Claude: Request documentation
+    Claude->>CLAUDE.md: Check project standards
+    CLAUDE.md-->>Claude: Return guidelines
+    Claude->>Documentation: Create/Update docs
+    Claude->>User: Confirm completion
+    User->>Claude: Review & refine
+    Claude->>Documentation: Apply refinements</div>
     </div>
-
 <h3>3.2 Example Documentation Requests</h3>
 <h4>Initial Architecture Documentation</h4>
 <pre><code>&quot;Create comprehensive architecture documentation for our authentication system. Include:
@@ -251,21 +242,18 @@ Claude-&amp;gt;&amp;gt;Documentation: Apply refinements
 <div class="mermaid-wrapper">
       <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph LR
-    A[Write Docs] --&gt; B[Preview Locally]
-    B --&gt; C{Looks Good?}
-    C --&gt;|No| A
-    C --&gt;|Yes| D[Build Site]
-    D --&gt; E[Test Build]
-    E --&gt; F{All Good?}
-    F --&gt;|No| A
-    F --&gt;|Yes| G[Ready to Deploy]
+    A[Write Docs] --> B[Preview Locally]
+    B --> C{Looks Good?}
+    C -->|No| A
+    C -->|Yes| D[Build Site]
+    D --> E[Test Build]
+    E --> F{All Good?}
+    F -->|No| A
+    F -->|Yes| G[Ready to Deploy]
     
-<pre><code>style A fill:#fff3e0
-style G fill:#c8e6c9
-</code></pre>
-</div>
+    style A fill:#fff3e0
+    style G fill:#c8e6c9</div>
     </div>
-
 <h3>4.2 Commands</h3>
 <pre><code class="language-bash"># Start development server
 npm run dev:docs
@@ -300,39 +288,34 @@ npm run deploy:docs
 <div class="mermaid-wrapper">
       <div class="mermaid-title">Diagram</div>
       <div class="mermaid">stateDiagram-v2
-    [*] --&gt; LocalDevelopment
-    LocalDevelopment --&gt; BuildDocs: npm run build:docs
-    BuildDocs --&gt; TestLocally: npx serve html
-    TestLocally --&gt; Deploy: npx doc-builder deploy
-    Deploy --&gt; VercelProcessing
-    VercelProcessing --&gt; LiveSite: Success
-    VercelProcessing --&gt; ErrorHandling: Failed
-    ErrorHandling --&gt; LocalDevelopment: Fix issues
-    LiveSite --&gt; [*]
-</div>
+    [*] --> LocalDevelopment
+    LocalDevelopment --> BuildDocs: npm run build:docs
+    BuildDocs --> TestLocally: npx serve html
+    TestLocally --> Deploy: npx doc-builder deploy
+    Deploy --> VercelProcessing
+    VercelProcessing --> LiveSite: Success
+    VercelProcessing --> ErrorHandling: Failed
+    ErrorHandling --> LocalDevelopment: Fix issues
+    LiveSite --> [*]</div>
     </div>
-
 <h2>Step 6: Continuous Documentation Updates</h2>
 <h3>6.1 Update Workflow</h3>
 <div class="mermaid-wrapper">
       <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
-    A[Code Changes] --&gt; B{Docs Needed?}
-    B --&gt;|Yes| C[Update Documentation]
-    B --&gt;|No| End[End]
-    C --&gt; D[Use Claude for Updates]
-    D --&gt; E[Review Changes]
-    E --&gt; F[Build &amp; Test]
-    F --&gt; G[Deploy Updates]
-    G --&gt; H[Update CHANGELOG.md]
-    H --&gt; End
+    A[Code Changes] --> B{Docs Needed?}
+    B -->|Yes| C[Update Documentation]
+    B -->|No| End[End]
+    C --> D[Use Claude for Updates]
+    D --> E[Review Changes]
+    E --> F[Build & Test]
+    F --> G[Deploy Updates]
+    G --> H[Update CHANGELOG.md]
+    H --> End
     
-<pre><code>style A fill:#ffebee
-style G fill:#e8f5e9
-</code></pre>
-</div>
+    style A fill:#ffebee
+    style G fill:#e8f5e9</div>
     </div>
-
 <h3>6.2 Maintaining Documentation Quality</h3>
 <ol>
 <li><strong>Regular Reviews</strong>: Schedule periodic documentation reviews</li>
