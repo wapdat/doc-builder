@@ -954,6 +954,11 @@ tr:hover {
   
   /* Hide sidebar on mobile */
   .sidebar {
+    position: absolute;
+    top: calc(var(--header-height) + var(--breadcrumb-height));
+    left: 0;
+    height: calc(100vh - var(--header-height) - var(--breadcrumb-height));
+    z-index: 999;
     transform: translateX(-100%);
     transition: transform var(--duration-normal) var(--easing-out);
   }
@@ -1588,12 +1593,7 @@ tr:hover {
     margin-top: calc(var(--header-height) + var(--breadcrumb-height)); /* Account for both fixed elements */
   }
   
-  .sidebar {
-    width: 100%;
-    max-height: 250px;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border-default);
-  }
+  /* Sidebar positioning handled in earlier media query */
   
   .content {
     padding: var(--space-4);

@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.21] - 2025-07-21
+
+### Fixed
+- Fixed hidden sidebar still taking up vertical space on mobile
+- Made sidebar absolutely positioned on mobile to remove it from document flow
+- Eliminated the gap that matched the collapsed menu height
+
+### Background
+- Sidebar was hidden with translateX but still occupied 250px in the flex column
+- This created a gap exactly the height of the collapsed menu
+- Now sidebar is position: absolute on mobile, completely removing it from layout
+
 ## [1.4.20] - 2025-07-21
 
 ### Fixed
