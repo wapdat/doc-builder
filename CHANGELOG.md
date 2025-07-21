@@ -5,6 +5,21 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.26] - 2025-07-21
+
+### Improved
+- Clarified Vercel setup instructions to show both paths for question #5
+- Now clearly indicates what prompt users see based on their answer to question #4
+- Added "If you answered YES/NO to #4" conditional guidance
+- Shows appropriate project name prompts for both existing and new projects
+
+### Background
+- Users were confused about what happens after answering NO to "Link to different existing project?"
+- The instructions now clearly show both scenarios:
+  - YES: "What's the name of your existing project?"
+  - NO: "What is your project name?" (for creating new project)
+- This matches the actual Vercel CLI flow more accurately
+
 ## [1.4.25] - 2025-07-21
 
 ### Fixed
