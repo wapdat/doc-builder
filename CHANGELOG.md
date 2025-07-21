@@ -5,6 +5,17 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.12] - 2025-07-21
+
+### Fixed
+- Fixed h1 title alignment to extend full width above the navigation menu
+- Added negative margins to h1 to counteract content padding
+- Adjusted mobile styles to maintain proper alignment on smaller screens
+
+### Background
+- The h1 title was appearing offset from the left due to content area padding
+- Now h1 elements extend to the full width of the content area for better visual hierarchy
+
 ## [1.4.11] - 2025-07-21
 
 ### Added

@@ -158,6 +158,9 @@ h1 {
   font-size: var(--text-4xl);
   font-weight: var(--font-bold);
   margin-bottom: var(--space-6);
+  margin-left: calc(-1 * var(--space-8));
+  margin-right: calc(-1 * var(--space-8));
+  padding: 0 var(--space-8);
 }
 
 h2 {
@@ -1618,6 +1621,12 @@ tr:hover {
   
   .content-inner {
     max-width: none;
+  }
+  
+  h1 {
+    margin-left: calc(-1 * var(--space-4));
+    margin-right: calc(-1 * var(--space-4));
+    padding: 0 var(--space-4);
   }
   
   .preview-banner {
