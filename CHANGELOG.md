@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.18] - 2025-07-21
+
+### Fixed
+- Fixed responsive breakpoint - sidebar now remains visible on tablets (768px-1024px)
+- Removed large gap above content on mobile devices
+- Improved mobile layout consistency
+
+### Background
+- Sidebar was disappearing at 1024px instead of 768px
+- Mobile layout had excessive padding causing large gaps
+- Now follows proper responsive design patterns for tablets vs mobile
+
 ## [1.4.17] - 2025-07-21
 
 ### Improved
