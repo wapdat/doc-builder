@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.16] - 2025-07-21
+
+### Improved
+- Enhanced menu tooltips to show clean text previews instead of raw markdown
+- Tooltips now display properly formatted text with markdown syntax removed
+- Better preview experience for document summaries
+
+### Background
+- Previously tooltips showed raw markdown including asterisks, links, etc.
+- Now provides clean, readable text excerpts from document content
+- Improves user experience when hovering over menu items
+
 ## [1.4.15] - 2025-07-21
 
 ### Fixed
