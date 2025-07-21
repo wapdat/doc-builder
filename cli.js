@@ -313,17 +313,34 @@ ${chalk.yellow('Troubleshooting:')}
       spinner.succeed(`Deployed successfully!`);
       
       // Extract project name from URL
-      const projectName = url.match(/https:\/\/([^-]+)/)?.[1] || 'your-project';
+      // For production deployments, show the actual URL returned by Vercel
+      // For preview deployments, extract the base project name
+      let projectUrl = url;
+      let displayUrl = url;
+      
+      // If this is a preview URL (has random suffix), try to extract base project name
+      const urlMatch = url.match(/https:\/\/([^.]+)\.vercel\.app/);
+      if (urlMatch && urlMatch[1]) {
+        const fullDomain = urlMatch[1];
+        // Check if this looks like a preview URL with random suffix
+        if (fullDomain.match(/-[a-z0-9]{9}$/)) {
+          // It's a preview URL, extract base project name
+          const projectName = fullDomain.replace(/-[a-z0-9]{9}$/, '');
+          projectUrl = `https://${projectName}.vercel.app`;
+        }
+      }
       
       console.log(chalk.green('\n✅ Deployment Complete!\n'));
       
       if (isProduction) {
         console.log(chalk.yellow('🌐 Your documentation is live at:'));
-        console.log(chalk.cyan.bold(`   ${projectName}.vercel.app`) + chalk.gray(' (Production URL - share this!)'));
+        console.log(chalk.cyan.bold(`   ${projectUrl}`) + chalk.gray(' (Production URL - share this!)'));
         console.log();
-        console.log(chalk.gray('This deployment also created a unique preview URL:'));
-        console.log(chalk.gray(`   ${url}`));
-        console.log(chalk.gray('   (This URL is specific to this deployment)'));
+        if (projectUrl !== url) {
+          console.log(chalk.gray('This deployment also created a unique preview URL:'));
+          console.log(chalk.gray(`   ${url}`));
+          console.log(chalk.gray('   (This URL is specific to this deployment)'));
+        }
       } else {
         console.log(chalk.yellow('🔍 Preview deployment created at:'));
         console.log(chalk.cyan(`   ${url}`));
