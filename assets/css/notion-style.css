@@ -443,26 +443,7 @@ pre code {
   color: var(--color-text-primary);
 }
 
-/* Breadcrumbs */
-.breadcrumbs {
-  background: var(--color-bg-default);
-  border-bottom: 1px solid var(--color-border-default);
-  padding: var(--space-2) 0;
-  position: fixed;
-  top: var(--header-height);
-  left: 0;
-  right: 0;
-  z-index: 900;
-  transition: top var(--duration-normal);
-}
-
-.breadcrumbs.banner-visible {
-  top: calc(var(--header-height) + 3.5rem);
-}
-
-.breadcrumbs:not(.banner-visible) {
-  top: var(--header-height);
-}
+/* Breadcrumbs - definition moved to line 888 to avoid duplication */
 
 .breadcrumb-item {
   display: inline-flex;
@@ -899,8 +880,16 @@ tr:hover {
   right: 0;
   height: var(--breadcrumb-height);
   z-index: 900;
-  transition: background-color var(--duration-normal);
+  transition: top var(--duration-normal), background-color var(--duration-normal);
   gap: var(--space-2);
+}
+
+.breadcrumbs.banner-visible {
+  top: calc(var(--header-height) + 3.5rem);
+}
+
+.breadcrumbs:not(.banner-visible) {
+  top: var(--header-height);
 }
 
 .breadcrumb-item {
@@ -942,10 +931,7 @@ tr:hover {
   opacity: 1;
 }
 
-/* Adjust breadcrumbs when banner is visible */
-.breadcrumbs.banner-visible {
-  top: calc(var(--header-height) + 3.5rem);
-}
+/* Banner visibility handled in main breadcrumbs definition */
 
 /* Menu Toggle (Mobile) */
 .menu-toggle {
@@ -978,6 +964,7 @@ tr:hover {
   
   .main-wrapper {
     margin-left: 0;
+    margin-top: var(--header-height); /* Only account for fixed header on mobile */
   }
   
   .content {

@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.19] - 2025-07-21
+
+### Fixed
+- Fixed large white gap appearing at 768px breakpoint
+- Removed duplicate CSS definitions for breadcrumbs
+- Corrected margin-top calculation for mobile layout
+
+### Background
+- Duplicate breadcrumb CSS definitions were causing conflicts
+- Main wrapper had incorrect margin-top on mobile (80px instead of 40px)
+- Now properly accounts for only the fixed header height on mobile
+
 ## [1.4.18] - 2025-07-21
 
 ### Fixed
