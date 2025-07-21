@@ -54,6 +54,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - 🌙 **Dark Mode** - Automatic dark mode support
 - 🔄 **Live Reload** - Development server with hot reloading
 - ☁️ **Vercel Integration** - One-command deployment to Vercel
+- 🔍 **SEO Optimized** - Meta tags, Open Graph, Twitter Cards, and structured data
 - 📦 **Self-Contained** - No configuration or setup required
 - 🤖 **Claude Code Ready** - Optimized for AI-generated documentation workflows
 
@@ -159,6 +160,21 @@ npx @knowcode/doc-builder set-production-url https://my-custom-domain.com
 ```
 
 This is useful when you have a custom domain or Vercel alias that differs from the auto-detected URL.
+
+### setup-seo
+Interactive SEO configuration wizard:
+```bash
+# Configure all SEO settings
+npx @knowcode/doc-builder setup-seo
+```
+
+This wizard helps you set up:
+- Site URL and author information
+- Social media meta tags (Open Graph, Twitter Cards)
+- Structured data (JSON-LD)
+- Automatic sitemap and robots.txt generation
+
+See the [SEO Guide](docs/guides/seo-guide.md) for complete details.
 
 ### build
 Build the documentation site to static HTML:

@@ -18,6 +18,7 @@ docs/
 └── guides/                      # How-to guides and standards
     ├── authentication-guide.md  # Authentication setup and usage
     ├── documentation-standards.md # Documentation standards
+    ├── seo-guide.md            # SEO features and configuration
     └── troubleshooting-guide.md # Common issues and solutions
 ```
 
@@ -37,6 +38,7 @@ docs/
 |----------|----------|-------------|
 | Document Standards | [guides/documentation-standards.md](./guides/documentation-standards.md) | How to write docs for this project |
 | Authentication Guide | [guides/authentication-guide.md](./guides/authentication-guide.md) | Setting up password protection |
+| SEO Guide | [guides/seo-guide.md](./guides/seo-guide.md) | SEO features and configuration |
 | Troubleshooting Guide | [guides/troubleshooting-guide.md](./guides/troubleshooting-guide.md) | Common issues and solutions |
 | Claude Workflow | [claude-workflow-guide.md](./claude-workflow-guide.md) | Using Claude with doc-builder |
 
