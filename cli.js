@@ -314,41 +314,38 @@ ${chalk.yellow('Troubleshooting:')}
       spinner.start('Deploying to Vercel...');
       // Default to production deployment
       const isProduction = options.prod !== false;  // Default true unless explicitly --no-prod
-      const url = await deployToVercel(config, isProduction);
+      const result = await deployToVercel(config, isProduction);
       spinner.succeed(`Deployed successfully!`);
       
-      // Extract project name from URL
-      // For production deployments, show the actual URL returned by Vercel
-      // For preview deployments, extract the base project name
-      let projectUrl = url;
-      let displayUrl = url;
-      
-      // If this is a preview URL (has random suffix), try to extract base project name
-      const urlMatch = url.match(/https:\/\/([^.]+)\.vercel\.app/);
-      if (urlMatch && urlMatch[1]) {
-        const fullDomain = urlMatch[1];
-        // Check if this looks like a preview URL with random suffix
-        if (fullDomain.match(/-[a-z0-9]{9}$/)) {
-          // It's a preview URL, extract base project name
-          const projectName = fullDomain.replace(/-[a-z0-9]{9}$/, '');
-          projectUrl = `https://${projectName}.vercel.app`;
-        }
+      // Handle both old and new return formats
+      let deployUrl, productionUrl;
+      if (typeof result === 'string') {
+        // Old format - just a URL string
+        deployUrl = result;
+        productionUrl = null;
+      } else {
+        // New format - object with deployUrl and productionUrl
+        deployUrl = result.deployUrl;
+        productionUrl = result.productionUrl;
       }
+      
+      // Use the production URL if available, otherwise show the deployment URL
+      const displayUrl = productionUrl || deployUrl;
       
       console.log(chalk.green('\n✅ Deployment Complete!\n'));
       
       if (isProduction) {
         console.log(chalk.yellow('🌐 Your documentation is live at:'));
-        console.log(chalk.cyan.bold(`   ${projectUrl}`) + chalk.gray(' (Production URL - share this!)'));
+        console.log(chalk.cyan.bold(`   ${displayUrl}`) + chalk.gray(' (Production URL - share this!)'));
         console.log();
-        if (projectUrl !== url) {
+        if (productionUrl && deployUrl && productionUrl !== deployUrl) {
           console.log(chalk.gray('This deployment also created a unique preview URL:'));
-          console.log(chalk.gray(`   ${url}`));
+          console.log(chalk.gray(`   ${deployUrl}`));
           console.log(chalk.gray('   (This URL is specific to this deployment)'));
         }
       } else {
         console.log(chalk.yellow('🔍 Preview deployment created at:'));
-        console.log(chalk.cyan(`   ${url}`));
+        console.log(chalk.cyan(`   ${deployUrl}`));
         console.log();
         console.log(chalk.gray('To deploy to production, run:'));
         console.log(chalk.gray('   npx @knowcode/doc-builder deploy'));
