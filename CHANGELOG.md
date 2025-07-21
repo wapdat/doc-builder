@@ -5,6 +5,19 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.9] - 2025-07-21
+
+### Fixed
+- Fixed sidebar resizing issue where menu overlapped content instead of pushing it
+- Changed sidebar from `position: fixed` to `position: relative` to work properly with flexbox layout
+- Added `flex-shrink: 0` to sidebar to prevent shrinking
+- Removed unnecessary banner-specific positioning adjustments
+
+### Background
+- The sidebar was using fixed positioning which took it out of document flow
+- This caused the resize handle to only change sidebar width without affecting content position
+- With relative positioning and flexbox, the content now properly adjusts when sidebar is resized
+
 ## [1.4.8] - 2025-07-21
 
 ### Fixed
