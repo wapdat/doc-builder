@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.14] - 2025-07-21
+
+### Fixed
+- Fixed subdirectories not showing on initial page load
+- Folders now expand by default when viewing index.html or root README
+- Improved navigation visibility for better user experience
+
+### Background
+- Previously, folders only expanded if they contained the active page
+- This caused subdirectories to be hidden on initial page load
+- Now folders expand automatically for better content discovery
+
 ## [1.4.13] - 2025-07-21
 
 ### Added
