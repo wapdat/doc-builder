@@ -1,6 +1,10 @@
 # @knowcode/doc-builder
 
-A zero-configuration documentation builder for markdown-based sites with Vercel deployment support.
+Beautiful documentation with the least effort possible. A zero-configuration documentation builder that transforms markdown files into stunning static sites.
+
+## Why This Project Exists
+
+The main premise of @knowcode/doc-builder is simple: **create beautiful documentation with the least effort possible**. We believe great documentation shouldn't require complex setup, configuration files, or deployment headaches. Just write markdown, run one command, and get a professional documentation site live on the web.
 
 ## What It Does
 
@@ -9,10 +13,22 @@ A zero-configuration documentation builder for markdown-based sites with Vercel 
 - **Scans** your markdown files and automatically generates navigation
 - **Converts** markdown to HTML with syntax highlighting and diagram support
 - **Styles** everything with a clean, Notion-inspired theme
-- **Deploys** to Vercel with a single command - no configuration needed
+- **Deploys** to Vercel with a single command - leveraging their generous free tier
 - **Provides** optional features like authentication, dark mode, and changelog generation
 
 Perfect for project documentation, API references, knowledge bases, or any content written in markdown.
+
+## Why Vercel?
+
+We chose Vercel as our deployment platform because of their **generous free tier** that includes:
+- Unlimited personal projects
+- Automatic HTTPS certificates
+- Global CDN for fast loading worldwide
+- Custom domains support
+- Automatic deployments from Git
+- No credit card required
+
+This aligns perfectly with our mission: beautiful documentation should be accessible to everyone, without worrying about hosting costs or complex server management.
 
 ## Features
 

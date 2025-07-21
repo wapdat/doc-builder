@@ -5,6 +5,18 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.6] - 2025-07-21
+
+### Fixed
+- Restored breadcrumb height from 0px to 40px to fix visibility issue
+- Removed duplicate CSS rules that were causing filter icon overlap
+- Cleaned up duplicate `.filter-box`, `.filter-icon`, and `.sidebar-breadcrumbs` definitions
+
+### Background
+- The removal of style.css in v1.4.5 exposed pre-existing CSS conflicts
+- Duplicate CSS rules were causing the filter icon to render incorrectly
+- Breadcrumb height of 0px (set in v1.3.2) made the breadcrumb bar invisible
+
 ## [1.4.5] - 2025-07-21
 
 ### Fixed
