@@ -5,6 +5,19 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.17] - 2025-07-21
+
+### Improved
+- Enhanced tooltip extraction to show content from Overview/Summary sections
+- Tooltips now display the actual overview text from documents
+- Provides more meaningful previews when hovering over menu items
+
+### Background
+- Previously tooltips showed just the first few words from documents
+- Now extracts content specifically from "Overview" or "Summary" sections
+- Falls back to first paragraph if no Overview/Summary section exists
+- Provides better context about what each document contains
+
 ## [1.4.16] - 2025-07-21
 
 ### Improved
