@@ -333,16 +333,6 @@ pre code {
   top: calc(var(--header-height) + var(--breadcrumb-height) + 3.5rem);
 }
 
-.sidebar-header {
-  padding: var(--space-4);
-  border-bottom: 1px solid var(--color-border-default);
-  margin-bottom: var(--space-4);
-}
-
-/* Sidebar Breadcrumbs */
-.sidebar-breadcrumbs {
-  margin-bottom: var(--space-3);
-}
 
 .sidebar-home-link {
   display: inline-flex;
@@ -529,7 +519,7 @@ pre code {
 .sidebar-header {
   padding: var(--space-3);
   border-bottom: 1px solid var(--color-border-default);
-  margin-bottom: var(--space-4);
+  margin-bottom: 0;
 }
 
 

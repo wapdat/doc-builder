@@ -5,6 +5,17 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.7] - 2025-07-21
+
+### Fixed
+- Removed excess spacing above navigation menu by setting sidebar-header margin-bottom to 0
+- Cleaned up duplicate `.sidebar-header` CSS definitions that were causing conflicts
+
+### Background
+- Previous CSS fixes exposed duplicate `.sidebar-header` definitions with conflicting margins
+- The extra spacing was introduced by `margin-bottom: var(--space-4)` on the sidebar header
+- This completes the CSS cleanup started in v1.4.5 and v1.4.6
+
 ## [1.4.6] - 2025-07-21
 
 ### Fixed
