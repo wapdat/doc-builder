@@ -1585,6 +1585,7 @@ tr:hover {
     flex-direction: column;
     height: auto;
     min-height: calc(100vh - var(--header-height) - var(--breadcrumb-height));
+    margin-top: calc(var(--header-height) + var(--breadcrumb-height)); /* Account for both fixed elements */
   }
   
   .sidebar {
@@ -1613,10 +1614,7 @@ tr:hover {
     top: 0;
   }
   
-  .breadcrumbs {
-    position: relative;
-    top: 0;
-  }
+  /* Keep breadcrumbs fixed on mobile to prevent double spacing */
 }
 
 /* Navigation Sections */

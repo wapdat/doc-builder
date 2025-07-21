@@ -5,6 +5,19 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.20] - 2025-07-21
+
+### Fixed
+- Properly fixed the persistent white gap at 768px breakpoint
+- Resolved conflicting media query styles
+- Kept breadcrumbs in fixed position on mobile
+
+### Background
+- Multiple 768px media queries were conflicting with each other
+- Last media query was changing breadcrumbs to relative positioning
+- This caused double spacing (margin + breadcrumb height)
+- Now breadcrumbs remain fixed and margin-top properly accounts for both elements
+
 ## [1.4.19] - 2025-07-21
 
 ### Fixed
