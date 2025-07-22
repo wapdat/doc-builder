@@ -5,6 +5,17 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.18] - 2025-07-22
+
+### Documentation
+- Enhanced Claude + CLAUDE.md Documentation Workflow Guide with comprehensive examples
+- Expanded Project-Level CLAUDE.md section with complete template and best practices
+- Added detailed document structure, naming conventions, and content requirements
+- Included information verification standards with ✅/❓ marks
+- Expanded Global CLAUDE.md best practices with real-world examples
+- Enhanced project-specific instructions for API, testing, and deployment docs
+- Updated best practices summary with detailed guidelines for documentation maintenance
+
 ## [1.5.17] - 2025-07-22
 
 ### Changed

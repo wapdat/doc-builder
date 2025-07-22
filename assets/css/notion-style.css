@@ -682,13 +682,25 @@ th {
   background: var(--color-bg-secondary);
   border-bottom: 1px solid var(--color-border-default);
   color: var(--color-text-primary);
-  vertical-align: top;
+  vertical-align: top !important;
 }
 
 td {
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--color-border-default);
   color: var(--color-text-primary);
+  vertical-align: top !important;
+}
+
+/* Ensure all table cell content is top-aligned */
+table th,
+table td {
+  vertical-align: top !important;
+}
+
+/* Ensure nested elements in table cells don't affect alignment */
+table td > *,
+table th > * {
   vertical-align: top;
 }
 
