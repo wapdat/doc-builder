@@ -36,6 +36,7 @@
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -61,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T08:32:13.141Z",
-  "dateModified": "2025-07-22T08:32:13.141Z",
+  "datePublished": "2025-07-22T11:03:54.350Z",
+  "dateModified": "2025-07-22T11:03:54.350Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html"
@@ -101,7 +102,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.9">Last updated: Jul 22, 2025, 08:32 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.12">Last updated: Jul 22, 2025, 11:03 AM UTC</span>
                 </div>
                 
                 
@@ -152,8 +153,8 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing and configuring the Vercel CLI across different operating systems and environments."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
-        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide provides a detailed explanation of every prompt you&#039;ll encounter during the first-time Vercel setup process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
+        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
+        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the streamlined Vercel deployment process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
         <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
@@ -174,7 +175,7 @@
         <main class="content">
             <div class="content-inner">
                 <h1>Troubleshooting Guide for @knowcode/doc-builder</h1>
-<p><strong>Generated</strong>: 2025-07-21 19:15 UTC<br><strong>Status</strong>: Complete<br><strong>Verified</strong>: ✅</p>
+<p><strong>Generated</strong>: 2025-07-21 19:15 UTC<br><strong>Status</strong>: Complete<br><strong>Verified</strong>: <i class="ph ph-check-circle" aria-label="checked"></i></p>
 <h2>Overview</h2>
 <p>This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.</p>
 <h2>NPX Cache Issues</h2>
@@ -182,10 +183,10 @@
 <p>The most common issue users face is npx caching an older version of doc-builder.</p>
 <p><strong>Symptoms:</strong></p>
 <ul>
-<li>❌ Running <code>npx @knowcode/doc-builder</code> shows an old version number</li>
-<li>❌ New features aren&#39;t available despite updating</li>
-<li>❌ Bug fixes don&#39;t appear to be working</li>
-<li>❌ Version shown doesn&#39;t match npm registry</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> Running <code>npx @knowcode/doc-builder</code> shows an old version number</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> New features aren&#39;t available despite updating</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> Bug fixes don&#39;t appear to be working</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> Version shown doesn&#39;t match npm registry</li>
 </ul>
 <p><strong>Example:</strong></p>
 <pre><code class="language-bash">$ npx @knowcode/doc-builder --version
@@ -249,10 +250,10 @@ npx doc-builder deploy  # Uses local version
 </li>
 <li><p><strong>Ensure correct file extensions:</strong></p>
 <ul>
-<li>✅ <code>README.md</code></li>
-<li>✅ <code>guide.md</code></li>
-<li>❌ <code>README.txt</code></li>
-<li>❌ <code>guide.markdown</code></li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>README.md</code></li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>guide.md</code></li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> <code>README.txt</code></li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> <code>guide.markdown</code></li>
 </ul>
 </li>
 <li><p><strong>Use custom input directory:</strong></p>
@@ -285,13 +286,16 @@ npm install -g vercel
 
 # Verify installation
 vercel --version
+
+# Then retry deployment
+npx @knowcode/doc-builder deploy
 </code></pre>
 <h3>Deployment Fails</h3>
 <p><strong>Common causes:</strong></p>
 <ol>
-<li><p><strong>Root Directory Issue</strong></p>
-<pre><code class="language-bash"># Reset Vercel configuration
-npx @knowcode/doc-builder reset-vercel
+<li><p><strong>Not Logged Into Vercel</strong></p>
+<pre><code class="language-bash"># Login to Vercel first
+vercel login
 </code></pre>
 </li>
 <li><p><strong>Build Not Complete</strong></p>
@@ -300,20 +304,23 @@ npx @knowcode/doc-builder build
 npx @knowcode/doc-builder deploy
 </code></pre>
 </li>
-<li><p><strong>Wrong Directory</strong></p>
+<li><p><strong>Project Name Already Taken</strong></p>
 <ul>
-<li>Ensure you&#39;re in project root</li>
-<li>Check that <code>html/</code> directory exists</li>
+<li>Choose a different project name</li>
+<li>Or delete the existing project in Vercel dashboard</li>
 </ul>
 </li>
 </ol>
 <h3>Wrong Production URL Displayed</h3>
-<p><strong>Problem:</strong> Deployment shows incorrect URL (e.g., <code>doc.vercel.app</code> instead of <code>doc-builder-delta.vercel.app</code>)</p>
-<p><strong>Fixed in:</strong> v1.4.22+</p>
-<p><strong>Solution:</strong></p>
-<pre><code class="language-bash"># Update to latest version
+<p><strong>Problem:</strong> Deployment shows incorrect URL</p>
+<p><strong>Solution 1:</strong> Update to latest version</p>
+<pre><code class="language-bash"># Clear cache and update
 npx clear-npx-cache
 npx @knowcode/doc-builder@latest deploy
+</code></pre>
+<p><strong>Solution 2:</strong> Set custom URL</p>
+<pre><code class="language-bash"># Set your actual production URL
+npx @knowcode/doc-builder set-production-url https://my-docs.vercel.app
 </code></pre>
 <h2>Configuration Issues</h2>
 <h3>Config File Not Loading</h3>
@@ -326,9 +333,9 @@ npx @knowcode/doc-builder@latest deploy
 <ol>
 <li><p><strong>Check file name:</strong></p>
 <ul>
-<li>✅ <code>doc-builder.config.js</code></li>
-<li>❌ <code>docbuilder.config.js</code></li>
-<li>❌ <code>doc-builder-config.js</code></li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>doc-builder.config.js</code></li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> <code>docbuilder.config.js</code></li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> <code>doc-builder-config.js</code></li>
 </ul>
 </li>
 <li><p><strong>Verify export format:</strong></p>
@@ -476,7 +483,7 @@ npm --version
 </tr>
 <tr>
 <td>Vercel deploy fails</td>
-<td><code>npx @knowcode/doc-builder reset-vercel</code></td>
+<td><code>vercel login</code> then retry</td>
 </tr>
 <tr>
 <td>No markdown found</td>
@@ -493,6 +500,10 @@ npm --version
 <tr>
 <td>Config not loading</td>
 <td>Check filename and format</td>
+</tr>
+<tr>
+<td>404 after deploy</td>
+<td>Check Deployment Protection settings</td>
 </tr>
 </tbody></table>
 <hr>

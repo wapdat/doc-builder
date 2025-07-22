@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generated: 2025-07-21 20:30 UTC">
+    <meta name="description" content="Generated: 2025-07-22 UTC">
     <title>Vercel CLI Setup Guide | Doc Builder</title>
     
     <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, https, com">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, cli, https">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://doc-builder-delta.vercel.app/vercel-cli-setup-guide.html">
     
@@ -15,7 +15,7 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://doc-builder-delta.vercel.app/vercel-cli-setup-guide.html">
     <meta property="og:title" content="Vercel CLI Setup Guide | Doc Builder">
-    <meta property="og:description" content="Generated: 2025-07-21 20:30 UTC">
+    <meta property="og:description" content="Generated: 2025-07-22 UTC">
     <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
     <meta property="og:site_name" content="Doc Builder">
     <meta property="og:locale" content="en_US">
@@ -25,7 +25,7 @@
     <meta name="twitter:site" content="@planbbackups">
     <meta name="twitter:creator" content="@planbbackups">
     <meta name="twitter:title" content="Vercel CLI Setup Guide | Doc Builder">
-    <meta name="twitter:description" content="Generated: 2025-07-21 20:30 UTC">
+    <meta name="twitter:description" content="Generated: 2025-07-22 UTC">
     <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
     
     <!-- Custom Meta Tags -->
@@ -36,6 +36,7 @@
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -51,7 +52,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Vercel CLI Setup Guide",
-  "description": "Generated: 2025-07-21 20:30 UTC",
+  "description": "Generated: 2025-07-22 UTC",
   "author": {
     "@type": "Person",
     "name": "Lindsay Smith"
@@ -61,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T08:32:13.144Z",
-  "dateModified": "2025-07-22T08:32:13.144Z",
+  "datePublished": "2025-07-22T11:03:54.351Z",
+  "dateModified": "2025-07-22T11:03:54.351Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/vercel-cli-setup-guide.html"
@@ -95,7 +96,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.9">Last updated: Jul 22, 2025, 08:32 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.12">Last updated: Jul 22, 2025, 11:03 AM UTC</span>
                 </div>
                 
                 
@@ -146,8 +147,8 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/vercel-cli-setup-guide.html" class="nav-item active" data-tooltip="This guide provides comprehensive instructions for installing and configuring the Vercel CLI across different operating systems and environments."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
-        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide provides a detailed explanation of every prompt you&#039;ll encounter during the first-time Vercel setup process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
+        <a href="/vercel-cli-setup-guide.html" class="nav-item active" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
+        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the streamlined Vercel deployment process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
         <a class="nav-title collapsible" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
@@ -168,14 +169,14 @@
         <main class="content">
             <div class="content-inner">
                 <h1>Vercel CLI Setup Guide</h1>
-<p><strong>Generated</strong>: 2025-07-21 20:30 UTC<br><strong>Status</strong>: Complete<br><strong>Verified</strong>: ✅</p>
+<p><strong>Generated</strong>: 2025-07-22 UTC<br><strong>Status</strong>: Complete<br><strong>Verified</strong>: <i class="ph ph-check-circle" aria-label="checked"></i></p>
 <h2>Overview</h2>
-<p>This guide provides comprehensive instructions for installing and configuring the Vercel CLI across different operating systems and environments. The Vercel CLI enables you to deploy projects, manage deployments, and configure projects directly from your terminal.</p>
+<p>This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems. While <code>@knowcode/doc-builder</code> handles most deployment complexity for you, understanding Vercel CLI installation and advanced features can be helpful for power users.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li><strong>Node.js</strong>: Version 14.x or higher ✅</li>
-<li><strong>npm</strong> or <strong>yarn</strong>: Package manager ✅</li>
-<li><strong>Git</strong>: For version control (optional but recommended) ✅</li>
+<li><strong>Node.js</strong>: Version 14.x or higher <i class="ph ph-check-circle" aria-label="checked"></i></li>
+<li><strong>npm</strong> or <strong>yarn</strong>: Package manager <i class="ph ph-check-circle" aria-label="checked"></i></li>
+<li><strong>Git</strong>: For version control (optional but recommended) <i class="ph ph-check-circle" aria-label="checked"></i></li>
 </ul>
 <h2>Installation Methods</h2>
 <h3>Method 1: npm (Recommended)</h3>
@@ -194,112 +195,114 @@
 <p><strong>Homebrew Formula</strong>: <a href="https://formulae.brew.sh/formula/vercel-cli">https://formulae.brew.sh/formula/vercel-cli</a></p>
 <h3>Method 5: Standalone Binary</h3>
 <p>Download directly from: <a href="https://vercel.com/download">https://vercel.com/download</a></p>
-<h2>Initial Setup</h2>
-<h3>1. Verify Installation</h3>
-<pre><code class="language-bash">vercel --version
+<h2>Quick Start for doc-builder Users</h2>
+<p>If you&#39;re using <code>@knowcode/doc-builder</code>, you only need to:</p>
+<ol>
+<li><p><strong>Install Vercel CLI</strong> (if not already installed):</p>
+<pre><code class="language-bash">npm install -g vercel
 </code></pre>
-<h3>2. Login to Vercel</h3>
+</li>
+<li><p><strong>Login to Vercel</strong> (one-time setup):</p>
 <pre><code class="language-bash">vercel login
 </code></pre>
-<p>This will open your browser for authentication or provide email-based login options.</p>
-<p><strong>Authentication Guide</strong>: <a href="https://vercel.com/docs/cli#commands/login">https://vercel.com/docs/cli#commands/login</a></p>
-<h3>3. Check Authentication Status</h3>
-<pre><code class="language-bash">vercel whoami
+</li>
+<li><p><strong>Deploy with doc-builder</strong>:</p>
+<pre><code class="language-bash">npx @knowcode/doc-builder deploy
 </code></pre>
-<h2>Configuration</h2>
-<h3>Global Configuration</h3>
+</li>
+</ol>
+<p>That&#39;s it! doc-builder handles all the configuration for you.</p>
+<h2>Detailed Installation Instructions</h2>
+<h2>Understanding Vercel CLI</h2>
+<h3>What Gets Installed</h3>
 <p>The Vercel CLI stores configuration in:</p>
 <ul>
 <li><strong>macOS/Linux</strong>: <code>~/.vercel/</code></li>
 <li><strong>Windows</strong>: <code>%USERPROFILE%\.vercel\</code></li>
 </ul>
-<p><strong>Configuration Documentation</strong>: <a href="https://vercel.com/docs/cli#configuration">https://vercel.com/docs/cli#configuration</a></p>
-<h3>Project Configuration</h3>
-<p>Create <code>vercel.json</code> in your project root:</p>
-<pre><code class="language-json">{
-  &quot;version&quot;: 2,
-  &quot;builds&quot;: [
-    {
-      &quot;src&quot;: &quot;package.json&quot;,
-      &quot;use&quot;: &quot;@vercel/static-build&quot;
-    }
-  ],
-  &quot;routes&quot;: [
-    {
-      &quot;src&quot;: &quot;/(.*)&quot;,
-      &quot;dest&quot;: &quot;/$1&quot;
-    }
-  ]
-}
-</code></pre>
-<p><strong>Project Configuration Guide</strong>: <a href="https://vercel.com/docs/project-configuration">https://vercel.com/docs/project-configuration</a></p>
-<h2>Common Commands</h2>
-<h3>Deploy Commands</h3>
-<pre><code class="language-bash"># Deploy to preview
-vercel
+<h3>Authentication</h3>
+<pre><code class="language-bash"># Check who you&#39;re logged in as
+vercel whoami
 
-# Deploy to production
-vercel --prod
+# Log out
+vercel logout
 
-# Deploy with specific name
-vercel --name my-project
+# Log in again
+vercel login
 </code></pre>
-<p><strong>Deployment Documentation</strong>: <a href="https://vercel.com/docs/cli#commands/deploy">https://vercel.com/docs/cli#commands/deploy</a></p>
+<p><strong>Note</strong>: doc-builder automatically generates the necessary <code>vercel.json</code> configuration for you, so you don&#39;t need to create it manually.</p>
+<h2>Advanced Vercel CLI Commands</h2>
+<p>While doc-builder handles deployment, you might want to use these Vercel CLI commands directly:</p>
 <h3>Project Management</h3>
-<pre><code class="language-bash"># List all projects
+<pre><code class="language-bash"># List your projects
 vercel project ls
 
-# Create new project
-vercel project add
+# View project details
+vercel project &lt;project-name&gt;
 
-# Remove project
+# Remove a project
 vercel project rm &lt;project-name&gt;
 </code></pre>
-<p><strong>Project Commands</strong>: <a href="https://vercel.com/docs/cli#commands/project">https://vercel.com/docs/cli#commands/project</a></p>
+<h3>Domain Management</h3>
+<pre><code class="language-bash"># List domains
+vercel domains ls
+
+# Add a domain to a project
+vercel domains add &lt;domain&gt; &lt;project&gt;
+
+# Remove a domain
+vercel domains rm &lt;domain&gt;
+</code></pre>
+<h3>Deployment Management</h3>
+<pre><code class="language-bash"># List recent deployments
+vercel ls
+
+# Inspect a deployment
+vercel inspect &lt;deployment-url&gt;
+
+# Remove a deployment
+vercel rm &lt;deployment-url&gt;
+</code></pre>
 <h3>Environment Variables</h3>
 <pre><code class="language-bash"># Add environment variable
-vercel env add
+vercel env add &lt;name&gt;
 
 # List environment variables
 vercel env ls
 
 # Remove environment variable
-vercel env rm &lt;variable-name&gt;
+vercel env rm &lt;name&gt;
 </code></pre>
-<p><strong>Environment Variables Guide</strong>: <a href="https://vercel.com/docs/concepts/projects/environment-variables">https://vercel.com/docs/concepts/projects/environment-variables</a></p>
 <h2>Troubleshooting</h2>
-<h3>Common Issues</h3>
-<h4>1. Command Not Found</h4>
+<h3>Common Installation Issues</h3>
+<h4>Command Not Found</h4>
 <p>If <code>vercel</code> command is not found after installation:</p>
-<p><strong>Solution</strong>: Add npm global bin to PATH</p>
-<pre><code class="language-bash"># Find npm bin location
+<pre><code class="language-bash"># Find npm global bin location
 npm bin -g
 
-# Add to PATH (bash/zsh)
+# Add to PATH (add to your ~/.bashrc or ~/.zshrc)
 export PATH=&quot;$(npm bin -g):$PATH&quot;
 </code></pre>
-<p><strong>PATH Configuration Guide</strong>: <a href="https://vercel.com/docs/cli#installation/troubleshooting">https://vercel.com/docs/cli#installation/troubleshooting</a></p>
-<h4>2. Authentication Issues</h4>
-<p>If login fails or tokens expire:</p>
-<pre><code class="language-bash"># Logout and login again
+<h4>Permission Errors</h4>
+<p>If you get EACCES errors during installation:</p>
+<pre><code class="language-bash"># Option 1: Use npx instead (recommended)
+npx vercel
+
+# Option 2: Fix npm permissions
+# See: https://docs.npmjs.com/resolving-eacces-permissions-errors
+
+# Option 3: Use a Node version manager like nvm
+# See: https://github.com/nvm-sh/nvm
+</code></pre>
+<h4>Authentication Issues</h4>
+<pre><code class="language-bash"># If login fails, try:
 vercel logout
 vercel login
-</code></pre>
-<p><strong>Authentication Troubleshooting</strong>: <a href="https://vercel.com/docs/cli#authentication/troubleshooting">https://vercel.com/docs/cli#authentication/troubleshooting</a></p>
-<h4>3. Permission Errors</h4>
-<p>For npm permission errors during global install:</p>
-<p><strong>Option 1</strong>: Use npm&#39;s official guide<br><a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally">https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally</a></p>
-<p><strong>Option 2</strong>: Use Node Version Manager (nvm)<br><a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></p>
-<h4>4. Proxy Configuration</h4>
-<p>For corporate environments:</p>
-<pre><code class="language-bash"># Set proxy
-vercel --proxy http://proxy.company.com:8080
 
-# Or use environment variables
+# For corporate proxies:
 export HTTP_PROXY=http://proxy.company.com:8080
 export HTTPS_PROXY=http://proxy.company.com:8080
 </code></pre>
-<p><strong>Proxy Documentation</strong>: <a href="https://vercel.com/docs/cli#using-behind-a-proxy">https://vercel.com/docs/cli#using-behind-a-proxy</a></p>
 <h2>Platform-Specific Instructions</h2>
 <h3>macOS</h3>
 <ol>
@@ -344,107 +347,44 @@ sudo pacman -S nodejs npm
 </li>
 </ol>
 <p><strong>Linux Guide</strong>: <a href="https://vercel.com/docs/cli#linux-installation">https://vercel.com/docs/cli#linux-installation</a></p>
-<h2>CI/CD Integration</h2>
-<h3>GitHub Actions</h3>
-<pre><code class="language-yaml">- name: Install Vercel CLI
-  run: npm install -g vercel
-
-- name: Deploy to Vercel
-  run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+<h2>Using Vercel CLI with doc-builder</h2>
+<h3>Deploying to Production</h3>
+<p>While doc-builder handles deployment, you can also use Vercel CLI directly:</p>
+<pre><code class="language-bash"># From your html output directory
+cd html
+vercel --prod
 </code></pre>
-<p><strong>GitHub Actions Guide</strong>: <a href="https://vercel.com/guides/how-can-i-use-github-actions-with-vercel">https://vercel.com/guides/how-can-i-use-github-actions-with-vercel</a></p>
-<h3>GitLab CI</h3>
-<pre><code class="language-yaml">deploy:
-  script:
-    - npm install -g vercel
-    - vercel --prod --token=$VERCEL_TOKEN
-</code></pre>
-<p><strong>GitLab CI Guide</strong>: <a href="https://vercel.com/docs/concepts/deployments/git/gitlab">https://vercel.com/docs/concepts/deployments/git/gitlab</a></p>
-<h2>Advanced Configuration</h2>
-<h3>Custom Build Commands</h3>
-<pre><code class="language-json">{
-  &quot;buildCommand&quot;: &quot;npm run build&quot;,
-  &quot;outputDirectory&quot;: &quot;dist&quot;,
-  &quot;devCommand&quot;: &quot;npm run dev&quot;
-}
-</code></pre>
-<h3>Monorepo Support</h3>
-<pre><code class="language-bash"># Deploy from subdirectory
-vercel --cwd ./apps/web
-</code></pre>
-<p><strong>Monorepo Guide</strong>: <a href="https://vercel.com/docs/concepts/monorepos">https://vercel.com/docs/concepts/monorepos</a></p>
-<h3>Team Collaboration</h3>
-<pre><code class="language-bash"># Switch team context
+<h3>Working with Teams</h3>
+<pre><code class="language-bash"># Switch between personal and team accounts
 vercel switch
 
-# Invite team member
-vercel team invite &lt;email&gt;
+# Deploy to a specific team
+vercel --scope team-name
 </code></pre>
-<p><strong>Team Management</strong>: <a href="https://vercel.com/docs/cli#commands/teams">https://vercel.com/docs/cli#commands/teams</a></p>
-<h2>Security Best Practices</h2>
-<h3>1. Token Management</h3>
-<ul>
-<li><strong>Never commit tokens</strong> to version control ✅</li>
-<li><strong>Use environment variables</strong> for CI/CD ✅</li>
-<li><strong>Rotate tokens regularly</strong> ✅</li>
-</ul>
-<p><strong>Security Guide</strong>: <a href="https://vercel.com/docs/security">https://vercel.com/docs/security</a></p>
-<h3>2. Scoped Tokens</h3>
-<p>Create scoped tokens for specific projects:<br><a href="https://vercel.com/account/tokens">https://vercel.com/account/tokens</a></p>
-<h3>3. Two-Factor Authentication</h3>
-<p>Enable 2FA on your Vercel account:<br><a href="https://vercel.com/docs/accounts/team-members/two-factor-authentication">https://vercel.com/docs/accounts/team-members/two-factor-authentication</a></p>
-<h2>Additional Resources</h2>
+<h3>CI/CD Integration</h3>
+<p>For automated deployments:</p>
+<pre><code class="language-yaml"># GitHub Actions example
+- name: Deploy Documentation
+  run: |
+    npm install -g @knowcode/doc-builder vercel
+    doc-builder build
+    vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+</code></pre>
+<h2>Key Resources</h2>
 <h3>Official Documentation</h3>
 <ul>
-<li><strong>Main CLI Documentation</strong>: <a href="https://vercel.com/docs/cli">https://vercel.com/docs/cli</a></li>
-<li><strong>API Reference</strong>: <a href="https://vercel.com/docs/rest-api">https://vercel.com/docs/rest-api</a></li>
-<li><strong>Examples Repository</strong>: <a href="https://github.com/vercel/examples">https://github.com/vercel/examples</a></li>
+<li><strong>Vercel CLI Docs</strong>: <a href="https://vercel.com/docs/cli">https://vercel.com/docs/cli</a></li>
+<li><strong>Vercel Dashboard</strong>: <a href="https://vercel.com/dashboard">https://vercel.com/dashboard</a></li>
+<li><strong>Support</strong>: <a href="https://vercel.com/support">https://vercel.com/support</a></li>
 </ul>
-<h3>Community Resources</h3>
+<h3>For doc-builder Users</h3>
 <ul>
-<li><strong>Discord Community</strong>: <a href="https://vercel.com/discord">https://vercel.com/discord</a></li>
-<li><strong>GitHub Discussions</strong>: <a href="https://github.com/vercel/vercel/discussions">https://github.com/vercel/vercel/discussions</a></li>
-<li><strong>Stack Overflow</strong>: <a href="https://stackoverflow.com/questions/tagged/vercel">https://stackoverflow.com/questions/tagged/vercel</a></li>
-</ul>
-<h3>Video Tutorials</h3>
-<ul>
-<li><strong>Official YouTube Channel</strong>: <a href="https://www.youtube.com/c/VercelHQ">https://www.youtube.com/c/VercelHQ</a></li>
-<li><strong>Getting Started Playlist</strong>: <a href="https://vercel.com/docs/getting-started-with-vercel">https://vercel.com/docs/getting-started-with-vercel</a></li>
-</ul>
-<h2>Version History</h2>
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Release Date</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Latest</td>
-<td>Check npm</td>
-<td><a href="https://www.npmjs.com/package/vercel">https://www.npmjs.com/package/vercel</a></td>
-</tr>
-<tr>
-<td>Changelog</td>
-<td>All versions</td>
-<td><a href="https://github.com/vercel/vercel/releases">https://github.com/vercel/vercel/releases</a></td>
-</tr>
-</tbody></table>
-<h2>Support</h2>
-<h3>Getting Help</h3>
-<ul>
-<li><strong>Documentation</strong>: <a href="https://vercel.com/docs">https://vercel.com/docs</a></li>
-<li><strong>Support Portal</strong>: <a href="https://vercel.com/support">https://vercel.com/support</a></li>
-<li><strong>Status Page</strong>: <a href="https://www.vercel-status.com/">https://www.vercel-status.com/</a></li>
-</ul>
-<h3>Reporting Issues</h3>
-<ul>
-<li><strong>GitHub Issues</strong>: <a href="https://github.com/vercel/vercel/issues">https://github.com/vercel/vercel/issues</a></li>
-<li><strong>Feature Requests</strong>: <a href="https://github.com/vercel/vercel/discussions/categories/ideas">https://github.com/vercel/vercel/discussions/categories/ideas</a></li>
+<li><strong>First-Time Setup Guide</strong>: <a href="./vercel-first-time-setup-guide.md">vercel-first-time-setup-guide.md</a></li>
+<li><strong>Troubleshooting Guide</strong>: <a href="./troubleshooting-guide.md">troubleshooting-guide.md</a></li>
+<li><strong>doc-builder Documentation</strong>: <a href="https://www.npmjs.com/package/@knowcode/doc-builder">https://www.npmjs.com/package/@knowcode/doc-builder</a></li>
 </ul>
 <hr>
-<p>This guide provides comprehensive coverage of Vercel CLI setup and configuration. For the most up-to-date information, always refer to the official Vercel documentation at <a href="https://vercel.com/docs">https://vercel.com/docs</a>.</p>
+<p>This guide covers Vercel CLI installation and advanced usage. For most doc-builder users, the simplified deployment process handles everything automatically. See the <a href="./vercel-first-time-setup-guide.md">First-Time Setup Guide</a> for the streamlined deployment experience.</p>
 
             </div>
         </main>

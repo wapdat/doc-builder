@@ -36,6 +36,7 @@
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -61,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T08:32:13.111Z",
-  "dateModified": "2025-07-22T08:32:13.111Z",
+  "datePublished": "2025-07-22T11:03:54.326Z",
+  "dateModified": "2025-07-22T11:03:54.326Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/authentication-guide.html"
@@ -101,7 +102,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.9">Last updated: Jul 22, 2025, 08:32 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.12">Last updated: Jul 22, 2025, 11:03 AM UTC</span>
                 </div>
                 
                 
@@ -152,8 +153,8 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing and configuring the Vercel CLI across different operating systems and environments."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
-        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide provides a detailed explanation of every prompt you&#039;ll encounter during the first-time Vercel setup process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
+        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
+        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the streamlined Vercel deployment process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
         <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
@@ -174,25 +175,25 @@
         <main class="content">
             <div class="content-inner">
                 <h1>Authentication Guide for @knowcode/doc-builder</h1>
-<p><strong>Generated</strong>: 2025-07-21 18:30 UTC<br><strong>Status</strong>: Complete<br><strong>Verified</strong>: ✅</p>
+<p><strong>Generated</strong>: 2025-07-21 18:30 UTC<br><strong>Status</strong>: Complete<br><strong>Verified</strong>: <i class="ph ph-check-circle" aria-label="checked"></i></p>
 <h2>Overview</h2>
 <p>This guide explains how to configure and use the built-in authentication feature in @knowcode/doc-builder to protect your documentation with basic username/password access control.</p>
 <h2>What is Authentication?</h2>
 <p>The authentication feature in doc-builder provides a simple way to protect your documentation from unauthorized access. When enabled, users must log in with a username and password before viewing any documentation pages.</p>
 <h3>Features</h3>
 <ul>
-<li>✅ <strong>Client-side authentication</strong> - Works with static site hosting</li>
-<li>✅ <strong>Cookie-based sessions</strong> - Users stay logged in across pages</li>
-<li>✅ <strong>Redirect handling</strong> - Returns users to requested page after login</li>
-<li>✅ <strong>Logout functionality</strong> - Clear session and return to login</li>
-<li>✅ <strong>Customizable credentials</strong> - Set your own username/password</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Client-side authentication</strong> - Works with static site hosting</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Cookie-based sessions</strong> - Users stay logged in across pages</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Redirect handling</strong> - Returns users to requested page after login</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Logout functionality</strong> - Clear session and return to login</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Customizable credentials</strong> - Set your own username/password</li>
 </ul>
 <h3>Limitations</h3>
 <ul>
-<li>⚠️ <strong>Basic security</strong> - Suitable for casual protection only</li>
-<li>⚠️ <strong>Client-side validation</strong> - Not suitable for highly sensitive data</li>
-<li>⚠️ <strong>Single user</strong> - No multi-user or role-based access</li>
-<li>⚠️ <strong>Credentials in JavaScript</strong> - Visible in browser developer tools</li>
+<li><i class="ph ph-warning-circle" aria-label="warning"></i> <strong>Basic security</strong> - Suitable for casual protection only</li>
+<li><i class="ph ph-warning-circle" aria-label="warning"></i> <strong>Client-side validation</strong> - Not suitable for highly sensitive data</li>
+<li><i class="ph ph-warning-circle" aria-label="warning"></i> <strong>Single user</strong> - No multi-user or role-based access</li>
+<li><i class="ph ph-warning-circle" aria-label="warning"></i> <strong>Credentials in JavaScript</strong> - Visible in browser developer tools</li>
 </ul>
 <h2>How Authentication Works</h2>
 <div class="mermaid-wrapper">
@@ -298,7 +299,7 @@
 <li><strong>Logout</strong>: Click logout link in header (when available)</li>
 </ol>
 <h2>Security Considerations</h2>
-<h3>⚠️ Important Warnings</h3>
+<h3><i class="ph ph-warning-circle" aria-label="warning"></i> Important Warnings</h3>
 <ol>
 <li><strong>Client-Side Only</strong>: Authentication happens in the browser, making it unsuitable for truly sensitive data</li>
 <li><strong>Visible Credentials</strong>: Username/password are embedded in JavaScript and visible to anyone who views page source</li>
@@ -306,7 +307,7 @@
 <li><strong>Static Files</strong>: All documentation files are still publicly accessible if URLs are known</li>
 </ol>
 <h3>When to Use</h3>
-<p>✅ <strong>Good for:</strong></p>
+<p><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Good for:</strong></p>
 <ul>
 <li>Internal team documentation</li>
 <li>Preview deployments</li>
@@ -314,7 +315,7 @@
 <li>Preventing search engine indexing</li>
 <li>Client presentations</li>
 </ul>
-<p>❌ <strong>Not suitable for:</strong></p>
+<p><i class="ph ph-x-circle" aria-label="error"></i> <strong>Not suitable for:</strong></p>
 <ul>
 <li>Highly confidential information</li>
 <li>Personal data (GDPR/privacy)</li>

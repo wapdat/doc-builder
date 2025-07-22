@@ -18,7 +18,9 @@ docs/
 └── guides/                      # How-to guides and standards
     ├── authentication-guide.md  # Authentication setup and usage
     ├── documentation-standards.md # Documentation standards
+    ├── phosphor-icons-guide.md  # Emoji to icon conversion
     ├── seo-guide.md            # SEO features and configuration
+    ├── seo-optimization-guide.md # SEO best practices
     └── troubleshooting-guide.md # Common issues and solutions
 ```
 
@@ -39,6 +41,8 @@ docs/
 | Document Standards | [guides/documentation-standards.md](./guides/documentation-standards.md) | How to write docs for this project |
 | Authentication Guide | [guides/authentication-guide.md](./guides/authentication-guide.md) | Setting up password protection |
 | SEO Guide | [guides/seo-guide.md](./guides/seo-guide.md) | SEO features and configuration |
+| SEO Optimization Guide | [guides/seo-optimization-guide.md](./guides/seo-optimization-guide.md) | Comprehensive SEO best practices |
+| Phosphor Icons Guide | [guides/phosphor-icons-guide.md](./guides/phosphor-icons-guide.md) | Emoji to icon conversion feature |
 | Troubleshooting Guide | [guides/troubleshooting-guide.md](./guides/troubleshooting-guide.md) | Common issues and solutions |
 | Claude Workflow | [claude-workflow-guide.md](./claude-workflow-guide.md) | Using Claude with doc-builder |
 

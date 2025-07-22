@@ -8,7 +8,8 @@ module.exports = {
     "authentication": false,
     "changelog": true,
     "mermaid": true,
-    "darkMode": true
+    "darkMode": true,
+    "phosphorIcons": true
   },
   "seo": {
     "enabled": true,

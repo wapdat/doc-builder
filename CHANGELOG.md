@@ -5,6 +5,26 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.13] - 2025-07-22
+
+### Added
+- **Phosphor Icons Integration** - Automatically convert Unicode emojis to beautiful Phosphor icons in generated HTML
+- Comprehensive emoji-to-icon mapping with 200+ supported emojis
+- Configurable icon weights (thin, light, regular, bold, fill, duotone)
+- Configurable icon size relative to text
+- Accessibility support with proper aria-labels for all icons
+- New `phosphor-icons-guide.md` documentation
+
+### Changed
+- HTML template now includes Phosphor Icons CDN when feature is enabled
+- Post-processing step to replace emojis with icon tags after markdown parsing
+
+### Technical Details
+- Added `lib/emoji-mapper.js` with comprehensive emoji mappings
+- Updated `core-builder.js` to process emojis during HTML generation
+- Added configuration options: `phosphorIcons`, `phosphorWeight`, `phosphorSize`
+- Icons inherit text color and can be styled with CSS
+
 ## [1.5.12] - 2025-07-22
 
 ### Documentation
