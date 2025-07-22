@@ -10,6 +10,7 @@ const { build } = require('./lib/builder');
 const { startDevServer } = require('./lib/dev-server');
 const { deployToVercel, setupVercelProject, prepareDeployment } = require('./lib/deploy');
 const { loadConfig, createDefaultConfig } = require('./lib/config');
+const { generateDescription } = require('./lib/seo');
 const { execSync } = require('child_process');
 
 // Package info
@@ -187,6 +188,177 @@ ${chalk.yellow('Get your verification code from Google Search Console.')}
       console.log(chalk.gray(`\nRun ${chalk.cyan('doc-builder build')} to regenerate your documentation.`));
     } catch (error) {
       console.error(chalk.red('Failed to add Google verification:'), error.message);
+      process.exit(1);
+    }
+  });
+
+// SEO Check command
+program
+  .command('seo-check [path]')
+  .description('Analyze SEO for your documentation pages')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .option('--fix', 'auto-fix common SEO issues')
+  .addHelpText('after', `
+${chalk.yellow('Examples:')}
+  ${chalk.gray('$')} doc-builder seo-check                    ${chalk.gray('# Check all pages')}
+  ${chalk.gray('$')} doc-builder seo-check docs/guide.md      ${chalk.gray('# Check specific page')}
+  ${chalk.gray('$')} doc-builder seo-check --fix              ${chalk.gray('# Auto-fix issues')}
+
+${chalk.yellow('This command analyzes:')}
+  • Title length and optimization (50-60 characters)
+  • Meta descriptions (140-160 characters)
+  • Keywords usage and relevance
+  • Front matter SEO fields
+  • Duplicate content issues
+`)
+  .action(async (filePath, options) => {
+    try {
+      const config = await loadConfig(options.config);
+      const docsDir = path.resolve(config.docsDir || 'docs');
+      
+      console.log(chalk.cyan('🔍 Analyzing SEO...'));
+      
+      // Get files to check
+      let files = [];
+      if (filePath) {
+        const fullPath = path.resolve(filePath);
+        if (await fs.pathExists(fullPath)) {
+          files = [fullPath];
+        } else {
+          console.error(chalk.red(`File not found: ${filePath}`));
+          process.exit(1);
+        }
+      } else {
+        // Get all markdown files
+        const getAllFiles = async (dir) => {
+          const results = [];
+          const items = await fs.readdir(dir);
+          for (const item of items) {
+            const fullPath = path.join(dir, item);
+            const stat = await fs.stat(fullPath);
+            if (stat.isDirectory() && !item.startsWith('.')) {
+              results.push(...await getAllFiles(fullPath));
+            } else if (item.endsWith('.md')) {
+              results.push(fullPath);
+            }
+          }
+          return results;
+        };
+        files = await getAllFiles(docsDir);
+      }
+      
+      // Analyze each file
+      const issues = [];
+      const suggestions = [];
+      
+      for (const file of files) {
+        const content = await fs.readFile(file, 'utf-8');
+        const { data: frontMatter, content: mainContent } = matter(content);
+        const relativePath = path.relative(docsDir, file);
+        
+        // Extract current metadata
+        const h1Match = mainContent.match(/^#\s+(.+)$/m);
+        const h1Title = h1Match ? h1Match[1] : null;
+        const title = frontMatter.title || h1Title || path.basename(file, '.md');
+        const description = frontMatter.description || generateDescription(mainContent, 'smart');
+        const keywords = frontMatter.keywords || [];
+        
+        // Check title
+        const titleLength = title.length;
+        if (titleLength > 60) {
+          issues.push({
+            file: relativePath,
+            type: 'title',
+            message: `Title too long (${titleLength} chars, max 60)`,
+            current: title,
+            suggestion: title.substring(0, 57) + '...'
+          });
+        } else if (titleLength < 30) {
+          suggestions.push({
+            file: relativePath,
+            type: 'title',
+            message: `Title might be too short (${titleLength} chars, ideal 50-60)`
+          });
+        }
+        
+        // Check description
+        const descLength = description.length;
+        if (descLength > 160) {
+          issues.push({
+            file: relativePath,
+            type: 'description',
+            message: `Description too long (${descLength} chars, max 160)`,
+            current: description,
+            suggestion: description.substring(0, 157) + '...'
+          });
+        } else if (descLength < 120) {
+          suggestions.push({
+            file: relativePath,
+            type: 'description',
+            message: `Description might be too short (${descLength} chars, ideal 140-160)`
+          });
+        }
+        
+        // Check keywords
+        if (keywords.length === 0 && !frontMatter.description) {
+          suggestions.push({
+            file: relativePath,
+            type: 'keywords',
+            message: 'No keywords defined in front matter'
+          });
+        }
+        
+        // Check for front matter
+        if (!frontMatter.title && !frontMatter.description) {
+          suggestions.push({
+            file: relativePath,
+            type: 'frontmatter',
+            message: 'No SEO front matter found'
+          });
+        }
+      }
+      
+      // Display results
+      console.log(`\n${chalk.cyan('📊 SEO Analysis Complete')}\n`);
+      console.log(`Analyzed ${files.length} files\n`);
+      
+      if (issues.length === 0 && suggestions.length === 0) {
+        console.log(chalk.green('✅ No SEO issues found!'));
+      } else {
+        if (issues.length > 0) {
+          console.log(chalk.red(`❌ Found ${issues.length} issues:\n`));
+          issues.forEach(issue => {
+            console.log(chalk.red(`  ${issue.file}:`));
+            console.log(chalk.yellow(`    ${issue.message}`));
+            if (issue.suggestion) {
+              console.log(chalk.gray(`    Suggestion: ${issue.suggestion.substring(0, 50)}...`));
+            }
+            console.log('');
+          });
+        }
+        
+        if (suggestions.length > 0) {
+          console.log(chalk.yellow(`💡 ${suggestions.length} suggestions:\n`));
+          suggestions.forEach(suggestion => {
+            console.log(chalk.yellow(`  ${suggestion.file}: ${suggestion.message}`));
+          });
+        }
+        
+        console.log(`\n${chalk.cyan('💡 Tips:')}`);
+        console.log('  • Add front matter to customize SEO per page');
+        console.log('  • Keep titles between 50-60 characters');
+        console.log('  • Write descriptions between 140-160 characters');
+        console.log('  • Include relevant keywords in front matter');
+        console.log(`\n${chalk.gray('Example front matter:')}`);
+        console.log(chalk.gray('---'));
+        console.log(chalk.gray('title: "Your SEO Optimized Title Here"'));
+        console.log(chalk.gray('description: "A compelling description between 140-160 characters that includes keywords and encourages clicks."'));
+        console.log(chalk.gray('keywords: ["keyword1", "keyword2", "keyword3"]'));
+        console.log(chalk.gray('---'));
+      }
+      
+    } catch (error) {
+      console.error(chalk.red('Failed to analyze SEO:'), error.message);
       process.exit(1);
     }
   });

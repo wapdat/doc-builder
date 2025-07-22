@@ -5,6 +5,39 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.5] - 2025-07-22
+
+### Added
+- **Front Matter Support**: Parse YAML front matter for page-specific SEO customization
+- **SEO Check Command**: New `seo-check` command to analyze and report SEO issues
+- **Smart Description Extraction**: Intelligent extraction of intro paragraphs for better descriptions
+- **Enhanced Title Generation**: SEO-optimized titles with customizable templates
+- **Page-specific Keywords**: Support for front matter keywords plus auto-extraction
+- **Comprehensive SEO Guide**: Detailed documentation for SEO optimization
+
+### Changed
+- Improved `generateDescription` with smart mode for better meta descriptions
+- Title generation now respects 50-60 character limit with smart truncation
+- Keywords can be defined per-page via front matter
+- SEO configuration expanded with new options
+
+### Features
+- **Front Matter SEO**: Add custom title, description, and keywords per page
+- **Title Templates**: Configure title format with `{pageTitle} | {siteName}` patterns
+- **Auto Keywords**: Automatically extract relevant keywords from content
+- **SEO Analysis**: Run `doc-builder seo-check` to find and fix SEO issues
+- **Smart Defaults**: Intelligent fallbacks for missing SEO data
+
+### Configuration
+```javascript
+seo: {
+  titleTemplate: '{pageTitle} | {siteName}',
+  autoKeywords: true,
+  keywordLimit: 7,
+  descriptionFallback: 'smart'
+}
+```
+
 ## [1.5.4] - 2025-07-22
 
 ### Added

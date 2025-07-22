@@ -50,6 +50,8 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - ☁️ **Vercel Integration** - One-command deployment to Vercel
 - 🔍 **SEO Optimized** - Meta tags, Open Graph, Twitter Cards, and structured data
 - ✅ **Google Site Verification** - Easy Google Search Console verification with CLI command
+- 📝 **Front Matter SEO** - Per-page titles, descriptions, and keywords with YAML front matter
+- 🎯 **SEO Analysis** - Built-in `seo-check` command to optimize your content
 - 📦 **Self-Contained** - No configuration or setup required
 - 🤖 **Claude Code Ready** - Optimized for AI-generated documentation workflows
 
@@ -161,6 +163,30 @@ npx @knowcode/doc-builder google-verify FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqU
 ```
 
 This adds the verification meta tag to all generated HTML pages, allowing you to verify ownership in Google Search Console. See the [Google Site Verification Guide](docs/guides/google-site-verification-guide.md) for complete details.
+
+### seo-check
+
+Analyze and optimize your documentation's SEO:
+
+```bash
+# Check all pages for SEO issues
+npx @knowcode/doc-builder seo-check
+
+# Check a specific page
+npx @knowcode/doc-builder seo-check docs/guide.md
+
+# Future: Auto-fix common issues
+npx @knowcode/doc-builder seo-check --fix
+```
+
+This command analyzes:
+- Title length and optimization (50-60 characters)
+- Meta descriptions (140-160 characters)
+- Keywords usage and relevance
+- Front matter SEO fields
+- Content quality signals
+
+See the [SEO Optimization Guide](docs/guides/seo-optimization-guide.md) for best practices.
 
 ### setup-seo
 Interactive SEO configuration wizard:
