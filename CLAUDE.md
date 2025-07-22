@@ -315,6 +315,9 @@ MIT License - See LICENSE file for details
 ### NPM Features Documentation
 - When we add new features - add it to the NPM documented bullet point features - if its a big feature give it a section
 
+## Publishing Memories
+- Note how to publish the npm and that there is a @publish.sh script to help
+
 ---
 
 **Note**: This project was extracted from the cybersolstice monorepo on 2025-07-21 with full git history preservation.
