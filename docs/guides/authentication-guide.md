@@ -82,7 +82,7 @@ module.exports = {
 Use the notion-inspired preset which has authentication enabled by default:
 
 ```bash
-npx @knowcode/doc-builder build --preset notion-inspired
+npx @knowcode/doc-builder@latest build --preset notion-inspired
 ```
 
 Default credentials for preset:
@@ -93,7 +93,7 @@ Default credentials for preset:
 Disable authentication for a specific build:
 
 ```bash
-npx @knowcode/doc-builder build --no-auth
+npx @knowcode/doc-builder@latest build --no-auth
 ```
 
 ### Configuration Options
@@ -109,7 +109,7 @@ npx @knowcode/doc-builder build --no-auth
 ### For Site Administrators
 
 1. **Set Credentials**: Configure username/password in `doc-builder.config.js`
-2. **Build Site**: Run `npx @knowcode/doc-builder build`
+2. **Build Site**: Run `npx @knowcode/doc-builder@latest build`
 3. **Deploy**: Upload to your hosting provider
 4. **Share Credentials**: Provide login details to authorized users
 
@@ -237,10 +237,10 @@ module.exports = {
 
 ```bash
 # Build with authentication
-npx @knowcode/doc-builder build
+npx @knowcode/doc-builder@latest build
 
 # Deploy to Vercel
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 ```
 
 ### User Instructions

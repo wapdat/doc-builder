@@ -62,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T11:52:26.163Z",
-  "dateModified": "2025-07-22T11:52:26.163Z",
+  "datePublished": "2025-07-22T15:51:37.149Z",
+  "dateModified": "2025-07-22T15:51:37.149Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html"
@@ -102,7 +102,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.15">Last updated: Jul 22, 2025, 11:52 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.17">Last updated: Jul 22, 2025, 03:51 PM UTC</span>
                 </div>
                 
                 
@@ -167,7 +167,8 @@
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
-        <a href="/guides/troubleshooting-guide.html" class="nav-item active" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a></div></div>
+        <a href="/guides/troubleshooting-guide.html" class="nav-item active" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
+        <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -190,7 +191,7 @@
 <li><i class="ph ph-x-circle" aria-label="error"></i> Version shown doesn&#39;t match npm registry</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="language-bash">$ npx @knowcode/doc-builder --version
+<pre><code class="language-bash">$ npx @knowcode/doc-builder@latest --version
 1.4.11  # Old version!
 
 # But npm shows:
@@ -209,7 +210,6 @@ npx @knowcode/doc-builder@1.4.22
 </code></pre>
 <h3>Why This Happens</h3>
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
     A[Run npx @knowcode/doc-builder] --> B{Package in cache?}
     B -->|Yes| C[Use cached version]
@@ -258,7 +258,7 @@ npx doc-builder deploy  # Uses local version
 </ul>
 </li>
 <li><p><strong>Use custom input directory:</strong></p>
-<pre><code class="language-bash">npx @knowcode/doc-builder build --input my-docs
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest build --input my-docs
 </code></pre>
 </li>
 </ol>
@@ -273,7 +273,7 @@ npx doc-builder deploy  # Uses local version
 <p><strong>Solution:</strong></p>
 <pre><code class="language-bash"># Clean build
 rm -rf html/
-npx @knowcode/doc-builder build
+npx @knowcode/doc-builder@latest build
 
 # Check output
 ls -la html/
@@ -289,7 +289,7 @@ npm install -g vercel
 vercel --version
 
 # Then retry deployment
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 </code></pre>
 <h3>Deployment Fails</h3>
 <p><strong>Common causes:</strong></p>
@@ -301,8 +301,8 @@ vercel login
 </li>
 <li><p><strong>Build Not Complete</strong></p>
 <pre><code class="language-bash"># Build before deploy
-npx @knowcode/doc-builder build
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest build
+npx @knowcode/doc-builder@latest deploy
 </code></pre>
 </li>
 <li><p><strong>Project Name Already Taken</strong></p>
@@ -321,7 +321,7 @@ npx @knowcode/doc-builder@latest deploy
 </code></pre>
 <p><strong>Solution 2:</strong> Set custom URL</p>
 <pre><code class="language-bash"># Set your actual production URL
-npx @knowcode/doc-builder set-production-url https://my-docs.vercel.app
+npx @knowcode/doc-builder@latest set-production-url https://my-docs.vercel.app
 </code></pre>
 <h2>Configuration Issues</h2>
 <h3>Config File Not Loading</h3>
@@ -352,7 +352,7 @@ export default {
 </code></pre>
 </li>
 <li><p><strong>Use explicit config path:</strong></p>
-<pre><code class="language-bash">npx @knowcode/doc-builder build --config ./my-config.js
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest build --config ./my-config.js
 </code></pre>
 </li>
 </ol>
@@ -402,7 +402,7 @@ module.exports = {
 <p><strong>Error:</strong> <code>Port 3000 is already in use</code></p>
 <p><strong>Solutions:</strong></p>
 <pre><code class="language-bash"># Use different port
-npx @knowcode/doc-builder dev --port 8080
+npx @knowcode/doc-builder@latest dev --port 8080
 
 # Find process using port
 lsof -i :3000  # macOS/Linux
@@ -450,7 +450,7 @@ source ~/.zshrc
 <p>When reporting issues, include:</p>
 <ol>
 <li><p><strong>Version information:</strong></p>
-<pre><code class="language-bash">npx @knowcode/doc-builder --version
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest --version
 node --version
 npm --version
 </code></pre>

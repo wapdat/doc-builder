@@ -62,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T11:52:26.165Z",
-  "dateModified": "2025-07-22T11:52:26.165Z",
+  "datePublished": "2025-07-22T15:51:37.158Z",
+  "dateModified": "2025-07-22T15:51:37.158Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/vercel-cli-setup-guide.html"
@@ -96,7 +96,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.15">Last updated: Jul 22, 2025, 11:52 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.17">Last updated: Jul 22, 2025, 03:51 PM UTC</span>
                 </div>
                 
                 
@@ -161,7 +161,8 @@
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
-        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a></div></div>
+        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
+        <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -208,7 +209,7 @@
 </code></pre>
 </li>
 <li><p><strong>Deploy with doc-builder</strong>:</p>
-<pre><code class="language-bash">npx @knowcode/doc-builder deploy
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest deploy
 </code></pre>
 </li>
 </ol>
@@ -367,7 +368,7 @@ vercel --scope team-name
 <pre><code class="language-yaml"># GitHub Actions example
 - name: Deploy Documentation
   run: |
-    npm install -g @knowcode/doc-builder vercel
+    npm install -g @knowcode/doc-builder@latest vercel
     doc-builder build
     vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
 </code></pre>

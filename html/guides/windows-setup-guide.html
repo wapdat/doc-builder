@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generated: 2025-01-22 UTC">
+    <title>Windows Setup Guide for Claude Code &amp; @knowcode/do...</title>
+    
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, claude, code">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html">
+    <meta property="og:title" content="Windows Setup Guide for Claude Code &amp; @knowcode/do...">
+    <meta property="og:description" content="Generated: 2025-01-22 UTC">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="Doc Builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="Windows Setup Guide for Claude Code &amp; @knowcode/do...">
+    <meta name="twitter:description" content="Generated: 2025-01-22 UTC">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/notion-style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Windows Setup Guide for Claude Code & @knowcode/doc-builder",
+  "description": "Generated: 2025-01-22 UTC",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-07-22T15:51:37.155Z",
+  "dateModified": "2025-07-22T15:51:37.155Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Doc Builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Windows Setup Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/index.html" class="logo">Doc Builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.5.17">Last updated: Jul 22, 2025, 03:51 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Preview Banner -->
+    <div id="preview-banner" class="preview-banner">
+        <div class="banner-content">
+            <i class="fas fa-exclamation-triangle banner-icon"></i>
+            <span class="banner-text">This documentation is a preview version - some content may be incomplete</span>
+            <button id="dismiss-banner" class="banner-dismiss" aria-label="Dismiss banner">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Filter items..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title" href="/README.html"  >
+          <i class="fas fa-home"></i> Documentation
+        </a>
+        <div class="nav-content" >
+        <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
+        <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
+        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
+        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the streamlined Vercel deployment process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
+        </a>
+        <div class="nav-content" id="nav-guides-1">
+        <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="This guide explains how to configure and use the built-in authentication feature in @knowcode/doc-builder to protect your documentation with basic..."><i class="fas fa-file-alt"></i> Authentication Guide</a>
+        <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
+        <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
+        <a href="/guides/google-site-verification-guide.html" class="nav-item" data-tooltip="Google Search Console verification allows you to: Monitor your site&#039;s performance in Google Search Submit sitemaps for better indexing View search..."><i class="fas fa-file-alt"></i> Google Site Verification Guide</a>
+        <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
+        <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
+        <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
+        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
+        <a href="/guides/windows-setup-guide.html" class="nav-item active" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>Windows Setup Guide for Claude Code &amp; @knowcode/doc-builder</h1>
+<p><strong>Generated</strong>: 2025-01-22 UTC<br><strong>Status</strong>: Complete<br><strong>Verified</strong>: <i class="ph ph-check-circle" aria-label="checked"></i></p>
+<h2>Overview</h2>
+<p>This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel. Based on real troubleshooting experience, this guide addresses common Windows-specific challenges and provides clear solutions.</p>
+<h2>Quick Prerequisites Overview</h2>
+<p><strong>Required Accounts:</strong></p>
+<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Claude Pro or Max</strong> subscription ($20-200/month) - <a href="https://claude.ai">claude.ai</a></li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Vercel</strong> account (free Hobby plan) - <a href="https://vercel.com">vercel.com</a></li>
+<li><i class="ph ph-star" aria-label="star"></i> <strong>GitHub</strong> account (optional but recommended) - <a href="https://github.com">github.com</a></li>
+</ul>
+<p><strong>Required Software:</strong></p>
+<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Windows 10/11 with Administrator access</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Node.js 14+ and npm - <a href="https://nodejs.org">nodejs.org</a></li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Git for Windows - <a href="https://gitforwindows.org">gitforwindows.org</a></li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> PowerShell 5.1+ (included with Windows)</li>
+<li><i class="ph ph-star" aria-label="star"></i> Visual Studio Code (recommended) - <a href="https://code.visualstudio.com">code.visualstudio.com</a></li>
+</ul>
+<h2>Understanding Claude vs Claude Code</h2>
+<h3>What&#39;s the Difference?</h3>
+<p><strong>Claude.ai</strong> (Web Interface):</p>
+<ul>
+<li>Browser-based chat interface</li>
+<li>General-purpose AI assistant</li>
+<li>Good for conversations and one-off tasks</li>
+<li>Limited file handling capabilities</li>
+</ul>
+<p><strong>Claude Code</strong> (Command-Line Tool):</p>
+<ul>
+<li>Terminal/command-line interface</li>
+<li>Specialized for software development</li>
+<li>Direct file system access</li>
+<li>Can read, write, and modify multiple files</li>
+<li>Integrated with your development workflow</li>
+<li>Requires Pro or Max subscription</li>
+</ul>
+<h3>Why Claude Code for Documentation?</h3>
+<p>Claude Code excels at:</p>
+<ul>
+<li>Reading entire codebases</li>
+<li>Generating multiple markdown files</li>
+<li>Updating existing documentation</li>
+<li>Creating consistent formatting</li>
+<li>Working directly in your project folder</li>
+</ul>
+<h2>The Three-Part System</h2>
+<p>Understanding the conceptual separation is crucial:</p>
+<table>
+<tr>
+<td width="33%">
+
+<h3>1. Claude Code</h3>
+<p><strong>Purpose</strong>: Create markdown content<br><strong>What it does</strong>: AI-powered content generation<br><strong>Output</strong>: <code>.md</code> files with documentation</p>
+</td>
+<td width="33%">
+
+<h3>2. doc-builder</h3>
+<p><strong>Purpose</strong>: Convert MD to HTML<br><strong>What it does</strong>: Beautiful static site generation<br><strong>Output</strong>: Styled HTML website</p>
+</td>
+<td width="33%">
+
+<h3>3. Vercel</h3>
+<p><strong>Purpose</strong>: Host the website<br><strong>What it does</strong>: Free web hosting<br><strong>Output</strong>: Live URL for your docs</p>
+</td>
+</tr>
+</table>
+
+<h2>Complete Prerequisites Summary</h2>
+<h3>Required Accounts</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Purpose</th>
+<th>Requirements</th>
+<th>Sign Up Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Claude</strong></td>
+<td>AI content generation</td>
+<td>Pro ($20/mo) or Max ($200/mo) plan required</td>
+<td><a href="https://claude.ai">claude.ai</a></td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Version control</td>
+<td>Free account (required for Vercel)</td>
+<td><a href="https://github.com">github.com</a></td>
+</tr>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>Free web hosting</td>
+<td>Free Hobby account sufficient</td>
+<td><a href="https://vercel.com">vercel.com</a></td>
+</tr>
+</tbody></table>
+<h3>Software Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Version</th>
+<th>Purpose</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Windows</strong></td>
+<td>10 or 11</td>
+<td>Operating system</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+</tr>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>14.0+</td>
+<td>JavaScript runtime</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+</tr>
+<tr>
+<td><strong>npm</strong></td>
+<td>(included)</td>
+<td>Package manager</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>Latest</td>
+<td>Version control</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+</tr>
+<tr>
+<td><strong>PowerShell</strong></td>
+<td>5.1+</td>
+<td>Command line</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+</tr>
+<tr>
+<td><strong>VS Code</strong></td>
+<td>Latest</td>
+<td>Code editor</td>
+<td><i class="ph ph-star" aria-label="star"></i> Recommended</td>
+</tr>
+</tbody></table>
+<h3>Administrative Requirements</h3>
+<ul>
+<li><strong>Administrator access</strong> on Windows (for PowerShell execution policy)</li>
+<li><strong>Internet connection</strong> for downloading tools and deploying</li>
+<li><strong>Email address</strong> for account creation</li>
+</ul>
+<h3>Installation Order</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Component</th>
+<th>Required For</th>
+<th>Download Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Node.js &amp; npm</td>
+<td>doc-builder</td>
+<td><a href="https://nodejs.org/en/download/">Download Node.js</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Git for Windows</td>
+<td>Claude Code</td>
+<td><a href="https://gitforwindows.org/">Download Git</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Visual Studio Code</td>
+<td>Development</td>
+<td><a href="https://code.visualstudio.com/">Download VS Code</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Claude Code CLI</td>
+<td>AI content</td>
+<td>Via npm (see below)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Vercel CLI</td>
+<td>Deployment</td>
+<td>Via npm (see below)</td>
+</tr>
+</tbody></table>
+<h3>Account Setup Checklist</h3>
+<ul>
+<li><p><input disabled="" type="checkbox"> 
+<strong>Claude Account</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Sign up at <a href="https://claude.ai">claude.ai</a></li>
+<li><input disabled="" type="checkbox"> Subscribe to Pro ($20/mo) or Max ($200/mo) plan</li>
+<li><input disabled="" type="checkbox"> Verify email</li>
+<li><input disabled="" type="checkbox"> Note: Free plan does NOT include Claude Code access</li>
+</ul>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+<strong>GitHub Account</strong> (Required)</p>
+<ul>
+<li><input disabled="" type="checkbox"> Sign up at <a href="https://github.com">github.com</a></li>
+<li><input disabled="" type="checkbox"> Configure username and email</li>
+<li><input disabled="" type="checkbox"> Enable 2FA (recommended)</li>
+<li><input disabled="" type="checkbox"> Required for Vercel deployment</li>
+</ul>
+</li>
+<li><p><input disabled="" type="checkbox"> 
+<strong>Vercel Account</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Sign up at <a href="https://vercel.com">vercel.com</a> using GitHub</li>
+<li><input disabled="" type="checkbox"> Choose Hobby (free) plan</li>
+<li><input disabled="" type="checkbox"> Authorize Vercel to access GitHub</li>
+</ul>
+</li>
+</ul>
+<h2>Step 1: Enable PowerShell Script Execution</h2>
+<p><strong><i class="ph ph-warning-circle" aria-label="warning"></i> IMPORTANT</strong>: This must be done FIRST as Administrator</p>
+<h3>Open PowerShell as Administrator</h3>
+<ol>
+<li>Press <code>Windows + X</code></li>
+<li>Select <strong>Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong></li>
+<li>Click <strong>Yes</strong> when prompted by User Account Control</li>
+</ol>
+<h3>Enable Script Execution</h3>
+<p>Run this command in the Administrator PowerShell:</p>
+<pre><code class="language-powershell">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+</code></pre>
+<p>When prompted, type <code>Y</code> and press Enter.</p>
+<h3>Verify the Change</h3>
+<pre><code class="language-powershell">Get-ExecutionPolicy
+</code></pre>
+<p>Should return: <code>RemoteSigned</code></p>
+<h2>Step 2: Install Node.js and npm</h2>
+<h3>Download and Install</h3>
+<ol>
+<li>Go to <a href="https://nodejs.org/en/download/">Node.js Downloads</a></li>
+<li>Download the <strong>Windows Installer (.msi)</strong> for your system (64-bit recommended)</li>
+<li>Run the installer with these settings:<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Accept the license agreement</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Default installation location</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>IMPORTANT</strong>: Ensure &quot;npm package manager&quot; is checked</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Add to PATH (should be checked by default)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Automatically install necessary tools (optional but recommended)</li>
+</ul>
+</li>
+</ol>
+<h3>Verify Installation</h3>
+<p>Open a <strong>new</strong> PowerShell window (not as admin) and run:</p>
+<pre><code class="language-powershell">node -v
+npm -v
+</code></pre>
+<p>You should see version numbers for both commands.</p>
+<h3>Troubleshooting npm Issues</h3>
+<p>If you get &quot;running scripts is disabled&quot; error:</p>
+<ol>
+<li>You didn&#39;t enable PowerShell execution policy (go back to Step 1)</li>
+<li>You need to close and reopen PowerShell after installing Node.js</li>
+<li>Try running PowerShell as Administrator</li>
+</ol>
+<h2>Step 3: Install Git for Windows</h2>
+<h3>Download and Install</h3>
+<ol>
+<li>Go to <a href="https://gitforwindows.org/">Git for Windows</a></li>
+<li>Download the installer</li>
+<li>Run with these recommended settings:<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Use Visual Studio Code as default editor</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Git from the command line and also from 3rd-party software</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Use bundled OpenSSH</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Checkout Windows-style, commit Unix-style line endings</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Use Windows&#39; default console window</li>
+</ul>
+</li>
+</ol>
+<h3>Verify Installation</h3>
+<pre><code class="language-powershell">git --version
+</code></pre>
+<h2>Step 4: Set Up Claude Code</h2>
+<h3>Understanding Claude Plans</h3>
+<p>Claude Code requires a Claude Pro or Team plan subscription:</p>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Price</th>
+<th>Claude Code Access</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Free</strong></td>
+<td>$0/month</td>
+<td><i class="ph ph-x-circle" aria-label="error"></i> No access</td>
+<td>Basic chat only</td>
+</tr>
+<tr>
+<td><strong>Pro</strong></td>
+<td>$20/month</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i> Full access</td>
+<td>Individual developers</td>
+</tr>
+<tr>
+<td><strong>Max</strong></td>
+<td>$200/month</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i> Full access</td>
+<td>Power users, higher limits</td>
+</tr>
+</tbody></table>
+<p><strong>Important</strong>: Only Pro and Max plans include Claude Code access. The free Claude.ai plan does NOT support Claude Code. See <a href="https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan">Using Claude Code with Pro/Max Plans</a></p>
+<h3>Install Claude Code CLI</h3>
+<pre><code class="language-powershell">npm install -g @anthropic/claude-code
+</code></pre>
+<h3>Initialize Claude Code</h3>
+<pre><code class="language-powershell">claude
+</code></pre>
+<p>Follow the prompts:</p>
+<ol>
+<li>Choose <strong>Dark mode</strong> or <strong>Light mode</strong></li>
+<li>Select <strong>Login with Claude account</strong></li>
+<li>Authorize in your browser</li>
+<li>Return to terminal when complete</li>
+</ol>
+<h3>Verify Setup</h3>
+<pre><code class="language-powershell">claude --version
+</code></pre>
+<h2>Step 5: Install @knowcode/doc-builder</h2>
+<h3>Global Installation (Recommended)</h3>
+<pre><code class="language-powershell">npm install -g @knowcode/doc-builder@latest
+</code></pre>
+<h3>Verify Installation</h3>
+<pre><code class="language-powershell">doc-builder --version
+</code></pre>
+<h3>Create Project Folder</h3>
+<pre><code class="language-powershell">cd Documents
+mkdir my-docs-project
+cd my-docs-project
+</code></pre>
+<h2>Step 6: Set Up Vercel</h2>
+<h3>Understanding Vercel Plans</h3>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Price</th>
+<th>Features</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hobby</strong></td>
+<td>Free</td>
+<td>Unlimited static sites, HTTPS, Global CDN</td>
+<td>Personal projects, documentation</td>
+</tr>
+<tr>
+<td><strong>Pro</strong></td>
+<td>$20/month</td>
+<td>Team features, analytics, support</td>
+<td>Professional use</td>
+</tr>
+</tbody></table>
+<p>The free Hobby plan is perfect for documentation sites!</p>
+<h3>Create GitHub Account First</h3>
+<ol>
+<li>Go to <a href="https://github.com">GitHub</a></li>
+<li>Click <strong>Sign Up</strong></li>
+<li>Create username and verify email</li>
+<li>Complete account setup</li>
+</ol>
+<h3>Create Vercel Account (Requires GitHub)</h3>
+<ol>
+<li>Go to <a href="https://vercel.com">Vercel</a></li>
+<li>Click <strong>Sign Up</strong></li>
+<li>Choose <strong>Continue with GitHub</strong> (recommended)</li>
+<li>Authorize Vercel to access your GitHub</li>
+<li>Select <strong>Hobby</strong> plan (free)</li>
+</ol>
+<h3>Install Vercel CLI</h3>
+<pre><code class="language-powershell">npm install -g vercel@latest
+</code></pre>
+<h3>Login to Vercel</h3>
+<pre><code class="language-powershell">vercel login
+</code></pre>
+<p>This will open your browser for authentication.</p>
+<h2>Step 7: Complete Workflow Example</h2>
+<h3>1. Create Documentation with Claude Code</h3>
+<p>In Visual Studio Code terminal:</p>
+<pre><code class="language-powershell">claude
+</code></pre>
+<p>Then ask Claude to create documentation:</p>
+<pre><code>Create a comprehensive technical documentation for my API including authentication, endpoints, and examples
+</code></pre>
+<h3>2. Build HTML with doc-builder</h3>
+<pre><code class="language-powershell">doc-builder build
+</code></pre>
+<h3>3. Deploy to Vercel</h3>
+<pre><code class="language-powershell">doc-builder deploy
+</code></pre>
+<h4>First Deployment Setup Questions</h4>
+<p>You&#39;ll be prompted with several questions. Here&#39;s what each one means:</p>
+<p><strong>1. &quot;Set up and deploy?&quot;</strong> → Type <code>Y</code> (Yes)</p>
+<ul>
+<li>This confirms you want to deploy your documentation to Vercel</li>
+</ul>
+<p><strong>2. &quot;What is your project name?&quot;</strong> → Example: <code>my-api-docs</code></p>
+<ul>
+<li>This becomes your URL: <code>https://my-api-docs.vercel.app</code></li>
+<li>Also used as the project identifier in Vercel dashboard</li>
+</ul>
+<p>   <strong>Naming Requirements:</strong></p>
+<ul>
+<li>Must be <strong>lowercase</strong> only</li>
+<li>Up to 100 characters long</li>
+<li>Can include: letters, numbers, <code>.</code> <code>_</code> <code>-</code></li>
+<li>Cannot contain: <code>---</code> (three consecutive hyphens)</li>
+<li>Must start with a letter</li>
+</ul>
+<p>   <strong>Good examples:</strong> <code>my-docs</code>, <code>api-docs-v2</code>, <code>team_handbook</code><br>   <strong>Bad examples:</strong> <code>My-Docs</code> (uppercase), <code>123-docs</code> (starts with number), <code>my---docs</code> (triple hyphen)</p>
+<p><strong>3. &quot;Which scope do you want to deploy to?&quot;</strong> → Select your account</p>
+<ul>
+<li>Choose your personal account or team name</li>
+</ul>
+<p><strong>4. &quot;Link to existing project?&quot;</strong> → Type <code>N</code> (No) for first time</p>
+<ul>
+<li>Choose <code>Y</code> only if you&#39;ve already created this project before</li>
+</ul>
+<p><strong>5. &quot;What&#39;s the name of your existing project?&quot;</strong> → Skip if you chose No above</p>
+<p><strong>6. &quot;In which directory is your code located?&quot;</strong> → Press Enter (accepts <code>./</code>)</p>
+<ul>
+<li>doc-builder already handles this correctly</li>
+</ul>
+<p><strong>7. &quot;Want to modify these settings?&quot;</strong> → Type <code>N</code> (No)</p>
+<ul>
+<li>The default settings are configured correctly by doc-builder</li>
+</ul>
+<h3>4. Make Site Public</h3>
+<p>After deployment:</p>
+<ol>
+<li>Go to <a href="https://vercel.com/dashboard">Vercel Dashboard</a></li>
+<li>Click your project</li>
+<li>Go to <strong>Settings</strong> → <strong>Deployment Protection</strong></li>
+<li>Set <strong>Vercel Authentication</strong> to <strong>Disabled</strong></li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<p>Your documentation is now live at <code>https://your-project.vercel.app</code>!</p>
+<h2>Common Windows Issues &amp; Solutions</h2>
+<h3>PowerShell Execution Policy Error</h3>
+<p><strong>Error</strong>: &quot;running scripts is disabled on this system&quot;</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-powershell"># Run PowerShell as Administrator
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+</code></pre>
+<p>See detailed guide: <a href="https://dev.to/jackfd120/resolving-npm-execution-policy-error-in-powershell-a-step-by-step-guide-for-developers-32ip">Resolving npm Execution Policy Error</a></p>
+<h3>npm Command Not Found</h3>
+<p><strong>Causes</strong>:</p>
+<ol>
+<li>Node.js not installed properly</li>
+<li>PATH not updated</li>
+<li>Need to restart PowerShell</li>
+</ol>
+<p><strong>Solution</strong>:</p>
+<ol>
+<li>Reinstall Node.js using the official installer</li>
+<li>Ensure &quot;Add to PATH&quot; is checked during installation</li>
+<li>Close all PowerShell windows and open new ones</li>
+</ol>
+<h3>Git Bash Required Error</h3>
+<p><strong>Error</strong>: &quot;Claude Code requires Git bash&quot;</p>
+<p><strong>Solution</strong>:<br>Install Git for Windows from <a href="https://gitforwindows.org/">gitforwindows.org</a></p>
+<h3>Vercel CLI Authentication Issues</h3>
+<p><strong>Error</strong>: &quot;Please login to Vercel&quot;</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-powershell">vercel logout
+vercel login
+</code></pre>
+<h3>Vercel Project Naming Errors</h3>
+<p><strong>Error</strong>: &quot;Invalid project name&quot; or deployment fails</p>
+<p><strong>Common Causes</strong>:</p>
+<ol>
+<li>Project name contains uppercase letters</li>
+<li>Project name starts with a number</li>
+<li>Project name contains invalid characters</li>
+<li>Project name contains <code>---</code> (three hyphens)</li>
+</ol>
+<p><strong>Solution</strong>:<br>Use a valid project name following these rules:</p>
+<ul>
+<li><strong>Lowercase only</strong>: <code>my-docs</code> <i class="ph ph-check-circle" aria-label="checked"></i>, <code>My-Docs</code> <i class="ph ph-x-circle" aria-label="error"></i></li>
+<li><strong>Start with letter</strong>: <code>api-docs</code> <i class="ph ph-check-circle" aria-label="checked"></i>, <code>123-docs</code> <i class="ph ph-x-circle" aria-label="error"></i></li>
+<li><strong>Valid characters</strong>: Letters, numbers, <code>.</code>, <code>_</code>, <code>-</code></li>
+<li><strong>No triple hyphens</strong>: <code>my-cool-docs</code> <i class="ph ph-check-circle" aria-label="checked"></i>, <code>my---docs</code> <i class="ph ph-x-circle" aria-label="error"></i></li>
+</ul>
+<p><strong>Examples of valid names</strong>:</p>
+<ul>
+<li><code>my-documentation</code></li>
+<li><code>api-docs-v2</code></li>
+<li><code>team_handbook</code></li>
+<li><code>docs.myproject</code></li>
+</ul>
+<h2>Best Practices</h2>
+<h3>Folder Structure</h3>
+<pre><code>Documents/
+├── my-projects/
+│   ├── project1-docs/
+│   │   ├── docs/           # Markdown files
+│   │   ├── html/           # Generated HTML
+│   │   └── doc-builder.config.js
+│   └── project2-docs/
+</code></pre>
+<h3>Workflow Tips</h3>
+<ol>
+<li><strong>Use Visual Studio Code</strong> - Better terminal integration</li>
+<li><strong>Create separate folders</strong> for each documentation project</li>
+<li><strong>Use @latest</strong> - Always use <code>@latest</code> to avoid npm cache issues</li>
+<li><strong>Regular commits</strong> - Use Git to track changes</li>
+</ol>
+<h3>Security Notes</h3>
+<ol>
+<li><strong>Run as Admin only when required</strong> - Only for PowerShell policy changes</li>
+<li><strong>Keep credentials secure</strong> - Don&#39;t share Claude or Vercel tokens</li>
+<li><strong>Use .gitignore</strong> - Exclude sensitive files from Git</li>
+</ol>
+<h2>Quick Reference Commands</h2>
+<h3>Daily Workflow</h3>
+<pre><code class="language-powershell"># 1. Create/edit content
+claude
+
+# 2. Build HTML
+doc-builder build
+
+# 3. Deploy updates
+doc-builder deploy --prod
+</code></pre>
+<h3>Troubleshooting Commands</h3>
+<pre><code class="language-powershell"># Check installations
+node -v
+npm -v
+git --version
+claude --version
+vercel --version
+
+# Update tools
+npm update -g @knowcode/doc-builder@latest
+npm update -g vercel@latest
+
+# Clear npm cache
+npm cache clean --force
+</code></pre>
+<h2>Additional Resources</h2>
+<h3>Official Documentation</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows">Node.js on Windows Guide</a></li>
+<li><a href="https://vercel.com/docs/cli">Vercel CLI Documentation</a></li>
+<li><a href="https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan">Claude Code with Pro/Max Plans</a></li>
+<li><a href="https://www.npmjs.com/package/@knowcode/doc-builder">@knowcode/doc-builder on npm</a></li>
+</ul>
+<h3>Troubleshooting Guides</h3>
+<ul>
+<li><a href="https://dev.to/jackfd120/resolving-npm-execution-policy-error-in-powershell-a-step-by-step-guide-for-developers-32ip">PowerShell Execution Policy</a></li>
+<li><a href="https://gitforwindows.org/">Git for Windows Setup</a></li>
+</ul>
+<h2>Conclusion</h2>
+<p>With this setup, you can create professional documentation in minutes:</p>
+<ol>
+<li><strong>Claude Code</strong> generates the content</li>
+<li><strong>doc-builder</strong> makes it beautiful</li>
+<li><strong>Vercel</strong> shares it with the world</li>
+</ol>
+<p>The initial setup takes about 30 minutes, but once configured, you can create and deploy documentation sites in under 5 minutes!</p>
+<hr>
+<p><strong>Need help?</strong> File issues at the respective project repositories or check the troubleshooting sections above.</p>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    
+</body>
+</html>

@@ -24,7 +24,7 @@ program
   .addHelpText('before', `
 ${chalk.cyan('🚀 @knowcode/doc-builder')} - Transform your markdown into beautiful documentation sites
 
-${chalk.bgGreen.black(' TL;DR ')} ${chalk.green('Just run:')} ${chalk.cyan.bold('npx @knowcode/doc-builder deploy')} ${chalk.green('→ Your docs are live on Vercel!')}
+${chalk.bgGreen.black(' TL;DR ')} ${chalk.green('Just run:')} ${chalk.cyan.bold('npx @knowcode/doc-builder@latest deploy')} ${chalk.green('→ Your docs are live on Vercel!')}
 
 ${chalk.gray('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')}
 
@@ -47,18 +47,18 @@ ${chalk.yellow('Quick Start:')}
      ${chalk.gray('$')} echo "# My Documentation" > docs/README.md
   
   ${chalk.cyan('2. Build and deploy:')}
-     ${chalk.gray('$')} npx @knowcode/doc-builder              ${chalk.gray('# Show help and available commands')}
-     ${chalk.gray('$')} npx @knowcode/doc-builder deploy       ${chalk.gray('# Build and deploy to production')}
-     ${chalk.gray('$')} npx @knowcode/doc-builder build        ${chalk.gray('# Build HTML files only')}
+     ${chalk.gray('$')} npx @knowcode/doc-builder@latest       ${chalk.gray('# Show help and available commands')}
+     ${chalk.gray('$')} npx @knowcode/doc-builder@latest deploy ${chalk.gray('# Build and deploy to production')}
+     ${chalk.gray('$')} npx @knowcode/doc-builder@latest build  ${chalk.gray('# Build HTML files only')}
 
 ${chalk.yellow('Troubleshooting npx cache issues:')}
   ${chalk.red('If you see an old version after updating:')}
      ${chalk.gray('$')} npx clear-npx-cache                    ${chalk.gray('# Clear the npx cache')}
      ${chalk.gray('$')} npx @knowcode/doc-builder@latest       ${chalk.gray('# Force latest version')}
-     ${chalk.gray('$')} npx @knowcode/doc-builder dev          ${chalk.gray('# Start development server')}
+     ${chalk.gray('$')} npx @knowcode/doc-builder@latest dev   ${chalk.gray('# Start development server')}
 
 ${chalk.yellow('No docs folder yet?')}
-  ${chalk.gray('$')} npx @knowcode/doc-builder init --example  ${chalk.gray('# Create example docs')}
+  ${chalk.gray('$')} npx @knowcode/doc-builder@latest init --example  ${chalk.gray('# Create example docs')}
   `);
 
 // Build command
@@ -537,7 +537,7 @@ ${chalk.yellow('First-time Vercel Setup:')}
      ${chalk.gray('   This will open your browser to authenticate')}
   
   ${chalk.cyan('3. Run doc-builder deploy:')}
-     ${chalk.gray('$')} npx @knowcode/doc-builder deploy
+     ${chalk.gray('$')} npx @knowcode/doc-builder@latest deploy
      
      You'll be asked several questions:
      
@@ -584,17 +584,17 @@ ${chalk.yellow('First-time Vercel Setup:')}
 ${chalk.yellow('Deployment Behavior:')}
   ${chalk.green.bold('🎯 DEFAULT: All deployments go to PRODUCTION')}
   
-  ${chalk.gray('$')} npx @knowcode/doc-builder          ${chalk.gray('# → Shows help (v1.3.0+)')}
-  ${chalk.gray('$')} npx @knowcode/doc-builder deploy   ${chalk.gray('# → yourdocs.vercel.app')}
-  ${chalk.gray('$')} npx @knowcode/doc-builder deploy --no-prod  ${chalk.gray('# → preview URL only')}
+  ${chalk.gray('$')} npx @knowcode/doc-builder@latest          ${chalk.gray('# → Shows help (v1.3.0+)')}
+  ${chalk.gray('$')} npx @knowcode/doc-builder@latest deploy   ${chalk.gray('# → yourdocs.vercel.app')}
+  ${chalk.gray('$')} npx @knowcode/doc-builder@latest deploy --no-prod  ${chalk.gray('# → preview URL only')}
 
 ${chalk.yellow('When All Else Fails - Delete and Start Fresh:')}
   Sometimes the cleanest solution is to delete the Vercel project:
   
   1. Go to your project settings on Vercel
   2. Scroll to bottom and click ${chalk.red('"Delete Project"')}
-  3. Run: ${chalk.gray('npx @knowcode/doc-builder reset-vercel')}
-  4. Run: ${chalk.gray('npx @knowcode/doc-builder deploy')}
+  3. Run: ${chalk.gray('npx @knowcode/doc-builder@latest reset-vercel')}
+  4. Run: ${chalk.gray('npx @knowcode/doc-builder@latest deploy')}
   5. Create a NEW project with correct settings
   
   This removes all conflicting configurations!
@@ -636,8 +636,8 @@ ${chalk.yellow('Troubleshooting:')}
     ${chalk.yellow('The Vercel project was deleted but local config remains.')}
     
     ${chalk.green('Fix:')}
-    ${chalk.gray('$')} npx @knowcode/doc-builder reset-vercel
-    ${chalk.gray('$')} npx @knowcode/doc-builder deploy
+    ${chalk.gray('$')} npx @knowcode/doc-builder@latest reset-vercel
+    ${chalk.gray('$')} npx @knowcode/doc-builder@latest deploy
     
     This removes old project references and starts fresh
 `)
@@ -658,7 +658,7 @@ ${chalk.yellow('Troubleshooting:')}
         console.log(chalk.gray('  yarn global add vercel'));
         console.log(chalk.gray('  brew install vercel     # macOS\n'));
         console.log(chalk.yellow('Then run deployment again:'));
-        console.log(chalk.gray('  npx @knowcode/doc-builder deploy\n'));
+        console.log(chalk.gray('  npx @knowcode/doc-builder@latest deploy\n'));
         process.exit(1);
       }
       
@@ -742,7 +742,7 @@ ${chalk.yellow('Troubleshooting:')}
         console.log(chalk.cyan(`   ${deployUrl}`));
         console.log();
         console.log(chalk.gray('To deploy to production, run:'));
-        console.log(chalk.gray('   npx @knowcode/doc-builder deploy'));
+        console.log(chalk.gray('   npx @knowcode/doc-builder@latest deploy'));
       }
       console.log();
       
@@ -787,7 +787,7 @@ ${chalk.yellow('When to use:')}
         fs.removeSync(vercelPath);
         console.log(chalk.green('✅ Vercel configuration reset!'));
         console.log(chalk.gray('\nNow run deployment again:'));
-        console.log(chalk.cyan('  npx @knowcode/doc-builder deploy'));
+        console.log(chalk.cyan('  npx @knowcode/doc-builder@latest deploy'));
         console.log(chalk.gray('\nThis time:'));
         console.log(chalk.gray('• Create a NEW project (not username/html)'));
         console.log(chalk.gray('• Use a descriptive name like "my-docs"'));
@@ -822,7 +822,7 @@ ${chalk.yellow('What you\'ll configure:')}
   • Open Graph image
 
 ${chalk.yellow('After setup:')}
-  • Run ${chalk.cyan('npx @knowcode/doc-builder build')} to generate with SEO
+  • Run ${chalk.cyan('npx @knowcode/doc-builder@latest build')} to generate with SEO
   • Check meta tags in generated HTML files
   • Submit sitemap.xml to search engines
 `)
@@ -972,7 +972,7 @@ ${chalk.yellow('After setup:')}
       if (answers.ogImage) {
         console.log(chalk.gray(`- Add an image at ${answers.ogImage} (1200x630px) for social previews`));
       }
-      console.log(chalk.gray('- Run \'npx @knowcode/doc-builder build\' to generate with SEO'));
+      console.log(chalk.gray('- Run \'npx @knowcode/doc-builder@latest build\' to generate with SEO'));
       console.log(chalk.gray('- Check your SEO at: https://metatags.io'));
       
     } catch (error) {
@@ -1036,8 +1036,8 @@ ${chalk.yellow('What gets created:')}
         
         // Create example files
         const exampleFiles = {
-          'README.md': `# Welcome to Your Documentation\n\nThis is an example documentation site created with @knowcode/doc-builder.\n\n## Features\n\n- 📝 Write in Markdown\n- 🎨 Beautiful Notion-inspired design\n- 📊 Mermaid diagram support\n- 🌙 Dark mode\n- 🚀 Deploy to Vercel\n\n## Getting Started\n\n1. Edit this file and add your content\n2. Create new markdown files\n3. Run \`npx @knowcode/doc-builder\` to build and deploy\n\n## Example Diagram\n\n\`\`\`mermaid\ngraph TD\n    A[Write Docs] --> B[Build]\n    B --> C[Deploy]\n    C --> D[Share]\n\`\`\`\n`,
-          'getting-started.md': `# Getting Started\n\n**Generated**: ${new Date().toISOString().split('T')[0]}\n**Status**: Draft\n**Verified**: ❓\n\n## Overview\n\nThis guide will help you get started with your documentation.\n\n## Installation\n\nNo installation required! Just use:\n\n\`\`\`bash\nnpx @knowcode/doc-builder\n\`\`\`\n\n## Writing Documentation\n\n1. Create markdown files in the \`docs\` folder\n2. Use folders to organize your content\n3. Add front matter for metadata\n\n## Building\n\nTo build your documentation:\n\n\`\`\`bash\nnpx @knowcode/doc-builder build\n\`\`\`\n\n## Deployment\n\nDeploy to Vercel:\n\n\`\`\`bash\nnpx @knowcode/doc-builder deploy\n\`\`\`\n`,
+          'README.md': `# Welcome to Your Documentation\n\nThis is an example documentation site created with @knowcode/doc-builder.\n\n## Features\n\n- 📝 Write in Markdown\n- 🎨 Beautiful Notion-inspired design\n- 📊 Mermaid diagram support\n- 🌙 Dark mode\n- 🚀 Deploy to Vercel\n\n## Getting Started\n\n1. Edit this file and add your content\n2. Create new markdown files\n3. Run \`npx @knowcode/doc-builder@latest\` to build and deploy\n\n## Example Diagram\n\n\`\`\`mermaid\ngraph TD\n    A[Write Docs] --> B[Build]\n    B --> C[Deploy]\n    C --> D[Share]\n\`\`\`\n`,
+          'getting-started.md': `# Getting Started\n\n**Generated**: ${new Date().toISOString().split('T')[0]}\n**Status**: Draft\n**Verified**: ❓\n\n## Overview\n\nThis guide will help you get started with your documentation.\n\n## Installation\n\nNo installation required! Just use:\n\n\`\`\`bash\nnpx @knowcode/doc-builder@latest\n\`\`\`\n\n## Writing Documentation\n\n1. Create markdown files in the \`docs\` folder\n2. Use folders to organize your content\n3. Add front matter for metadata\n\n## Building\n\nTo build your documentation:\n\n\`\`\`bash\nnpx @knowcode/doc-builder@latest build\n\`\`\`\n\n## Deployment\n\nDeploy to Vercel:\n\n\`\`\`bash\nnpx @knowcode/doc-builder@latest deploy\n\`\`\`\n`,
           'guides/configuration.md': `# Configuration Guide\n\n**Generated**: ${new Date().toISOString().split('T')[0]}\n**Status**: Draft\n**Verified**: ❓\n\n## Overview\n\n@knowcode/doc-builder works with zero configuration, but you can customize it.\n\n## Configuration File\n\nCreate \`doc-builder.config.js\`:\n\n\`\`\`javascript\nmodule.exports = {\n  siteName: 'My Documentation',\n  siteDescription: 'Documentation for my project',\n  \n  features: {\n    authentication: false,\n    changelog: true,\n    mermaid: true,\n    darkMode: true\n  }\n};\n\`\`\`\n\n## Options\n\n### Site Information\n\n- \`siteName\`: Your documentation site name\n- \`siteDescription\`: Brief description\n\n### Directories\n\n- \`docsDir\`: Input directory (default: 'docs')\n- \`outputDir\`: Output directory (default: 'html')\n\n### Features\n\n- \`authentication\`: Enable password protection\n- \`changelog\`: Generate changelog automatically\n- \`mermaid\`: Support for diagrams\n- \`darkMode\`: Dark theme support\n`
         };
         
@@ -1057,7 +1057,7 @@ ${chalk.yellow('What gets created:')}
         console.log(chalk.cyan('\\n📚 Example documentation created in docs/ folder'));
         console.log(chalk.gray('\\nNext steps:'));
         console.log(chalk.gray('1. Edit the example files to add your content'));
-        console.log(chalk.gray('2. Run `npx @knowcode/doc-builder` to build and deploy'));
+        console.log(chalk.gray('2. Run `npx @knowcode/doc-builder@latest` to build and deploy'));
       } else {
         console.log(chalk.yellow('⚠️  docs/ directory already exists'));
       }

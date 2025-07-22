@@ -13,7 +13,7 @@ This guide walks you through the streamlined Vercel deployment process when usin
 ### Step 1: Run the Deploy Command
 
 ```bash
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 ```
 
 ### Step 2: doc-builder Configuration
@@ -154,7 +154,7 @@ Check that:
 ## Quick Checklist
 
 ```
-✅ 1. Run: npx @knowcode/doc-builder deploy
+✅ 1. Run: npx @knowcode/doc-builder@latest deploy
 ✅ 2. Enter project name (e.g., my-docs)
 ✅ 3. Skip custom URL (press Enter)
 ✅ 4. Confirm deployment when Vercel asks

@@ -7,7 +7,7 @@
     <title>Claude + CLAUDE.md Documentation Workflow Guide</title>
     
     <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, claude, workflow">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, claude, error">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html">
     
@@ -62,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T11:52:26.135Z",
-  "dateModified": "2025-07-22T11:52:26.135Z",
+  "datePublished": "2025-07-22T15:51:37.122Z",
+  "dateModified": "2025-07-22T15:51:37.122Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html"
@@ -102,7 +102,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.15">Last updated: Jul 22, 2025, 11:52 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.17">Last updated: Jul 22, 2025, 03:51 PM UTC</span>
                 </div>
                 
                 
@@ -167,7 +167,8 @@
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
-        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a></div></div>
+        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
+        <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -181,7 +182,6 @@
 <p>This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it to Vercel using the @knowcode/doc-builder tool.</p>
 <h2>Workflow Overview</h2>
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
     A[Start Project] --> B[Setup CLAUDE.md]
     B --> C[Configure doc-builder]
@@ -203,55 +203,341 @@
     </div>
 <h2>Step 1: Setting Up CLAUDE.md</h2>
 <h3>1.1 Project-Level CLAUDE.md</h3>
-<p>Create a <code>CLAUDE.md</code> file in your project root with specific instructions for documentation:</p>
+<p>Create a comprehensive <code>CLAUDE.md</code> file in your project root with specific instructions for documentation. Here&#39;s a complete example based on best practices:</p>
 <pre><code class="language-markdown"># CLAUDE.md - [Your Project Name]
+
+This file provides comprehensive guidance for Claude Code when working in this project.
+
+## Project Overview
+
+**Name**: Your Project  
+**Purpose**: Brief description of what your project does  
+**Technology Stack**: List your key technologies (e.g., Node.js, React, AWS)
 
 ## Documentation Standards
 
+### Document Title Format
+- Use `# Document Title`
+- Include metadata:
+  - **Generated**: YYYY-MM-DD HH:MM UTC
+  - **Status**: Draft/In Progress/Complete
+  - **Verified**: <i class="ph ph-check-circle" aria-label="checked"></i> (for verified information) / <i class="ph ph-question" aria-label="question"></i> (for speculated information)
+
 ### Document Structure
 - All documentation goes in the `/docs` directory
-- Use hierarchical folder structure for organization
-- Follow naming convention: `{component}-{topic}-guide.md`
+- Use hierarchical folder structure:
+  - `docs/guides/` - How-to guides and tutorials
+  - `docs/api/` - API reference documentation
+  - `docs/architecture/` - System design and architecture
+  - `docs/deployment/` - Deployment and operations guides
+  - `docs/troubleshooting/` - Common issues and solutions
+
+### Naming Conventions
+- Analysis documents: `analysis-{topic}-{specifics}.md`
+- Design documents: `design-{component}-{feature}.md`
+- Implementation plans: `plan-{feature}-implementation.md`
+- Technical guides: `{component}-{topic}-guide.md`
+- API docs: `api-{service}-reference.md`
+- Testing documents: `test-{component}-{type}.md`
 
 ### Content Requirements
-- Include mermaid diagrams for complex workflows
-- Mark verified (<i class="ph ph-check-circle" aria-label="checked"></i>) vs speculated (<i class="ph ph-question" aria-label="question"></i>) information
-- Add timestamps to all documents
-- Include practical examples
 
-### Writing Style
-- Use clear, concise language
-- Target intermediate technical audience
-- Include code examples with syntax highlighting
-- Add troubleshooting sections
-
-### Metadata Format
-</code></pre>
-<p><strong>Generated</strong>: YYYY-MM-DD HH:MM UTC<br><strong>Status</strong>: Draft/Complete<br><strong>Verified</strong>: <i class="ph ph-check-circle" aria-label="checked"></i>/<i class="ph ph-question" aria-label="question"></i></p>
-<pre><code>
-</code></pre>
-<h3>1.2 Global CLAUDE.md Best Practices</h3>
-<p>Your global <code>~/.claude/CLAUDE.md</code> should include:</p>
+#### 1. Mermaid Diagrams
+- Include diagrams wherever they help explain complex concepts
+- Use consistent node naming and styling
+- Add clear labels and descriptions
+- Example:
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
+      <div class="mermaid">graph TD
+    A[User Request] --> B{Authentication}
+    B -->|Valid| C[Process Request]
+    B -->|Invalid| D[Return 401]
+    C --> E[Return Response]</div>
+    </div>
+
+#### 2. Information Verification
+- Mark all information as either verified (<i class="ph ph-check-circle" aria-label="checked"></i>) or speculated (<i class="ph ph-question" aria-label="question"></i>)
+- Include sources for verified information
+- Clearly indicate assumptions
+- Example:
+  - <i class="ph ph-check-circle" aria-label="checked"></i> This API endpoint requires authentication (verified in auth.js:45)
+  - <i class="ph ph-question" aria-label="question"></i> Response time should be under 200ms (performance requirement assumed)
+
+#### 3. Code Examples
+- Use proper syntax highlighting with language identifiers
+- Include context and explanations
+- Show both correct and incorrect usage where applicable
+- Add error handling in examples
+- Example:
+```javascript
+// <i class="ph ph-check-circle" aria-label="checked"></i> Correct way to call the API
+try {
+  const response = await api.getData({ userId: 123 });
+  console.log(&#39;Data:&#39;, response.data);
+} catch (error) {
+  console.error(&#39;API Error:&#39;, error.message);
+}
+
+// <i class="ph ph-x-circle" aria-label="error"></i> Incorrect - missing error handling
+const response = await api.getData({ userId: 123 });
+</code></pre>
+<h4>4. Practical Examples</h4>
+<ul>
+<li>Include real-world scenarios</li>
+<li>Show complete workflows</li>
+<li>Add curl/httpie examples for APIs</li>
+<li>Include sample data</li>
+</ul>
+<h3>Writing Style</h3>
+<ul>
+<li>Use clear, concise language</li>
+<li>Write for your audience&#39;s technical level</li>
+<li>Use active voice</li>
+<li>Keep paragraphs short (3-4 sentences)</li>
+<li>Use bullet points for lists</li>
+<li>Bold important terms on first use</li>
+</ul>
+<h3>Standard Sections</h3>
+<p>Every technical document should include:</p>
+<ol>
+<li><strong>Overview</strong> - Brief description of the topic</li>
+<li><strong>Prerequisites</strong> - What the reader needs to know/have</li>
+<li><strong>Main Content</strong> - The core information</li>
+<li><strong>Examples</strong> - Practical demonstrations</li>
+<li><strong>Troubleshooting</strong> - Common issues and solutions</li>
+<li><strong>References</strong> - Links to related documentation</li>
+</ol>
+<h3>Tables and Structured Data</h3>
+<p>Use tables for comparing options or listing properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>No</td>
+<td>Whether the item is active</td>
+</tr>
+</tbody></table>
+<h3>File Organization</h3>
+<ul>
+<li>Active files in appropriate directories</li>
+<li>Move unused files to <code>archive/</code> with descriptive names</li>
+<li>Temporary files must include &quot;temp&quot; in filename</li>
+<li>Example structure:<pre><code>docs/
+├── guides/
+│   ├── setup-guide.md
+│   └── deployment-guide.md
+├── api/
+│   └── rest-api-reference.md
+└── archive/
+    └── old-setup-guide-2024.md
+</code></pre>
+</li>
+</ul>
+<h2>Git and Version Control</h2>
+<h3>Commit Practices</h3>
+<ul>
+<li>Commit after material changes or milestones</li>
+<li>Use descriptive commit messages</li>
+<li>Group related changes</li>
+<li>Format: <code>type: Brief description</code></li>
+<li>Types: feat, fix, docs, style, refactor, test, chore</li>
+</ul>
+<h3>Documentation Updates</h3>
+<ul>
+<li>Update documentation when code changes</li>
+<li>Keep CHANGELOG.md current</li>
+<li>Document breaking changes prominently</li>
+</ul>
+<h2>Quality Standards</h2>
+<h3>Completeness</h3>
+<ul>
+<li>Cover all aspects of the topic</li>
+<li>Include edge cases</li>
+<li>Document error scenarios</li>
+<li>Add performance considerations</li>
+</ul>
+<h3>Accuracy</h3>
+<ul>
+<li>Verify technical details</li>
+<li>Test all code examples</li>
+<li>Review with subject matter experts</li>
+<li>Update when implementation changes</li>
+</ul>
+<h3>Maintenance</h3>
+<ul>
+<li>Review documentation quarterly</li>
+<li>Update version numbers</li>
+<li>Check for broken links</li>
+<li>Verify code examples still work</li>
+</ul>
+<h2>Special Considerations</h2>
+<h3>Security</h3>
+<ul>
+<li>Never include credentials or sensitive data</li>
+<li>Document security requirements</li>
+<li>Include authentication examples without real tokens</li>
+<li>Note security best practices</li>
+</ul>
+<h3>Performance</h3>
+<ul>
+<li>Document performance implications</li>
+<li>Include benchmarks where relevant</li>
+<li>Note resource requirements</li>
+<li>Add optimization tips</li>
+</ul>
+<h3>Accessibility</h3>
+<ul>
+<li>Use semantic markdown</li>
+<li>Include alt text for images</li>
+<li>Ensure good heading hierarchy</li>
+<li>Write clear link text (not &quot;click here&quot;)</li>
+</ul>
+<h2>AI-Specific Instructions</h2>
+<p>When generating documentation:</p>
+<ol>
+<li><strong>Always include the metadata header</strong> with generation date and verification status</li>
+<li><strong>Create working examples</strong> that can be copy-pasted</li>
+<li><strong>Add troubleshooting sections</strong> for common problems</li>
+<li><strong>Include mermaid diagrams</strong> for workflows and architectures</li>
+<li><strong>Mark speculated information</strong> clearly with <i class="ph ph-question" aria-label="question"></i></li>
+<li><strong>Follow the naming conventions</strong> exactly</li>
+<li><strong>Create comprehensive content</strong> - aim for completeness over brevity</li>
+<li><strong>Add cross-references</strong> to related documentation</li>
+</ol>
+<h2>Project-Specific Patterns</h2>
+<p>[Add your project-specific patterns here, such as:]</p>
+<ul>
+<li>API authentication flow</li>
+<li>Database connection patterns</li>
+<li>Error handling conventions</li>
+<li>Logging standards</li>
+<li>Testing approaches</li>
+</ul>
+<h2>Common Code Snippets</h2>
+<p>[Add frequently used code patterns for consistency:]</p>
+<pre><code class="language-javascript">// Standard error handling pattern
+function handleError(error) {
+  logger.error(&#39;Operation failed:&#39;, {
+    message: error.message,
+    stack: error.stack,
+    timestamp: new Date().toISOString()
+  });
+  // ... rest of error handling
+}
+</code></pre>
+<h2>References</h2>
+<ul>
+<li><a href="/README.md">Project README</a></li>
+<li><a href="/docs/api/">API Documentation</a></li>
+<li><a href="/docs/architecture/">Architecture Overview</a></li>
+<li><a href="/CONTRIBUTING.md">Contributing Guide</a></li>
+</ul>
+<pre><code>
+### 1.2 Global CLAUDE.md Best Practices
+
+Your global `~/.claude/CLAUDE.md` should include universal standards that apply to all projects. Here&#39;s an expanded example:
+
+```markdown
+# Global CLAUDE.md Instructions
+
+## Universal Documentation Standards
+
+### Visual Elements
+- Where it makes sense, include diagrams (Mermaid preferred)
+- Use skeleton loaders for UI components
+- For Trello board screenshots:
+  - Save as: @docs/product-requirements/Screenshot YYYY-MM-DD at HH.MM.SS.png
+  - Ensure columns are top-justified
+  - Color-code columns by risk level
+
+### Information Verification
+- Mark all verified vs. speculated information as a general document standard
+- Use <i class="ph ph-check-circle" aria-label="checked"></i> for verified information with source references
+- Use <i class="ph ph-question" aria-label="question"></i> for assumptions or unverified information
+
+### Development Practices
+- Use Docker V2 for containerization
+- Name temporary test files with &quot;temp&quot; in the filename
+- Do git commits after material changes or milestones
+- Archive unused files by moving to archive/ and renaming
+- After debugging, suggest archiving old unused code
+
+### Directory Organization
+- Create all new markdown docs in the /docs directory
+- Put documents in relevant subdirectories
+- MD docs will always go under the /docs directory
+- Maintain clear folder hierarchies
+
+### Build and Deployment
+- Carefully manage container sizes to prevent bloat
+- Use multi-stage builds for Docker
+- Remove unnecessary dependencies during build
+- Leverage .dockerignore effectively
+- Consider Alpine or slim base images
+- Be cautious with npx vs npm caching issues
+
+### Documentation Maintenance
+- Always maintain a CHANGELOG.md for significant changes
+- Check responsive breakpoints for consistency
+- Use table approach for columns in MD files when appropriate
+
+### Vercel-Specific
+- For public access, disable project/deployment protection in Vercel console
+- Remember to disable Vercel authentication for public projects
+
+### Git Workflow
+- Commit after every big milestone or completed major task
+- Use descriptive commit messages
+- Group related changes in single commits
+</code></pre>
+<div class="mermaid-wrapper">
       <div class="mermaid">graph LR
     A[Global CLAUDE.md] --> B[Document Standards]
     A --> C[Git Workflow]
     A --> D[Quality Checks]
     A --> E[Security Practices]
+    A --> F[Development Tools]
     
     B --> B1[Naming Conventions]
     B --> B2[Markdown Standards]
     B --> B3[Diagram Requirements]
+    B --> B4[Verification Marks]
     
-    C --> C1[Commit Frequency]
-    C --> C2[Branch Strategy]
+    C --> C1[Commit After Milestones]
+    C --> C2[Archive Unused Code]
+    C --> C3[Descriptive Messages]
     
-    D --> D1[Verification Marks]
+    D --> D1[Responsive Testing]
     D --> D2[Changelog Updates]
+    D --> D3[Documentation Reviews]
     
     E --> E1[No Credentials]
-    E --> E2[Access Controls]</div>
+    E --> E2[Access Controls]
+    E --> E3[Secure Defaults]
+    
+    F --> F1[Docker V2]
+    F --> F2[Build Optimization]
+    F --> F3[Caching Strategies]</div>
     </div>
 <h2>Step 2: Initialize doc-builder</h2>
 <pre><code class="language-bash"># Install doc-builder
@@ -277,7 +563,6 @@ npx doc-builder init
 <h2>Step 3: Documentation Creation Workflow with Claude</h2>
 <h3>3.1 Effective Prompting Strategy</h3>
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">sequenceDiagram
     participant User
     participant Claude
@@ -328,7 +613,6 @@ npx doc-builder init
 <h2>Step 4: Building Documentation Site</h2>
 <h3>4.1 Development Workflow</h3>
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph LR
     A[Write Docs] --> B[Preview Locally]
     B --> C{Looks Good?}
@@ -374,7 +658,6 @@ npm run deploy:docs
 </code></pre>
 <h3>5.3 Deployment Workflow</h3>
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">stateDiagram-v2
     [*] --> LocalDevelopment
     LocalDevelopment --> BuildDocs: npm run build:docs
@@ -389,7 +672,6 @@ npm run deploy:docs
 <h2>Step 6: Continuous Documentation Updates</h2>
 <h3>6.1 Update Workflow</h3>
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
     A[Code Changes] --> B{Docs Needed?}
     B -->|Yes| C[Update Documentation]
@@ -420,18 +702,45 @@ npm run deploy:docs
 - Include architecture decisions
 - Document integration points
 - Add performance considerations
+- Note dependencies and version requirements
 
 ### Code Examples
-- Use TypeScript for all examples
-- Include error handling
+- Use the project&#39;s primary language (e.g., TypeScript, JavaScript)
+- Include error handling in all examples
 - Show both correct and incorrect usage
 - Add inline comments for clarity
+- Test all examples before including
+- Include import statements
+
+### API Documentation
+- Document all public endpoints
+- Include authentication requirements
+- Show request/response examples
+- Document rate limits
+- Include error response codes
+- Add curl examples for testing
 
 ### Diagrams
 - Use mermaid for all flow diagrams
 - Include sequence diagrams for APIs
 - Add state diagrams for complex logic
 - Create entity relationship diagrams for data models
+- Use consistent styling and colors
+- Add titles to all diagrams
+
+### Testing Documentation
+- Document test setup requirements
+- Include example test cases
+- Show how to run specific test suites
+- Document mocking strategies
+- Include performance benchmarks
+
+### Deployment Documentation
+- Include environment-specific configurations
+- Document secret management
+- Show deployment commands
+- Include rollback procedures
+- Document monitoring setup
 </code></pre>
 <h3>7.2 Documentation Templates</h3>
 <p>Create templates in your CLAUDE.md:</p>
@@ -476,25 +785,43 @@ npm run deploy:docs
 ## Best Practices Summary
 
 ### Documentation Creation
-1. <i class="ph ph-check-circle" aria-label="checked"></i> Use CLAUDE.md to maintain consistency
-2. <i class="ph ph-check-circle" aria-label="checked"></i> Include visual diagrams for complex concepts
-3. <i class="ph ph-check-circle" aria-label="checked"></i> Provide practical examples
-4. <i class="ph ph-check-circle" aria-label="checked"></i> Mark verification status
-5. <i class="ph ph-check-circle" aria-label="checked"></i> Keep documentation close to code
+1. <i class="ph ph-check-circle" aria-label="checked"></i> Use CLAUDE.md to maintain consistency across all documentation
+2. <i class="ph ph-check-circle" aria-label="checked"></i> Include visual diagrams (Mermaid) for complex concepts and workflows
+3. <i class="ph ph-check-circle" aria-label="checked"></i> Provide practical, working examples that can be copy-pasted
+4. <i class="ph ph-check-circle" aria-label="checked"></i> Mark verification status (<i class="ph ph-check-circle" aria-label="checked"></i>/<i class="ph ph-question" aria-label="question"></i>) for all technical information
+5. <i class="ph ph-check-circle" aria-label="checked"></i> Keep documentation close to code in the /docs directory
+6. <i class="ph ph-check-circle" aria-label="checked"></i> Include metadata headers with timestamps and status
+7. <i class="ph ph-check-circle" aria-label="checked"></i> Add troubleshooting sections for common issues
+8. <i class="ph ph-check-circle" aria-label="checked"></i> Cross-reference related documentation
 
 ### Claude Interaction
-1. <i class="ph ph-check-circle" aria-label="checked"></i> Provide clear, specific requests
-2. <i class="ph ph-check-circle" aria-label="checked"></i> Reference existing patterns
-3. <i class="ph ph-check-circle" aria-label="checked"></i> Request iterative improvements
-4. <i class="ph ph-check-circle" aria-label="checked"></i> Verify technical accuracy
-5. <i class="ph ph-check-circle" aria-label="checked"></i> Ask for troubleshooting sections
+1. <i class="ph ph-check-circle" aria-label="checked"></i> Provide clear, specific requests with expected output format
+2. <i class="ph ph-check-circle" aria-label="checked"></i> Reference existing patterns from CLAUDE.md
+3. <i class="ph ph-check-circle" aria-label="checked"></i> Request iterative improvements - review and refine
+4. <i class="ph ph-check-circle" aria-label="checked"></i> Verify technical accuracy of generated content
+5. <i class="ph ph-check-circle" aria-label="checked"></i> Ask for troubleshooting sections explicitly
+6. <i class="ph ph-check-circle" aria-label="checked"></i> Request examples with error handling
+7. <i class="ph ph-check-circle" aria-label="checked"></i> Specify diagram types needed (sequence, flow, state)
+8. <i class="ph ph-check-circle" aria-label="checked"></i> Ask Claude to check its own work against CLAUDE.md standards
+
+### Documentation Maintenance
+1. <i class="ph ph-check-circle" aria-label="checked"></i> Update docs when code changes
+2. <i class="ph ph-check-circle" aria-label="checked"></i> Archive outdated documentation
+3. <i class="ph ph-check-circle" aria-label="checked"></i> Maintain CHANGELOG.md
+4. <i class="ph ph-check-circle" aria-label="checked"></i> Review documentation quarterly
+5. <i class="ph ph-check-circle" aria-label="checked"></i> Test all code examples
+6. <i class="ph ph-check-circle" aria-label="checked"></i> Check for broken links
+7. <i class="ph ph-check-circle" aria-label="checked"></i> Update version references
 
 ### Deployment
-1. <i class="ph ph-check-circle" aria-label="checked"></i> Test locally before deploying
-2. <i class="ph ph-check-circle" aria-label="checked"></i> Use preview deployments first
-3. <i class="ph ph-check-circle" aria-label="checked"></i> Configure custom domains
-4. <i class="ph ph-check-circle" aria-label="checked"></i> Enable HTTPS
-5. <i class="ph ph-check-circle" aria-label="checked"></i> Monitor deployment health
+1. <i class="ph ph-check-circle" aria-label="checked"></i> Test locally before deploying (npm run dev:docs)
+2. <i class="ph ph-check-circle" aria-label="checked"></i> Build and verify output (npm run build:docs)
+3. <i class="ph ph-check-circle" aria-label="checked"></i> Use preview deployments first
+4. <i class="ph ph-check-circle" aria-label="checked"></i> Configure custom domains if needed
+5. <i class="ph ph-check-circle" aria-label="checked"></i> Enable HTTPS (automatic with Vercel)
+6. <i class="ph ph-check-circle" aria-label="checked"></i> Monitor deployment health
+7. <i class="ph ph-check-circle" aria-label="checked"></i> Disable Vercel authentication for public docs
+8. <i class="ph ph-check-circle" aria-label="checked"></i> Commit documentation changes before deploying
 
 ## Common Issues and Solutions
 

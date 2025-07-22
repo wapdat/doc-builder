@@ -94,7 +94,7 @@ Organize team knowledge
 
 ### 1️⃣ Initialize
 ```bash
-npx @knowcode/doc-builder init
+npx @knowcode/doc-builder@latest init
 ```
 *Create project structure*
 
@@ -117,7 +117,7 @@ Welcome to our docs!
 
 ### 3️⃣ Preview
 ```bash
-npx doc-builder dev
+npx @knowcode/doc-builder@latest dev
 ```
 *Live development server*
 
@@ -126,7 +126,7 @@ npx doc-builder dev
 
 ### 4️⃣ Deploy
 ```bash
-npx doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 ```
 *Push to production*
 

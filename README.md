@@ -8,7 +8,7 @@ Beautiful documentation with the least effort possible. A zero-configuration doc
 
 ### Quick Start
 ```bash
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 ```
 
 </div>
@@ -78,6 +78,56 @@ This aligns perfectly with our mission: beautiful documentation should be access
 </tr>
 </table>
 
+## 📋 Prerequisites
+
+<table>
+<tr>
+<td width="50%">
+
+### System Requirements
+
+**Node.js** version 14.0 or higher is required to run doc-builder.
+
+To check if you have Node.js installed:
+```bash
+node --version
+```
+
+If you see a version number (e.g., `v18.17.0`), you're ready to go!
+
+</td>
+<td width="50%">
+
+### Installing Node.js & npm
+
+**🍎 macOS**
+- **Recommended**: [Download from nodejs.org](https://nodejs.org/)
+- **Alternative**: Using Homebrew
+  ```bash
+  brew install node
+  ```
+
+**🪟 Windows**
+- **Recommended**: [Download from nodejs.org](https://nodejs.org/)
+- **Alternative**: Using Chocolatey
+  ```bash
+  choco install nodejs
+  ```
+
+</td>
+</tr>
+</table>
+
+### Quick Installation Links
+
+| Platform | Official Installer | Package Manager |
+|----------|-------------------|-----------------|
+| **macOS** | [Download .pkg](https://nodejs.org/en/download/) | `brew install node` |
+| **Windows** | [Download .msi](https://nodejs.org/en/download/) | `choco install nodejs` |
+| **Linux** | [Download options](https://nodejs.org/en/download/) | `apt install nodejs` or `yum install nodejs` |
+
+> 💡 **Note**: npm (Node Package Manager) is included with Node.js installation automatically.
+
 ## 🚀 Getting Started
 
 <table>
@@ -87,16 +137,16 @@ This aligns perfectly with our mission: beautiful documentation should be access
 ### Option 1: NPX (No Installation)
 ```bash
 # Deploy to Vercel
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 
 # Build static HTML
-npx @knowcode/doc-builder build
+npx @knowcode/doc-builder@latest build
 
 # Development server
-npx @knowcode/doc-builder dev
+npx @knowcode/doc-builder@latest dev
 
 # Show help
-npx @knowcode/doc-builder
+npx @knowcode/doc-builder@latest
 ```
 *Perfect for trying it out!*
 
@@ -106,7 +156,7 @@ npx @knowcode/doc-builder
 ### Option 2: NPM Install
 ```bash
 # Install as dev dependency
-npm install --save-dev @knowcode/doc-builder
+npm install --save-dev @knowcode/doc-builder@latest
 
 # Use shorter commands
 doc-builder deploy
@@ -124,7 +174,7 @@ doc-builder --help
 
 The deployment process is now simpler than ever:
 
-1. Run `npx @knowcode/doc-builder deploy`
+1. Run `npx @knowcode/doc-builder@latest deploy`
 2. Answer a few simple questions (project name, etc.)
 3. Vercel CLI automatically detects and configures everything
 4. Get your live URL in seconds!
@@ -356,7 +406,7 @@ When using Claude Code to generate documentation, it typically follows these pat
 node --version  # Need 14+
 
 # Use full package name
-npx @knowcode/doc-builder
+npx @knowcode/doc-builder@latest
 ```
 
 **"No markdown files found"**
@@ -367,7 +417,7 @@ npx @knowcode/doc-builder
 **Vercel deployment fails**
 ```bash
 # Reset Vercel settings
-npx @knowcode/doc-builder reset-vercel
+npx @knowcode/doc-builder@latest reset-vercel
 
 # Install Vercel CLI
 npm install -g vercel
@@ -404,6 +454,14 @@ npx @knowcode/doc-builder@1.5.14
 </tr>
 </table>
 
+### 🪟 Windows Setup
+
+Having issues on Windows? Check our comprehensive [Windows Setup Guide](docs/guides/windows-setup-guide.md) that covers:
+- PowerShell execution policy setup
+- Node.js and npm installation
+- Git for Windows configuration
+- Complete troubleshooting steps
+
 ### 🔗 Production URL Issues
 
 <details>
@@ -419,12 +477,12 @@ module.exports = {
 
 **Option 2: CLI Command**
 ```bash
-npx @knowcode/doc-builder set-production-url my-docs.vercel.app
+npx @knowcode/doc-builder@latest set-production-url my-docs.vercel.app
 ```
 
 **Option 3: Deploy Override**
 ```bash
-npx @knowcode/doc-builder deploy --production-url my-docs.vercel.app
+npx @knowcode/doc-builder@latest deploy --production-url my-docs.vercel.app
 ```
 </details>
 

@@ -62,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T11:52:26.132Z",
-  "dateModified": "2025-07-22T11:52:26.132Z",
+  "datePublished": "2025-07-22T15:51:37.115Z",
+  "dateModified": "2025-07-22T15:51:37.115Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/authentication-guide.html"
@@ -102,7 +102,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.15">Last updated: Jul 22, 2025, 11:52 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.17">Last updated: Jul 22, 2025, 03:51 PM UTC</span>
                 </div>
                 
                 
@@ -167,7 +167,8 @@
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
-        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a></div></div>
+        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
+        <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -198,7 +199,6 @@
 </ul>
 <h2>How Authentication Works</h2>
 <div class="mermaid-wrapper">
-      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
     A[User visits page] --> B{Authenticated?}
     B -->|No| C[Redirect to login]
@@ -244,7 +244,7 @@
 </code></pre>
 <h4>2. Using Presets</h4>
 <p>Use the notion-inspired preset which has authentication enabled by default:</p>
-<pre><code class="language-bash">npx @knowcode/doc-builder build --preset notion-inspired
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest build --preset notion-inspired
 </code></pre>
 <p>Default credentials for preset:</p>
 <ul>
@@ -253,7 +253,7 @@
 </ul>
 <h4>3. Command Line</h4>
 <p>Disable authentication for a specific build:</p>
-<pre><code class="language-bash">npx @knowcode/doc-builder build --no-auth
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest build --no-auth
 </code></pre>
 <h3>Configuration Options</h3>
 <table>
@@ -288,7 +288,7 @@
 <h3>For Site Administrators</h3>
 <ol>
 <li><strong>Set Credentials</strong>: Configure username/password in <code>doc-builder.config.js</code></li>
-<li><strong>Build Site</strong>: Run <code>npx @knowcode/doc-builder build</code></li>
+<li><strong>Build Site</strong>: Run <code>npx @knowcode/doc-builder@latest build</code></li>
 <li><strong>Deploy</strong>: Upload to your hosting provider</li>
 <li><strong>Share Credentials</strong>: Provide login details to authorized users</li>
 </ol>
@@ -407,10 +407,10 @@ module.exports = {
 </code></pre>
 <h3>Build and Deploy</h3>
 <pre><code class="language-bash"># Build with authentication
-npx @knowcode/doc-builder build
+npx @knowcode/doc-builder@latest build
 
 # Deploy to Vercel
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 </code></pre>
 <h3>User Instructions</h3>
 <p>Email to team:</p>

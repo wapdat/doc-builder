@@ -64,7 +64,7 @@ If you're using `@knowcode/doc-builder`, you only need to:
 
 3. **Deploy with doc-builder**:
    ```bash
-   npx @knowcode/doc-builder deploy
+   npx @knowcode/doc-builder@latest deploy
    ```
 
 That's it! doc-builder handles all the configuration for you.
@@ -271,7 +271,7 @@ For automated deployments:
 # GitHub Actions example
 - name: Deploy Documentation
   run: |
-    npm install -g @knowcode/doc-builder vercel
+    npm install -g @knowcode/doc-builder@latest vercel
     doc-builder build
     vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
 ```

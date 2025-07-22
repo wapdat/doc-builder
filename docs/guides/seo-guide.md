@@ -13,7 +13,7 @@
 Run the SEO setup wizard to configure all SEO settings interactively:
 
 ```bash
-npx @knowcode/doc-builder setup-seo
+npx @knowcode/doc-builder@latest setup-seo
 ```
 
 ## SEO Features
@@ -81,7 +81,7 @@ Schema.org structured data for better search understanding:
 The easiest way to configure SEO is using the interactive wizard:
 
 ```bash
-npx @knowcode/doc-builder setup-seo
+npx @knowcode/doc-builder@latest setup-seo
 ```
 
 You'll be prompted for:
@@ -189,7 +189,7 @@ author: Different Author
 
 ### 1. Build with SEO
 ```bash
-npx @knowcode/doc-builder build
+npx @knowcode/doc-builder@latest build
 ```
 
 You'll see SEO generation in the output:
@@ -336,4 +336,4 @@ With @knowcode/doc-builder's SEO features, your documentation will:
 - Be properly indexed by search engines
 - Provide rich previews on social media
 
-Run `npx @knowcode/doc-builder setup-seo` to get started!
+Run `npx @knowcode/doc-builder@latest setup-seo` to get started!

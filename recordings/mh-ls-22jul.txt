@@ -1,0 +1,2305 @@
+00:00 Mike Hollywood: Yeah, would love to.
+
+00:01 lindsay: A confession. So you know, we had three pints.
+
+00:06 Mike Hollywood: Yes.
+
+00:07 lindsay: I was. I was. That was enough for me, and it was a hot day. It was a hot day and on the bus back from the track. To Milton Keynes. At the town I fell asleep and I went the bus. There was a 45 minute trip there and then when I woke up, the bus was almost back at the track. So I stood. The bus driver said. Oh man, you know, I'm so sorry. I've fallen asleep and he said all I shouted out and I said, you know, to to everyone get off the bus. I said. Oh, sorry man. I've had a few pints. I fell asleep and he's like, oh, well, shit where you know. Oh, well, I'll speak to them. So I speak to other bus driver so. I then got back on the bus and went back to Northampton. So. So.
+
+01:06 Mike Hollywood: I mean.
+
+01:08 lindsay: What happens?
+
+01:09 Mike Hollywood: It happens. I mean a few pints and and and a nice like, you know, lulling bus ride, it's just.
+
+01:18 lindsay: Yeah, yeah, so hot. It was hot. And I've been, you know, we've walked probably 10 kilometers around that. So yeah, I wasn't going to tell him, but I can see the humor in it now.
+
+01:29 Mike Hollywood: That is awesome. We we had, I mean. From that point on. You know, Thursday afternoon. Like all the racing and stuff started on Friday.
+
+01:44 lindsay: Yeah, yeah, yeah, I did. Watch a bit of it.
+
+01:47 Mike Hollywood: And and well, not really racing. It was like there was practice and then there were all sorts of other things we had just the best weekend. Sunday was the day that it like it, just chucked it down. It was. Buckets of rain.
+
+02:01 lindsay: Yeah.
+
+02:01 Mike Hollywood: And yeah, it was. It was pretty pretty biblical in terms of the we were at the mainstage watching these Youtubers that my son is is into and they actually called them. They brought them off the stage because there was lightning and Thunder and like, all sorts of things. And they're like it. Not safe for you to be on stage anymore. They so they came off to the side and we like. They kind of like did a meet and greet with everybody. That was fun. But then it stopped raining. It dried out. And then the main race started. And then it started raining again. In the like and and the race itself was just a. It was a phenomenally fun race because of the fact that there were like all these different like strategies and tire choices in the rain made it slippery and guys were sliding all over the place.
+
+02:58 lindsay: Yeah, yeah.
+
+02:58 Mike Hollywood: So much fun. And then, Finn, his favorite driver, won. Also my favorite driver.
+
+03:05 lindsay: Yeah, yeah.
+
+03:06 Mike Hollywood: And the team was was 1-2 and then in 3rd place was this guy. I don't know if you paid attention at all, but there's a guy on the in the in the kind of Formula One ranks and he's been in in Formula One kind of off and on for about like 15 years. And he'd never had a finish on the podium. He, like he had the longest career as an F1 driver. By I think it's like 150 races or something like that, like he had raced 150 more times than the next guy who had been in F1 for a long time and never been on the podium and he finished third that day. And finally got his first podium after 239 starts and 15 years in F1. So it was like the the the convergence of like all these like. Yes, our favorite driver, one our favorite team was 1-2 and then we saw this historic event of this guy, you know, getting his first podium ever. We went out on the track afterwards because they open up the track and you could just like walk all over the. Place. It was just so much fun and. I don't if I I don't know if I mentioned this in any other context, but like the the lull afterwards of like that weekend, four days of like. Constant stimulation and constant like. Just excitement and and noise and and visual stimulation and all that kind of stuff. That week after we got back 'cause, we came back on Monday. And worked Tuesday through Friday. And it was just like. I just didn't want to do a God damn thing like. It was so hard to get motivated to do anything, but we had a blast and it was great to see you. Great to catch up and and have those few points. And that story is amazing.
+
+05:10 lindsay: I was so fed up like on the bus. I was like, Oh my God, it's late enough. I can't blame anyone else.
+
+05:18 Mike Hollywood: Nope. No, that one's on you.
+
+05:20 lindsay: That one's on me 100%. No, no, no, no. Afraid not. No one was pushing it down with.
+
+05:28 Mike Hollywood: It's good. It's a good point. It's a good point. Yeah. So, but you know, hey, I don't know if it's gonna happen again next year. 'cause, you know, these are these are trips that trips that probably only happen once every so often. But we're we're already starting to plan whatever our next kind of race is gonna be, which is, but Silverstone is like. I don't know if we're gonna do much better in terms of the experience. It was amazing. But.
+
+05:59 lindsay: That you will you could like. No, I don't know. This, like Monaco, I mean somewhere where it's not that be too expensive to stay. Money, yeah.
+
+06:10 Mike Hollywood: It could be amazing if you have a big pile of money, but.
+
+06:13 lindsay: Yeah, it's Singapore and I don't know that would be something. Yeah.
+
+06:20 Mike Hollywood: But yeah, we had a. We had a just a ridiculously great time. And now, tomorrow, Finn has to go and get his wisdom teeth taken out. Happy summer buddy.
+
+06:33 lindsay: Poor fella. I I yeah, I feel for the guy. Sorry, man. You only have to do it once though.
+
+06:44 Mike Hollywood: But anyway, so so I again that week afterwards it was. I tried to jump back into some of that stuff and I was like, what, what, what is what is bubble? What am I doing here and all that kind of stuff?
+
+07:04 lindsay: So. I in the last few weeks I've been figuring out how much stuff we can do with AI. Like. I mean 'cause like we. I mean Harvest uses AI for intelligently processing documents and that's and processing text. And that's good. But so I'll just share my screen.
+
+07:36 Mike Hollywood: Please do.
+
+07:38 lindsay: So I was talking to a friend. This won't take long. I just.
+
+07:41 Mike Hollywood: I'm always interested.
+
+07:43 lindsay: It's aligned. It's a it's surprisingly aligned because. I'm thinking. About how to sell higher best, right? Thank you. About you know what we want is 10 subscribers paying two grand a month, something like that for their seats. But it takes so and I started. By. Using Claude. To generate content. Like blog posts. And technical documentation, technical documentations really was where I started. It's like have this big project to manage we've got. Multiple systems, multiple architectures, multiple versions, multiple code bases. There was a really none of it documented, so I started by making. This talk. This tool which.
+
+08:50 Mike Hollywood: Mm-hmm.
+
+08:51 lindsay: By using Claude to analyse code bases, produce markdown documents to explain code and I'll show. What are they called Juno? Yep this. So I started here. By getting I got. George's markdown descriptions of the bubble out so that we could. Analyse all the paths in the. There's lots of. There's vast amounts of business logic in here, so we needed to understand analyse all this. So this is all generated with AI off the code base.
+
+09:38 Mike Hollywood: Right.
+
+09:38 lindsay: There and I was like, OK, that was really, really helpful. And then for example. This product. In the product road map we needed to do some competitive analysis and of our competitors and figure out what a potential road map could be. This is all generated with AI and cloud code. Then I needed. To produce. There is. Just tons and tons of stuff. And then, like, we've got these sort of ancillary components like active campaign, how does that work and how is it plugged into bubble? And we've got acrm, we've got this incredible back end CRM system, it's got hundreds of tables. So I started by making all of this sort of technical documentation and it's really helpful because now I can ask because it just sits in the file system. I can just go to Claud and say. Explain. Produce a document explaining how we use. Start with diagrams and credentials and blah blah blah. 30 seconds later, they'll be that technical document 100% accurate. So then I'm like, oh man. And then in the course of that, I was making this converter. Not this converter, this converter. No, not this converter. And second, I made I basically made an NPM tool that converts markdowns into websites. So this is all generated these under the covers. Are all markdown files sitting on a file system? And then I run something which then converts it into this beautiful website. So so I created. The next step was. So in order to generate this content here I created this tool here. I created this tool. And again, I didn't write any of this code. AI generated everything you're saying. Here it's AI generated.
+
+12:22 Mike Hollywood: List.
+
+12:23 lindsay: And then.
+
+12:25 Mike Hollywood: Really.
+
+12:26 lindsay: 100%. 100%. I've not written a single on a code, so then I've generated the documentation for this tool and I said I'll make it look beautiful. So here it is looking fairly beautiful. And OK. So now I've got this tool I went. Oh shit. Can I just use this tool to produce a product? So I had some APIs. I've made some Google APIs, some APIs to do document conversion into markdown because it's. This project will excel files and Doc and word files into MacDowell, and it's like, well, maybe I can monetize this product. So this morning. All of this 100%. Every single thing on this page was AI generated with the website. Plus it already has. If you look at the source. Source. This is not the most important thing. Because it's all generated, I generated all of the. SEO stuff.
+
+13:41 Mike Hollywood: Mm-hmm.
+
+13:41 lindsay: All of the marked up content for Google. Plus I put in the registered it for. I registered it for search engine so I can submit the site so it can generate the site map.
+
+13:58 Mike Hollywood: Mm-hmm.
+
+13:59 lindsay: This this tag here as well verifies it for Google which generates a site map. But the point the point is. Now we've got this capability to create. Product. Stuff. Which is accurate, complete. Attractive. With very little effort.
+
+14:30 Mike Hollywood: Barely any right?
+
+14:33 lindsay: Barely any effort. Like like just. Basically all you need are the ideas.
+
+14:38 Mike Hollywood: Yeah.
+
+14:38 lindsay: All you need is the ideas. And. And so now we've got and I'm sure that on your To Do List is create a landing page to explain this incredible product you've built and bloody bloody bar. Just so when someone when someone says what do you do, you get a bit more you get an X. Level and a next level. Which is more? I'm gonna just go to the highest website. Because right now if you got this done, I'm sure you've got a web designer and you know someone left to come up with copy. Yeah, right. So here and you've probably got world where, yeah, you. So you have to come up with. You've come up with that content. I mean chosen those images. That's all.
+
+15:31 Mike Hollywood: Yeah.
+
+15:31 lindsay: That's all good, but.
+
+15:33 Mike Hollywood: And this took weeks.
+
+15:37 lindsay: Oh wait, and I'm saying, and I mean all here at all the ideas and ideas are great. And. But in order to sort of be a bit more convincing, maybe just have the next level of information. Which is how does it work and what does it integrate to? Give show me the. You know we would right now we'd say create a document explaining. The use of. You know the not the ciphers, the the question is that people fill in to get your profile. That'll be done in 30 seconds. 10 seconds later it could be. Could be, yeah. Yeah. So. So when you're so much. Customers are coming to hear you. OK. Yeah, this sounds good. This sounds good. Yeah, this looks. This looks plausible looking but same. I don't really want to request a demo, but I'm still want to know a bit more then I think that's there's an opportunity you know.
+
+16:59 Mike Hollywood: Yeah, I mean, this is this is all marketing, right? This is all it's fluff.
+
+17:03 lindsay: This is all marketing this all just. Yeah. So go ahead. This is this is great. And you go. Oh, that's a sample project plan for implementing this. OK, I could. I just dreamed up that that's the sort of thing you'd say and we'd go go to our, go to our, you know, tech dot high, best net. Here's here's that's the idea, because basically to here's how it works. Here's in detail and it will look like. It might look like marketing fluff. It'll look more like more like mature, mature. It gives them signals maturity.
+
+17:41 Mike Hollywood: Yes, I would agree. Yeah, go back to the to the the. I. I guess it's it would be the the, yeah. Not this one. The the was it the markup one that that had the OR this one right?
+
+17:57 lindsay: This one is this one, this one. I don't. I have some API needed some APIs to convert excel into lockdown and there was no I could not find a subscription service online that would do it one if it had macros in it, they wouldn't let you upload macros. But these Microsoft sheet have macros. The ones I was dealing with and when they converted them, they didn't convert. The calculator didn't come out with the calculator. Values. They came up with the uncalculated value, so it was fine if the numbers had 12345 in it. If it said 123, some cells 1-2 ABC. The calculated value wasn't there. It's like these are absolutely useless.
+
+18:45 Mike Hollywood: Yeah.
+
+18:45 lindsay: So I had to build it and I got AI to help me build it. This is maybe two or three months ago.
+
+18:53 Mike Hollywood: But but this page, like all the like the problem and solution like all that kind of stuff you didn't. None of that you didn't have to give it any like. Here's some background on what I'm doing. Like it figured all that stuff out.
+
+19:05 lindsay: I I went to GPT. And I said. I said. I've created a document conversion service. It takes document President, MD. I want a commercial service. For this I want all research all competitors. Want to differentiate her? Want simplicity and specialized for AI? Get produced all of this.
+
+19:31 Mike Hollywood: That's amazing.
+
+19:32 lindsay: And then I took that and pasted it. Show you. I'll just show you that screen. I'm trying to. I'm basically saying. We could build the sort of tech website, or you could build it within hours. Yeah, that's fine.
+
+19:51 Mike Hollywood: Yeah.
+
+19:51 lindsay: I'll just share. I'll show you what I do under the covers because I I use vision. It's basically as far as on a file system. So you know, just run on your Windows machine. Let me share. Let me I'll show you. I'll show you the actual process. OK. Great. Great. OK. Share share. Yeah, right. If you can. So this if you can see what I where you can see a sort of ticky thing. So here is. These I showed those. This is the source code for my this this is this happened to be the source code for the APIs which is the actual code. Those that front page. This is mark down. And this gets converted to HTML by by this command line thing. This thing here says deploy latest this. So if I went. Well, I'm going to just, OK. OK, one create a dock. Explaining business benefits. Credit doc. Showing. Competitor analysis. OK. It's going to be quite a quite a reasonable job off we go. It's going to take a minute.
+
+21:58 Mike Hollywood: Watching this, though, is like, oh, my God, nobody's gonna have a job at any point in the future.
+
+22:09 lindsay: OK. All right, let's just so imagine. Mean I've got Plan B. You've got this if you say put together a competitive analysis, advantages, pros and cons, pricing table. That would be a product managers 2 day job. Yeah.
+
+22:28 Mike Hollywood: Green.
+
+22:29 lindsay: You'd be lucky to finish in a week because you'd be interrupted every every 10 minutes. It's probably. It's for our job, but it takes a week to do it.
+
+22:39 Mike Hollywood: I'm probably spending two hours on each competitor's site. Just trying to digest and understand and like layout features and benefits and pros and cons and all that kind of stuff and. Let's do it in seconds.
+
+22:51 lindsay: So. So this is this is the objective of this is to go from got a marketing fluff level of explanation just to get to a more technical. Stuff someone say? You know the marketing fluff one's going to persuade the CEO. But then the first thing he's going to do is ask what about? I need my CTO to check this out, so we need a security.
+
+23:17 Mike Hollywood: Yeah, or or or procurement like procurement needs to like like hey, we can help you in your procurement process by giving you all the information that you need. Here it is.
+
+23:26 lindsay: Next thing, I'm just going to get a try to security document. I'm going to get the security document getting underway with this one's finished. OK. Ready. So this is the this is the tool I built to convert markdown antenna to HTML and deploy to versaill and I use it for cell because it's got it's free hosting.
+
+23:54 Mike Hollywood: OK.
+
+23:54 lindsay: So OK. So now. Now switch. If I give the, you know what I'll give you the URL and then they can. You can see. OK, I'll give you the URL now. I will stick it. What's the best place to get? And here. It's going to take me longer to paste the URL to you than it is to do the security. OK, OK. So. In that. Create. A comprehensive. Selfie or team explanation? Umm. Being very clear that we do not store any data. Any customer? Right, it's off. It's off.
+
+25:25 Mike Hollywood: Oh my God. Oh my God.
+
+25:42 lindsay: OK. It's good and pretty, Provost. It's very good. It's very verbose. I mean, I need to dial it back and I need to get rid of the because this was for technical documentation. I put in the generated status, verified because I needed that for technical documentation, but for sort of.
+
+26:02 Mike Hollywood: All right, so. If we wanted to do this for higher best, what does that look like?
+
+26:10 lindsay: I would you would. You need a cold code subscription which is either 200 bucks either $200.00 one because I use it endlessly, but you can get the $20 one and it will give you hours a few hours to play.
+
+26:26 Mike Hollywood: Yeah.
+
+26:27 lindsay: Then I then you need. A. I use Visual Studio because. I'm using code, but it's basically just a way of browsing the file system.
+
+26:42 Mike Hollywood: Yep.
+
+26:45 lindsay: And then. This year. You need to install this, but this has a couple of prerequisites. You'll be the first person in the world to install it other than me, but basically you install this. And you will need the two prerequisites at MPM which. Is. Let me see if I've got instructions for that. You know, I can just write. I can just get instructions written off how to install MPM OK. OK, I'm gonna just.
+
+27:27 Mike Hollywood: It's it's very meta in the sense that like, how do I do this? Well, I can just ask it how I do it well.
+
+27:33 lindsay: Yeah, exactly. So I'll put this in that shirt as well. So. Needs needs. The cell account. And the cell. And. The emergence mode. So those are the three sort of prerequisites. And I I never thought anyone would use this. I thought it would just be for me and my project. But once I did this once I done that, I'm just going to make a product pages like shit. I know who needs a product page. So. Over on the phone. Just stop. Just download just install node. Are you on a Mac or you on a Windows machine? PC. Don't be an installer. Just just like install node.
+
+28:47 Mike Hollywood: Come back to Google that.
+
+28:51 lindsay: I know this is not what we're supposed to be talking about, but marketing is is important as.
+
+28:58 Mike Hollywood: This is no JS, right?
+
+29:00 lindsay: Yeah, exactly.
+
+29:03 Mike Hollywood: I am here. OK. OK. So it says get node version blah blah for Windows using Docker with NPM. Yes.
+
+29:13 lindsay: They're doing docker.
+
+29:15 Mike Hollywood: It's I'll share my screen. So this this is when I go to node JS. This is.
+
+29:27 lindsay: No, we don't. Just go.
+
+29:35 Mike Hollywood: We go. This is where I went.
+
+29:40 lindsay: Yeah. Yeah, just do the knit one down. Yep, try that.
+
+29:56 Mike Hollywood: OK.
+
+29:58 lindsay: And windows.
+
+29:59 Mike Hollywood: All things very.
+
+30:00 lindsay: That seems a bit better, so just go to the Windows node versions. Down a little bit. That's the bottom of the page. There they go. Yeah. Maybe noticed? I don't know.
+
+30:15 Mike Hollywood: Noticed or noticed. Let's try that. Sure.
+
+30:19 lindsay: Let's have a look. Maybe it's correct?
+
+30:24 Mike Hollywood: Well, you are learning. I'm learning things. All sorts of new things.
+
+30:31 lindsay: That seems a bit techy. If you go down down, it's a very old project. That's discoveries. Get out of here, you know. Yeah, go to them. Go.
+
+30:43 Mike Hollywood: NVM, Windows 7.
+
+30:45 lindsay: Try that one, try that one. I'm working that doesn't seem right as well 'cause. It's a personal project.
+
+30:58 Mike Hollywood: Yeah, it does not look great.
+
+31:02 lindsay: Councillor, thank you.
+
+31:03 Mike Hollywood: It's.
+
+31:06 lindsay: How to install? Node on Macy's. Yeah, there is an installer.
+
+31:23 Mike Hollywood: I mean, I guess that's maybe it's just that this is the author.
+
+31:28 lindsay: Yeah. Isn't too bad. I'm just looking down the windows. There's a set of windows. Oh, it's this one. This is the guy. This is the one. Yeah. This is the one that's up looking on the Windows work, yeah.
+
+31:53 Mike Hollywood: Guessing I just want to do this right. Download the zip.
+
+31:59 lindsay: No, I would there like a binary. I just want the binary and just install the binary. Well, I can I. No.
+
+32:17 Mike Hollywood: And for Windows.
+
+32:19 lindsay: Install MVM windows not using. This is what I'm reading. I'm reading this is artificial dog say. Yeah. Yeah, there we go. There's some installers looks good. Setup.exe sounds pretty useful.
+
+32:41 Mike Hollywood: That one. You're the old try. Do we want yuck? Sure, yeah. Make all the changes you want. I don't care. Notify sure. Me of everything, absolutely. Nope.
+
+33:15 lindsay: I.
+
+33:29 Mike Hollywood: OK. Now it said open with PowerShell PowerShell, who knows what PowerShell is.
+
+33:36 lindsay: Just make command line.
+
+33:37 Mike Hollywood: OK. Please stop this. And you, Lily, do you know you're gonna be coaching me through this today?
+
+33:46 lindsay: Hello.
+
+33:47 Mike Hollywood: Let's see. Alright, PowerShell, here we go. Alright, blank, blank. Clean slate for us.
+
+33:54 lindsay: So personally grand guidelines, OK. So just to know that and. Why did it not and just just type node minus version or node JS minus version? Minus version with it together. Just node space. Oh sorry. Nope. Nope. Space and then minus and then version straight away minus V is probably correct. Try that.
+
+34:25 Mike Hollywood: Yes. Yes.
+
+34:29 lindsay: Try and node JS minus. V. Space. I think what we should try that we should say is that we can do the roll out planning, OK. I think it's easy for us to put our plan together with this. Instructions I put on the chat. Much better.
+
+34:59 Mike Hollywood: No.
+
+35:00 lindsay: And it's it's black here.
+
+35:03 Mike Hollywood: OK, cool.
+
+35:07 lindsay: What those costs are? Because we still buy time to clear. So it's more about meeting them halfway, but yeah, we partnered. With. I wonder if they want all of that. We already know where every project, so that's what we should just say. Yeah. And. Because we have an exact algorithm already done. So we want to say for more.
+
+35:49 lindsay (Unverified): Violence
+
+35:57 Mike Hollywood: New to developing the node JS. That's me. OK. Yeah. The immigration.
+
+36:25 lindsay (Unverified): Violence Violence
+
+36:25 lindsay: Instructions I put on the chat. Much better.
+
+36:25 Mike Hollywood: No.
+
+36:25 lindsay: And it's it's black here.
+
+36:25 lindsay (Unverified): Violence
+
+36:25 Unknown user: Violence
+
+36:25 lindsay: Instructions I put on the chat. Much better.
+
+36:25 Mike Hollywood: No.
+
+36:25 lindsay: And it's it's black here.
+
+36:25 lindsay (Unverified): Violence
+
+36:26 Unknown user: Violence
+
+36:26 lindsay: Instructions I put on the chat. Much better.
+
+36:26 Mike Hollywood: No.
+
+36:26 lindsay: And it's it's black here.
+
+36:26 lindsay (Unverified): Violence
+
+36:26 Unknown user: Violence
+
+36:26 lindsay: Instructions I put on the chat. Much better.
+
+36:26 Mike Hollywood: No.
+
+36:26 lindsay: And it's it's black here.
+
+36:26 lindsay (Unverified): Violence
+
+36:27 Unknown user: Violence
+
+36:27 lindsay: Instructions I put on the chat. Much better.
+
+36:27 Mike Hollywood: No.
+
+36:27 lindsay: And it's it's black here.
+
+36:27 lindsay (Unverified): Violence
+
+36:27 Unknown user: Violence
+
+36:27 lindsay: Instructions I put on the chat. Much better.
+
+36:27 Mike Hollywood: No.
+
+36:27 lindsay: And it's it's black here.
+
+36:27 lindsay (Unverified): Violence
+
+36:28 Unknown user: Violence
+
+36:28 lindsay: Instructions I put on the chat. Much better.
+
+36:28 Mike Hollywood: No.
+
+36:28 lindsay: And it's it's black here.
+
+36:28 lindsay (Unverified): Violence
+
+36:28 Unknown user: Violence
+
+36:28 lindsay: Instructions I put on the chat. Much better.
+
+36:28 Mike Hollywood: No.
+
+36:28 lindsay: And it's it's black here.
+
+36:28 lindsay (Unverified): Violence
+
+36:29 Unknown user: Violence
+
+36:29 lindsay: Instructions I put on the chat. Much better.
+
+36:29 Mike Hollywood: No.
+
+36:29 lindsay: And it's it's black here.
+
+36:29 lindsay (Unverified): Violence
+
+36:29 Unknown user: Violence
+
+36:29 lindsay: Instructions I put on the chat. Much better.
+
+36:29 Mike Hollywood: No.
+
+36:29 lindsay: And it's it's black here.
+
+36:29 lindsay (Unverified): Violence
+
+36:29 Unknown user: Violence
+
+36:29 lindsay: Instructions I put on the chat. Much better.
+
+36:29 Mike Hollywood: No.
+
+36:29 lindsay: And it's it's black here.
+
+36:29 lindsay (Unverified): Violence
+
+36:30 Unknown user: Violence
+
+36:30 lindsay: Instructions I put on the chat. Much better.
+
+36:30 Mike Hollywood: No.
+
+36:30 lindsay: And it's it's black here.
+
+36:30 lindsay (Unverified): Violence
+
+36:30 Unknown user: Violence
+
+36:30 lindsay: Instructions I put on the chat. Much better.
+
+36:30 Mike Hollywood: No.
+
+36:30 lindsay: And it's it's black here.
+
+36:30 lindsay (Unverified): Violence
+
+36:31 Unknown user: Violence
+
+36:31 lindsay: Instructions I put on the chat. Much better.
+
+36:31 Mike Hollywood: No.
+
+36:31 lindsay: And it's it's black here.
+
+36:31 lindsay (Unverified): Violence
+
+36:31 Unknown user: Violence
+
+36:31 lindsay: Instructions I put on the chat. Much better.
+
+36:31 Mike Hollywood: No.
+
+36:31 lindsay: And it's it's black here.
+
+36:31 lindsay (Unverified): Violence
+
+36:32 Unknown user: Violence
+
+36:32 lindsay: Instructions I put on the chat. Much better.
+
+36:32 Mike Hollywood: No.
+
+36:32 lindsay: And it's it's black here.
+
+36:32 lindsay (Unverified): Violence
+
+36:32 Unknown user: Violence
+
+36:32 lindsay: Instructions I put on the chat. Much better.
+
+36:32 Mike Hollywood: No.
+
+36:32 lindsay: And it's it's black here.
+
+36:32 lindsay (Unverified): Violence
+
+36:33 Unknown user: Violence
+
+36:33 lindsay: Instructions I put on the chat. Much better.
+
+36:33 Mike Hollywood: No.
+
+36:33 lindsay: And it's it's black here.
+
+36:33 lindsay (Unverified): Violence
+
+36:33 Unknown user: Violence
+
+36:33 lindsay: Instructions I put on the chat. Much better.
+
+36:33 Mike Hollywood: No.
+
+36:33 lindsay: And it's it's black here.
+
+36:33 lindsay (Unverified): Violence
+
+36:34 Unknown user: Violence
+
+36:34 lindsay: Instructions I put on the chat. Much better.
+
+36:34 Mike Hollywood: No.
+
+36:34 lindsay: And it's it's black here.
+
+36:34 lindsay (Unverified): Violence
+
+36:34 Unknown user: Violence
+
+36:34 lindsay: Instructions I put on the chat. Much better.
+
+36:34 Mike Hollywood: No.
+
+36:34 lindsay: And it's it's black here.
+
+36:34 lindsay (Unverified): Violence
+
+36:34 Unknown user: Violence
+
+36:34 lindsay: Instructions I put on the chat. Much better.
+
+36:34 Mike Hollywood: No.
+
+36:34 lindsay: And it's it's black here.
+
+36:34 lindsay (Unverified): Violence
+
+36:35 Unknown user: Violence
+
+36:35 lindsay: Instructions I put on the chat. Much better.
+
+36:35 Mike Hollywood: No.
+
+36:35 lindsay: And it's it's black here.
+
+36:35 lindsay (Unverified): Violence
+
+36:35 Unknown user: Violence
+
+36:35 lindsay: Instructions I put on the chat. Much better.
+
+36:35 Mike Hollywood: No.
+
+36:35 lindsay: And it's it's black here.
+
+36:35 lindsay (Unverified): Violence
+
+36:36 Unknown user: Violence
+
+36:36 lindsay: Instructions I put on the chat. Much better.
+
+36:36 Mike Hollywood: No.
+
+36:36 lindsay: And it's it's black here.
+
+36:36 lindsay (Unverified): Violence
+
+36:36 Unknown user: Violence
+
+36:36 lindsay: Instructions I put on the chat. Much better.
+
+36:36 Mike Hollywood: No.
+
+36:36 lindsay: And it's it's black here.
+
+36:36 lindsay (Unverified): Violence
+
+36:37 Unknown user: Violence
+
+36:37 lindsay: Instructions I put on the chat. Much better.
+
+36:37 Mike Hollywood: No.
+
+36:37 lindsay: And it's it's black here.
+
+36:37 lindsay (Unverified): Violence
+
+36:37 Unknown user: Violence
+
+36:37 lindsay: Instructions I put on the chat. Much better.
+
+36:37 Mike Hollywood: No.
+
+36:37 lindsay: And it's it's black here.
+
+36:37 lindsay (Unverified): Violence
+
+36:38 Unknown user: Violence
+
+36:38 lindsay: Instructions I put on the chat. Much better.
+
+36:38 Mike Hollywood: No.
+
+36:38 lindsay: And it's it's black here.
+
+36:38 lindsay (Unverified): Violence
+
+36:38 Unknown user: Violence
+
+36:38 lindsay: Instructions I put on the chat. Much better.
+
+36:38 Mike Hollywood: No.
+
+36:38 lindsay: And it's it's black here.
+
+36:38 lindsay (Unverified): Violence
+
+36:39 Unknown user: Violence
+
+36:39 lindsay: Instructions I put on the chat. Much better.
+
+36:39 Mike Hollywood: No.
+
+36:39 lindsay: And it's it's black here.
+
+36:39 lindsay (Unverified): Violence
+
+36:39 Unknown user: Violence
+
+36:39 lindsay: Instructions I put on the chat. Much better.
+
+36:39 Mike Hollywood: No.
+
+36:39 lindsay: And it's it's black here.
+
+36:39 lindsay (Unverified): Violence
+
+36:39 Unknown user: Violence
+
+36:39 lindsay: Instructions I put on the chat. Much better.
+
+36:39 Mike Hollywood: No.
+
+36:39 lindsay: And it's it's black here.
+
+36:39 lindsay (Unverified): Violence
+
+36:40 Unknown user: Violence
+
+36:40 lindsay: Instructions I put on the chat. Much better.
+
+36:40 Mike Hollywood: No.
+
+36:40 lindsay: And it's it's black here.
+
+36:40 lindsay (Unverified): Violence
+
+36:40 Unknown user: Violence
+
+36:40 lindsay: Instructions I put on the chat. Much better.
+
+36:40 Mike Hollywood: No.
+
+36:40 lindsay: And it's it's black here. Yes.
+
+36:41 Mike Hollywood: Well, now I need to learn how to do that.
+
+36:41 lindsay (Unverified): Violence
+
+36:45 lindsay: The sky.
+
+36:47 Mike Hollywood: What's that?
+
+36:47 lindsay: Yeah. I'm. I'm. I'm saying your pal show wonder. Not your actual screen.
+
+36:47 lindsay (Unverified): Violence
+
+36:51 Mike Hollywood: Yeah.
+
+36:53 lindsay: Maybe.
+
+36:54 lindsay (Unverified): Violence
+
+36:56 Mike Hollywood: She's here. She's doing the whole thing.
+
+36:57 lindsay (Unverified): Violence
+
+37:01 Mike Hollywood: OK. So this was the original thing. This was the page. And then went here, right? And this is same guy, right, Corey Butler. It says pre-existing.
+
+37:18 lindsay: And it says no minus V. Yeah. So. So if we run that unstopp.
+
+37:34 Mike Hollywood: Tell me when you're there's come to the nonstar. Say one more time.
+
+37:38 lindsay: It looks like as long as we sort of go through this, it would be good. Let's do that.
+
+37:48 Mike Hollywood: Now, didn't we just do this? And.
+
+38:01 lindsay: We did a lot and then we downloaded the installer and then we ran. The timings separately because that with brand it's gonna be one person for six weeks. Whereas on problems you have a team of like 5 people. So I think it's not really A1 for one.
+
+38:21 Mike Hollywood: And then that's what came maybe. Maybe we just need to. I'm gonna start over with PowerShell or something like that.
+
+38:32 lindsay (Unverified): Do you think there should
+
+38:38 Mike Hollywood: That's a Mac thing, right? The visual.
+
+38:39 lindsay (Unverified): Do you think there should Do you think there should
+
+38:39 lindsay: And it says no minus V.
+
+38:39 lindsay (Unverified): Do you think there should
+
+38:39 Unknown user: Do you think there should
+
+38:39 lindsay: And it says no minus V.
+
+38:39 lindsay (Unverified): Do you think there should
+
+38:40 Unknown user: Do you think there should
+
+38:40 lindsay: And it says no minus V.
+
+38:40 lindsay (Unverified): Do you think there should
+
+38:40 Unknown user: Do you think there should
+
+38:40 lindsay: And it says no minus V.
+
+38:40 lindsay (Unverified): Do you think there should
+
+38:41 Unknown user: Do you think there should
+
+38:41 lindsay: And it says no minus V.
+
+38:41 lindsay (Unverified): Do you think there should
+
+38:41 Unknown user: Do you think there should
+
+38:41 lindsay: And it says no minus V.
+
+38:41 lindsay (Unverified): Do you think there should
+
+38:42 Unknown user: Do you think there should
+
+38:42 lindsay: And it says no minus V.
+
+38:42 lindsay (Unverified): Do you think there should
+
+38:42 Unknown user: Do you think there should
+
+38:42 lindsay: And it says no minus V.
+
+38:42 lindsay (Unverified): Do you think there should
+
+38:43 Unknown user: Do you think there should
+
+38:43 lindsay: And it says no minus V.
+
+38:43 lindsay (Unverified): Do you think there should
+
+38:43 Unknown user: Do you think there should
+
+38:43 lindsay: And it says no minus V.
+
+38:43 lindsay (Unverified): Do you think there should
+
+38:43 Unknown user: Do you think there should
+
+38:43 lindsay: And it says no minus V.
+
+38:43 lindsay (Unverified): Do you think there should
+
+38:44 Unknown user: Do you think there should
+
+38:44 lindsay: And it says no minus V.
+
+38:44 lindsay (Unverified): Do you think there should
+
+38:44 Unknown user: Do you think there should
+
+38:44 lindsay: And it says no minus V.
+
+38:44 lindsay (Unverified): Do you think there should
+
+38:45 Unknown user: Do you think there should
+
+38:45 lindsay: And it says no minus V.
+
+38:45 lindsay (Unverified): Do you think there should
+
+38:45 Unknown user: Do you think there should
+
+38:45 lindsay: And it says no minus V.
+
+38:45 lindsay (Unverified): Do you think there should
+
+38:46 Unknown user: Do you think there should
+
+38:46 lindsay: And it says no minus V. No, it's actually a window. It's actually it was originally made for Windows Visual Studio, it's just it's just.
+
+38:46 Mike Hollywood: So yeah, I I thought I had Visual Studio.
+
+38:46 lindsay (Unverified): Do you think there should
+
+38:47 Mike Hollywood: I do.
+
+38:48 lindsay: OK so.
+
+38:49 lindsay (Unverified): Do you think there should
+
+38:52 lindsay: So. They need a clawed code.
+
+38:56 lindsay (Unverified): Do you think there should
+
+38:59 lindsay: Now we just need to get clawed code and then install it. So and then install it into Visual Studio, because then once you're in here, this is where you can use code code to write the MD files.
+
+39:03 lindsay (Unverified): Do you think there should
+
+39:12 Mike Hollywood: OK.
+
+39:14 lindsay: You know.
+
+39:14 lindsay (Unverified): Do you think there should
+
+39:15 lindsay: So you've got copilot. I can see there.
+
+39:17 lindsay (Unverified): Do you think there should
+
+39:19 lindsay: So this is so. Get a Claude code account. Because it runs on the command line and you just can chat to it. Yeah. And we've got to get NPM installed to install. So that's the best thing to do is install node and NPM. Then we can install this then that's the tricky bit. It's going to be getting. Just we've just got to get in node and NPM installed. Just along the noisy roads instructions. Thanks for the brown stuff. Is there any help? On site for the rush rather than. Just personal.
+
+40:17 Mike Hollywood: I understand that.
+
+40:19 lindsay: OK. Obviously gonna be template that will probably end. Oh, I I do the it's because you're yeah.
+
+40:31 Mike Hollywood: Let's do that.
+
+40:32 lindsay: Easy for a bunch of things.
+
+40:35 Mike Hollywood: Sure, that's that. Yeah.
+
+40:39 lindsay: Yeah, I'll get a piece of toilet paper. Matt, I'm updating. I'm not doing any of that. I always do the band, but I'm not doing it on time anyway. That's not the topic of the conversation. We figure that out sooner. Definitely got to get MPM installed, so we'll do that where we'll do that's. That's the only hard bit. In the.
+
+41:21 Mike Hollywood: We can skip this.
+
+41:23 lindsay: My skin already looks good with. I don't need to get stuff.
+
+41:37 Mike Hollywood: I'll be paying. Let's see. Everything. Probably. Maybe it's gone.
+
+41:44 lindsay: Best by.
+
+41:54 Mike Hollywood: Believe me, this. All right. So I think we're signed up now. Right.
+
+42:08 lindsay: Oh, so that. Is. So now we need to get. NPM installed, so we need to go back to that document.
+
+42:20 Mike Hollywood: Listen.
+
+42:21 lindsay: Yeah, but OK, let's just see. We'll find out very quickly. So if we go go into. There.
+
+42:31 Mike Hollywood: Visual Studio. Let's try that.
+
+42:34 lindsay: Then go pit pit terminal. So where it says terminal on the top there, which is basically just because what you're looking at there is document new terminal just basically the same as PowerShell and see it's down there. Just paste it down right down the bottom.
+
+42:49 Mike Hollywood: OK.
+
+42:50 lindsay: And we don't have NPM installed, so we've just got to get NPM sorted.
+
+42:56 Mike Hollywood: OK.
+
+42:56 lindsay: So.
+
+42:58 Mike Hollywood: That's the best way to do that.
+
+43:00 lindsay: What's the best way to know, right? I think I think we're asking that in the second, OK, let's do that. Let's follow.
+
+43:15 Mike Hollywood: First or second?
+
+43:15 lindsay: Just just. Try denigrating matters because they're all going to work. We just need to be light, so change for Windows using Docker within. I don't really want to install Docker. OK. Well, let's just do that. Using docker. Yeah, we don't want to do that. We don't want to do that. Try brew.
+
+43:48 Mike Hollywood: Yeah, it's grayed out. Won't let me choose it.
+
+43:51 lindsay: Yeah. What are the other options chocolatey.
+
+43:54 Mike Hollywood: Property, Travolta.
+
+44:01 lindsay: Try.
+
+44:03 Mike Hollywood: This or get a prebuilt node JS for Windows running in Windows installer.
+
+44:08 lindsay: That's exactly what.
+
+44:20 Mike Hollywood: Yeah, we're the Sky river next.
+
+44:25 lindsay: Great. Great.
+
+44:27 Mike Hollywood: Yeah, next sure.
+
+44:30 lindsay: All right. Right.
+
+44:34 Mike Hollywood: Looks fine to me.
+
+44:35 lindsay: And say.
+
+44:37 Mike Hollywood: Hey. If they install those also installed traffic.
+
+44:48 lindsay: I don't know. Say no. Yep, looks good.
+
+44:58 Mike Hollywood: Yes, sure.
+
+45:08 lindsay: Sounds much better. So if you go back, yeah, just go up, go up. Just push. Just do up on the top.
+
+45:16 Mike Hollywood: Yeah.
+
+45:16 lindsay: Just take that command and stick it in. But you can just scan history if you do up arrow, it'll probably be there. In the terminal, in the terminal down.
+
+45:28 Mike Hollywood: Oh, this terminal, yeah.
+
+45:30 lindsay: And. Yeah. And then just go return.
+
+45:34 Mike Hollywood: Say that again.
+
+45:34 lindsay: Yep, I'll just try again. Type exit and we'll get a new terminal because I think it's just we need a new terminal.
+
+45:43 Mike Hollywood: Type exit.
+
+45:44 lindsay: The topics and I'll close that. And then just go and grab another terminal from that. Yep, new terminal and then paste that command. Yep, let's try that. Is not recognized. OK. Try. Try. OK, sorry.
+
+46:23 Mike Hollywood: It's not like an NPM thing.
+
+46:28 lindsay: Make sure check the box. OK. Reading instructions download follow the instruction prompts. Make sure to check the box that includes NPM and the installation. I don't think we saw that. Let's just run the executable to install it again. And then there's a box through there. Yeah, yeah, change it. Right. And then? Yes, will be installed. Let's just go through all of these because it said make sure the box includes MPM so will be installed. Yep, yes, add to path just in there to path will be installed, yes. Node JS runtime. One of the very top. Will be installed.
+
+47:26 Mike Hollywood: Looks like all will be installed.
+
+47:28 lindsay: OK, it looks like it looks pretty good MPM. So as they all look like corporate, this guy then do ultimate. Let's do this one. Check this.
+
+47:39 Mike Hollywood: Yeah, let's do that.
+
+47:40 lindsay: 1.
+
+47:43 Mike Hollywood: Alright and guess. Finish.
+
+47:48 lindsay: Cool.
+
+47:49 Mike Hollywood: So that just popped up. Can you? Sure.
+
+47:57 lindsay: Yep, I'd go, yes. Maybe that was her.
+
+48:01 Mike Hollywood: Yes.
+
+48:07 lindsay: I just need a tour of setting.
+
+48:15 Mike Hollywood: I snapped it.
+
+48:16 lindsay: Try that history. Try that again.
+
+48:21 Mike Hollywood: OK.
+
+48:22 lindsay: Try try eggs. I don't know.
+
+48:23 Mike Hollywood: So it's two.
+
+48:24 lindsay: Try exit and open another terminal.
+
+48:38 Mike Hollywood: OK. No. The status.
+
+48:50 lindsay: OK, let's have a look. Just try node minus. Try node space minus V on that in the terminal.
+
+49:02 Mike Hollywood: Keep Dan here. No face. Nasty.
+
+49:06 lindsay: That's good.
+
+49:08 Mike Hollywood: OK.
+
+49:08 lindsay: That's good. Now do NPM space minus V. That's not good, right? So we need to.
+
+49:19 Mike Hollywood: Running scripts is disabled on this system.
+
+49:30 lindsay: OK. Let's go and make that enabled.
+
+49:36 Mike Hollywood: Unless that's like something that.
+
+49:44 lindsay: OK, OK. Once the station is completed, I can see what it's saying. Once the installation is completed. Open PowerShell so we're not opening PowerShell, we're just opening. So if we go to the. If you go to the. To the application Finder thing and just type PowerShell.
+
+50:06 Mike Hollywood: Yep.
+
+50:06 lindsay: And then.
+
+50:11 Mike Hollywood: OK.
+
+50:14 lindsay: And then. 2.
+
+50:18 Mike Hollywood: MPMV maybe see if. It.
+
+50:24 lindsay: NVM install latest. I'm looking at this. I want to put it on to the screen I'm sharing.
+
+50:33 Mike Hollywood: OK.
+
+50:55 lindsay: So this if you can see the screen. This. Sagam Powell shall do that, and then do that.
+
+51:12 Mike Hollywood: OK. All installations recognized.
+
+51:18 lindsay: Which is good. And then do that.
+
+51:21 Mike Hollywood: And the uninstall latest. He was 2441. Assuming I wanna do that.
+
+51:50 lindsay: Yep, I think so.
+
+51:57 Mike Hollywood: OK, sure.
+
+52:01 lindsay: Umm. Then you go in VM. I mean you then you go in VM list to see all the available VM NVM, space LS.
+
+52:16 Mike Hollywood: OK. Payment output.
+
+52:26 lindsay: And you get some numbers, hopefully.
+
+52:30 Mike Hollywood: Yep. Oh, sorry. You're not looking at. Yeah, it's 2441.
+
+52:35 lindsay: That doesn't go in VM space. Use 2441.
+
+52:39 Mike Hollywood: Yep did that.
+
+52:40 lindsay: And then change the measure in the original to be. Change the vision I had without. And then do NPM minus space minus V.
+
+52:57 Mike Hollywood: OK. What's step 10 there? I need to do that.
+
+53:01 lindsay: It says. To change the version of node, we don't. Know. So then NPM space minus V.
+
+53:15 Mike Hollywood: Is it? Is that 2 version?
+
+53:18 lindsay: All right, that's enough. That's the place where you can do space minus V is the same space space minus version. Space, hyphen, hyphen minus version is the same AS-B.
+
+53:29 Mike Hollywood: Yeah, it's. It's still says the same thing says. Running scripts is disabled on this system.
+
+53:41 lindsay: It's gonna be left.
+
+53:49 Mike Hollywood: OK. Hey how can I update this? You should tell us.
+
+54:10 lindsay: OK. Can see some instructions.
+
+54:13 Mike Hollywood: All right, let's try this. Umm. Restricted. OK, great. I know it's restricted but. Set a different policy. Bulletstormed. Right.
+
+55:03 lindsay: OK.
+
+55:10 Mike Hollywood: Let's try to. Start power show with Ron Edmond as administrator option. Ah.
+
+55:29 lindsay: OK, when you do windows plus X, was there an option which was Windows Powershop brackets admin versus Windows PowerShell?
+
+55:40 Mike Hollywood: Press windows and X.
+
+55:43 lindsay: Yeah. And then.
+
+55:47 Mike Hollywood: It says select Windows PowerShell.
+
+55:50 lindsay: Yeah. Back at admin hopefully.
+
+55:55 Mike Hollywood: Yeah, I actually don't see Windows PowerShell as in option. See Terminal and terminal admin. Right.
+
+56:10 lindsay: It's the same. OK, somewhat kissing.
+
+56:17 Mike Hollywood: To set execution policy right. It seemed. To do. Oh yeah, I'm not sure. Let me share what I'm seeing. Nope, wrong one. Uh, let's try that again. You seeing that?
+
+56:43 lindsay: Yes.
+
+56:45 Mike Hollywood: That's all it happened.
+
+56:47 lindsay: Something happened. I think it's probably worked. I think that has worked.
+
+56:52 Mike Hollywood: OK. So maybe we do the NPM thing again NPMV.
+
+56:56 lindsay: Good here in here I'm here.
+
+56:58 Mike Hollywood: Yeah. Oh, there we go.
+
+57:04 lindsay: Bradenton.
+
+57:04 Mike Hollywood: Fantastic.
+
+57:06 lindsay: OK so. This is getting pretty exciting. We're getting very so. It's two parts to it. One is just using Claude code to generate markdown content and the second part is deploying it onto the web. And that the way I do is with some of the cell which is a is a free level. We could. I think we should. I think we should get Claude code working basically. Right now in the because once you've got the idea, if you show your screen. Because I haven't got the concept.
+
+57:50 Mike Hollywood: Yeah, it should be alright back over here.
+
+57:54 lindsay: Go into Visual Studio.
+
+57:58 Mike Hollywood: Visual Studio, there we go.
+
+58:01 lindsay: OK so. Open up. Which directory are we in? If we just can't find out where we if you go? We're going to put this. We're going to put this. We're going to make a. We're going to make a folder somewhere, which is where all our work is going to live. We don't really want it to be under DOC visuals. I guess so. I think we need to make a fold. Just make a folder and a place. Make a new folder in a useful place like under documents or somewhere, just just wherever you keep your work.
+
+58:44 Mike Hollywood: OK. I mean. This Leah's fine. It's just in my like user folder here.
+
+58:51 lindsay: It just doesn't matter. Call Adam.
+
+58:55 Mike Hollywood: Just call this.
+
+58:59 lindsay: Something on our websites. And then add.
+
+59:06 Mike Hollywood: OK.
+
+59:09 lindsay: Why not?
+
+59:12 Mike Hollywood: Let's try.
+
+59:13 lindsay: It's because whenever you.
+
+59:13 Mike Hollywood: Let's try inside documents.
+
+59:19 lindsay: OK.
+
+59:21 Mike Hollywood: Now it's.
+
+59:23 lindsay: So then. If you see the see the icon, the red blue 3 on it. If you click that it will open up. It opens up so you can see what is in. The conceal file system now, so if you go under documents, see the in the little icons called Untitled Workspace at the top. Just gonna add a folder in here called. Yeah. This is just creating a folder. Websites. Code. OK, cool. And. Now go to. Go to the Claude the web page of Claude code. Which I'll get and then grab that little black guy. And I would put it in the Windows PowerShell one that you've got open. So you can do it as app and Yep Yep. Let's just bring it to life and then we'll have to stop and start Visual Studio, but let's see. Yeah. And. Once that space. OK, that's smoking, right? So if you go, I think we might have to open and close Visual Studio to work. Yeah.
+
+01:00:58 Mike Hollywood: Reopen.
+
+01:01:03 lindsay: Yes. Out of interest down there in the if you change. Open another terminal. Exit that terminal will get another one does say. It's not a, it's not a finish.
+
+01:01:24 Mike Hollywood: You need to make a guide it.
+
+01:01:27 lindsay: Start at the yellow.
+
+01:01:32 Mike Hollywood: Great working directory for.
+
+01:01:35 lindsay: Character, we don't have to move on.
+
+01:01:36 Mike Hollywood: Packets.
+
+01:01:37 lindsay: That is, and just in that down the bottom there, there's tons of different ways to start clog. If you just type cloward in there. Yeah, yeah, yes. OK. Out of interest, go back into the PowerShell place.
+
+01:02:08 Mike Hollywood: Mm-hmm.
+
+01:02:10 lindsay: Well, in that window just type Claude and there. OK. Club card requires get bash if it's not installed. And I can edit. Parents look at Ashley.
+
+01:02:35 Mike Hollywood: And it seems like I should probably download that, huh?
+
+01:02:45 lindsay: Invite to me next week. I didn't hurt. Him. So. I actually I actually bought him. Something from him? It's. I'm gonna put the URL in the chat.
+
+01:03:21 Mike Hollywood: OK.
+
+01:03:25 lindsay: The very change starts to music to be all over the place. The key to not change. So. Yeah. Oh cool.
+
+01:04:01 lindsay (Unverified): Call
+
+01:04:07 Mike Hollywood: Mm-hmm.
+
+01:04:08 lindsay (Unverified): Call Call
+
+01:04:09 lindsay: Parents look at Ashley. Uh. Want to check.
+
+01:04:10 lindsay (Unverified): Call
+
+01:04:11 lindsay: Check daily updates. That's all right. Just.
+
+01:04:16 lindsay (Unverified): Call
+
+01:04:19 lindsay: Skyfall. On that them change that editor to what other options is notepad or Visual Studio code?
+
+01:04:24 lindsay (Unverified): Call
+
+01:04:31 lindsay: Because it's just. Yeah.
+
+01:04:35 lindsay (Unverified): Call
+
+01:04:38 Mike Hollywood: And.
+
+01:04:39 lindsay: That could decide that could decide.
+
+01:04:39 lindsay (Unverified): Call
+
+01:04:42 lindsay: You probably never see this. You never need to know about this.
+
+01:04:44 lindsay (Unverified): Call
+
+01:04:48 lindsay: Yeah. Recommended. It's fine. Because basically. Just use bundled open SSH. Because. Yeah. I just, yeah, yeah. Yep, this is all kind of ticket stuff. You'll never need to really worry about this, because you probably won't be committed.
+
+01:05:15 Mike Hollywood: I can't imagine that.
+
+01:05:17 lindsay: Uh, yeah, I don't cool because. Operating Git you'll do via Claude code. You'll say Claude save all the stuff, build all the stuff. You won't need to know how any of this works, because it will. It knows. I'll just go do launch and let's just see what it says. It'll be interesting. OK. Yeah. That's it's just a command line thing, OK? So let's go back to. The terminate basically go back into.
+
+01:06:00 Mike Hollywood: Power show or?
+
+01:06:00 lindsay: Do it there. Do it there. Do it there. Just go arrow up hopefully.
+
+01:06:05 Mike Hollywood: Arrow up. Oh yeah, that works, huh?
+
+01:06:08 lindsay: Yep, try it. You're there.
+
+01:06:12 Mike Hollywood: A.
+
+01:06:12 lindsay: OK. So just go. Is there aeroke? Just choose which one. If you like dark mode.
+
+01:06:21 Mike Hollywood: I'm a big fan of dark mode. Let's see dark mode.
+
+01:06:24 lindsay: So don't be, don't worry, OK? Select login the method.
+
+01:06:33 Mike Hollywood: Yeah, it's cloud account with subscription, right?
+
+01:06:36 lindsay: Just put one I think so. And go allow. And just to pro, because it's only $20. Why are we doing this again?
+
+01:07:02 Mike Hollywood: It's a tremendous question. Do this. Go over here. Think we already.
+
+01:07:14 lindsay: Yeah.
+
+01:07:16 Mike Hollywood: Yes. OK.
+
+01:07:20 lindsay: So that's Claude. I think maybe we need to buy Claude, so we've got. So keep it on Team Pan.
+
+01:07:32 Mike Hollywood: Game plan, OK.
+
+01:07:34 lindsay: OK. So now go back to go back to. Yeah. Yep. And then just. And we'll just do this. We'll just do this again. OK. Just I think. Go get the pro one. So the 30. Pay monthly 30 bucks. Find.
+
+01:08:09 Mike Hollywood: 8:00 AM. Very good this.
+
+01:08:15 lindsay: I just. I was. I was. Watching, I don't want to do it again.
+
+01:08:22 lindsay (Unverified): These are these are also these are
+
+01:08:28 Mike Hollywood: That's annoying.
+
+01:08:28 lindsay (Unverified): These are these are also these are
+
+01:08:28 Unknown user: These are these are also these are
+
+01:08:28 lindsay: Yeah. Yep.
+
+01:08:28 lindsay (Unverified): These are these are also these are
+
+01:08:29 Unknown user: These are these are also these are
+
+01:08:29 lindsay: Yeah. Yep.
+
+01:08:29 lindsay (Unverified): These are these are also these are
+
+01:08:29 Unknown user: These are these are also these are
+
+01:08:29 lindsay: Yeah. Yep.
+
+01:08:29 lindsay (Unverified): These are these are also these are
+
+01:08:30 Unknown user: These are these are also these are
+
+01:08:30 lindsay: Yeah. Yep.
+
+01:08:30 lindsay (Unverified): These are these are also these are
+
+01:08:30 Unknown user: These are these are also these are
+
+01:08:30 lindsay: Yeah. Yep.
+
+01:08:30 lindsay (Unverified): These are these are also these are
+
+01:08:31 Unknown user: These are these are also these are
+
+01:08:31 lindsay: Yeah. Yep. In the stream, you know.
+
+01:08:31 Mike Hollywood: Which one?
+
+01:08:31 lindsay (Unverified): These are these are also these are
+
+01:08:33 Mike Hollywood: That one.
+
+01:08:33 lindsay: But we can't.
+
+01:08:34 lindsay (Unverified): These are these are also these are
+
+01:08:37 lindsay: We can obviously go and cancel it straight away. And they do paratha it.
+
+01:08:40 lindsay (Unverified): These are these are also these are
+
+01:08:42 lindsay: So let's just get it working.
+
+01:08:46 Mike Hollywood: No, thank you.
+
+01:08:47 lindsay (Unverified): These are these are also these are
+
+01:08:48 lindsay: Then get it working and then just check we're not paying you twice. So huge, you know.
+
+01:08:51 lindsay (Unverified): These are these are also these are
+
+01:08:53 Mike Hollywood: Yeah, just check because it should have gotten your money. E-mail yeah.
+
+01:08:56 lindsay (Unverified): These are these are also these are
+
+01:08:59 lindsay: Juice.
+
+01:09:02 Mike Hollywood: Charged me already. No, I didn't.
+
+01:09:09 lindsay: OK. So now if we go back to.
+
+01:09:16 Mike Hollywood: This could be her crumpet.
+
+01:09:28 lindsay: OK. We're not prompted. Just return. Your poin. TER code. Let's open up that browse. Follow that link. Yep.
+
+01:09:59 Mike Hollywood: We've already did this.
+
+01:10:02 lindsay: Return this device. So. What's the best? What's the best thing to do? It's.
+
+01:10:12 Mike Hollywood: Baby.
+
+01:10:14 lindsay: Yeah. Excess. OK. We delete one of them very quickly.
+
+01:10:24 Mike Hollywood: Yeah.
+
+01:10:25 lindsay: I see. OK. Billing. I will go back to billing and turn billing and turn it off. Cancel client. And then. All right.
+
+01:11:01 Mike Hollywood: Mention termination.
+
+01:11:04 lindsay: OK. Hello my name's. I'm just.
+
+01:11:26 Mike Hollywood: Alright, umm. Inclined. Connectors OK.
+
+01:11:39 lindsay (Unverified): That's my email right
+
+01:11:44 Mike Hollywood: LEAKK.
+
+01:11:47 lindsay (Unverified): That's my email right That's my email right
+
+01:11:48 Unknown user: That's my email right
+
+01:11:48 lindsay: We delete one of them very quickly.
+
+01:11:48 lindsay (Unverified): That's my email right
+
+01:11:48 Unknown user: That's my email right
+
+01:11:48 lindsay: We delete one of them very quickly.
+
+01:11:48 lindsay (Unverified): That's my email right
+
+01:11:49 Unknown user: That's my email right
+
+01:11:49 lindsay: We delete one of them very quickly.
+
+01:11:49 lindsay (Unverified): That's my email right
+
+01:11:49 Unknown user: That's my email right
+
+01:11:49 lindsay: We delete one of them very quickly.
+
+01:11:49 lindsay (Unverified): That's my email right
+
+01:11:49 Unknown user: That's my email right
+
+01:11:49 lindsay: We delete one of them very quickly.
+
+01:11:49 lindsay (Unverified): That's my email right
+
+01:11:50 Unknown user: That's my email right
+
+01:11:50 lindsay: We delete one of them very quickly.
+
+01:11:50 lindsay (Unverified): That's my email right
+
+01:11:50 Unknown user: That's my email right
+
+01:11:50 lindsay: We delete one of them very quickly.
+
+01:11:50 lindsay (Unverified): That's my email right
+
+01:11:51 Unknown user: That's my email right
+
+01:11:51 lindsay: We delete one of them very quickly.
+
+01:11:51 lindsay (Unverified): That's my email right
+
+01:11:51 Unknown user: That's my email right
+
+01:11:51 lindsay: We delete one of them very quickly.
+
+01:11:51 lindsay (Unverified): That's my email right
+
+01:11:52 Unknown user: That's my email right
+
+01:11:52 lindsay: We delete one of them very quickly.
+
+01:11:52 lindsay (Unverified): That's my email right
+
+01:11:52 Unknown user: That's my email right
+
+01:11:52 lindsay: We delete one of them very quickly.
+
+01:11:52 lindsay (Unverified): That's my email right
+
+01:11:53 Unknown user: That's my email right
+
+01:11:53 lindsay: We delete one of them very quickly.
+
+01:11:53 lindsay (Unverified): That's my email right
+
+01:11:53 Unknown user: That's my email right
+
+01:11:53 lindsay: We delete one of them very quickly.
+
+01:11:53 lindsay (Unverified): That's my email right
+
+01:11:53 Unknown user: That's my email right
+
+01:11:53 lindsay: We delete one of them very quickly.
+
+01:11:53 lindsay (Unverified): That's my email right
+
+01:11:54 Unknown user: That's my email right
+
+01:11:54 lindsay: We delete one of them very quickly.
+
+01:11:54 lindsay (Unverified): That's my email right
+
+01:11:54 Unknown user: That's my email right
+
+01:11:54 lindsay: We delete one of them very quickly.
+
+01:11:54 lindsay (Unverified): That's my email right
+
+01:11:55 Unknown user: That's my email right
+
+01:11:55 lindsay: We delete one of them very quickly.
+
+01:11:55 lindsay (Unverified): That's my email right
+
+01:11:55 Unknown user: That's my email right
+
+01:11:55 lindsay: We delete one of them very quickly.
+
+01:11:55 lindsay (Unverified): That's my email right
+
+01:11:56 Unknown user: That's my email right
+
+01:11:56 lindsay: We delete one of them very quickly.
+
+01:11:56 lindsay (Unverified): That's my email right
+
+01:11:56 Unknown user: That's my email right
+
+01:11:56 lindsay: We delete one of them very quickly.
+
+01:11:56 lindsay (Unverified): That's my email right
+
+01:11:56 Unknown user: That's my email right
+
+01:11:56 lindsay: We delete one of them very quickly.
+
+01:11:56 lindsay (Unverified): That's my email right
+
+01:11:57 Unknown user: That's my email right
+
+01:11:57 lindsay: We delete one of them very quickly.
+
+01:11:57 lindsay (Unverified): That's my email right
+
+01:11:57 Unknown user: That's my email right
+
+01:11:57 lindsay: We delete one of them very quickly.
+
+01:11:57 lindsay (Unverified): That's my email right
+
+01:11:58 Unknown user: That's my email right
+
+01:11:58 lindsay: We delete one of them very quickly.
+
+01:11:58 lindsay (Unverified): That's my email right
+
+01:11:58 Unknown user: That's my email right
+
+01:11:58 lindsay: We delete one of them very quickly.
+
+01:11:58 lindsay (Unverified): That's my email right
+
+01:11:59 Unknown user: That's my email right
+
+01:11:59 lindsay: We delete one of them very quickly.
+
+01:11:59 lindsay (Unverified): That's my email right
+
+01:11:59 Unknown user: That's my email right
+
+01:11:59 lindsay: We delete one of them very quickly.
+
+01:11:59 lindsay (Unverified): That's my email right
+
+01:12:00 Unknown user: That's my email right
+
+01:12:00 lindsay: We delete one of them very quickly.
+
+01:12:00 lindsay (Unverified): That's my email right
+
+01:12:00 Unknown user: That's my email right
+
+01:12:00 lindsay: We delete one of them very quickly.
+
+01:12:00 lindsay (Unverified): That's my email right
+
+01:12:00 Unknown user: That's my email right
+
+01:12:00 lindsay: We delete one of them very quickly.
+
+01:12:00 lindsay (Unverified): That's my email right
+
+01:12:01 Unknown user: That's my email right
+
+01:12:01 lindsay: We delete one of them very quickly.
+
+01:12:01 lindsay (Unverified): That's my email right
+
+01:12:01 Unknown user: That's my email right
+
+01:12:01 lindsay: We delete one of them very quickly.
+
+01:12:01 lindsay (Unverified): That's my email right
+
+01:12:02 Unknown user: That's my email right
+
+01:12:02 lindsay: We delete one of them very quickly.
+
+01:12:02 lindsay (Unverified): That's my email right
+
+01:12:02 Unknown user: That's my email right
+
+01:12:02 lindsay: We delete one of them very quickly.
+
+01:12:02 lindsay (Unverified): That's my email right
+
+01:12:03 Unknown user: That's my email right
+
+01:12:03 lindsay: We delete one of them very quickly.
+
+01:12:03 lindsay (Unverified): That's my email right
+
+01:12:03 Unknown user: That's my email right
+
+01:12:03 lindsay: We delete one of them very quickly.
+
+01:12:03 lindsay (Unverified): That's my email right
+
+01:12:04 Unknown user: That's my email right
+
+01:12:04 lindsay: We delete one of them very quickly.
+
+01:12:04 lindsay (Unverified): That's my email right
+
+01:12:04 Unknown user: That's my email right
+
+01:12:04 lindsay: We delete one of them very quickly.
+
+01:12:04 lindsay (Unverified): That's my email right
+
+01:12:04 Unknown user: That's my email right
+
+01:12:04 lindsay: We delete one of them very quickly.
+
+01:12:04 lindsay (Unverified): That's my email right
+
+01:12:05 Unknown user: That's my email right
+
+01:12:05 lindsay: We delete one of them very quickly.
+
+01:12:05 lindsay (Unverified): That's my email right
+
+01:12:05 Unknown user: That's my email right
+
+01:12:05 lindsay: We delete one of them very quickly.
+
+01:12:05 lindsay (Unverified): That's my email right
+
+01:12:06 Unknown user: That's my email right
+
+01:12:06 lindsay: We delete one of them very quickly.
+
+01:12:06 lindsay (Unverified): That's my email right
+
+01:12:06 Unknown user: That's my email right
+
+01:12:06 lindsay: We delete one of them very quickly.
+
+01:12:06 lindsay (Unverified): That's my email right
+
+01:12:07 Unknown user: That's my email right
+
+01:12:07 lindsay: We delete one of them very quickly.
+
+01:12:07 lindsay (Unverified): That's my email right
+
+01:12:07 Unknown user: That's my email right
+
+01:12:07 lindsay: We delete one of them very quickly.
+
+01:12:07 lindsay (Unverified): That's my email right
+
+01:12:07 Unknown user: That's my email right
+
+01:12:07 lindsay: We delete one of them very quickly.
+
+01:12:07 lindsay (Unverified): That's my email right
+
+01:12:08 Unknown user: That's my email right
+
+01:12:08 lindsay: We delete one of them very quickly.
+
+01:12:08 lindsay (Unverified): That's my email right
+
+01:12:08 Unknown user: That's my email right
+
+01:12:08 lindsay: We delete one of them very quickly.
+
+01:12:08 lindsay (Unverified): That's my email right
+
+01:12:09 Unknown user: That's my email right
+
+01:12:09 lindsay: We delete one of them very quickly.
+
+01:12:09 lindsay (Unverified): That's my email right
+
+01:12:09 Unknown user: That's my email right
+
+01:12:09 lindsay: We delete one of them very quickly.
+
+01:12:09 lindsay (Unverified): That's my email right
+
+01:12:10 Unknown user: That's my email right
+
+01:12:10 lindsay: We delete one of them very quickly.
+
+01:12:10 lindsay (Unverified): That's my email right
+
+01:12:10 Unknown user: That's my email right
+
+01:12:10 lindsay: We delete one of them very quickly.
+
+01:12:10 lindsay (Unverified): That's my email right
+
+01:12:11 Unknown user: That's my email right
+
+01:12:11 lindsay: We delete one of them very quickly.
+
+01:12:11 lindsay (Unverified): That's my email right
+
+01:12:11 Unknown user: That's my email right
+
+01:12:11 lindsay: We delete one of them very quickly.
+
+01:12:11 lindsay (Unverified): That's my email right
+
+01:12:11 Unknown user: That's my email right
+
+01:12:11 lindsay: We delete one of them very quickly.
+
+01:12:11 lindsay (Unverified): That's my email right
+
+01:12:12 Unknown user: That's my email right
+
+01:12:12 lindsay: We delete one of them very quickly.
+
+01:12:12 lindsay (Unverified): That's my email right
+
+01:12:12 Unknown user: That's my email right
+
+01:12:12 lindsay: We delete one of them very quickly.
+
+01:12:12 lindsay (Unverified): That's my email right
+
+01:12:13 Unknown user: That's my email right
+
+01:12:13 lindsay: We delete one of them very quickly.
+
+01:12:13 lindsay (Unverified): That's my email right
+
+01:12:13 Unknown user: That's my email right
+
+01:12:13 lindsay: We delete one of them very quickly.
+
+01:12:13 lindsay (Unverified): That's my email right
+
+01:12:14 Unknown user: That's my email right
+
+01:12:14 lindsay: We delete one of them very quickly.
+
+01:12:14 lindsay (Unverified): That's my email right
+
+01:12:14 Unknown user: That's my email right
+
+01:12:14 lindsay: We delete one of them very quickly.
+
+01:12:14 lindsay (Unverified): That's my email right
+
+01:12:15 Unknown user: That's my email right
+
+01:12:15 lindsay: We delete one of them very quickly.
+
+01:12:15 lindsay (Unverified): That's my email right
+
+01:12:15 Unknown user: That's my email right
+
+01:12:15 lindsay: We delete one of them very quickly.
+
+01:12:15 lindsay (Unverified): That's my email right
+
+01:12:16 Unknown user: That's my email right
+
+01:12:16 lindsay: We delete one of them very quickly.
+
+01:12:16 lindsay (Unverified): That's my email right
+
+01:12:16 Unknown user: That's my email right
+
+01:12:16 lindsay: We delete one of them very quickly.
+
+01:12:16 lindsay (Unverified): That's my email right
+
+01:12:16 Unknown user: That's my email right
+
+01:12:16 lindsay: We delete one of them very quickly.
+
+01:12:16 lindsay (Unverified): That's my email right
+
+01:12:17 Unknown user: That's my email right
+
+01:12:17 lindsay: We delete one of them very quickly.
+
+01:12:17 lindsay (Unverified): That's my email right
+
+01:12:17 Unknown user: That's my email right
+
+01:12:17 lindsay: We delete one of them very quickly.
+
+01:12:17 lindsay (Unverified): That's my email right
+
+01:12:18 Unknown user: That's my email right
+
+01:12:18 lindsay: We delete one of them very quickly.
+
+01:12:18 lindsay (Unverified): That's my email right
+
+01:12:18 Unknown user: That's my email right
+
+01:12:18 lindsay: We delete one of them very quickly.
+
+01:12:18 lindsay (Unverified): That's my email right
+
+01:12:19 Unknown user: That's my email right
+
+01:12:19 lindsay: We delete one of them very quickly.
+
+01:12:19 lindsay (Unverified): That's my email right
+
+01:12:19 Unknown user: That's my email right
+
+01:12:19 lindsay: We delete one of them very quickly.
+
+01:12:19 lindsay (Unverified): That's my email right
+
+01:12:20 Unknown user: That's my email right
+
+01:12:20 lindsay: We delete one of them very quickly.
+
+01:12:20 lindsay (Unverified): That's my email right
+
+01:12:20 Unknown user: That's my email right
+
+01:12:20 lindsay: We delete one of them very quickly.
+
+01:12:20 lindsay (Unverified): That's my email right
+
+01:12:21 Unknown user: That's my email right
+
+01:12:21 lindsay: We delete one of them very quickly.
+
+01:12:21 lindsay (Unverified): That's my email right
+
+01:12:21 Unknown user: That's my email right
+
+01:12:21 lindsay: We delete one of them very quickly.
+
+01:12:21 lindsay (Unverified): That's my email right
+
+01:12:21 Unknown user: That's my email right
+
+01:12:21 lindsay: We delete one of them very quickly.
+
+01:12:21 lindsay (Unverified): That's my email right
+
+01:12:22 Unknown user: That's my email right
+
+01:12:22 lindsay: We delete one of them very quickly.
+
+01:12:22 lindsay (Unverified): That's my email right
+
+01:12:22 Unknown user: That's my email right
+
+01:12:22 lindsay: We delete one of them very quickly.
+
+01:12:22 lindsay (Unverified): That's my email right
+
+01:12:23 Unknown user: That's my email right
+
+01:12:23 lindsay: We delete one of them very quickly.
+
+01:12:23 lindsay (Unverified): That's my email right
+
+01:12:23 Unknown user: That's my email right
+
+01:12:23 lindsay: We delete one of them very quickly.
+
+01:12:23 lindsay (Unverified): That's my email right
+
+01:12:24 Unknown user: That's my email right
+
+01:12:24 lindsay: We delete one of them very quickly.
+
+01:12:24 lindsay (Unverified): That's my email right
+
+01:12:24 Unknown user: That's my email right
+
+01:12:24 lindsay: We delete one of them very quickly.
+
+01:12:24 lindsay (Unverified): That's my email right
+
+01:12:25 Unknown user: That's my email right
+
+01:12:25 lindsay: We delete one of them very quickly.
+
+01:12:25 lindsay (Unverified): That's my email right
+
+01:12:25 Unknown user: That's my email right
+
+01:12:25 lindsay: We delete one of them very quickly.
+
+01:12:25 lindsay (Unverified): That's my email right
+
+01:12:25 Unknown user: That's my email right
+
+01:12:25 lindsay: We delete one of them very quickly.
+
+01:12:25 lindsay (Unverified): That's my email right
+
+01:12:26 Unknown user: That's my email right
+
+01:12:26 lindsay: We delete one of them very quickly.
+
+01:12:26 lindsay (Unverified): That's my email right
+
+01:12:26 Unknown user: That's my email right
+
+01:12:26 lindsay: We delete one of them very quickly. I'm reading rapalu reading. Can you download the cloud code?
+
+01:12:27 lindsay (Unverified): That's my email right
+
+01:12:47 lindsay: When prompted. Yeah.
+
+01:13:08 lindsay (Unverified): That's my email right
+
+01:13:10 Mike Hollywood: Elevated a Arizona Claudia high honor federillo. Yeah. Could be.
+
+01:13:18 lindsay (Unverified): That's my email right
+
+01:13:37 lindsay: OK. I've got a suggestion I've got.
+
+01:13:39 lindsay (Unverified): That's my email right
+
+01:13:42 lindsay: A. If you go back to the prompt, I think I was actually looking at exactly the same page you were looking at. If you go back to the.
+
+01:13:50 lindsay (Unverified): That's my email right
+
+01:13:53 Mike Hollywood: Yeah. Yeah. OK. Just are.
+
+01:13:55 lindsay (Unverified): That's my email right
+
+01:13:55 Mike Hollywood: You are you seeing what I'm sharing right now?
+
+01:13:58 lindsay: We. Yeah, try going back to the to the terminal, yeah.
+
+01:14:04 Mike Hollywood: Yep.
+
+01:14:05 lindsay: And then. Go escape. Or control C or something? And then go and clawed again. Just go press the up button and claw.
+
+01:14:25 Mike Hollywood: OK.
+
+01:14:30 lindsay: Anthropic. So now do one. We're not upgrading again. We've already done that.
+
+01:14:45 Mike Hollywood: No. Yeah, it looks like they're just having issues right now in terms of.
+
+01:14:50 lindsay: More. Yeah. OK. So while while we wait 5 minutes for that.
+
+01:14:55 Mike Hollywood: Yeah.
+
+01:14:59 lindsay: Go to. Versal.
+
+01:15:04 Mike Hollywood: Purcell.
+
+01:15:06 lindsay: Yeah, the CEO. I see, yeah. Just create an account, sign up. Just say hobby.
+
+01:15:19 Mike Hollywood: Let's do that.
+
+01:15:22 lindsay: Yeah.
+
+01:15:25 Mike Hollywood: And I really love.
+
+01:15:28 lindsay: And then I continue with.
+
+01:15:30 Mike Hollywood: You Google. I know how not.
+
+01:15:35 lindsay: OK. So these are kind of like hosted websites in here. If if you can you know. Just. I'll get started with one of our templates, just kind of cancel out of just just take a template try. A. Yeah. Just we just.
+
+01:16:07 Mike Hollywood: Yes. Super basic.
+
+01:16:10 lindsay: Super basic.
+
+01:16:13 Mike Hollywood: Do this one.
+
+01:16:15 lindsay: Cool. I don't do it. Yeah. So what was happening? You don't need to connect it to anything. This is.
+
+01:16:29 Mike Hollywood: And it is a diphthong.
+
+01:16:30 lindsay: No. OK. I'll try to get up, damn it. We might have to get a GitHub account. Oh man.
+
+01:16:38 Mike Hollywood: Try again.
+
+01:16:41 lindsay: All of.
+
+01:16:43 Mike Hollywood: Stu, us. Mm-hmm.
+
+01:17:13 lindsay: Brilliant.
+
+01:17:14 Mike Hollywood: I'm gonna find out. No. Do do do.
+
+01:17:30 lindsay: I know it's taking a while, but the power it's going to give us power. I've been totally geeking out about this for the last month going. I can't believe what is possible now.
+
+01:17:45 Mike Hollywood: Yeah, it's. Where's?
+
+01:17:49 lindsay: Oh yeah, we just need to finish down there. Yeah, authorized Versailles.
+
+01:17:54 Mike Hollywood: Yeah. OK.
+
+01:18:02 lindsay: Cool.
+
+01:18:02 Mike Hollywood: And create.
+
+01:18:05 lindsay: So so when? You have account. Yeah, fine. All repositories fine. Basically it's like repository in GitHub is like a project. And then you know, so it's like a remote file system. It's like where you can keep a copy of everything. So you can configure things like for cell to redeploy when GitHub changes and what that means to say you do. You know, you write some code, you check it into GitHub and then automatically will redeploy. The website. But we don't need to. We don't need to do that. And this is basically for Cellars, basically deploying an app for us. Which we will delete. So under the covers it's created a whole app, kind of like you can imagine you can imagine. We're getting into the world of five coding now.
+
+01:19:17 Mike Hollywood: Which is yeah, which is interesting.
+
+01:19:21 lindsay: You can avoid the code of website shortly. You know via code the tech docs for this application. Community dashboard. So you have one application deployed. Which we're going to which we don't need, but you could click on that and you have an app.
+
+01:19:45 Mike Hollywood: OK.
+
+01:19:48 lindsay: So you've deployed, you've just deployed a X JS app.
+
+01:19:54 Mike Hollywood: OK.
+
+01:19:56 lindsay: And we're going to now. We're going to look to install the versaill. Reversal syllab. She's here. To discuss, let's just try if we can do that again over here.
+
+01:20:21 Mike Hollywood: Mm-hmm.
+
+01:20:21 lindsay: It's gonna need to. What would open Claude again? Because if you control C to the end.
+
+01:20:30 Mike Hollywood: And that's good. Yeah, let's try that, see what happens.
+
+01:20:37 lindsay: Not yet. Not yet.
+
+01:20:40 Mike Hollywood: OK.
+
+01:20:41 lindsay: OK. So we will. I'll put the link in the chat and just go down. We'll go down. Just follow your nose on those instructions. 8:00 PM. In PM so the see the third, yeah, yeah. And then take that and then run that in your PowerShell window hopefully. When I said PowerShell I meant this one, yeah.
+
+01:21:37 Mike Hollywood: OK. Can I go back to or should I do? It does it matter where I do it?
+
+01:21:43 lindsay: Doesn't matter. It's a bit. You may need to close a shower window and reopen it.
+
+01:21:47 Mike Hollywood: OK.
+
+01:21:51 lindsay: Aye, that's all good. That's all good. And now that's installed.
+
+01:22:01 Mike Hollywood: Let's close that and open it again, just in case.
+
+01:22:06 lindsay: Because now we need to authenticate. I need to authenticate her cell.
+
+01:22:23 Mike Hollywood: I can do the versatile version thing here, see if it. Hey, nice. OK. Authenticate.
+
+01:22:46 lindsay: OK. Yeah. So run that for sale login and that term, great. Try it from there, yeah. Continue with. We used. Hopefully it then opens a. Right. While I've been doing that, I've updated all my technical documentation. Just gonna.
+
+01:23:28 Mike Hollywood: Truly amazing. How easy all this is? I can. Yeah, it's confusing and stuff, but like alright click this button, enter this code and.
+
+01:23:39 lindsay: Yeah, exactly. And a hell of a lot has gone happened under the covers.
+
+01:23:44 Mike Hollywood: Yeah.
+
+01:23:56 lindsay: OK. I'm just. Need some more documentation. So if you go to. You know that documentation page I had open? You know one I was using as the example. Yeah, the that. No, no, I've got this one here. That one. OK this I just give you another link. This the problem is is. The tool that creates the documentation looks like. Unfortunately, looks exactly like the documentation it generates because so.
+
+01:24:45 Mike Hollywood: OK. So now what do I need to do here?
+
+01:24:51 lindsay: Just shuts your screen and we'll just cut and paste the right command.
+
+01:24:55 Mike Hollywood: Yeah, sorry.
+
+01:24:59 lindsay: So grab that container, right? We'll grab that one. Yep.
+
+01:25:05 Mike Hollywood: OK, let me go back over here.
+
+01:25:07 lindsay: And paste that there. So this is every time you want to regenerate the website, you'd run this. So we're going to go through, it's going to create all the projects and so on. So if you do run this. Go. Yes. OK. Would you like to set up an answer as yes, but see how it's a capital Y if you just go return? What's your project name code? Give it a decent name like. Higher best. I think this has, so I'll call it call it higher based hyphen tech because there might be a few more. Yeah, do that because I think this. Is, yeah. Just trust. It just has to be that because of one thing that's missing in the instructions is to say it has to be a legal name and for a project. Plus just go optional, just go return. Got it. Static H to meld. Just go. Yes, just go. Enter. Make it type yes, capital Y. Just go enter because it's capital Y. Just go. Yes, go, yes.
+
+01:26:22 Mike Hollywood: OK.
+
+01:26:23 lindsay: Just go. Yes, because it's. Linked to exist, no. So just go. Just press enter because it's capital. What project's name? Call it higher. Best hyphen tech. Because I'm not sure of exactly which one's which. Yeah, do that. And just go, yes, just get into that. Just go onto modify settings. No, just go, no.
+
+01:26:50 Mike Hollywood: It is default.
+
+01:26:52 lindsay: Use the default disco, yes.
+
+01:26:56 Mike Hollywood: Good.
+
+01:27:05 lindsay: OK. And if you take that high, I think it's going to be called high vest tech to be honest, but it's just. I think it's.
+
+01:27:18 Mike Hollywood: We'll try.
+
+01:27:20 lindsay: Try it and then just put in there, right? Just put hyphen tech. Went out with a. Cool. Right. We're going to do one more thing. So if you go back to the cell. In the third one, long on the top, Yep.
+
+01:27:40 Mike Hollywood: Yeah.
+
+01:27:40 lindsay: I'll go to the fifth one long from the fifth one on the little dot on it so.
+
+01:27:48 Mike Hollywood: Just gonna do that.
+
+01:27:49 lindsay: The 5th tab from the right from the right.
+
+01:27:53 Mike Hollywood: Oh yeah, this one got it? Yep.
+
+01:27:58 lindsay: And then go to change the drop down to B and we'll see the new project you've deployed. So in the not that drop down this drop down. Have a little. It's based.
+
+01:28:10 Mike Hollywood: Listen.
+
+01:28:10 lindsay: The other one this the middle one. And then go higher. Best tech.
+
+01:28:17 Mike Hollywood: Best time? OK.
+
+01:28:19 lindsay: Right. And then under? Under settings.
+
+01:28:25 Mike Hollywood: Which I will find sooner or later there we go.
+
+01:28:29 lindsay: In the to the very then go to deployment protection on the left. Down, down, down, Yep. And then go look into that. The Internet. See this so then say for cell authentication go to disable that.
+
+01:28:46 Mike Hollywood: OK.
+
+01:28:46 lindsay: Yep. And then go save. That basically makes it publicly available on Internet. So that is the publishing part. Of no no. What Claud does is he creates all the MD files and what the command line does is it pushes, publishes it and makes it beautiful. On the cell. So you've got that URL. So. So let's go back and see if we get Claude working again.
+
+01:29:24 Mike Hollywood: Still dark mood.
+
+01:29:26 lindsay: Try this.
+
+01:29:28 Mike Hollywood: Still.
+
+01:29:29 lindsay: Oh, something flashed up. That was interesting.
+
+01:29:32 Mike Hollywood: Did you see something? Let's just click on there again and see if it recognizes that we're already upgraded and.
+
+01:29:43 lindsay: Aye, not yet. OK. So. We could.
+
+01:29:58 Mike Hollywood: Oh, try this. No, same thing.
+
+01:30:04 lindsay: Try opening a. Incognito window and putting it in just out of interest.
+
+01:30:11 Mike Hollywood: Say it one more time.
+
+01:30:12 lindsay: Put it Incognito window, private browsing window and we'll put that URL and see if that gives us any. Any help?
+
+01:30:21 Mike Hollywood: Mm-hmm.
+
+01:30:28 lindsay: OK. And then we'll sign in.
+
+01:30:31 Mike Hollywood: Oh, wait. No, I don't think I want to do that. 'cause I signed it. I I created it with.
+
+01:30:37 lindsay: Can go over the, yeah.
+
+01:30:40 Mike Hollywood: Yeah.
+
+01:30:41 lindsay: OK. And then we'll in your e-mail. We won't click the link. What we'll do is we will get the verification code. Cool, cool. Cool. Yeah.
+
+01:31:00 lindsay (Unverified): Yeah
+
+01:31:06 Mike Hollywood: Don't have a verification code, I just have a link. All right, we'll try the link. OK. Now I have a I'm OK. That's that's an e-mail.
+
+01:31:30 lindsay: Yes.
+
+01:31:45 Mike Hollywood: Weird.
+
+01:31:55 lindsay: Yeah. So we do have verification code just. Try running Claude update.
+
+01:32:29 Mike Hollywood: OK so. I can just kill this terminal, right? Very clean. All right. Yeah. What do we want to do here? Autopay. Does it think that I'm logged into here? So like multiple planning is. Feel like it's maybe causing an issue. Good morning, Alice.
+
+01:34:21 lindsay: I wonder if we should. Try it. Do this whole thing. I need to log in. Don't think we'd have to do that. I think we need to log in. Let's try. Try when we do. Rather than type Claude on the command line, we'll do clause login.
+
+01:35:00 Mike Hollywood: Let me let me log out here right.
+
+01:35:01 lindsay: OK. Because maybe once logged in as different e-mail address, maybe two accounts logged in.
+
+01:35:09 Mike Hollywood: The system shows no.
+
+01:35:13 lindsay: So I think that's the easiest explanation as you've got to.
+
+01:35:27 Mike Hollywood: So they just signed up for it.
+
+01:35:32 lindsay: So we're definitely Michael, he's our partners. I think that's a few follow up. Yes, yes. And you can just take the minutes. It's just.
+
+01:35:43 Mike Hollywood: OK. And there we go. A link sign in.
+
+01:35:45 lindsay: Like last week or last?
+
+01:35:49 Mike Hollywood: OK.
+
+01:35:51 lindsay: K. Yeah, well, that'll be something. So it's different one. What's interesting is we run a different. So we already have.
+
+01:36:04 Mike Hollywood: I already have a team account.
+
+01:36:08 lindsay: Within the team account to then additionally have to pay for a user. I wonder. To pay for a team account and then for the members on top of that, I just did a personal account. That's why mine is.
+
+01:36:24 Mike Hollywood: Maybe. Umm.
+
+01:36:33 lindsay: OK, members, you got one. You got got one member perfect. Grant so.
+
+01:36:43 Mike Hollywood: And I logged in here.
+
+01:36:46 lindsay: You looked in there. Has marked its upheld.
+
+01:36:50 Mike Hollywood: OK, then we're. Let's go over here. Clean, clean, start new terminal. Yes.
+
+01:37:05 lindsay: Just just type cloud space login when you go here. Just I'm not sure. Go ahead. OK, just going. These are. Basically not telling you any problems either.
+
+01:37:30 Mike Hollywood: Ogmax or a pro? All right, So what do we have here? We have a team plan. That seems different than Max or prime.
+
+01:37:41 lindsay: You're right. This is a team plan, not a Max or a pro plan.
+
+01:37:48 Mike Hollywood: OK. OK.
+
+01:37:57 lindsay (Unverified): It's as simple as that we've got
+
+01:38:50 Mike Hollywood: 200 bucks a year. Perfect.
+
+01:38:51 lindsay: I'm just going on just go 20 a month because I think you have these three accounts and you need to get rid of two of them.
+
+01:38:59 Mike Hollywood: Yeah. Alright so. I'm going to make this official. Yes. No, it's not on the move now that one.
+
+01:39:19 lindsay: Yeah.
+
+01:39:27 Mike Hollywood: Hello.
+
+01:39:29 lindsay: OK. I'm reading it. Claude team plan does not include access to cloud code. Cloud code is specifically available on Pro and Max plans, not team plans to use cloud code. You need to either upgrade your team plan to Pro Max or other options as pay as you go. So either.
+
+01:39:53 Mike Hollywood: So now we have the Pro plan. We are logged in, so let's go with over here. It's just try this again.
+
+01:40:10 lindsay: So this is the. Yep.
+
+01:40:19 Mike Hollywood: Yikes.
+
+01:40:23 lindsay: Yep.
+
+01:40:24 Mike Hollywood: Finally, there we go.
+
+01:40:27 lindsay: I sent. I sent it to continue. 'Cause I asked this.
+
+01:40:33 Mike Hollywood: Wait for steaks? Unacceptable. OK. Yes, he's recommended to cab. Can I trust the files?
+
+01:40:46 lindsay: I think it's we're in a really weird directory, but it doesn't really matter now. We're we're in. It's OK allow. OK.
+
+01:41:06 Mike Hollywood: OK.
+
+01:41:07 lindsay: What I said after you make.
+
+01:41:12 Mike Hollywood: OK.
+
+01:41:14 lindsay: OK. OK so.
+
+01:41:29 Mike Hollywood: And.
+
+01:41:30 lindsay: I can't. Kind of want to exit out of here and reopen this. Reopen the Visual Studio and open up the documents directory.
+
+01:41:43 Mike Hollywood: OK.
+
+01:41:43 lindsay: So I kind of closed this Visio studio down and re open it. And open up the folder documents.
+
+01:41:48 Mike Hollywood: Do I need to get out of this terminal first?
+
+01:41:52 lindsay: No, it'll be fine. It'll just die.
+
+01:41:56 Mike Hollywood: Let's do it regardless, and then.
+
+01:42:01 lindsay: Just come out, violate it sort of thing.
+
+01:42:05 Mike Hollywood: Yeah, alright. Visual Studio is dead.
+
+01:42:09 lindsay: They open up Visual Studio again and then they'll just open it on the documents directory. Go file open. And just change open folder. And then documents. And then.
+
+01:42:28 Mike Hollywood: Not bad documents that document.
+
+01:42:32 lindsay: You can just. Or or open up. Open it on a project base. Like we need a place where we can build the website. So go back just just try and open and you know we made a thing called that code files or something. We made that.
+
+01:42:50 Mike Hollywood: Which, sorry, what was your name?
+
+01:42:53 lindsay: We made it in documents. We created a folder somewhere in documents etc.
+
+01:42:56 Mike Hollywood: Yeah, I thought we created something called code, didn't we? It's not in there. I'm here. I don't think no, it's not in there. Maybe it is in?
+
+01:43:09 lindsay: No, I think I think.
+
+01:43:09 Mike Hollywood: Same thing. OK.
+
+01:43:15 lindsay: Could put on the desktop and then. So one of these two documents folders. It's not a matter. Been ready if we create a new folder.
+
+01:43:41 Mike Hollywood: Websites.
+
+01:43:43 lindsay: Yeah, yeah, websites. Yeah. OK. It's clear. Yeah. So so yes.
+
+01:43:57 Mike Hollywood: SPS code.
+
+01:43:58 lindsay: Yep, Yep. This is we do want to put this in there.
+
+01:44:01 Mike Hollywood: No. OK entitled.
+
+01:44:13 lindsay: Actually it's more.
+
+01:44:16 Mike Hollywood: You're saying saving your savings your hands.
+
+01:44:16 lindsay: OK. This is great. All right, so now get rid of that. See that little in the top right hand corner? There's a little asterisk to star that looks like Claude to the left a little bit. OK, Dave. Yes, proceed. Yeah. So now we're in. So now we can use Claude. To create. To we can just now get Claude to do everything. See one thing to do is you could say create a directory docs doc. Just type in there directory docs. And just say yes and don't ask me again because it's always very sort of. So that's, I mean that's a trivial thing, but it's just created the directory and they'll go go forward slash init and that creates a clawed. In it, install a new cloud. OK, cool. So. With cloud. Code has a context and it can. It will remember things in its context if we said what I do, as I say, when you're creating documents. And it's just looking through this directory and it's trying to understand what's there. So go to #2. And it's just figuring out there's nothing in this folder, but if there was code in there, it would have gone and analyzed all the code and said, oh, this looks like a project about bloody bloody blood.
+
+01:46:12 Mike Hollywood: I'm guessing I want to don't ask again for 5 minutes.
+
+01:46:16 lindsay: Well, this is just saying that Rachel read your file system.
+
+01:46:20 Mike Hollywood: Mm-hmm.
+
+01:46:31 lindsay: And. Then. We'll just like to. And then once you can start typing something, you'd say. Create a dot, create, create an MD, an MD file. Basically we say something like go to higherbest.com, read about the product and create a project description from that website.
+
+01:47:02 Mike Hollywood: Really I can just do that.
+
+01:47:05 lindsay: Yeah, yeah, yeah.
+
+01:47:07 Mike Hollywood: Go to. Best. Create a what?
+
+01:47:14 lindsay: OK. Project description so it's open. It's basically said that thing on the left is basically a file that's going to be written, and it's basically figured out that this is an empty project. So rather than when you ask when you ask to do something, it will look in here. So if you say. The purpose of this is to. Generate. Technical documentation for a product. Then you've never. Then whenever it does something, you'll say, oh, my job's running technical documentation. I will behave. See and this is all stored in this file.
+
+01:47:54 Mike Hollywood: It's amazing.
+
+01:47:55 lindsay: So just go. Yes you can. Just close that file down and just go make this edit. Yes. And never ask again.
+
+01:48:13 Mike Hollywood: Minute. And.
+
+01:48:21 lindsay: Description I think plan sounds big orina can do project plans, but he doesn't know anything about how others.
+
+01:48:27 Mike Hollywood: So this is this is where I can be like your product description and analyze competitors.
+
+01:48:34 lindsay: I would just. I would do them one at a time and say first credit project description that knows what hire best is. Yep, I know. Sort of just going to have to figure out how Claude works now because you want to sort of I in the in the slack chat I put in a, you know, there's context I put in some my documentation standard. So when it writes a document it knows how. To put headings and draw diagrams and make tables and. OK. And let's put it in the docs directory already. OK, now say I'll say. Based. Do you know, Sir, do a competitive tour analysis for. And I mean. For this project. Just do that. Just do that. Just see what happens.
+
+01:49:45 Mike Hollywood: See what happens.
+
+01:49:46 lindsay: You'll be fucking amazed. You'll be fucking amazed.
+
+01:49:48 Mike Hollywood: That's the. That's the crazy thing about all this is you just gotta be, like, #1 doesn't care if you spell shit wrong. It doesn't care if you like, it's just. I know what you're talking about. I know what you're thinking, which is disturbing, but.
+
+01:50:01 lindsay: And then what I do in my Claude? One of the things you can you can add that Claude dot MD file you can write into it if you if you change to a hash. If you type a hash, you can write, you can say. You said that's the project description. Well.
+
+01:50:33 Mike Hollywood: Very flattering.
+
+01:50:36 lindsay: You can also have more than one clerk running at a time. So see if you go onto that. Open another star. Hit another star.
+
+01:50:46 Mike Hollywood: OK. Yeah, I'm here.
+
+01:50:48 lindsay: Yep, Yep. OK. So in this one, while the middle one's working, you can get this one working and you can say say. Create create a read me. And cap do this. Do the read me in capitals. Dot MD in lower case and this is to do with. Based. Looking looking at tyrebest.net. And and make it a make a landing page. Make a landing page for this. Make a landing page. Exactly right. And then.
+
+01:51:44 Mike Hollywood: This is my boy.
+
+01:51:46 lindsay: I'll. I know you can, and I've in AI will send you some instructions, some things that I've added to my clload file so that it puts in columns and makes it just decides when it needs, when it should be columns. OK. So the middle one's nearly finished, the right hand ones on its way.
+
+01:52:13 Mike Hollywood: Alright, so I'm not gonna win this.
+
+01:52:16 lindsay: OK.
+
+01:52:17 Mike Hollywood: So I need. I do need to be a little bit more specific but.
+
+01:52:22 lindsay: Oh, 60 seconds in. Do you want to make the set and read me. Just say #2. OK. So now. Open up a terminal. OK. And then go to. Gov. And history it might be in the history. Disco, arrow up. That one. Whoop, down, down. Do the do this one do. Down, down. Do the deploy one do that one go. Because we set up the other verse, we're going to do the pro. Just go through and link it to the existing project. Would you like to set up a new versal project? Go no.
+
+01:53:31 Mike Hollywood: OK.
+
+01:53:32 lindsay: Oh, what we'll do is we will go to versal and we'll delete the previous website we made and we will just go through. We'll just go through because we move projects. Because we could just copy the files and it's probably so if you go to settings and right in general right down the bottom. Which this is just to delete this project.
+
+01:53:56 Mike Hollywood: Say one more time. Put down one here.
+
+01:53:58 lindsay: Yeah. I think it might be under Jenna.
+
+01:54:03 Mike Hollywood: OK. Three projects.
+
+01:54:07 lindsay: Delete. You need to cut and paste. Cut and paste Mike's projects. It's just easier to make a new project than it is to get the other one working. And anyway, I think we might want to call it higher best. And then don't worry about that. And then we'll go back to the we can probably delete this one as well shortly, but don't worry about it. If we go back to the documentation generator.
+
+01:54:43 Mike Hollywood: She's right.
+
+01:54:46 lindsay: In the in Visual Studio the the command line thing.
+
+01:54:50 Mike Hollywood: I'm in Visual Studio OK yeah.
+
+01:54:51 lindsay: And then go back up, we're going to go through that routine again that we're just going to create a new project. Do that one. Yep.
+
+01:55:00 Mike Hollywood: Yes.
+
+01:55:02 lindsay: And then. And then I'd call her best. Yep, don't don't have to do.
+
+01:55:10 Mike Hollywood: Customer action. You're in a little.
+
+01:55:12 lindsay: Just don't worry about it. Just optional. Don't worry about it and say yes.
+
+01:55:18 Mike Hollywood: I'll be excessive. Oh yeah.
+
+01:55:20 lindsay: Yes.
+
+01:55:21 Mike Hollywood: So.
+
+01:55:23 lindsay: Yes. Say yes, say no. Go on a higher best. Oops.
+
+01:55:31 Mike Hollywood: Nope.
+
+01:55:32 lindsay: Control C and then go through again. It's just gonna cool one project. Just go. Just do it all.
+
+01:55:47 Mike Hollywood: So same thing deploy.
+
+01:55:50 lindsay: Thank you. Yes. Hi abess. Optional.
+
+01:56:03 Mike Hollywood: Yes, yes. Yes.
+
+01:56:08 lindsay: What's the Skype? Mike's projects?
+
+01:56:11 Mike Hollywood: Yes, no harvest.
+
+01:56:14 lindsay: The best. Yes, let's go. Yes. Go. Go. Then we'll have to go and turn on the. We'll have to go back into vercell now and let publicly available.
+
+01:56:34 Mike Hollywood: I have to jump on a call in 2 minutes, but this is fascinating and I don't wanna stop.
+
+01:56:40 lindsay: OK. We'll just go in here.
+
+01:56:43 Mike Hollywood: Yup.
+
+01:56:43 lindsay: Go in here and find the project. Yep, go. Under the drop down hobby or somewhere or just refresh.
+
+01:56:56 Mike Hollywood: I dropped down.
+
+01:56:58 lindsay: Some. Just reload the whole thing and it's refreshed because I think.
+
+01:57:04 Mike Hollywood: There we go.
+
+01:57:06 lindsay: There it is. There it is now. Yeah, did go there. Then go settings.
+
+01:57:12 Mike Hollywood: Yeah, settings.
+
+01:57:12 lindsay: Then go deployment protection. Turn it off, save. Now just go to the URL. Just for a laugh.
+
+01:57:23 Mike Hollywood: Which is where.
+
+01:57:25 lindsay: I think it'd be higher best. Dot. Vessel dot. If you go domains. OK. Scanned domains. Up up a little bit.
+
+01:57:43 Mike Hollywood: Answer that where is it?
+
+01:57:43 lindsay: Third one from the top? Yep.
+
+01:57:45 Mike Hollywood: How do it? Amazing.
+
+01:57:51 lindsay: OK. We're just going competitive analysis and just have a look. And just see what it put under there. And then we've got in order to make the landing page, we've got to make the readme page anyway. I'll let you get all the.
+
+01:58:13 Mike Hollywood: I do have to run, but I wanna. I wanna learn more.
+
+01:58:16 lindsay: OK, what? How long does it call?
+
+01:58:19 Mike Hollywood: An hour, maybe even less.
+
+01:58:22 lindsay: Ping me when shoved off the call because.

@@ -5,6 +5,21 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.17] - 2025-07-22
+
+### Changed
+- CSS table alignment now defaults to top-aligned instead of center-aligned
+- Updated Windows Setup Guide with improved Vercel project setup section
+- Added detailed explanations for each Vercel setup prompt
+- Added comprehensive Vercel project naming requirements and examples
+- Updated deploy.js with clearer project name hint showing URL format
+
+### Documentation
+- Created comprehensive Windows Setup Guide for Claude Code and doc-builder
+- Added explanation of Claude vs Claude Code differences
+- Updated to clarify GitHub is required for Vercel
+- Added details that Pro/Max plan is required for Claude Code
+
 ## [1.5.16] - 2025-07-22
 
 ### Changed

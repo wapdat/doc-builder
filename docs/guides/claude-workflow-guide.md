@@ -35,41 +35,294 @@ graph TD
 
 ### 1.1 Project-Level CLAUDE.md
 
-Create a `CLAUDE.md` file in your project root with specific instructions for documentation:
+Create a comprehensive `CLAUDE.md` file in your project root with specific instructions for documentation. Here's a complete example based on best practices:
 
 ```markdown
 # CLAUDE.md - [Your Project Name]
 
+This file provides comprehensive guidance for Claude Code when working in this project.
+
+## Project Overview
+
+**Name**: Your Project  
+**Purpose**: Brief description of what your project does  
+**Technology Stack**: List your key technologies (e.g., Node.js, React, AWS)
+
 ## Documentation Standards
+
+### Document Title Format
+- Use `# Document Title`
+- Include metadata:
+  - **Generated**: YYYY-MM-DD HH:MM UTC
+  - **Status**: Draft/In Progress/Complete
+  - **Verified**: ✅ (for verified information) / ❓ (for speculated information)
 
 ### Document Structure
 - All documentation goes in the `/docs` directory
-- Use hierarchical folder structure for organization
-- Follow naming convention: `{component}-{topic}-guide.md`
+- Use hierarchical folder structure:
+  - `docs/guides/` - How-to guides and tutorials
+  - `docs/api/` - API reference documentation
+  - `docs/architecture/` - System design and architecture
+  - `docs/deployment/` - Deployment and operations guides
+  - `docs/troubleshooting/` - Common issues and solutions
+
+### Naming Conventions
+- Analysis documents: `analysis-{topic}-{specifics}.md`
+- Design documents: `design-{component}-{feature}.md`
+- Implementation plans: `plan-{feature}-implementation.md`
+- Technical guides: `{component}-{topic}-guide.md`
+- API docs: `api-{service}-reference.md`
+- Testing documents: `test-{component}-{type}.md`
 
 ### Content Requirements
-- Include mermaid diagrams for complex workflows
-- Mark verified (✅) vs speculated (❓) information
-- Add timestamps to all documents
-- Include practical examples
+
+#### 1. Mermaid Diagrams
+- Include diagrams wherever they help explain complex concepts
+- Use consistent node naming and styling
+- Add clear labels and descriptions
+- Example:
+```mermaid
+graph TD
+    A[User Request] --> B{Authentication}
+    B -->|Valid| C[Process Request]
+    B -->|Invalid| D[Return 401]
+    C --> E[Return Response]
+```
+
+#### 2. Information Verification
+- Mark all information as either verified (✅) or speculated (❓)
+- Include sources for verified information
+- Clearly indicate assumptions
+- Example:
+  - ✅ This API endpoint requires authentication (verified in auth.js:45)
+  - ❓ Response time should be under 200ms (performance requirement assumed)
+
+#### 3. Code Examples
+- Use proper syntax highlighting with language identifiers
+- Include context and explanations
+- Show both correct and incorrect usage where applicable
+- Add error handling in examples
+- Example:
+```javascript
+// ✅ Correct way to call the API
+try {
+  const response = await api.getData({ userId: 123 });
+  console.log('Data:', response.data);
+} catch (error) {
+  console.error('API Error:', error.message);
+}
+
+// ❌ Incorrect - missing error handling
+const response = await api.getData({ userId: 123 });
+```
+
+#### 4. Practical Examples
+- Include real-world scenarios
+- Show complete workflows
+- Add curl/httpie examples for APIs
+- Include sample data
 
 ### Writing Style
 - Use clear, concise language
-- Target intermediate technical audience
-- Include code examples with syntax highlighting
-- Add troubleshooting sections
+- Write for your audience's technical level
+- Use active voice
+- Keep paragraphs short (3-4 sentences)
+- Use bullet points for lists
+- Bold important terms on first use
 
-### Metadata Format
+### Standard Sections
+
+Every technical document should include:
+
+1. **Overview** - Brief description of the topic
+2. **Prerequisites** - What the reader needs to know/have
+3. **Main Content** - The core information
+4. **Examples** - Practical demonstrations
+5. **Troubleshooting** - Common issues and solutions
+6. **References** - Links to related documentation
+
+### Tables and Structured Data
+
+Use tables for comparing options or listing properties:
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| id | string | Yes | Unique identifier |
+| name | string | Yes | Display name |
+| active | boolean | No | Whether the item is active |
+
+### File Organization
+- Active files in appropriate directories
+- Move unused files to `archive/` with descriptive names
+- Temporary files must include "temp" in filename
+- Example structure:
+  ```
+  docs/
+  ├── guides/
+  │   ├── setup-guide.md
+  │   └── deployment-guide.md
+  ├── api/
+  │   └── rest-api-reference.md
+  └── archive/
+      └── old-setup-guide-2024.md
+  ```
+
+## Git and Version Control
+
+### Commit Practices
+- Commit after material changes or milestones
+- Use descriptive commit messages
+- Group related changes
+- Format: `type: Brief description`
+- Types: feat, fix, docs, style, refactor, test, chore
+
+### Documentation Updates
+- Update documentation when code changes
+- Keep CHANGELOG.md current
+- Document breaking changes prominently
+
+## Quality Standards
+
+### Completeness
+- Cover all aspects of the topic
+- Include edge cases
+- Document error scenarios
+- Add performance considerations
+
+### Accuracy
+- Verify technical details
+- Test all code examples
+- Review with subject matter experts
+- Update when implementation changes
+
+### Maintenance
+- Review documentation quarterly
+- Update version numbers
+- Check for broken links
+- Verify code examples still work
+
+## Special Considerations
+
+### Security
+- Never include credentials or sensitive data
+- Document security requirements
+- Include authentication examples without real tokens
+- Note security best practices
+
+### Performance
+- Document performance implications
+- Include benchmarks where relevant
+- Note resource requirements
+- Add optimization tips
+
+### Accessibility
+- Use semantic markdown
+- Include alt text for images
+- Ensure good heading hierarchy
+- Write clear link text (not "click here")
+
+## AI-Specific Instructions
+
+When generating documentation:
+
+1. **Always include the metadata header** with generation date and verification status
+2. **Create working examples** that can be copy-pasted
+3. **Add troubleshooting sections** for common problems
+4. **Include mermaid diagrams** for workflows and architectures
+5. **Mark speculated information** clearly with ❓
+6. **Follow the naming conventions** exactly
+7. **Create comprehensive content** - aim for completeness over brevity
+8. **Add cross-references** to related documentation
+
+## Project-Specific Patterns
+
+[Add your project-specific patterns here, such as:]
+- API authentication flow
+- Database connection patterns
+- Error handling conventions
+- Logging standards
+- Testing approaches
+
+## Common Code Snippets
+
+[Add frequently used code patterns for consistency:]
+```javascript
+// Standard error handling pattern
+function handleError(error) {
+  logger.error('Operation failed:', {
+    message: error.message,
+    stack: error.stack,
+    timestamp: new Date().toISOString()
+  });
+  // ... rest of error handling
+}
 ```
-**Generated**: YYYY-MM-DD HH:MM UTC
-**Status**: Draft/Complete
-**Verified**: ✅/❓
-```
+
+## References
+
+- [Project README](/README.md)
+- [API Documentation](/docs/api/)
+- [Architecture Overview](/docs/architecture/)
+- [Contributing Guide](/CONTRIBUTING.md)
 ```
 
 ### 1.2 Global CLAUDE.md Best Practices
 
-Your global `~/.claude/CLAUDE.md` should include:
+Your global `~/.claude/CLAUDE.md` should include universal standards that apply to all projects. Here's an expanded example:
+
+```markdown
+# Global CLAUDE.md Instructions
+
+## Universal Documentation Standards
+
+### Visual Elements
+- Where it makes sense, include diagrams (Mermaid preferred)
+- Use skeleton loaders for UI components
+- For Trello board screenshots:
+  - Save as: @docs/product-requirements/Screenshot YYYY-MM-DD at HH.MM.SS.png
+  - Ensure columns are top-justified
+  - Color-code columns by risk level
+
+### Information Verification
+- Mark all verified vs. speculated information as a general document standard
+- Use ✅ for verified information with source references
+- Use ❓ for assumptions or unverified information
+
+### Development Practices
+- Use Docker V2 for containerization
+- Name temporary test files with "temp" in the filename
+- Do git commits after material changes or milestones
+- Archive unused files by moving to archive/ and renaming
+- After debugging, suggest archiving old unused code
+
+### Directory Organization
+- Create all new markdown docs in the /docs directory
+- Put documents in relevant subdirectories
+- MD docs will always go under the /docs directory
+- Maintain clear folder hierarchies
+
+### Build and Deployment
+- Carefully manage container sizes to prevent bloat
+- Use multi-stage builds for Docker
+- Remove unnecessary dependencies during build
+- Leverage .dockerignore effectively
+- Consider Alpine or slim base images
+- Be cautious with npx vs npm caching issues
+
+### Documentation Maintenance
+- Always maintain a CHANGELOG.md for significant changes
+- Check responsive breakpoints for consistency
+- Use table approach for columns in MD files when appropriate
+
+### Vercel-Specific
+- For public access, disable project/deployment protection in Vercel console
+- Remember to disable Vercel authentication for public projects
+
+### Git Workflow
+- Commit after every big milestone or completed major task
+- Use descriptive commit messages
+- Group related changes in single commits
+```
 
 ```mermaid
 graph LR
@@ -77,19 +330,28 @@ graph LR
     A --> C[Git Workflow]
     A --> D[Quality Checks]
     A --> E[Security Practices]
+    A --> F[Development Tools]
     
     B --> B1[Naming Conventions]
     B --> B2[Markdown Standards]
     B --> B3[Diagram Requirements]
+    B --> B4[Verification Marks]
     
-    C --> C1[Commit Frequency]
-    C --> C2[Branch Strategy]
+    C --> C1[Commit After Milestones]
+    C --> C2[Archive Unused Code]
+    C --> C3[Descriptive Messages]
     
-    D --> D1[Verification Marks]
+    D --> D1[Responsive Testing]
     D --> D2[Changelog Updates]
+    D --> D3[Documentation Reviews]
     
     E --> E1[No Credentials]
     E --> E2[Access Controls]
+    E --> E3[Secure Defaults]
+    
+    F --> F1[Docker V2]
+    F --> F2[Build Optimization]
+    F --> F3[Caching Strategies]
 ```
 
 ## Step 2: Initialize doc-builder
@@ -293,18 +555,45 @@ graph TD
 - Include architecture decisions
 - Document integration points
 - Add performance considerations
+- Note dependencies and version requirements
 
 ### Code Examples
-- Use TypeScript for all examples
-- Include error handling
+- Use the project's primary language (e.g., TypeScript, JavaScript)
+- Include error handling in all examples
 - Show both correct and incorrect usage
 - Add inline comments for clarity
+- Test all examples before including
+- Include import statements
+
+### API Documentation
+- Document all public endpoints
+- Include authentication requirements
+- Show request/response examples
+- Document rate limits
+- Include error response codes
+- Add curl examples for testing
 
 ### Diagrams
 - Use mermaid for all flow diagrams
 - Include sequence diagrams for APIs
 - Add state diagrams for complex logic
 - Create entity relationship diagrams for data models
+- Use consistent styling and colors
+- Add titles to all diagrams
+
+### Testing Documentation
+- Document test setup requirements
+- Include example test cases
+- Show how to run specific test suites
+- Document mocking strategies
+- Include performance benchmarks
+
+### Deployment Documentation
+- Include environment-specific configurations
+- Document secret management
+- Show deployment commands
+- Include rollback procedures
+- Document monitoring setup
 ```
 
 ### 7.2 Documentation Templates
@@ -356,25 +645,43 @@ curl -X POST https://api.example.com/endpoint \
 ## Best Practices Summary
 
 ### Documentation Creation
-1. ✅ Use CLAUDE.md to maintain consistency
-2. ✅ Include visual diagrams for complex concepts
-3. ✅ Provide practical examples
-4. ✅ Mark verification status
-5. ✅ Keep documentation close to code
+1. ✅ Use CLAUDE.md to maintain consistency across all documentation
+2. ✅ Include visual diagrams (Mermaid) for complex concepts and workflows
+3. ✅ Provide practical, working examples that can be copy-pasted
+4. ✅ Mark verification status (✅/❓) for all technical information
+5. ✅ Keep documentation close to code in the /docs directory
+6. ✅ Include metadata headers with timestamps and status
+7. ✅ Add troubleshooting sections for common issues
+8. ✅ Cross-reference related documentation
 
 ### Claude Interaction
-1. ✅ Provide clear, specific requests
-2. ✅ Reference existing patterns
-3. ✅ Request iterative improvements
-4. ✅ Verify technical accuracy
-5. ✅ Ask for troubleshooting sections
+1. ✅ Provide clear, specific requests with expected output format
+2. ✅ Reference existing patterns from CLAUDE.md
+3. ✅ Request iterative improvements - review and refine
+4. ✅ Verify technical accuracy of generated content
+5. ✅ Ask for troubleshooting sections explicitly
+6. ✅ Request examples with error handling
+7. ✅ Specify diagram types needed (sequence, flow, state)
+8. ✅ Ask Claude to check its own work against CLAUDE.md standards
+
+### Documentation Maintenance
+1. ✅ Update docs when code changes
+2. ✅ Archive outdated documentation
+3. ✅ Maintain CHANGELOG.md
+4. ✅ Review documentation quarterly
+5. ✅ Test all code examples
+6. ✅ Check for broken links
+7. ✅ Update version references
 
 ### Deployment
-1. ✅ Test locally before deploying
-2. ✅ Use preview deployments first
-3. ✅ Configure custom domains
-4. ✅ Enable HTTPS
-5. ✅ Monitor deployment health
+1. ✅ Test locally before deploying (npm run dev:docs)
+2. ✅ Build and verify output (npm run build:docs)
+3. ✅ Use preview deployments first
+4. ✅ Configure custom domains if needed
+5. ✅ Enable HTTPS (automatic with Vercel)
+6. ✅ Monitor deployment health
+7. ✅ Disable Vercel authentication for public docs
+8. ✅ Commit documentation changes before deploying
 
 ## Common Issues and Solutions
 

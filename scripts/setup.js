@@ -22,9 +22,9 @@ console.log(chalk.cyan('\n🚀 Welcome to @knowcode/doc-builder!\n'));
 console.log('You can use doc-builder in several ways:\n');
 
 console.log(chalk.yellow('1. Using npx (no installation required):'));
-console.log('   npx @knowcode/doc-builder build');
-console.log('   npx @knowcode/doc-builder dev');
-console.log('   npx @knowcode/doc-builder deploy\n');
+console.log('   npx @knowcode/doc-builder@latest build');
+console.log('   npx @knowcode/doc-builder@latest dev');
+console.log('   npx @knowcode/doc-builder@latest deploy\n');
 
 console.log(chalk.yellow('2. After installing as a dependency:'));
 console.log('   doc-builder build');

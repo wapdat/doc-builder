@@ -21,7 +21,7 @@ The most common issue users face is npx caching an older version of doc-builder.
 
 **Example:**
 ```bash
-$ npx @knowcode/doc-builder --version
+$ npx @knowcode/doc-builder@latest --version
 1.4.11  # Old version!
 
 # But npm shows:
@@ -100,7 +100,7 @@ NPX caches packages to improve performance, but this cache doesn't automatically
 
 3. **Use custom input directory:**
    ```bash
-   npx @knowcode/doc-builder build --input my-docs
+   npx @knowcode/doc-builder@latest build --input my-docs
    ```
 
 ### Build Output Missing
@@ -116,7 +116,7 @@ NPX caches packages to improve performance, but this cache doesn't automatically
 ```bash
 # Clean build
 rm -rf html/
-npx @knowcode/doc-builder build
+npx @knowcode/doc-builder@latest build
 
 # Check output
 ls -la html/
@@ -137,7 +137,7 @@ npm install -g vercel
 vercel --version
 
 # Then retry deployment
-npx @knowcode/doc-builder deploy
+npx @knowcode/doc-builder@latest deploy
 ```
 
 ### Deployment Fails
@@ -153,8 +153,8 @@ npx @knowcode/doc-builder deploy
 2. **Build Not Complete**
    ```bash
    # Build before deploy
-   npx @knowcode/doc-builder build
-   npx @knowcode/doc-builder deploy
+   npx @knowcode/doc-builder@latest build
+   npx @knowcode/doc-builder@latest deploy
    ```
 
 3. **Project Name Already Taken**
@@ -175,7 +175,7 @@ npx @knowcode/doc-builder@latest deploy
 **Solution 2:** Set custom URL
 ```bash
 # Set your actual production URL
-npx @knowcode/doc-builder set-production-url https://my-docs.vercel.app
+npx @knowcode/doc-builder@latest set-production-url https://my-docs.vercel.app
 ```
 
 ## Configuration Issues
@@ -208,7 +208,7 @@ npx @knowcode/doc-builder set-production-url https://my-docs.vercel.app
 
 3. **Use explicit config path:**
    ```bash
-   npx @knowcode/doc-builder build --config ./my-config.js
+   npx @knowcode/doc-builder@latest build --config ./my-config.js
    ```
 
 ## Authentication Issues
@@ -265,7 +265,7 @@ module.exports = {
 **Solutions:**
 ```bash
 # Use different port
-npx @knowcode/doc-builder dev --port 8080
+npx @knowcode/doc-builder@latest dev --port 8080
 
 # Find process using port
 lsof -i :3000  # macOS/Linux
@@ -323,7 +323,7 @@ When reporting issues, include:
 
 1. **Version information:**
    ```bash
-   npx @knowcode/doc-builder --version
+   npx @knowcode/doc-builder@latest --version
    node --version
    npm --version
    ```
