@@ -79,9 +79,6 @@ function initializeMermaidFullScreen() {
     const toolbar = document.createElement('div');
     toolbar.className = 'mermaid-toolbar';
     
-    const title = document.createElement('div');
-    title.textContent = 'Mermaid Diagram';
-    
     const actions = document.createElement('div');
     actions.className = 'mermaid-actions';
     
@@ -91,23 +88,8 @@ function initializeMermaidFullScreen() {
     fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i> Full Screen';
     fullScreenBtn.addEventListener('click', () => openMermaidFullScreen(mermaidDiv, index));
     
-    // Copy SVG button
-    const copyBtn = document.createElement('button');
-    copyBtn.className = 'mermaid-btn';
-    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy SVG';
-    copyBtn.addEventListener('click', () => copyMermaidSVG(mermaidDiv));
-    
-    // Copy Mermaid source button
-    const copyMermaidBtn = document.createElement('button');
-    copyMermaidBtn.className = 'mermaid-btn';
-    copyMermaidBtn.innerHTML = '<i class="fas fa-code"></i> Copy Mermaid';
-    copyMermaidBtn.addEventListener('click', () => copyMermaidSource(mermaidDiv));
-    
     actions.appendChild(fullScreenBtn);
-    actions.appendChild(copyBtn);
-    actions.appendChild(copyMermaidBtn);
     
-    toolbar.appendChild(title);
     toolbar.appendChild(actions);
     
     // Create wrapper for the diagram

@@ -1905,47 +1905,55 @@ tr:hover {
 /* Phosphor Icons Alignment */
 .ph {
   display: inline-block;
-  vertical-align: text-bottom;
-  line-height: 1;
+  vertical-align: text-top;
+  line-height: 0.8;
   position: relative;
-  top: 0.125em; /* Move down to align with text baseline */
+  top: 0.2em; /* Push down to align with x-height of text */
 }
 
 /* Ensure icons in headings are properly aligned */
 h1 .ph, h2 .ph, h3 .ph, h4 .ph, h5 .ph, h6 .ph {
-  font-size: 0.9em; /* Slightly smaller in headings */
-  vertical-align: baseline;
-  top: 0.1em;
+  font-size: 0.85em; /* Slightly smaller in headings */
+  line-height: 0.8;
+  top: 0.15em;
 }
 
 /* Icons in lists need special handling */
 li .ph {
   margin-right: 0.3em;
-  top: 0.1em;
+  font-size: 1.05em;
+  line-height: 0.85;
+  top: 0.15em;
 }
 
 /* Icons in tables */
 td .ph, th .ph {
-  vertical-align: text-bottom;
-  top: 0.125em;
+  line-height: 0.8;
+  top: 0.2em;
 }
 
 /* Icons in navigation */
 .nav-item .ph,
 .nav-title .ph {
   vertical-align: middle;
+  line-height: 1;
   top: 0; /* Navigation items are flex, so no adjustment needed */
 }
 
 /* Icon size adjustments for better visual balance */
-.content p .ph,
-.content li .ph {
-  font-size: 1.1em; /* Slightly larger than text for visual balance */
+.content p .ph {
+  font-size: 1.05em; /* Slightly larger than text for visual balance */
 }
 
 /* Special handling for inline code with icons */
 code .ph {
   font-size: 0.9em;
-  vertical-align: baseline;
+  vertical-align: middle;
+  line-height: 1;
   top: 0;
+}
+
+/* Additional fine-tuning for specific contexts */
+.content-inner .ph {
+  transform: translateY(0.05em); /* Very slight additional adjustment */
 }

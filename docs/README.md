@@ -1,169 +1,277 @@
 # @knowcode/doc-builder
 
+<div align="center">
+
 > Transform your markdown documentation into beautiful, searchable websites with Notion-inspired styling
 
 [![npm version](https://img.shields.io/npm/v/@knowcode/doc-builder)](https://www.npmjs.com/package/@knowcode/doc-builder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## 🚀 Quick Start
-
-Create stunning documentation sites in minutes:
-
+### 🚀 Quick Start
 ```bash
-# Install globally
-npm install -g @knowcode/doc-builder
-
-# Or use with npx
 npx @knowcode/doc-builder@latest deploy
 ```
 
+[**Live Demo**](https://doc-builder-delta.vercel.app) | [**NPM Package**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**GitHub**](https://github.com/knowcode/doc-builder)
+
+</div>
+
+---
+
 ## ✨ Features
 
-### 🎨 Beautiful Design
-- **Notion-inspired UI** - Clean, modern interface that users love
-- **Dark mode support** - Automatic theme switching
-- **Responsive layout** - Perfect on desktop and mobile
-- **Syntax highlighting** - Beautiful code blocks with language support
+<table>
+<tr>
+<td width="50%">
 
-### 🔍 Powerful Search & Navigation
+### 🎨 Design & UX
+- **Notion-inspired UI** - Clean, modern interface
+- **Dark mode support** - Automatic theme switching
+- **Responsive layout** - Perfect on any device
+- **Syntax highlighting** - Beautiful code blocks
+
+### 🔍 Navigation
 - **Full-text search** - Find anything instantly
-- **Smart navigation** - Hierarchical folder structure
+- **Smart navigation** - Hierarchical structure
 - **Breadcrumbs** - Always know where you are
 - **Keyboard shortcuts** - Navigate like a pro
 
-### 📊 Rich Content Support
-- **Mermaid diagrams** - Flowcharts, sequence diagrams, and more
-- **GitHub-flavored markdown** - Tables, task lists, and strikethrough
-- **Interactive tooltips** - Document summaries on hover
-- **Version tracking** - Know which version built your docs
+</td>
+<td width="50%">
 
-### 🚀 Easy Deployment
-- **One-command deploy** - Push to Vercel instantly
-- **Static site generation** - Fast, secure, and scalable
-- **Custom domains** - Your docs, your brand
-- **Preview deployments** - Test before going live
+### 📊 Content Support
+- **Mermaid diagrams** - Visual documentation
+- **GitHub markdown** - Full GFM support
+- **Interactive tooltips** - Document previews
+- **Version tracking** - Build metadata
 
-## 📖 Documentation
+### 🚀 Deployment
+- **One-command deploy** - Push to Vercel
+- **Static generation** - Fast & secure
+- **Custom domains** - Your brand
+- **Preview deploys** - Test changes
 
-Visit our [official documentation](https://www.npmjs.com/package/@knowcode/doc-builder) for detailed guides and API reference.
+</td>
+</tr>
+</table>
 
-## 🎯 Perfect For
+## 🎯 Use Cases
 
-- **Open source projects** - Beautiful docs for your community
-- **Technical teams** - Internal documentation that developers actually use
-- **API documentation** - Clear, searchable API references
-- **Knowledge bases** - Organize and share team knowledge
+<table>
+<tr>
+<td width="25%">
+
+### Open Source
+Beautiful docs for your community
+
+</td>
+<td width="25%">
+
+### Technical Teams
+Internal docs developers love
+
+</td>
+<td width="25%">
+
+### API Docs
+Clear, searchable references
+
+</td>
+<td width="25%">
+
+### Knowledge Base
+Organize team knowledge
+
+</td>
+</tr>
+</table>
 
 ## 🛠️ Simple Workflow
 
-### 1. Initialize Your Project
+<table>
+<tr>
+<td width="25%">
 
+### 1️⃣ Initialize
 ```bash
 npx @knowcode/doc-builder init
 ```
+*Create project structure*
 
-### 2. Write Your Documentation
+</td>
+<td width="25%">
 
-Create markdown files in your `docs` folder:
-
+### 2️⃣ Write Docs
 ```markdown
 # Getting Started
-
-Welcome to our documentation!
-
-## Installation
-
-\`\`\`bash
-npm install amazing-package
-\`\`\`
+Welcome to our docs!
 
 ## Features
-
 - ✅ Feature one
 - ✅ Feature two
-- ✅ Feature three
 ```
+*Use markdown files*
 
-### 3. Build & Preview
+</td>
+<td width="25%">
 
+### 3️⃣ Preview
 ```bash
-# Build your site
-npx doc-builder build
-
-# Preview locally
-npx doc-builder serve
+npx doc-builder dev
 ```
+*Live development server*
 
-### 4. Deploy to Vercel
+</td>
+<td width="25%">
 
+### 4️⃣ Deploy
 ```bash
 npx doc-builder deploy
 ```
+*Push to production*
 
-## 🎨 Customization
+</td>
+</tr>
+</table>
 
-Configure your site with `doc-builder.config.js`:
+## ⚙️ Configuration
 
+<table>
+<tr>
+<td width="50%">
+
+### Basic Config
 ```javascript
 module.exports = {
   siteName: 'Your Amazing Docs',
-  siteDescription: 'Documentation that developers love',
-  features: {
-    mermaid: true,
-    darkMode: true,
-    authentication: false
-  }
+  siteDescription: 'Docs developers love',
+  docsDir: 'docs',
+  outputDir: 'html'
 };
 ```
 
-## 📊 Mermaid Diagram Support
+</td>
+<td width="50%">
 
-Create beautiful diagrams in your markdown:
+### Advanced Features
+```javascript
+features: {
+  mermaid: true,      // Diagrams
+  darkMode: true,     // Theme toggle
+  authentication: true, // Password
+  changelog: true     // Auto-generate
+}
+```
 
+</td>
+</tr>
+</table>
+
+## 📊 Rich Content Examples
+
+<table>
+<tr>
+<td width="50%">
+
+### Mermaid Diagrams
 ```mermaid
 graph LR
-    A[Write Docs] --> B[Build Site]
+    A[Write] --> B[Build]
     B --> C[Deploy]
-    C --> D[Share Knowledge]
+    C --> D[Share]
     
     style A fill:#e1f5fe
     style D fill:#c8e6c9
 ```
 
-## 🔒 Optional Authentication
+</td>
+<td width="50%">
 
-Protect sensitive documentation with built-in authentication:
-
+### Code with Syntax Highlighting
 ```javascript
-features: {
-  authentication: true
-}
+// Beautiful code blocks
+const docBuilder = require('@knowcode/doc-builder');
+
+docBuilder.build({
+  siteName: 'My Docs',
+  features: { darkMode: true }
+});
 ```
 
-## 🌟 Why doc-builder?
+</td>
+</tr>
+</table>
 
-- **Zero configuration** - Works out of the box
-- **Lightning fast** - Static site generation for instant loading
-- **SEO friendly** - Optimized for search engines
+## 🌟 Why Choose doc-builder?
+
+<table>
+<tr>
+<td width="33%">
+
+### 🚀 Performance
+- **Lightning fast** - Static generation
+- **SEO optimized** - Search friendly
 - **Accessible** - WCAG compliant
-- **Version control** - Track changes with Git
+
+</td>
+<td width="33%">
+
+### 🛠️ Developer Experience
+- **Zero config** - Works instantly
+- **Version control** - Git-friendly
 - **Open source** - MIT licensed
 
-## 🤝 Contributing
+</td>
+<td width="33%">
 
-We welcome contributions! Check out our [contribution guide](https://github.com/knowcode/doc-builder) to get started.
+### 💰 Cost Effective
+- **Free hosting** - Vercel free tier
+- **No vendor lock-in** - Your content
+- **Export anywhere** - Static HTML
 
-## 📝 License
+</td>
+</tr>
+</table>
 
-MIT © KnowCode
+## 🤝 Get Involved
+
+<table>
+<tr>
+<td width="50%">
+
+### Contributing
+We welcome contributions! Check our [contribution guide](https://github.com/knowcode/doc-builder) to get started.
+
+**Ways to help:**
+- 🐛 Report bugs
+- 💡 Suggest features
+- 📝 Improve docs
+- 🔧 Submit PRs
+
+</td>
+<td width="50%">
+
+### Community
+Join our growing community of documentation enthusiasts!
+
+**Connect with us:**
+- 📦 [NPM Package](https://www.npmjs.com/package/@knowcode/doc-builder)
+- 🐙 [GitHub Repo](https://github.com/knowcode/doc-builder)
+- 🌐 [Website](https://knowcode.com)
+- 💬 [Discussions](https://github.com/knowcode/doc-builder/discussions)
+
+</td>
+</tr>
+</table>
 
 ---
 
 <div align="center">
-  <p>Built with ❤️ by developers, for developers</p>
-  <p>
-    <a href="https://www.npmjs.com/package/@knowcode/doc-builder">npm</a> •
-    <a href="https://github.com/knowcode/doc-builder">GitHub</a> •
-    <a href="https://knowcode.com">Website</a>
-  </p>
+
+### 📝 License: MIT © KnowCode
+
+Built with ❤️ by developers, for developers
+
+[**Get Started**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**View Demo**](https://doc-builder-delta.vercel.app) | [**Star on GitHub**](https://github.com/knowcode/doc-builder)
+
 </div>

@@ -5,6 +5,19 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.16] - 2025-07-22
+
+### Changed
+- Simplified Mermaid diagram display by removing unnecessary UI elements
+- Removed "Copy to Mermaid" button from diagram toolbar
+- Removed "Copy SVG" button from diagram toolbar
+- Removed "Diagram" heading from Mermaid diagram wrapper
+- Removed "Mermaid Diagram" text label from toolbar
+
+### Improved
+- Cleaner, less cluttered presentation of Mermaid diagrams
+- Full Screen button remains available for better diagram viewing
+
 ## [1.5.15] - 2025-07-22
 
 ### Fixed

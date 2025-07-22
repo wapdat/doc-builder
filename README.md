@@ -177,7 +177,7 @@ module.exports = {
 
 <table>
 <tr>
-<td width="33%">
+<td width="50%">
 
 ### 🏗️ Core Commands
 | Command | Purpose |
@@ -187,8 +187,14 @@ module.exports = {
 | `deploy` | Deploy to Vercel |
 | `init` | Initialize project |
 
+### ⚙️ Config Commands
+| Command | Purpose |
+|---------|---------|
+| `set-production-url` | Set custom URL |
+| `reset-vercel` | Clear settings |
+
 </td>
-<td width="33%">
+<td width="50%">
 
 ### 🔍 SEO Commands
 | Command | Purpose |
@@ -197,14 +203,8 @@ module.exports = {
 | `setup-seo` | Configure SEO |
 | `google-verify` | Add verification |
 
-</td>
-<td width="33%">
-
-### ⚙️ Config Commands
-| Command | Purpose |
-|---------|---------|
-| `set-production-url` | Set custom URL |
-| `reset-vercel` | Clear settings |
+### 📚 Documentation
+All commands support `--help` for detailed options and examples.
 
 </td>
 </tr>
@@ -432,22 +432,22 @@ npx @knowcode/doc-builder deploy --production-url my-docs.vercel.app
 
 <table>
 <tr>
-<td width="33%">
+<td width="50%">
 
-### NPM Link (Dev)
+### Development Integration
+
+**NPM Link (Local Dev)**
+
 ```bash
-# In doc-builder dir
+# In doc-builder directory
 npm link
 
 # In your project
 npm link @knowcode/doc-builder
 ```
-*For local development*
 
-</td>
-<td width="33%">
+**File Reference (Monorepos)**
 
-### File Reference
 ```json
 {
   "devDependencies": {
@@ -456,22 +456,32 @@ npm link @knowcode/doc-builder
   }
 }
 ```
-*For monorepos*
 
 </td>
-<td width="33%">
+<td width="50%">
 
-### Git Repository
+### Production Integration
+
+**NPM Registry (Recommended)**
+
+```json
+{
+  "devDependencies": {
+    "@knowcode/doc-builder": "^1.5.14"
+  }
+}
+```
+
+**Git Repository (Private)**
+
 ```json
 {
   "devDependencies": {
     "@knowcode/doc-builder": 
-      "git+https://github.com/
-       knowcode/doc-builder.git"
+      "git+https://github.com/knowcode/doc-builder.git"
   }
 }
 ```
-*For private repos*
 
 </td>
 </tr>
