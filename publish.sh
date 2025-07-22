@@ -72,16 +72,43 @@ echo ""
 
 # Check for uncommitted changes
 print_step "Checking for uncommitted changes..."
-if ! git diff-index --quiet HEAD --; then
-    print_warning "You have uncommitted changes!"
-    echo ""
-    git status --short
-    echo ""
-    read -p "Do you want to continue anyway? (y/N) " -n 1 -r
-    echo ""
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        print_info "Publishing cancelled."
-        exit 1
+
+# Count uncommitted changes excluding html directory
+UNCOMMITTED_COUNT=$(git diff-index HEAD -- | grep -v "^:.*html/" | wc -l | xargs)
+HTML_CHANGES=$(git diff-index HEAD -- | grep "^:.*html/" | wc -l | xargs)
+
+if [ "$UNCOMMITTED_COUNT" -gt 0 ] || [ "$HTML_CHANGES" -gt 0 ]; then
+    if [ "$UNCOMMITTED_COUNT" -gt 0 ]; then
+        print_warning "You have uncommitted changes!"
+        echo ""
+        git status --short | grep -v "^ M html/"
+        echo ""
+    fi
+    
+    if [ "$HTML_CHANGES" -gt 0 ]; then
+        print_info "Generated HTML files have changed (${HTML_CHANGES} files)"
+        echo ""
+        read -p "Commit generated HTML files? (Y/n) " -n 1 -r
+        echo ""
+        
+        if [[ ! $REPLY =~ ^[Nn]$ ]]; then
+            print_step "Committing HTML files..."
+            git add html/
+            git commit -m "chore: update generated HTML files" > /dev/null
+            print_success "HTML files committed"
+        fi
+    fi
+    
+    # Check again for non-HTML changes
+    UNCOMMITTED_COUNT=$(git diff-index HEAD -- | grep -v "^:.*html/" | wc -l | xargs)
+    if [ "$UNCOMMITTED_COUNT" -gt 0 ]; then
+        echo ""
+        read -p "Continue with uncommitted changes? (y/N) " -n 1 -r
+        echo ""
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            print_info "Publishing cancelled."
+            exit 1
+        fi
     fi
 else
     print_success "Working directory is clean"
