@@ -1,10 +1,10 @@
-# Vercel First-Time Setup Guide - Simplified Process
+# Vercel First-Time Setup Guide
 
 ## Overview
 
-This guide walks you through the streamlined Vercel deployment process when using `@knowcode/doc-builder deploy`. The new Vercel CLI experience has fewer prompts and clearer instructions, making deployment much simpler than before.
+This guide walks you through the Vercel deployment process when using `@knowcode/doc-builder deploy`.
 
-## The Simplified Process
+## The Deployment Process
 
 ### Step 1: Run the Deploy Command
 
@@ -33,7 +33,7 @@ The tool will ask a few simple questions:
 
 ### Step 3: Vercel CLI Takes Over
 
-The new Vercel CLI experience is much simpler with clearer prompts:
+The Vercel CLI will guide you through the following prompts:
 
 #### Deploy Confirmation
 ```
@@ -78,22 +78,6 @@ That's it! Vercel will now:
 ✓ Production: https://my-docs.vercel.app [copied to clipboard]
 ```
 
-## What Changed from the Old Process?
-
-The new Vercel CLI is much simpler:
-
-### Removed Prompts
-- ❌ No more "Found project xyz/html. Link to it?" confusion
-- ❌ No more "Link to different existing project?" complexity
-- ❌ No more manual framework selection (auto-detected)
-- ❌ No more "Make deployment publicly accessible?" (configured later)
-
-### Improved Experience
-- ✅ Clearer prompts with better wording
-- ✅ Automatic framework detection
-- ✅ Fewer steps overall
-- ✅ Less chance for configuration errors
-
 ## Post-Deployment Configuration
 
 ### Making Your Docs Public
@@ -106,12 +90,44 @@ By default, Vercel may protect your deployment. To make docs publicly accessible
 4. Set **Vercel Authentication** to **Disabled**
 5. Click **Save**
 
+### SEO Optimization
+
+Once deployed, optimize your documentation for search engines:
+
+1. **Check SEO Status**:
+   ```bash
+   npx @knowcode/doc-builder@latest seo-check
+   ```
+
+2. **Configure SEO Settings**:
+   ```bash
+   npx @knowcode/doc-builder@latest setup-seo
+   ```
+
+3. **Review the SEO Guide**: See our comprehensive [SEO Optimization Guide](./guides/seo-optimization-guide.md) for best practices
+
+### Google Search Console Setup
+
+Make your documentation discoverable on Google:
+
+1. **Add Verification**:
+   ```bash
+   npx @knowcode/doc-builder@latest google-verify YOUR_VERIFICATION_CODE
+   ```
+
+2. **Submit Sitemap**: 
+   - Your sitemap is automatically generated at `/sitemap.xml`
+   - Submit it in Google Search Console
+
+3. **Full Instructions**: See the [Google Site Verification Guide](./guides/google-site-verification-guide.md)
+
 ### Custom Domain (Optional)
 
 To add a custom domain:
 1. Go to **Settings → Domains**
 2. Add your domain
 3. Follow DNS configuration instructions
+4. Update your sitemap URL in Google Search Console
 
 ### Environment Variables (If Using Authentication)
 
@@ -182,4 +198,4 @@ After successful deployment:
 
 ---
 
-This guide reflects the new, simplified Vercel deployment process. For additional Vercel CLI configuration options, see the [Vercel CLI Setup Guide](./vercel-cli-setup-guide.md).
+For additional Vercel CLI configuration options, see the [Vercel CLI Setup Guide](./vercel-cli-setup-guide.md).

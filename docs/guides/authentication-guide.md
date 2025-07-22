@@ -60,7 +60,7 @@ Create `doc-builder.config.js` in your project root:
 
 ```javascript
 module.exports = {
-  siteName: 'Private Documentation',
+  siteName: '@knowcode/doc-builder',
   siteDescription: 'Internal documentation portal',
   
   features: {
@@ -218,7 +218,7 @@ For more robust authentication, consider:
 ```javascript
 // doc-builder.config.js
 module.exports = {
-  siteName: 'Team Handbook',
+  siteName: '@knowcode/doc-builder',
   features: {
     authentication: true
   },

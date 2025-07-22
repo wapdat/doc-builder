@@ -1,5 +1,5 @@
 module.exports = {
-  "siteName": "Doc Builder",
+  "siteName": "@knowcode/doc-builder",
   "siteDescription": "Beautiful documentation with the least effort possible",
   "docsDir": "docs",
   "outputDir": "html",

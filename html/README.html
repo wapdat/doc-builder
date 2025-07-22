@@ -62,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T18:55:04.119Z",
-  "dateModified": "2025-07-22T18:55:04.119Z",
+  "datePublished": "2025-07-22T19:23:11.898Z",
+  "dateModified": "2025-07-22T19:23:11.898Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/README.html"
@@ -96,7 +96,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.21">Last updated: Jul 22, 2025, 06:55 PM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.22">Last updated: Jul 22, 2025, 07:23 PM UTC</span>
                 </div>
                 
                 
@@ -148,7 +148,7 @@
         <a href="/README.html" class="nav-item active" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
-        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the streamlined Vercel deployment process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
+        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
         <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
@@ -280,29 +280,35 @@
 </table>
 
 <h2><i class="ph ph-gear" aria-label="settings"></i> Configuration</h2>
+<p>Configuration is fully managed through the CLI tools - no manual file editing required! The tool handles all settings automatically during setup and deployment.</p>
 <table>
 <tr>
 <td width="50%">
 
-<h3>Basic Config</h3>
-<pre><code class="language-javascript">module.exports = {
-  siteName: &#39;Your Amazing Docs&#39;,
-  siteDescription: &#39;Docs developers love&#39;,
+<h3>Basic Config (Reference Only)</h3>
+<pre><code class="language-javascript">// doc-builder.config.js
+// This file is auto-generated and managed by the CLI
+module.exports = {
+  siteName: &#39;@knowcode/doc-builder&#39;,
+  siteDescription: &#39;Transform markdown into beautiful documentation&#39;,
   docsDir: &#39;docs&#39;,
   outputDir: &#39;html&#39;
 };
 </code></pre>
+<p><em>The CLI creates and updates this for you</em></p>
 </td>
 <td width="50%">
 
-<h3>Advanced Features</h3>
-<pre><code class="language-javascript">features: {
+<h3>Advanced Features (Reference Only)</h3>
+<pre><code class="language-javascript">// Also managed via CLI commands
+features: {
   mermaid: true,      // Diagrams
   darkMode: true,     // Theme toggle
   authentication: true, // Password
   changelog: true     // Auto-generate
 }
 </code></pre>
+<p><em>Use <code>init</code> or <code>deploy</code> commands to configure</em></p>
 </td>
 </tr>
 </table>
@@ -330,7 +336,7 @@
 const docBuilder = require(&#39;@knowcode/doc-builder&#39;);
 
 docBuilder.build({
-  siteName: &#39;My Docs&#39;,
+  siteName: &#39;@knowcode/doc-builder&#39;,
   features: { darkMode: true }
 });
 </code></pre>

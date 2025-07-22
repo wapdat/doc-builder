@@ -1061,13 +1061,13 @@ tr:hover {
   padding: var(--space-4);
   border-radius: var(--radius-lg);
   overflow-x: auto;
-  margin: var(--space-4) 0;
+  margin: var(--space-2) 0;
 }
 
 /* Mermaid Full Screen Viewer */
 .mermaid-container {
   position: relative;
-  margin: var(--space-6) 0;
+  margin: var(--space-3) 0;
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1129,7 +1129,7 @@ tr:hover {
 }
 
 .mermaid-wrapper {
-  padding: var(--space-6);
+  padding: var(--space-3);
   overflow: auto;
   max-height: 600px;
 }

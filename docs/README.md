@@ -113,25 +113,31 @@ npx @knowcode/doc-builder@latest deploy
 
 ## ⚙️ Configuration
 
+Configuration is fully managed through the CLI tools - no manual file editing required! The tool handles all settings automatically during setup and deployment.
+
 <table>
 <tr>
 <td width="50%">
 
-### Basic Config
+### Basic Config (Reference Only)
 ```javascript
+// doc-builder.config.js
+// This file is auto-generated and managed by the CLI
 module.exports = {
-  siteName: 'Your Amazing Docs',
-  siteDescription: 'Docs developers love',
+  siteName: '@knowcode/doc-builder',
+  siteDescription: 'Transform markdown into beautiful documentation',
   docsDir: 'docs',
   outputDir: 'html'
 };
 ```
+*The CLI creates and updates this for you*
 
 </td>
 <td width="50%">
 
-### Advanced Features
+### Advanced Features (Reference Only)
 ```javascript
+// Also managed via CLI commands
 features: {
   mermaid: true,      // Diagrams
   darkMode: true,     // Theme toggle
@@ -139,6 +145,7 @@ features: {
   changelog: true     // Auto-generate
 }
 ```
+*Use `init` or `deploy` commands to configure*
 
 </td>
 </tr>
@@ -170,7 +177,7 @@ graph LR
 const docBuilder = require('@knowcode/doc-builder');
 
 docBuilder.build({
-  siteName: 'My Docs',
+  siteName: '@knowcode/doc-builder',
   features: { darkMode: true }
 });
 ```

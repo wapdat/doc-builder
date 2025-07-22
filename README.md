@@ -64,7 +64,6 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - 🚀 **Zero Configuration** - Works out of the box
 - 📝 **Markdown Support** - Full GitHub Flavored Markdown
 - 🎨 **Beautiful Theme** - Notion-inspired design
-- 🔄 **Live Reload** - Hot reloading dev server
 - 📦 **Self-Contained** - No setup required
 - 🤖 **Claude Code Ready** - AI-optimized workflows
 
@@ -147,9 +146,6 @@ npx @knowcode/doc-builder@latest deploy
 # Build static HTML
 npx @knowcode/doc-builder@latest build
 
-# Development server
-npx @knowcode/doc-builder@latest dev
-
 # Show help
 npx @knowcode/doc-builder@latest
 ```
@@ -166,7 +162,6 @@ npm install --save-dev @knowcode/doc-builder@latest
 # Use shorter commands
 doc-builder deploy
 doc-builder build
-doc-builder dev
 doc-builder --help
 ```
 *Better for regular use & offline access*
@@ -206,8 +201,8 @@ module.exports = {
   outputDir: 'html',
   
   // Site info
-  siteName: 'My Documentation',
-  siteDescription: 'Documentation for my project',
+  siteName: '@knowcode/doc-builder',
+  siteDescription: 'Transform markdown into beautiful documentation',
   
   // Production URL (optional)
   productionUrl: 'https://my-docs.vercel.app',  // Custom URL to display after deployment
@@ -238,7 +233,6 @@ module.exports = {
 | Command | Purpose |
 |---------|---------|
 | `build` | Generate static HTML |
-| `dev` | Start dev server |
 | `deploy` | Deploy to Vercel |
 | `init` | Initialize project |
 
