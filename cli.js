@@ -12,6 +12,7 @@ const { deployToVercel, setupVercelProject, prepareDeployment } = require('./lib
 const { loadConfig, createDefaultConfig } = require('./lib/config');
 const { generateDescription } = require('./lib/seo');
 const { execSync } = require('child_process');
+const matter = require('gray-matter');
 
 // Package info
 const packageJson = require('./package.json');
