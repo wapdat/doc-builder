@@ -92,7 +92,6 @@ echo ""
 print_step "Checking if version ${CURRENT_VERSION} is already published..."
 if npm view "${PACKAGE_NAME}@${CURRENT_VERSION}" version &> /dev/null; then
     print_error "Version ${CURRENT_VERSION} is already published!"
-    print_info "Please update the version in package.json first."
     echo ""
     
     # Show last few published versions
@@ -103,11 +102,84 @@ if npm view "${PACKAGE_NAME}@${CURRENT_VERSION}" version &> /dev/null; then
     # Suggest next version
     LATEST_VERSION=$(npm view "${PACKAGE_NAME}" version)
     print_info "Latest published version: ${LATEST_VERSION}"
+    
+    # Calculate next versions
+    PATCH_VERSION=$(npx semver ${LATEST_VERSION} -i patch)
+    MINOR_VERSION=$(npx semver ${LATEST_VERSION} -i minor)
+    MAJOR_VERSION=$(npx semver ${LATEST_VERSION} -i major)
+    
     print_info "Suggested next versions:"
-    echo "  - Patch: $(npx semver ${LATEST_VERSION} -i patch)"
-    echo "  - Minor: $(npx semver ${LATEST_VERSION} -i minor)"
-    echo "  - Major: $(npx semver ${LATEST_VERSION} -i major)"
-    exit 1
+    echo "  1) Patch: ${PATCH_VERSION} (bug fixes)"
+    echo "  2) Minor: ${MINOR_VERSION} (new features)"
+    echo "  3) Major: ${MAJOR_VERSION} (breaking changes)"
+    echo ""
+    
+    # Ask user to choose
+    read -p "Would you like to auto-increment the version? (1/2/3/N) " -n 1 -r
+    echo ""
+    
+    case $REPLY in
+        1)
+            NEW_VERSION=$PATCH_VERSION
+            VERSION_TYPE="patch"
+            ;;
+        2)
+            NEW_VERSION=$MINOR_VERSION
+            VERSION_TYPE="minor"
+            ;;
+        3)
+            NEW_VERSION=$MAJOR_VERSION
+            VERSION_TYPE="major"
+            ;;
+        *)
+            print_info "Please update the version in package.json manually."
+            exit 1
+            ;;
+    esac
+    
+    print_step "Updating version to ${NEW_VERSION}..."
+    
+    # Update package.json
+    npm version ${VERSION_TYPE} --no-git-tag-version > /dev/null
+    
+    # Update CHANGELOG.md if it exists
+    if [ -f "CHANGELOG.md" ]; then
+        print_step "Updating CHANGELOG.md..."
+        
+        # Create new changelog entry
+        DATE=$(date +%Y-%m-%d)
+        NEW_ENTRY="## [${NEW_VERSION}] - ${DATE}\n\n### Changed\n- \n\n"
+        
+        # Insert after the header (assuming standard changelog format)
+        sed -i.bak "/^## \[/i\\
+${NEW_ENTRY}" CHANGELOG.md
+        rm CHANGELOG.md.bak
+        
+        print_warning "Please edit CHANGELOG.md to add your changes"
+        print_info "Opening CHANGELOG.md in default editor..."
+        
+        # Open in default editor if available
+        if command -v code &> /dev/null; then
+            code CHANGELOG.md
+        elif command -v nano &> /dev/null; then
+            nano CHANGELOG.md
+        elif command -v vim &> /dev/null; then
+            vim CHANGELOG.md
+        fi
+        
+        echo ""
+        read -p "Press enter when you've updated the CHANGELOG..." -r
+        echo ""
+    fi
+    
+    # Commit the version bump
+    print_step "Committing version bump..."
+    git add package.json package-lock.json CHANGELOG.md 2>/dev/null
+    git commit -m "chore: bump version to ${NEW_VERSION}" > /dev/null
+    print_success "Version bumped to ${NEW_VERSION}"
+    
+    # Update current version for the rest of the script
+    CURRENT_VERSION=$NEW_VERSION
 else
     print_success "Version ${CURRENT_VERSION} is not yet published"
 fi
@@ -183,12 +255,31 @@ if npm publish; then
     echo "  npx ${PACKAGE_NAME}@latest"
     echo ""
     
-    # Suggest next steps
+    # Automatically create and push git tag
+    print_step "Creating git tag v${CURRENT_VERSION}..."
+    if git tag "v${CURRENT_VERSION}" 2>/dev/null; then
+        print_success "Git tag created"
+        
+        echo ""
+        read -p "Push tag to origin? (Y/n) " -n 1 -r
+        echo ""
+        
+        if [[ ! $REPLY =~ ^[Nn]$ ]]; then
+            print_step "Pushing tag to origin..."
+            if git push origin "v${CURRENT_VERSION}"; then
+                print_success "Tag pushed successfully"
+            else
+                print_warning "Failed to push tag. Run manually: git push origin v${CURRENT_VERSION}"
+            fi
+        fi
+    else
+        print_warning "Tag v${CURRENT_VERSION} already exists"
+    fi
+    
+    echo ""
     print_info "Next steps:"
-    echo "  1. Create a git tag: git tag v${CURRENT_VERSION}"
-    echo "  2. Push the tag: git push origin v${CURRENT_VERSION}"
-    echo "  3. Create a GitHub release"
-    echo "  4. Update CHANGELOG.md for the next version"
+    echo "  1. Create a GitHub release at: https://github.com/knowcode/doc-builder/releases/new"
+    echo "  2. Deploy example site: npx @knowcode/doc-builder@latest deploy"
     echo ""
 else
     echo ""
