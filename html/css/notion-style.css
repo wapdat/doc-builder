@@ -1905,26 +1905,29 @@ tr:hover {
 /* Phosphor Icons Alignment */
 .ph {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   line-height: 1;
   position: relative;
-  top: -0.05em; /* Fine-tune vertical centering */
+  top: 0.125em; /* Move down to align with text baseline */
 }
 
-/* Ensure icons in headings are properly sized */
+/* Ensure icons in headings are properly aligned */
 h1 .ph, h2 .ph, h3 .ph, h4 .ph, h5 .ph, h6 .ph {
+  font-size: 0.9em; /* Slightly smaller in headings */
   vertical-align: baseline;
-  top: -0.1em;
+  top: 0.1em;
 }
 
 /* Icons in lists need special handling */
 li .ph {
-  margin-right: 0.2em;
+  margin-right: 0.3em;
+  top: 0.1em;
 }
 
 /* Icons in tables */
 td .ph, th .ph {
-  vertical-align: middle;
+  vertical-align: text-bottom;
+  top: 0.125em;
 }
 
 /* Icons in navigation */
@@ -1932,4 +1935,17 @@ td .ph, th .ph {
 .nav-title .ph {
   vertical-align: middle;
   top: 0; /* Navigation items are flex, so no adjustment needed */
+}
+
+/* Icon size adjustments for better visual balance */
+.content p .ph,
+.content li .ph {
+  font-size: 1.1em; /* Slightly larger than text for visual balance */
+}
+
+/* Special handling for inline code with icons */
+code .ph {
+  font-size: 0.9em;
+  vertical-align: baseline;
+  top: 0;
 }

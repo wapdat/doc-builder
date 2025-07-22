@@ -2,17 +2,28 @@
 
 Beautiful documentation with the least effort possible. A zero-configuration documentation builder that transforms markdown files into stunning static sites.
 
-🔗 **[View Live Example](https://doc-builder-delta.vercel.app)** - See what your documentation will look like!
+<div align="center">
 
-## TL:DR
+🔗 **[View Live Example](https://doc-builder-delta.vercel.app)** | 📦 **[NPM Package](https://www.npmjs.com/package/@knowcode/doc-builder)** | 📚 **[Documentation](https://doc-builder-delta.vercel.app)**
 
-```
+### Quick Start
+```bash
 npx @knowcode/doc-builder deploy
 ```
 
-## Why This Project Exists
+</div>
 
-The main premise of @knowcode/doc-builder is simple: **create beautiful documentation with the least effort possible**. We believe great documentation shouldn't require complex setup, configuration files, or deployment headaches. Just write markdown, run one command, and get a professional documentation site live on the web.
+---
+
+## 🎯 Core Value Proposition
+
+| **Problem** | **Solution** |
+|------------|-------------|
+| Complex documentation setup | Zero configuration needed |
+| Deployment headaches | One-command Vercel deployment |
+| Expensive hosting | Free tier with Vercel |
+| Ugly default themes | Beautiful Notion-inspired design |
+| Manual navigation | Auto-generated from folder structure |
 
 ## What It Does
 
@@ -38,51 +49,76 @@ We chose Vercel as our deployment platform because of their **generous free tier
 
 This aligns perfectly with our mission: beautiful documentation should be accessible to everyone, without worrying about hosting costs or complex server management.
 
-## Features
+## ✨ Features
 
-- 🚀 **Zero Configuration** - Works out of the box with sensible defaults
-- 📝 **Markdown Support** - Write docs in markdown with full GitHub Flavored Markdown support
-- 🎨 **Beautiful Default Theme** - Clean, responsive design inspired by Notion
-- 🔐 **Optional Authentication** - Password-protect your documentation
-- 📊 **Mermaid Diagrams** - Built-in support for diagrams and charts
-- 🌙 **Dark Mode** - Automatic dark mode support
-- 🔄 **Live Reload** - Development server with hot reloading
-- ☁️ **Vercel Integration** - One-command deployment to Vercel
-- 🔍 **SEO Optimized** - Meta tags, Open Graph, Twitter Cards, and structured data
-- ✅ **Google Site Verification** - Easy Google Search Console verification with CLI command
-- 📝 **Front Matter SEO** - Per-page titles, descriptions, and keywords with YAML front matter
-- 🎯 **SEO Analysis** - Built-in `seo-check` command to optimize your content
-- 📦 **Self-Contained** - No configuration or setup required
-- 🤖 **Claude Code Ready** - Optimized for AI-generated documentation workflows
+<table>
+<tr>
+<td width="50%">
 
-## Quick Start
+### 🛠️ Core Features
+- 🚀 **Zero Configuration** - Works out of the box
+- 📝 **Markdown Support** - Full GitHub Flavored Markdown
+- 🎨 **Beautiful Theme** - Notion-inspired design
+- 🔄 **Live Reload** - Hot reloading dev server
+- 📦 **Self-Contained** - No setup required
+- 🤖 **Claude Code Ready** - AI-optimized workflows
 
-No installation needed! Just run:
+</td>
+<td width="50%">
 
+### 🎯 Advanced Features  
+- 🔍 **SEO Optimized** - Meta tags & structured data
+- 🔐 **Authentication** - Password protection
+- 📊 **Mermaid Diagrams** - Built-in diagram support
+- 🌙 **Dark Mode** - Automatic theme switching
+- ☁️ **Vercel Deploy** - One-command deployment
+- ✅ **Google Verification** - Search Console ready
+
+</td>
+</tr>
+</table>
+
+## 🚀 Getting Started
+
+<table>
+<tr>
+<td width="50%">
+
+### Option 1: NPX (No Installation)
 ```bash
-# Build and deploy to Vercel
+# Deploy to Vercel
 npx @knowcode/doc-builder deploy
 
-# Other available commands:
-npx @knowcode/doc-builder build   # Build HTML files only
-npx @knowcode/doc-builder dev      # Start development server
-npx @knowcode/doc-builder          # Show help (default behavior)
+# Build static HTML
+npx @knowcode/doc-builder build
+
+# Development server
+npx @knowcode/doc-builder dev
+
+# Show help
+npx @knowcode/doc-builder
 ```
+*Perfect for trying it out!*
 
-## Installation (Optional)
+</td>
+<td width="50%">
 
-For faster execution and offline use:
-
+### Option 2: NPM Install
 ```bash
+# Install as dev dependency
 npm install --save-dev @knowcode/doc-builder
-```
 
-Then use shorter commands:
-```bash
+# Use shorter commands
+doc-builder deploy
 doc-builder build
 doc-builder dev
-doc-builder deploy
+doc-builder --help
 ```
+*Better for regular use & offline access*
+
+</td>
+</tr>
+</table>
 
 ## First-Time Vercel Deployment
 
@@ -137,132 +173,116 @@ module.exports = {
 };
 ```
 
-## Commands
+## 📋 Commands Overview
 
-### set-production-url
-Set a custom production URL to display after deployment:
-```bash
-# Set your custom production URL
-npx @knowcode/doc-builder set-production-url doc-builder-delta.vercel.app
+<table>
+<tr>
+<td width="33%">
 
-# Or with full protocol
-npx @knowcode/doc-builder set-production-url https://my-custom-domain.com
-```
+### 🏗️ Core Commands
+| Command | Purpose |
+|---------|---------|
+| `build` | Generate static HTML |
+| `dev` | Start dev server |
+| `deploy` | Deploy to Vercel |
+| `init` | Initialize project |
 
-This is useful when you have a custom domain or Vercel alias that differs from the auto-detected URL.
+</td>
+<td width="33%">
 
-### google-verify
+### 🔍 SEO Commands
+| Command | Purpose |
+|---------|---------|
+| `seo-check` | Analyze SEO |
+| `setup-seo` | Configure SEO |
+| `google-verify` | Add verification |
 
-Add Google site verification meta tag for Google Search Console:
+</td>
+<td width="33%">
 
-```bash
-# Add your verification code
-npx @knowcode/doc-builder google-verify YOUR_VERIFICATION_CODE
+### ⚙️ Config Commands
+| Command | Purpose |
+|---------|---------|
+| `set-production-url` | Set custom URL |
+| `reset-vercel` | Clear settings |
 
-# Example
-npx @knowcode/doc-builder google-verify FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ
-```
+</td>
+</tr>
+</table>
 
-This adds the verification meta tag to all generated HTML pages, allowing you to verify ownership in Google Search Console. See the [Google Site Verification Guide](docs/guides/google-site-verification-guide.md) for complete details.
+### 📌 Command Details
 
-### seo-check
+<details>
+<summary><b>🏗️ build</b> - Generate static HTML files</summary>
 
-Analyze and optimize your documentation's SEO:
-
-```bash
-# Check all pages for SEO issues
-npx @knowcode/doc-builder seo-check
-
-# Check a specific page
-npx @knowcode/doc-builder seo-check docs/guide.md
-
-# Future: Auto-fix common issues
-npx @knowcode/doc-builder seo-check --fix
-```
-
-This command analyzes:
-- Title length and optimization (50-60 characters)
-- Meta descriptions (140-160 characters)
-- Keywords usage and relevance
-- Front matter SEO fields
-- Content quality signals
-
-See the [SEO Optimization Guide](docs/guides/seo-optimization-guide.md) for best practices.
-
-### setup-seo
-Interactive SEO configuration wizard:
-```bash
-# Configure all SEO settings
-npx @knowcode/doc-builder setup-seo
-```
-
-This wizard helps you set up:
-- Site URL and author information
-- Social media meta tags (Open Graph, Twitter Cards)
-- Structured data (JSON-LD)
-- Automatic sitemap and robots.txt generation
-
-See the [SEO Guide](docs/guides/seo-guide.md) for complete details.
-
-### build (defaults will work just fine)
-Build the documentation site to static HTML:
 ```bash
 doc-builder build [options]
 
 Options:
   -c, --config <path>  Path to config file (default: "doc-builder.config.js")
-  -i, --input <dir>    Input directory containing markdown files (default: docs)
-  -o, --output <dir>   Output directory for HTML files (default: html)
-  --preset <preset>    Use a preset configuration (available: cybersolstice)
-  --legacy             Use legacy mode for backward compatibility
-  --no-auth            Disable authentication even if configured
-  --no-changelog       Disable automatic changelog generation
+  -i, --input <dir>    Input directory (default: docs)
+  -o, --output <dir>   Output directory (default: html)
+  --preset <preset>    Use a preset configuration
+  --no-auth           Disable authentication
+  --no-changelog      Disable changelog generation
 
 Examples:
-  doc-builder build                        # Build with defaults
+  doc-builder build                          # Build with defaults
   doc-builder build --input docs --output dist
-  doc-builder build --preset notion-inspired # Use Notion-inspired preset
-  doc-builder build --config my-config.js  # Use custom config
+  doc-builder build --preset notion-inspired
 ```
+</details>
 
-### deploy
-Deploy documentation to Vercel (requires Vercel CLI):
+<details>
+<summary><b>☁️ deploy</b> - Deploy to Vercel</summary>
+
 ```bash
 doc-builder deploy [options]
 
 Options:
-  -c, --config <path>         Path to config file (default: "doc-builder.config.js")
-  --no-prod                   Deploy as preview instead of production
-  --force                     Force deployment without confirmation
-  --production-url <url>      Override production URL for this deployment
+  -c, --config <path>     Path to config file
+  --no-prod              Deploy as preview
+  --force                Force without confirmation
+  --production-url <url> Override production URL
 
 Examples:
-  doc-builder deploy                                    # Deploy to production
-  doc-builder deploy --no-prod                          # Deploy as preview only
-  doc-builder deploy --production-url my-docs.vercel.app  # Use custom URL display
-
-First-time setup:
-  The tool will guide you through:
-  1. Installing Vercel CLI (if needed)
-  2. Creating a new Vercel project
-  3. Configuring deployment settings
-  
-Important: After deployment, disable Vercel Authentication in project settings for public docs.
+  doc-builder deploy                    # Deploy to production
+  doc-builder deploy --no-prod          # Deploy as preview
+  doc-builder deploy --production-url my-docs.vercel.app
 ```
+</details>
 
-### init
-Initialize doc-builder in your project:
+<details>
+<summary><b>🔍 seo-check</b> - Analyze SEO optimization</summary>
+
 ```bash
-doc-builder init [options]
+doc-builder seo-check [file]
 
-Options:
-  --config   Create configuration file
-  --example  Create example documentation structure
+Analyzes:
+  • Title length (50-60 chars)
+  • Meta descriptions (140-160 chars)
+  • Keywords usage
+  • Front matter SEO fields
+  • Content quality signals
 
 Examples:
-  doc-builder init --config          # Create doc-builder.config.js
-  doc-builder init --example         # Create example docs folder
+  doc-builder seo-check              # Check all pages
+  doc-builder seo-check docs/guide.md # Check specific page
 ```
+</details>
+
+<details>
+<summary><b>✅ google-verify</b> - Add Google verification</summary>
+
+```bash
+doc-builder google-verify <code>
+
+Examples:
+  doc-builder google-verify YOUR_VERIFICATION_CODE
+  doc-builder google-verify FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ
+```
+</details>
+
 
 ## Project Structure
 
@@ -322,107 +342,153 @@ When using Claude Code to generate documentation, it typically follows these pat
 - **Review Generated Content**: Always review AI-generated documentation for accuracy
 - **Maintain CLAUDE.md**: Keep project-specific instructions in a CLAUDE.md file for consistent documentation style
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
-### NPX Cache Issues
+<table>
+<tr>
+<td width="50%">
 
-The npx command caches packages to speed up subsequent runs. However, this can sometimes cause you to run an older version even after updating. 
+### 🐛 Common Issues
+
+**"Command not found" error**
+```bash
+# Check Node.js version
+node --version  # Need 14+
+
+# Use full package name
+npx @knowcode/doc-builder
+```
+
+**"No markdown files found"**
+- Docs in `docs/` folder?
+- Files have `.md` extension?
+- Try: `--input ./my-docs`
+
+**Vercel deployment fails**
+```bash
+# Reset Vercel settings
+npx @knowcode/doc-builder reset-vercel
+
+# Install Vercel CLI
+npm install -g vercel
+```
+
+</td>
+<td width="50%">
+
+### ⚠️ NPX Cache Issues
 
 **Symptoms:**
-- Running `npx @knowcode/doc-builder` shows an old version number
-- New features aren't available despite updating
-- Changes don't appear after publishing a new version
+- Old version runs despite update
+- New features unavailable
+- Wrong version number shown
 
-**Solution:**
+**Solutions:**
 ```bash
-# Clear the npx cache
+# Clear NPX cache
 npx clear-npx-cache
 
-# Force the latest version
+# Force latest version
 npx @knowcode/doc-builder@latest
 
-# Or specify an exact version
-npx @knowcode/doc-builder@1.4.22
+# Use specific version
+npx @knowcode/doc-builder@1.5.14
 ```
 
 **Prevention:**
-- Always use `@latest` when you want the newest version
-- Clear cache periodically when developing/testing new versions
-- Use `npm install` for projects where you need a specific version
+- Always use `@latest` for newest
+- Clear cache when testing
+- Use `npm install` for projects
 
-### Other Common Issues
+</td>
+</tr>
+</table>
 
-**"Command not found" error**
-- Ensure Node.js 14+ is installed: `node --version`
-- Try with full package name: `npx @knowcode/doc-builder`
+### 🔗 Production URL Issues
 
-**Build fails with "No markdown files found"**
-- Check that your docs are in the `docs/` folder (or specified input directory)
-- Ensure files have `.md` extension
-- Use `--input` flag to specify a different directory
+<details>
+<summary>Wrong URL displayed after deployment?</summary>
 
-**Vercel deployment fails**
-- Run `npx @knowcode/doc-builder reset-vercel` to clear settings
-- Ensure Vercel CLI is installed: `npm install -g vercel`
-- Check that the `html/` directory was created by build command
+**Option 1: Config File**
+```javascript
+// doc-builder.config.js
+module.exports = {
+  productionUrl: 'https://my-docs.vercel.app'
+};
+```
 
-**Wrong production URL displayed**
-- The deployment may show a deployment-specific URL instead of your custom domain
-- Solution 1: Set production URL in config:
-  ```javascript
-  // doc-builder.config.js
-  module.exports = {
-    productionUrl: 'https://my-docs.vercel.app',
-    // ... other config
-  };
-  ```
-- Solution 2: Use command to set it:
-  ```bash
-  npx @knowcode/doc-builder set-production-url my-docs.vercel.app
-  ```
-- Solution 3: Override for a single deployment:
-  ```bash
-  npx @knowcode/doc-builder deploy --production-url my-docs.vercel.app
-  ```
-
-## Using in Other Projects
-
-### Option 1: NPM Link (Development)
-
-While developing the doc-builder:
-
+**Option 2: CLI Command**
 ```bash
-# In doc-builder directory
+npx @knowcode/doc-builder set-production-url my-docs.vercel.app
+```
+
+**Option 3: Deploy Override**
+```bash
+npx @knowcode/doc-builder deploy --production-url my-docs.vercel.app
+```
+</details>
+
+## 🔗 Integration Options
+
+<table>
+<tr>
+<td width="33%">
+
+### NPM Link (Dev)
+```bash
+# In doc-builder dir
 npm link
 
-# In your other project
+# In your project
 npm link @knowcode/doc-builder
 ```
+*For local development*
 
-### Option 2: File Reference
+</td>
+<td width="33%">
 
-In your project's `package.json`:
-
+### File Reference
 ```json
 {
   "devDependencies": {
-    "@knowcode/doc-builder": "file:../path/to/doc-builder"
+    "@knowcode/doc-builder": 
+      "file:../path/to/doc-builder"
   }
 }
 ```
+*For monorepos*
 
-### Option 3: Git Repository
+</td>
+<td width="33%">
 
-Once published:
-
+### Git Repository
 ```json
 {
   "devDependencies": {
-    "@knowcode/doc-builder": "git+https://github.com/knowcode/doc-builder.git"
+    "@knowcode/doc-builder": 
+      "git+https://github.com/
+       knowcode/doc-builder.git"
   }
 }
 ```
+*For private repos*
 
-## License
+</td>
+</tr>
+</table>
 
-MIT
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE) file for details
+
+---
+
+<div align="center">
+
+### Quick Links
+
+[**NPM Package**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**Live Demo**](https://doc-builder-delta.vercel.app) | [**Report Issues**](https://github.com/knowcode/doc-builder/issues) | [**Changelog**](CHANGELOG.md)
+
+Made with ❤️ by the @knowcode team
+
+</div>

@@ -5,6 +5,17 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.15] - 2025-07-22
+
+### Fixed
+- Improved Phosphor icon vertical alignment using more aggressive CSS positioning
+- Icons now use `vertical-align: text-top` with `top: 0.2em` offset for better x-height alignment
+- Reduced line-height to 0.8 to prevent icons from affecting line spacing
+
+### Changed
+- Enhanced icon CSS to ensure proper alignment across different text contexts
+- Icons now properly align with the text baseline in all scenarios
+
 ## [1.5.14] - 2025-07-22
 
 ### Fixed
