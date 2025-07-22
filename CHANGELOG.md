@@ -5,6 +5,17 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.14] - 2025-07-22
+
+### Fixed
+- Fixed vertical alignment of Phosphor icons - they now properly center with text
+- Added CSS rules for proper icon positioning in different contexts (headings, lists, tables)
+- Icons no longer appear too high relative to the text baseline
+
+### Changed
+- Added comprehensive Phosphor icon CSS alignment rules at the end of notion-style.css
+- Fine-tuned icon positioning with `vertical-align: middle` and slight top offset adjustment
+
 ## [1.5.13] - 2025-07-22
 
 ### Added
