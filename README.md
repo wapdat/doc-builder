@@ -49,6 +49,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - 🔄 **Live Reload** - Development server with hot reloading
 - ☁️ **Vercel Integration** - One-command deployment to Vercel
 - 🔍 **SEO Optimized** - Meta tags, Open Graph, Twitter Cards, and structured data
+- ✅ **Google Site Verification** - Easy Google Search Console verification with CLI command
 - 📦 **Self-Contained** - No configuration or setup required
 - 🤖 **Claude Code Ready** - Optimized for AI-generated documentation workflows
 
@@ -146,6 +147,20 @@ npx @knowcode/doc-builder set-production-url https://my-custom-domain.com
 ```
 
 This is useful when you have a custom domain or Vercel alias that differs from the auto-detected URL.
+
+### google-verify
+
+Add Google site verification meta tag for Google Search Console:
+
+```bash
+# Add your verification code
+npx @knowcode/doc-builder google-verify YOUR_VERIFICATION_CODE
+
+# Example
+npx @knowcode/doc-builder google-verify FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ
+```
+
+This adds the verification meta tag to all generated HTML pages, allowing you to verify ownership in Google Search Console. See the [Google Site Verification Guide](docs/guides/google-site-verification-guide.md) for complete details.
 
 ### setup-seo
 Interactive SEO configuration wizard:
