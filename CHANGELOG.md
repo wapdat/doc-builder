@@ -5,7 +5,7 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.5.19] - 2025-07-22
+## [1.5.20] - 2025-07-22
 
 ### Fixed
 - Force table cells to top-align with !important CSS
@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added explicit table th/td rules with !important
 - Added rules for nested elements in table cells
 - Fixes issue where table cells were center-aligned instead of top-aligned
+
+## [1.5.19] - 2025-07-22
+
+### Fixed
+- Force table cells to top-align with !important CSS (version was already published)
 
 ## [1.5.18] - 2025-07-22
 

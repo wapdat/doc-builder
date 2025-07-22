@@ -704,6 +704,45 @@ table th > * {
   vertical-align: top;
 }
 
+/* Remove top margin from first element in table cells */
+td > *:first-child,
+th > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* Remove bottom margin from last element in table cells */
+td > *:last-child,
+th > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Specifically target common block elements that might be first in cells */
+td > h1:first-child,
+td > h2:first-child,
+td > h3:first-child,
+td > h4:first-child,
+td > h5:first-child,
+td > h6:first-child,
+td > p:first-child,
+td > ul:first-child,
+td > ol:first-child,
+td > blockquote:first-child,
+td > pre:first-child,
+th > h1:first-child,
+th > h2:first-child,
+th > h3:first-child,
+th > h4:first-child,
+th > h5:first-child,
+th > h6:first-child,
+th > p:first-child,
+th > ul:first-child,
+th > ol:first-child,
+th > blockquote:first-child,
+th > pre:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 tr:last-child td {
   border-bottom: none;
 }
