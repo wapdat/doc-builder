@@ -5,6 +5,23 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.12] - 2025-07-22
+
+### Documentation
+- 📚 **Updated all Vercel documentation** for the simplified setup process
+- ✨ **Rewrote vercel-first-time-setup-guide.md** with streamlined 6-step process
+- 🔧 **Updated vercel-cli-setup-guide.md** to focus on installation and advanced usage
+- 📝 **Simplified README.md deployment section** to 4 clear steps
+- 🐛 **Updated troubleshooting-guide.md** with new deployment solutions
+- 🎯 **Removed references to complex prompts** and confusing options
+- 📖 **Added 'What Changed' section** highlighting improvements
+
+### Documentation Improvements
+- No more confusing "Found project xyz/html" prompts
+- No more root directory confusion
+- Clear, straightforward deployment flow
+- Better error messages and solutions
+
 ## [1.5.11] - 2025-07-22
 
 ### Fixed
