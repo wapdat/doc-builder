@@ -62,8 +62,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-22T16:12:47.246Z",
-  "dateModified": "2025-07-22T16:12:47.246Z",
+  "datePublished": "2025-07-22T18:55:04.119Z",
+  "dateModified": "2025-07-22T18:55:04.119Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/README.html"
@@ -96,7 +96,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.5.20">Last updated: Jul 22, 2025, 04:12 PM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.5.21">Last updated: Jul 22, 2025, 06:55 PM UTC</span>
                 </div>
                 
                 
@@ -163,6 +163,15 @@
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="/launch/README.html" data-target="nav-launch-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
+        </a>
+        <div class="nav-content" id="nav-launch-1">
+        <a href="/launch/README.html" class="nav-item" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="fas fa-file-alt"></i> Launch Overview</a>
+        <a href="/launch/bubble-plugin-specification.html" class="nav-item" data-tooltip="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers..."><i class="fas fa-file-alt"></i> Bubble Plugin Specification</a>
+        <a href="/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
+        <a href="/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -180,7 +189,7 @@
 <h3><i class="ph ph-rocket-launch" aria-label="launch"></i> Quick Start</h3>
 <pre><code class="language-bash">npx @knowcode/doc-builder@latest deploy
 </code></pre>
-<p><a href="https://doc-builder-delta.vercel.app"><strong>Live Demo</strong></a> | <a href="https://www.npmjs.com/package/@knowcode/doc-builder"><strong>NPM Package</strong></a> | <a href="https://github.com/knowcode/doc-builder"><strong>GitHub</strong></a></p>
+<p><a href="https://doc-builder-delta.vercel.app"><strong>You are looking at a demo</strong></a> | <a href="https://www.npmjs.com/package/@knowcode/doc-builder"><strong>NPM Package</strong></a> | <a href="https://github.com/wapdat/doc-builder"><strong>GitHub</strong></a></p>
 </div>
 
 <hr>
@@ -253,38 +262,19 @@
 <h2><i class="ph ph-gear-six" aria-label="tools"></i> Simple Workflow</h2>
 <table>
 <tr>
-<td width="25%">
+<td width="50%">
 
-<h3>1️⃣ Initialize</h3>
+<h3>1️⃣ Setup</h3>
 <pre><code class="language-bash">npx @knowcode/doc-builder@latest init
 </code></pre>
-<p><em>Create project structure</em></p>
+<p><em>Create project structure and configure doc-builder</em></p>
 </td>
-<td width="25%">
+<td width="50%">
 
-<h3>2️⃣ Write Docs</h3>
-<pre><code class="language-markdown"># Getting Started
-Welcome to our docs!
-
-## Features
-- <i class="ph ph-check-circle" aria-label="checked"></i> Feature one
-- <i class="ph ph-check-circle" aria-label="checked"></i> Feature two
-</code></pre>
-<p><em>Use markdown files</em></p>
-</td>
-<td width="25%">
-
-<h3>3️⃣ Preview</h3>
-<pre><code class="language-bash">npx @knowcode/doc-builder@latest dev
-</code></pre>
-<p><em>Live development server</em></p>
-</td>
-<td width="25%">
-
-<h3>4️⃣ Deploy</h3>
+<h3>2️⃣ Deploy</h3>
 <pre><code class="language-bash">npx @knowcode/doc-builder@latest deploy
 </code></pre>
-<p><em>Push to production</em></p>
+<p><em>Build your markdown files and deploy to production</em></p>
 </td>
 </tr>
 </table>
@@ -387,7 +377,7 @@ docBuilder.build({
 <td width="50%">
 
 <h3>Contributing</h3>
-<p>We welcome contributions! Check our <a href="https://github.com/knowcode/doc-builder">contribution guide</a> to get started.</p>
+<p>We welcome contributions! Check our <a href="https://github.com/wapdat/doc-builder">contribution guide</a> to get started.</p>
 <p><strong>Ways to help:</strong></p>
 <ul>
 <li><i class="ph ph-bug" aria-label="bug"></i> Report bugs</li>
@@ -403,9 +393,9 @@ docBuilder.build({
 <p><strong>Connect with us:</strong></p>
 <ul>
 <li><i class="ph ph-package" aria-label="package"></i> <a href="https://www.npmjs.com/package/@knowcode/doc-builder">NPM Package</a></li>
-<li>🐙 <a href="https://github.com/knowcode/doc-builder">GitHub Repo</a></li>
+<li>🐙 <a href="https://github.com/wapdat/doc-builder">GitHub Repo</a></li>
 <li>🌐 <a href="https://knowcode.com">Website</a></li>
-<li><i class="ph ph-chat-circle" aria-label="chat"></i> <a href="https://github.com/knowcode/doc-builder/discussions">Discussions</a></li>
+<li><i class="ph ph-chat-circle" aria-label="chat"></i> <a href="https://github.com/wapdat/doc-builder/discussions">Discussions</a></li>
 </ul>
 </td>
 </tr>
@@ -416,7 +406,7 @@ docBuilder.build({
 
 <h3><i class="ph ph-note-pencil" aria-label="edit"></i> License: MIT © KnowCode</h3>
 <p>Built with <i class="ph ph-heart" aria-label="love"></i> by developers, for developers</p>
-<p><a href="https://www.npmjs.com/package/@knowcode/doc-builder"><strong>Get Started</strong></a> | <a href="https://doc-builder-delta.vercel.app"><strong>View Demo</strong></a> | <a href="https://github.com/knowcode/doc-builder"><strong>Star on GitHub</strong></a></p>
+<p><a href="https://www.npmjs.com/package/@knowcode/doc-builder"><strong>Get Started</strong></a> | <a href="https://doc-builder-delta.vercel.app"><strong>You are looking at a demo</strong></a> | <a href="https://github.com/wapdat/doc-builder"><strong>Star on GitHub</strong></a></p>
 </div>
 
             </div>

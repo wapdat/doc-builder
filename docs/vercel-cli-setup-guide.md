@@ -1,9 +1,5 @@
 # Vercel CLI Setup Guide
 
-**Generated**: 2025-07-22 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems. While `@knowcode/doc-builder` handles most deployment complexity for you, understanding Vercel CLI installation and advanced features can be helpful for power users.

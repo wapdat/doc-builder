@@ -12,7 +12,7 @@
 npx @knowcode/doc-builder@latest deploy
 ```
 
-[**Live Demo**](https://doc-builder-delta.vercel.app) | [**NPM Package**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**GitHub**](https://github.com/knowcode/doc-builder)
+[**You are looking at a demo**](https://doc-builder-delta.vercel.app) | [**NPM Package**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**GitHub**](https://github.com/wapdat/doc-builder)
 
 </div>
 
@@ -90,45 +90,22 @@ Organize team knowledge
 
 <table>
 <tr>
-<td width="25%">
+<td width="50%">
 
-### 1️⃣ Initialize
+### 1️⃣ Setup
 ```bash
 npx @knowcode/doc-builder@latest init
 ```
-*Create project structure*
+*Create project structure and configure doc-builder*
 
 </td>
-<td width="25%">
+<td width="50%">
 
-### 2️⃣ Write Docs
-```markdown
-# Getting Started
-Welcome to our docs!
-
-## Features
-- ✅ Feature one
-- ✅ Feature two
-```
-*Use markdown files*
-
-</td>
-<td width="25%">
-
-### 3️⃣ Preview
-```bash
-npx @knowcode/doc-builder@latest dev
-```
-*Live development server*
-
-</td>
-<td width="25%">
-
-### 4️⃣ Deploy
+### 2️⃣ Deploy
 ```bash
 npx @knowcode/doc-builder@latest deploy
 ```
-*Push to production*
+*Build your markdown files and deploy to production*
 
 </td>
 </tr>
@@ -240,7 +217,7 @@ docBuilder.build({
 <td width="50%">
 
 ### Contributing
-We welcome contributions! Check our [contribution guide](https://github.com/knowcode/doc-builder) to get started.
+We welcome contributions! Check our [contribution guide](https://github.com/wapdat/doc-builder) to get started.
 
 **Ways to help:**
 - 🐛 Report bugs
@@ -256,9 +233,9 @@ Join our growing community of documentation enthusiasts!
 
 **Connect with us:**
 - 📦 [NPM Package](https://www.npmjs.com/package/@knowcode/doc-builder)
-- 🐙 [GitHub Repo](https://github.com/knowcode/doc-builder)
+- 🐙 [GitHub Repo](https://github.com/wapdat/doc-builder)
 - 🌐 [Website](https://knowcode.com)
-- 💬 [Discussions](https://github.com/knowcode/doc-builder/discussions)
+- 💬 [Discussions](https://github.com/wapdat/doc-builder/discussions)
 
 </td>
 </tr>
@@ -272,6 +249,6 @@ Join our growing community of documentation enthusiasts!
 
 Built with ❤️ by developers, for developers
 
-[**Get Started**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**View Demo**](https://doc-builder-delta.vercel.app) | [**Star on GitHub**](https://github.com/knowcode/doc-builder)
+[**Get Started**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**You are looking at a demo**](https://doc-builder-delta.vercel.app) | [**Star on GitHub**](https://github.com/wapdat/doc-builder)
 
 </div>

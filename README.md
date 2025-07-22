@@ -2,6 +2,11 @@
 
 Beautiful documentation with the least effort possible. A zero-configuration documentation builder that transforms markdown files into stunning static sites.
 
+[![npm version](https://img.shields.io/npm/v/@knowcode/doc-builder)](https://www.npmjs.com/package/@knowcode/doc-builder)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/wapdat/doc-builder)](https://github.com/wapdat/doc-builder/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/wapdat/doc-builder)](https://github.com/wapdat/doc-builder/issues)
+
 <div align="center">
 
 🔗 **[View Live Example](https://doc-builder-delta.vercel.app)** | 📦 **[NPM Package](https://www.npmjs.com/package/@knowcode/doc-builder)** | 📚 **[Documentation](https://doc-builder-delta.vercel.app)**
@@ -555,7 +560,7 @@ MIT License - See [LICENSE](LICENSE) file for details
 
 ### Quick Links
 
-[**NPM Package**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**Live Demo**](https://doc-builder-delta.vercel.app) | [**Report Issues**](https://github.com/knowcode/doc-builder/issues) | [**Changelog**](CHANGELOG.md)
+[**NPM Package**](https://www.npmjs.com/package/@knowcode/doc-builder) | [**Live Demo**](https://doc-builder-delta.vercel.app) | [**Report Issues**](https://github.com/wapdat/doc-builder/issues) | [**Changelog**](CHANGELOG.md)
 
 Made with ❤️ by the @knowcode team
 

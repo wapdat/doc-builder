@@ -1,9 +1,5 @@
 # Phosphor Icons Integration Guide
 
-**Generated**: 2025-07-22 11:00 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 @knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML. This provides professional, consistent icon rendering across all platforms while keeping your markdown files readable with familiar emojis.

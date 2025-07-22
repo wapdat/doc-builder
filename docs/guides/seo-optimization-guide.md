@@ -8,10 +8,6 @@ date: "2025-07-22"
 
 # SEO Optimization Guide
 
-**Generated**: 2025-07-22 09:00 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 @knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search engines. This guide explains what these features do, how to use them effectively, and provides references to authoritative SEO resources.

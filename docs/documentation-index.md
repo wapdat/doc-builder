@@ -1,9 +1,5 @@
 # Documentation Index
 
-**Generated**: 2025-07-21 18:00 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose.

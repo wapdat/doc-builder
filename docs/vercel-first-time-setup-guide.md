@@ -1,9 +1,5 @@
 # Vercel First-Time Setup Guide - Simplified Process
 
-**Generated**: 2025-07-22 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This guide walks you through the streamlined Vercel deployment process when using `@knowcode/doc-builder deploy`. The new Vercel CLI experience has fewer prompts and clearer instructions, making deployment much simpler than before.

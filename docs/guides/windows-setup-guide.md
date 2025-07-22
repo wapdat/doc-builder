@@ -1,9 +1,5 @@
 # Windows Setup Guide for Claude Code & @knowcode/doc-builder
 
-**Generated**: 2025-01-22 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel. Based on real troubleshooting experience, this guide addresses common Windows-specific challenges and provides clear solutions.

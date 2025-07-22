@@ -1,9 +1,5 @@
 # Claude + CLAUDE.md Documentation Workflow Guide
 
-**Generated**: 2025-07-21 10:00 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it to Vercel using the @knowcode/doc-builder tool.

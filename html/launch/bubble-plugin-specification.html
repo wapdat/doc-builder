@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers to...">
+    <title>Bubble.io Plugin Specification | Doc Builder</title>
+    
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, text, bubble">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/launch/bubble-plugin-specification.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/launch/bubble-plugin-specification.html">
+    <meta property="og:title" content="Bubble.io Plugin Specification | Doc Builder">
+    <meta property="og:description" content="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers to...">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="Doc Builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="Bubble.io Plugin Specification | Doc Builder">
+    <meta name="twitter:description" content="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers to...">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/notion-style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Bubble.io Plugin Specification",
+  "description": "This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers to...",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-07-22T18:55:04.180Z",
+  "dateModified": "2025-07-22T18:55:04.180Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/launch/bubble-plugin-specification.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Doc Builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Launch",
+        "item": "https://doc-builder-delta.vercel.app/launch/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bubble Plugin Specification",
+        "item": "https://doc-builder-delta.vercel.app/launch/bubble-plugin-specification.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/index.html" class="logo">Doc Builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.5.21">Last updated: Jul 22, 2025, 06:55 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Preview Banner -->
+    <div id="preview-banner" class="preview-banner">
+        <div class="banner-content">
+            <i class="fas fa-exclamation-triangle banner-icon"></i>
+            <span class="banner-text">This documentation is a preview version - some content may be incomplete</span>
+            <button id="dismiss-banner" class="banner-dismiss" aria-label="Dismiss banner">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Filter items..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title" href="/README.html"  >
+          <i class="fas fa-home"></i> Documentation
+        </a>
+        <div class="nav-content" >
+        <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
+        <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
+        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
+        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the streamlined Vercel deployment process when using."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-guides-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
+        </a>
+        <div class="nav-content collapsed" id="nav-guides-1">
+        <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="This guide explains how to configure and use the built-in authentication feature in @knowcode/doc-builder to protect your documentation with basic..."><i class="fas fa-file-alt"></i> Authentication Guide</a>
+        <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
+        <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
+        <a href="/guides/google-site-verification-guide.html" class="nav-item" data-tooltip="Google Search Console verification allows you to: Monitor your site&#039;s performance in Google Search Submit sitemaps for better indexing View search..."><i class="fas fa-file-alt"></i> Google Site Verification Guide</a>
+        <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
+        <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
+        <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
+        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
+        <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="/launch/README.html" data-target="nav-launch-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
+        </a>
+        <div class="nav-content" id="nav-launch-1">
+        <a href="/launch/README.html" class="nav-item" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="fas fa-file-alt"></i> Launch Overview</a>
+        <a href="/launch/bubble-plugin-specification.html" class="nav-item active" data-tooltip="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers..."><i class="fas fa-file-alt"></i> Bubble Plugin Specification</a>
+        <a href="/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
+        <a href="/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>Bubble.io Plugin Specification</h1>
+<h2>Overview</h2>
+<p>This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers to create and manage beautiful documentation directly from their Bubble applications.</p>
+<h2>Plugin Architecture</h2>
+<h3>Core Components</h3>
+<pre><code>bubble-doc-builder/
+├── plugin.json              # Plugin manifest
+├── elements/
+│   ├── DocViewer/          # Main documentation viewer
+│   │   ├── element.json    # Element configuration
+│   │   ├── preview.js      # Editor preview
+│   │   ├── runtime.js      # Runtime behavior
+│   │   └── style.css       # Component styling
+│   ├── DocSearch/          # Search component
+│   └── DocNav/             # Navigation widget
+├── actions/
+│   ├── generate-docs/      # Generate documentation
+│   ├── deploy-to-vercel/   # Deploy documentation
+│   ├── update-content/     # Update doc content
+│   └── sync-from-bubble/   # Sync Bubble data
+├── api/
+│   ├── calls/              # API definitions
+│   └── shared.js           # Shared utilities
+└── assets/
+    ├── icons/              # Plugin icons
+    └── templates/          # Doc templates
+</code></pre>
+<h2>Element Specifications</h2>
+<h3>1. DocViewer Element</h3>
+<p>The main component for displaying documentation within Bubble apps.</p>
+<h4>Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>doc_url</td>
+<td>text</td>
+<td>&quot;&quot;</td>
+<td>URL of hosted documentation</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>dropdown</td>
+<td>&quot;light&quot;</td>
+<td>Theme selection (light/dark/auto)</td>
+</tr>
+<tr>
+<td>show_navigation</td>
+<td>boolean</td>
+<td>true</td>
+<td>Show/hide navigation sidebar</td>
+</tr>
+<tr>
+<td>show_search</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enable search functionality</td>
+</tr>
+<tr>
+<td>custom_css</td>
+<td>text</td>
+<td>&quot;&quot;</td>
+<td>Custom CSS overrides</td>
+</tr>
+<tr>
+<td>height</td>
+<td>number</td>
+<td>600</td>
+<td>Viewer height in pixels</td>
+</tr>
+<tr>
+<td>auth_required</td>
+<td>boolean</td>
+<td>false</td>
+<td>Require authentication</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>text</td>
+<td>&quot;&quot;</td>
+<td>Authentication token</td>
+</tr>
+</tbody></table>
+<h4>States</h4>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>is_loading</td>
+<td>boolean</td>
+<td>Documentation loading state</td>
+</tr>
+<tr>
+<td>current_page</td>
+<td>text</td>
+<td>Current page path</td>
+</tr>
+<tr>
+<td>search_results</td>
+<td>list</td>
+<td>Search results array</td>
+</tr>
+<tr>
+<td>error_message</td>
+<td>text</td>
+<td>Error details if any</td>
+</tr>
+</tbody></table>
+<h4>Events</h4>
+<ul>
+<li><strong>Documentation Loaded</strong> - Triggered when docs load</li>
+<li><strong>Page Changed</strong> - Fired on navigation</li>
+<li><strong>Search Performed</strong> - When user searches</li>
+<li><strong>Error Occurred</strong> - On loading errors</li>
+</ul>
+<h3>2. DocSearch Element</h3>
+<p>Standalone search widget for documentation.</p>
+<h4>Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>doc_source</td>
+<td>text</td>
+<td>&quot;&quot;</td>
+<td>Documentation source URL</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>text</td>
+<td>&quot;Search docs...&quot;</td>
+<td>Search placeholder</td>
+</tr>
+<tr>
+<td>max_results</td>
+<td>number</td>
+<td>10</td>
+<td>Maximum results</td>
+</tr>
+<tr>
+<td>show_preview</td>
+<td>boolean</td>
+<td>true</td>
+<td>Show result previews</td>
+</tr>
+</tbody></table>
+<h3>3. DocNav Element</h3>
+<p>Navigation tree component.</p>
+<h4>Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>doc_structure</td>
+<td>text</td>
+<td>&quot;&quot;</td>
+<td>JSON navigation structure</td>
+</tr>
+<tr>
+<td>collapsible</td>
+<td>boolean</td>
+<td>true</td>
+<td>Allow collapse/expand</td>
+</tr>
+<tr>
+<td>show_icons</td>
+<td>boolean</td>
+<td>true</td>
+<td>Show file/folder icons</td>
+</tr>
+</tbody></table>
+<h2>Action Specifications</h2>
+<h3>1. Generate Documentation</h3>
+<p>Creates documentation from Bubble app data.</p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>source_type</td>
+<td>dropdown</td>
+<td>Yes</td>
+<td>Data source (database/API/page)</td>
+</tr>
+<tr>
+<td>content_list</td>
+<td>list</td>
+<td>Yes</td>
+<td>List of content to document</td>
+</tr>
+<tr>
+<td>output_format</td>
+<td>dropdown</td>
+<td>Yes</td>
+<td>Format (markdown/html)</td>
+</tr>
+<tr>
+<td>include_schemas</td>
+<td>boolean</td>
+<td>No</td>
+<td>Include data schemas</td>
+</tr>
+<tr>
+<td>template</td>
+<td>dropdown</td>
+<td>No</td>
+<td>Documentation template</td>
+</tr>
+</tbody></table>
+<h4>Output</h4>
+<ul>
+<li><code>documentation_url</code> - Generated documentation URL</li>
+<li><code>generation_time</code> - Time taken in ms</li>
+<li><code>page_count</code> - Number of pages created</li>
+</ul>
+<h3>2. Deploy to Vercel</h3>
+<p>Deploys documentation to Vercel.</p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>project_name</td>
+<td>text</td>
+<td>Yes</td>
+<td>Vercel project name</td>
+</tr>
+<tr>
+<td>vercel_token</td>
+<td>text</td>
+<td>Yes</td>
+<td>Vercel API token</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>text</td>
+<td>No</td>
+<td>Custom domain</td>
+</tr>
+<tr>
+<td>production</td>
+<td>boolean</td>
+<td>No</td>
+<td>Deploy to production</td>
+</tr>
+</tbody></table>
+<h4>Output</h4>
+<ul>
+<li><code>deployment_url</code> - Live documentation URL</li>
+<li><code>deployment_id</code> - Vercel deployment ID</li>
+<li><code>status</code> - Deployment status</li>
+</ul>
+<h3>3. Update Content</h3>
+<p>Updates specific documentation content.</p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>page_path</td>
+<td>text</td>
+<td>Yes</td>
+<td>Path to page</td>
+</tr>
+<tr>
+<td>new_content</td>
+<td>text</td>
+<td>Yes</td>
+<td>Updated content</td>
+</tr>
+<tr>
+<td>commit_message</td>
+<td>text</td>
+<td>No</td>
+<td>Change description</td>
+</tr>
+<tr>
+<td>auto_deploy</td>
+<td>boolean</td>
+<td>No</td>
+<td>Auto-deploy changes</td>
+</tr>
+</tbody></table>
+<h3>4. Sync from Bubble</h3>
+<p>Synchronizes documentation with Bubble data.</p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sync_type</td>
+<td>dropdown</td>
+<td>Yes</td>
+<td>Manual/automatic/scheduled</td>
+</tr>
+<tr>
+<td>data_types</td>
+<td>list</td>
+<td>Yes</td>
+<td>Bubble data types to sync</td>
+</tr>
+<tr>
+<td>sync_interval</td>
+<td>number</td>
+<td>No</td>
+<td>Interval in minutes</td>
+</tr>
+<tr>
+<td>webhook_url</td>
+<td>text</td>
+<td>No</td>
+<td>Webhook for updates</td>
+</tr>
+</tbody></table>
+<h2>API Integration</h2>
+<h3>Authentication Flow</h3>
+<pre><code class="language-javascript">// Initialize doc-builder API
+function initializeDocBuilder(apiKey, bubbleAppId) {
+  return {
+    baseUrl: &#39;https://api.doc-builder.io&#39;,
+    headers: {
+      &#39;Authorization&#39;: `Bearer ${apiKey}`,
+      &#39;X-Bubble-App-ID&#39;: bubbleAppId,
+      &#39;Content-Type&#39;: &#39;application/json&#39;
+    }
+  };
+}
+</code></pre>
+<h3>Webhook Events</h3>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>docs.generated</td>
+<td><code>{pages, url, timestamp}</code></td>
+<td>Documentation generated</td>
+</tr>
+<tr>
+<td>docs.deployed</td>
+<td><code>{url, version, environment}</code></td>
+<td>Deployment complete</td>
+</tr>
+<tr>
+<td>docs.updated</td>
+<td><code>{changes, author, timestamp}</code></td>
+<td>Content updated</td>
+</tr>
+<tr>
+<td>docs.error</td>
+<td><code>{error, context, timestamp}</code></td>
+<td>Error occurred</td>
+</tr>
+</tbody></table>
+<h2>Bubble Database Schema</h2>
+<h3>DocBuilder Config</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>api_key</td>
+<td>text</td>
+<td>Doc-builder API key</td>
+</tr>
+<tr>
+<td>vercel_token</td>
+<td>text</td>
+<td>Vercel deployment token</td>
+</tr>
+<tr>
+<td>project_name</td>
+<td>text</td>
+<td>Documentation project name</td>
+</tr>
+<tr>
+<td>base_url</td>
+<td>text</td>
+<td>Documentation base URL</td>
+</tr>
+<tr>
+<td>last_sync</td>
+<td>date</td>
+<td>Last synchronization</td>
+</tr>
+<tr>
+<td>auto_sync</td>
+<td>boolean</td>
+<td>Enable auto-sync</td>
+</tr>
+<tr>
+<td>sync_interval</td>
+<td>number</td>
+<td>Sync interval (minutes)</td>
+</tr>
+</tbody></table>
+<h3>Documentation Pages</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>text</td>
+<td>Page title</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>text</td>
+<td>URL slug</td>
+</tr>
+<tr>
+<td>content</td>
+<td>text</td>
+<td>Markdown content</td>
+</tr>
+<tr>
+<td>parent_page</td>
+<td>DocPage</td>
+<td>Parent for hierarchy</td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>is_published</td>
+<td>boolean</td>
+<td>Publication status</td>
+</tr>
+<tr>
+<td>last_modified</td>
+<td>date</td>
+<td>Last update</td>
+</tr>
+<tr>
+<td>author</td>
+<td>User</td>
+<td>Page author</td>
+</tr>
+</tbody></table>
+<h3>Documentation Templates</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>text</td>
+<td>Template name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>text</td>
+<td>Template description</td>
+</tr>
+<tr>
+<td>structure</td>
+<td>text</td>
+<td>JSON structure</td>
+</tr>
+<tr>
+<td>styles</td>
+<td>text</td>
+<td>Custom CSS</td>
+</tr>
+<tr>
+<td>is_default</td>
+<td>boolean</td>
+<td>Default template</td>
+</tr>
+</tbody></table>
+<h2>Use Cases</h2>
+<h3>1. API Documentation</h3>
+<p>Automatically generate API documentation from Bubble API workflows:</p>
+<pre><code class="language-javascript">// Generate API docs from workflows
+generateDocs({
+  source_type: &#39;api_workflows&#39;,
+  include_schemas: true,
+  template: &#39;api_reference&#39;
+});
+</code></pre>
+<h3>2. User Guides</h3>
+<p>Create user documentation from Bubble pages:</p>
+<pre><code class="language-javascript">// Generate user guide from app pages
+generateDocs({
+  source_type: &#39;pages&#39;,
+  content_list: [&#39;dashboard&#39;, &#39;settings&#39;, &#39;profile&#39;],
+  template: &#39;user_guide&#39;
+});
+</code></pre>
+<h3>3. Database Documentation</h3>
+<p>Document data types and fields:</p>
+<pre><code class="language-javascript">// Document database structure
+generateDocs({
+  source_type: &#39;database&#39;,
+  include_schemas: true,
+  template: &#39;data_dictionary&#39;
+});
+</code></pre>
+<h2>Implementation Roadmap</h2>
+<h3>Phase 1: MVP (2 weeks)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Basic DocViewer element</li>
+<li><input disabled="" type="checkbox"> Generate documentation action</li>
+<li><input disabled="" type="checkbox"> Simple deployment to Vercel</li>
+<li><input disabled="" type="checkbox"> Basic authentication</li>
+</ul>
+<h3>Phase 2: Enhanced Features (2 weeks)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> DocSearch element</li>
+<li><input disabled="" type="checkbox"> DocNav element</li>
+<li><input disabled="" type="checkbox"> Update content action</li>
+<li><input disabled="" type="checkbox"> Webhook integration</li>
+</ul>
+<h3>Phase 3: Advanced Integration (2 weeks)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Auto-sync from Bubble</li>
+<li><input disabled="" type="checkbox"> Custom templates</li>
+<li><input disabled="" type="checkbox"> Multi-language support</li>
+<li><input disabled="" type="checkbox"> Analytics integration</li>
+</ul>
+<h3>Phase 4: Polish &amp; Launch (1 week)</h3>
+<ul>
+<li><input disabled="" type="checkbox"> Performance optimization</li>
+<li><input disabled="" type="checkbox"> Error handling</li>
+<li><input disabled="" type="checkbox"> Documentation</li>
+<li><input disabled="" type="checkbox"> Marketplace submission</li>
+</ul>
+<h2>Plugin Settings</h2>
+<h3>General Settings</h3>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;Doc Builder for Bubble&quot;,
+  &quot;description&quot;: &quot;Create beautiful documentation from your Bubble app&quot;,
+  &quot;categories&quot;: [&quot;data&quot;, &quot;visual elements&quot;, &quot;analytics&quot;],
+  &quot;plugin_version&quot;: &quot;1.0.0&quot;,
+  &quot;documentation_url&quot;: &quot;https://doc-builder.io/bubble-plugin&quot;,
+  &quot;support_email&quot;: &quot;support@doc-builder.io&quot;
+}
+</code></pre>
+<h3>API Connections</h3>
+<pre><code class="language-json">{
+  &quot;api_connections&quot;: [
+    {
+      &quot;name&quot;: &quot;DocBuilder API&quot;,
+      &quot;base_url&quot;: &quot;https://api.doc-builder.io/v1&quot;,
+      &quot;authentication&quot;: &quot;bearer_token&quot;,
+      &quot;shared_headers&quot;: {
+        &quot;X-Plugin-Version&quot;: &quot;1.0.0&quot;,
+        &quot;X-Platform&quot;: &quot;bubble&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<h2>Security Considerations</h2>
+<h3>API Key Management</h3>
+<ul>
+<li>Store API keys encrypted in Bubble database</li>
+<li>Use Bubble&#39;s privacy rules for key access</li>
+<li>Implement key rotation mechanism</li>
+<li>Log all API key usage</li>
+</ul>
+<h3>Content Security</h3>
+<ul>
+<li>Sanitize all user-generated content</li>
+<li>Implement CSP headers for embedded docs</li>
+<li>Use iframe sandboxing for viewer</li>
+<li>Validate all webhook signatures</li>
+</ul>
+<h3>Access Control</h3>
+<ul>
+<li>Integrate with Bubble&#39;s user roles</li>
+<li>Implement document-level permissions</li>
+<li>Support SSO for enterprise users</li>
+<li>Audit trail for all actions</li>
+</ul>
+<h2>Performance Optimization</h2>
+<h3>Caching Strategy</h3>
+<ul>
+<li>Cache generated documentation (1 hour)</li>
+<li>CDN integration for static assets</li>
+<li>Lazy load documentation sections</li>
+<li>Progressive enhancement</li>
+</ul>
+<h3>Resource Management</h3>
+<ul>
+<li>Limit concurrent API calls</li>
+<li>Implement request queuing</li>
+<li>Optimize large documentation sets</li>
+<li>Background processing for heavy tasks</li>
+</ul>
+<h2>Pricing Model for Plugin</h2>
+<h3>Free Tier</h3>
+<ul>
+<li>Up to 10 documentation pages</li>
+<li>Basic templates</li>
+<li>Community support</li>
+<li>Bubble.io branding</li>
+</ul>
+<h3>Pro Tier ($19/month)</h3>
+<ul>
+<li>Unlimited pages</li>
+<li>Custom templates</li>
+<li>Priority support</li>
+<li>White-label option</li>
+</ul>
+<h3>Team Tier ($49/month)</h3>
+<ul>
+<li>Everything in Pro</li>
+<li>Team collaboration</li>
+<li>Advanced analytics</li>
+<li>API access</li>
+</ul>
+<h2>Success Metrics</h2>
+<h3>Usage Metrics</h3>
+<ul>
+<li>Plugin installations</li>
+<li>Active users (MAU)</li>
+<li>Documentation pages created</li>
+<li>Deployments per month</li>
+</ul>
+<h3>Performance Metrics</h3>
+<ul>
+<li>API response time (&lt;200ms)</li>
+<li>Documentation load time (&lt;2s)</li>
+<li>Search response time (&lt;100ms)</li>
+<li>Uptime (99.9%)</li>
+</ul>
+<h3>Business Metrics</h3>
+<ul>
+<li>Conversion rate (free to paid)</li>
+<li>Customer lifetime value</li>
+<li>Monthly recurring revenue</li>
+<li>Support ticket volume</li>
+</ul>
+<hr>
+<h2>Document History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2025-07-22</td>
+<td>System</td>
+<td>Initial plugin specification</td>
+</tr>
+</tbody></table>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    
+</body>
+</html>

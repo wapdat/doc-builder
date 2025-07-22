@@ -1,9 +1,5 @@
 # Document Standards for @knowcode/doc-builder
 
-**Generated**: 2025-07-21 18:00 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This document defines the documentation standards and conventions for the @knowcode/doc-builder project. All documentation created for or by this project should follow these guidelines to ensure consistency, clarity, and maintainability.

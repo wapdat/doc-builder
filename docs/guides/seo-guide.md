@@ -1,9 +1,5 @@
 # SEO Guide for @knowcode/doc-builder
 
-**Generated**: 2025-01-21 10:00 UTC  
-**Status**: Complete  
-**Version**: 1.0
-
 ## Overview
 
 @knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and look great when shared on social media. This guide covers all SEO features and how to configure them.

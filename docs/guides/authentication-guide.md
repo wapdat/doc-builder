@@ -1,9 +1,5 @@
 # Authentication Guide for @knowcode/doc-builder
 
-**Generated**: 2025-07-21 18:30 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This guide explains how to configure and use the built-in authentication feature in @knowcode/doc-builder to protect your documentation with basic username/password access control.

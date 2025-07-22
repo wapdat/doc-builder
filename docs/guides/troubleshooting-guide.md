@@ -1,9 +1,5 @@
 # Troubleshooting Guide for @knowcode/doc-builder
 
-**Generated**: 2025-07-21 19:15 UTC  
-**Status**: Complete  
-**Verified**: ✅
-
 ## Overview
 
 This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.
