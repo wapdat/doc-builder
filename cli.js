@@ -118,6 +118,79 @@ ${chalk.yellow('Examples:')}
     }
   });
 
+// Google Site Verification command
+program
+  .command('google-verify <verification-code>')
+  .description('Add Google site verification meta tag to all pages')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .addHelpText('after', `
+${chalk.yellow('Examples:')}
+  ${chalk.gray('$')} doc-builder google-verify FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ
+  ${chalk.gray('$')} doc-builder google-verify YOUR_VERIFICATION_CODE
+
+${chalk.yellow('This will add the Google site verification meta tag to all generated HTML pages.')}
+${chalk.yellow('Get your verification code from Google Search Console.')}
+`)
+  .action(async (verificationCode, options) => {
+    try {
+      const configPath = path.join(process.cwd(), options.config || 'doc-builder.config.js');
+      let config;
+      
+      if (fs.existsSync(configPath)) {
+        // Load existing config
+        delete require.cache[require.resolve(configPath)];
+        config = require(configPath);
+      } else {
+        console.log(chalk.yellow('⚠️  No config file found. Creating one...'));
+        await createDefaultConfig();
+        config = require(configPath);
+      }
+      
+      // Ensure SEO section exists
+      if (!config.seo) {
+        config.seo = {
+          enabled: true,
+          customMetaTags: []
+        };
+      }
+      
+      if (!config.seo.customMetaTags) {
+        config.seo.customMetaTags = [];
+      }
+      
+      // Check if Google verification already exists
+      const googleVerifyIndex = config.seo.customMetaTags.findIndex(tag => 
+        tag.name === 'google-site-verification'
+      );
+      
+      const newTag = {
+        name: 'google-site-verification',
+        content: verificationCode
+      };
+      
+      if (googleVerifyIndex >= 0) {
+        // Update existing
+        config.seo.customMetaTags[googleVerifyIndex] = newTag;
+        console.log(chalk.green(`✅ Updated Google site verification code`));
+      } else {
+        // Add new
+        config.seo.customMetaTags.push(newTag);
+        console.log(chalk.green(`✅ Added Google site verification code`));
+      }
+      
+      // Write updated config
+      const configContent = `module.exports = ${JSON.stringify(config, null, 2)};\n`;
+      fs.writeFileSync(configPath, configContent);
+      
+      console.log(chalk.gray(`\nThe following meta tag will be added to all pages:`));
+      console.log(chalk.cyan(`<meta name="google-site-verification" content="${verificationCode}" />`));
+      console.log(chalk.gray(`\nRun ${chalk.cyan('doc-builder build')} to regenerate your documentation.`));
+    } catch (error) {
+      console.error(chalk.red('Failed to add Google verification:'), error.message);
+      process.exit(1);
+    }
+  });
+
 // Set Production URL command
 program
   .command('set-production-url <url>')

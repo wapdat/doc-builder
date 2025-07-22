@@ -4,17 +4,11 @@ Beautiful documentation with the least effort possible. A zero-configuration doc
 
 🔗 **[View Live Example](https://doc-builder-delta.vercel.app)** - See what your documentation will look like!
 
-## Recent Documentation Updates (Last 14 Days)
+## TL:DR
 
-### 🚀 System & Deployment (docs:)
-- 🔄 **UPDATE**: [Claude + CLAUDE.md Documentation Workflow Guide](docs/claude-workflow-guide.md) - Documentation updates and improvements
-- 🔄 **MAJOR UPDATE**: [Documentation Index](docs/documentation-index.md) - Significant updates with enhanced functionality and coverage
-- 🔄 **MAJOR UPDATE**: [Document Standards for @knowcode/doc-builder](docs/guides/DOCUMENT-STANDARDS.md) - Significant updates with enhanced functionality and coverage
-- 🔄 **UPDATE**: [@knowcode/doc-builder](docs/README.md) - Documentation updates and improvements
-- 🔄 **UPDATE**: [Document Standards for @knowcode/doc-builder](docs/guides/document-standards.md) - Documentation updates and improvements
-
-**Total Changes**: 0+ new documents, 5+ updates and improvements across 5 files
-
+```
+npx @knowcode/doc-builder deploy
+```
 
 ## Why This Project Exists
 
@@ -28,7 +22,7 @@ The main premise of @knowcode/doc-builder is simple: **create beautiful document
 - **Converts** markdown to HTML with syntax highlighting and diagram support
 - **Styles** everything with a clean, Notion-inspired theme
 - **Deploys** to Vercel with a single command - leveraging their generous free tier
-- **Provides** optional features like authentication, dark mode, and changelog generation
+- **Provides** optional features like authentication, dark mode, and changelog generation, SEO
 
 Perfect for project documentation, API references, knowledge bases, or any content written in markdown.
 
@@ -106,7 +100,7 @@ After deployment, go to your Vercel dashboard:
 3. Set to **Disabled** for public access
 4. Or configure authentication for private docs
 
-## Configuration
+## Configuration (optional - can be managed with CLI)
 
 Create `doc-builder.config.js` in your project root:
 
@@ -168,7 +162,7 @@ This wizard helps you set up:
 
 See the [SEO Guide](docs/guides/seo-guide.md) for complete details.
 
-### build
+### build (defaults will work just fine)
 Build the documentation site to static HTML:
 ```bash
 doc-builder build [options]
@@ -187,23 +181,6 @@ Examples:
   doc-builder build --input docs --output dist
   doc-builder build --preset notion-inspired # Use Notion-inspired preset
   doc-builder build --config my-config.js  # Use custom config
-```
-
-### dev
-Start development server with live reload:
-```bash
-doc-builder dev [options]
-
-Options:
-  -c, --config <path>  Path to config file (default: "doc-builder.config.js")
-  -p, --port <port>    Port to run dev server on (default: 3000)
-  -h, --host <host>    Host to bind to (default: localhost)
-  --no-open            Don't open browser automatically
-
-Examples:
-  doc-builder dev                    # Start on http://localhost:3000
-  doc-builder dev --port 8080        # Use custom port
-  doc-builder dev --host 0.0.0.0     # Allow external connections
 ```
 
 ### deploy

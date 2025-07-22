@@ -954,17 +954,37 @@ tr:hover {
   
   /* Hide sidebar on mobile */
   .sidebar {
-    position: absolute;
+    position: fixed;
     top: calc(var(--header-height) + var(--breadcrumb-height));
     left: 0;
     height: calc(100vh - var(--header-height) - var(--breadcrumb-height));
-    z-index: 999;
+    z-index: 1002; /* Above header and floating button */
     transform: translateX(-100%);
     transition: transform var(--duration-normal) var(--easing-out);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15); /* Add shadow for depth */
   }
   
   .sidebar.open {
     transform: translateX(0);
+  }
+  
+  /* Mobile menu overlay */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* Below sidebar but above content */
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+    opacity: 1;
   }
   
   .main-wrapper {

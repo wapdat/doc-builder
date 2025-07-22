@@ -5,6 +5,24 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.4] - 2025-07-22
+
+### Added
+- New CLI command `google-verify` to add Google site verification meta tags
+- Support for custom meta tags in the SEO configuration
+- Comprehensive guide for Google Search Console verification
+- Ability to update existing verification codes
+
+### Changed
+- Extended `generateMetaTags` function to support custom meta tags
+- Updated config structure to include `seo.customMetaTags` array
+
+### Features
+- Run `doc-builder google-verify YOUR_CODE` to add verification
+- Verification meta tag automatically added to all generated pages
+- Support for multiple custom meta tags (Google, Bing, Yandex, etc.)
+- Safe to commit verification codes to repositories
+
 ## [1.5.3] - 2025-07-22
 
 ### Fixed

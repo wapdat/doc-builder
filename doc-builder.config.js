@@ -29,6 +29,12 @@ module.exports = {
     "organization": {
       "name": "Knowcode Ltd",
       "url": "https://knowcode.tech"
-    }
+    },
+    "customMetaTags": [
+      {
+        "name": "google-site-verification",
+        "content": "FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ"
+      }
+    ]
   }
 };

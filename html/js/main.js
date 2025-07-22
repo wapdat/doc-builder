@@ -512,9 +512,28 @@ function updateThemeIcon(theme) {
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 
+// Create overlay element for mobile
+let overlay = document.querySelector('.sidebar-overlay');
+if (!overlay && window.innerWidth <= 768) {
+  overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+}
+
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('open');
+    if (overlay) {
+      overlay.classList.toggle('active');
+    }
+  });
+}
+
+// Close menu when clicking overlay
+if (overlay) {
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
   });
 }
 
@@ -532,7 +551,8 @@ function initFloatingMenuButton() {
   floatingButton.className = 'floating-menu-toggle';
   floatingButton.setAttribute('aria-label', 'Toggle menu');
   floatingButton.innerHTML = '<i class="fas fa-bars"></i>';
-  floatingButton.style.display = 'none'; // Hidden by default
+  floatingButton.style.display = 'flex'; // Always visible on mobile
+  floatingButton.classList.add('visible'); // Start visible
   
   // Add to body
   document.body.appendChild(floatingButton);
@@ -540,6 +560,26 @@ function initFloatingMenuButton() {
   // Toggle sidebar on click
   floatingButton.addEventListener('click', () => {
     sidebar.classList.toggle('open');
+    
+    // Handle overlay
+    let overlay = document.querySelector('.sidebar-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'sidebar-overlay';
+      document.body.appendChild(overlay);
+      
+      // Add overlay click handler
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        floatingButton.querySelector('i').className = 'fas fa-bars';
+      });
+    }
+    
+    if (overlay) {
+      overlay.classList.toggle('active');
+    }
+    
     // Update icon based on state
     const icon = floatingButton.querySelector('i');
     if (sidebar.classList.contains('open')) {
@@ -549,33 +589,7 @@ function initFloatingMenuButton() {
     }
   });
   
-  // Show/hide based on scroll position
-  let scrollTimeout;
-  
-  window.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const headerHeight = document.querySelector('.header')?.offsetHeight || 64;
-      
-      // Show floating button when scrolled past header
-      if (scrollTop > headerHeight + 50) {
-        floatingButton.style.display = 'flex';
-        // Add slight delay for smooth appearance
-        setTimeout(() => {
-          floatingButton.classList.add('visible');
-        }, 10);
-      } else {
-        floatingButton.classList.remove('visible');
-        // Hide after transition completes
-        setTimeout(() => {
-          if (!floatingButton.classList.contains('visible')) {
-            floatingButton.style.display = 'none';
-          }
-        }, 300);
-      }
-    }, 100);
-  });
+  // Remove scroll-based visibility - button is always visible on mobile
   
   // Update icon when sidebar state changes from other sources
   const observer = new MutationObserver(() => {
@@ -611,11 +625,21 @@ document.addEventListener('click', (e) => {
   if (window.innerWidth <= 768) {
     const isClickInsideSidebar = sidebar && sidebar.contains(e.target);
     const isMenuToggle = e.target.closest('#menu-toggle');
+    const isFloatingButton = e.target.closest('#floating-menu-toggle');
     const isNavItem = e.target.closest('.nav-item, .nav-title');
+    const overlay = document.querySelector('.sidebar-overlay');
     
     // Close sidebar only if clicking outside AND not on menu toggle AND not on nav items
-    if (!isClickInsideSidebar && !isMenuToggle && !isNavItem && sidebar?.classList.contains('open')) {
+    if (!isClickInsideSidebar && !isMenuToggle && !isFloatingButton && !isNavItem && sidebar?.classList.contains('open')) {
       sidebar.classList.remove('open');
+      if (overlay) {
+        overlay.classList.remove('active');
+      }
+      // Update floating button icon if it exists
+      const floatingBtn = document.getElementById('floating-menu-toggle');
+      if (floatingBtn) {
+        floatingBtn.querySelector('i').className = 'fas fa-bars';
+      }
     }
   }
 });
