@@ -196,36 +196,38 @@ ${chalk.yellow('Get your verification code from Google Search Console.')}
 // SEO Check command
 program
   .command('seo-check [path]')
-  .description('Analyze SEO for your documentation pages')
+  .description('Analyze SEO metadata in generated HTML files')
   .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
-  .option('--fix', 'auto-fix common SEO issues')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
-  ${chalk.gray('$')} doc-builder seo-check                    ${chalk.gray('# Check all pages')}
-  ${chalk.gray('$')} doc-builder seo-check docs/guide.md      ${chalk.gray('# Check specific page')}
-  ${chalk.gray('$')} doc-builder seo-check --fix              ${chalk.gray('# Auto-fix issues')}
+  ${chalk.gray('$')} doc-builder seo-check                    ${chalk.gray('# Check all HTML pages')}
+  ${chalk.gray('$')} doc-builder seo-check html/guide.html    ${chalk.gray('# Check specific HTML file')}
 
-${chalk.yellow('This command analyzes:')}
-  • Title length and optimization (50-60 characters)
-  • Meta descriptions (140-160 characters)
-  • Keywords usage and relevance
-  • Front matter SEO fields
-  • Duplicate content issues
+${chalk.yellow('This command analyzes generated HTML files for:')}
+  • Title tags and length (50-60 characters)
+  • Meta descriptions (140-160 characters)  
+  • Keywords meta tags
+  • Canonical URLs
+  • H1 tags and consistency
+  • Open Graph tags (Facebook)
+  • Twitter Card tags
+  • Structured data (JSON-LD)
+  
+${chalk.yellow('Note:')} Run 'doc-builder build' first to generate HTML files.
 `)
   .action(async (filePath, options) => {
     try {
       const config = await loadConfig(options.config || 'doc-builder.config.js', options);
-      const docsDir = path.resolve(config.docsDir || 'docs');
+      const outputDir = path.resolve(config.outputDir || 'html');
       
-      // Check if docsDir exists
-      if (!await fs.pathExists(docsDir)) {
-        console.error(chalk.red(`Documentation directory not found: ${docsDir}`));
-        console.log(chalk.yellow('\nPlease ensure you have a docs directory with markdown files.'));
-        console.log(chalk.gray(`Create it with: mkdir docs && echo "# Documentation" > docs/README.md`));
+      // Check if outputDir exists
+      if (!await fs.pathExists(outputDir)) {
+        console.error(chalk.red(`Output directory not found: ${outputDir}`));
+        console.log(chalk.yellow('\nPlease build your documentation first with: doc-builder build'));
         process.exit(1);
       }
       
-      console.log(chalk.cyan('🔍 Analyzing SEO...'));
+      console.log(chalk.cyan('🔍 Analyzing SEO in generated HTML files...'));
       
       // Get files to check
       let files = [];
@@ -238,7 +240,7 @@ ${chalk.yellow('This command analyzes:')}
           process.exit(1);
         }
       } else {
-        // Get all markdown files
+        // Get all HTML files
         const getAllFiles = async (dir) => {
           const results = [];
           const items = await fs.readdir(dir);
@@ -247,13 +249,13 @@ ${chalk.yellow('This command analyzes:')}
             const stat = await fs.stat(fullPath);
             if (stat.isDirectory() && !item.startsWith('.')) {
               results.push(...await getAllFiles(fullPath));
-            } else if (item.endsWith('.md')) {
+            } else if (item.endsWith('.html') && item !== '404.html') {
               results.push(fullPath);
             }
           }
           return results;
         };
-        files = await getAllFiles(docsDir);
+        files = await getAllFiles(outputDir);
       }
       
       // Analyze each file
@@ -262,19 +264,43 @@ ${chalk.yellow('This command analyzes:')}
       
       for (const file of files) {
         const content = await fs.readFile(file, 'utf-8');
-        const { data: frontMatter, content: mainContent } = matter(content);
-        const relativePath = path.relative(docsDir, file);
+        const relativePath = path.relative(outputDir, file);
         
-        // Extract current metadata
-        const h1Match = mainContent.match(/^#\s+(.+)$/m);
-        const h1Title = h1Match ? h1Match[1] : null;
-        const title = frontMatter.title || h1Title || path.basename(file, '.md');
-        const description = frontMatter.description || generateDescription(mainContent, 'smart');
-        const keywords = frontMatter.keywords || [];
+        // Extract metadata from HTML
+        const titleMatch = content.match(/<title>([^<]+)<\/title>/);
+        const descMatch = content.match(/<meta\s+name="description"\s+content="([^"]+)"/);
+        const keywordsMatch = content.match(/<meta\s+name="keywords"\s+content="([^"]+)"/);
+        const canonicalMatch = content.match(/<link\s+rel="canonical"\s+href="([^"]+)"/);
+        const h1Match = content.match(/<h1>([^<]+)<\/h1>/);
+        
+        const title = titleMatch ? titleMatch[1] : 'No title found';
+        const description = descMatch ? descMatch[1] : '';
+        const keywords = keywordsMatch ? keywordsMatch[1].split(',').map(k => k.trim()) : [];
+        const canonical = canonicalMatch ? canonicalMatch[1] : '';
+        const h1 = h1Match ? h1Match[1] : '';
+        
+        // Check for Open Graph tags
+        const ogTitleMatch = content.match(/<meta\s+property="og:title"\s+content="([^"]+)"/);
+        const ogDescMatch = content.match(/<meta\s+property="og:description"\s+content="([^"]+)"/);
+        const ogImageMatch = content.match(/<meta\s+property="og:image"\s+content="([^"]+)"/);
+        
+        // Check for Twitter Card tags
+        const twitterTitleMatch = content.match(/<meta\s+name="twitter:title"\s+content="([^"]+)"/);
+        const twitterDescMatch = content.match(/<meta\s+name="twitter:description"\s+content="([^"]+)"/);
+        
+        // Check for structured data
+        const structuredDataMatch = content.match(/<script\s+type="application\/ld\+json">/);
         
         // Check title
         const titleLength = title.length;
-        if (titleLength > 60) {
+        if (!titleMatch) {
+          issues.push({
+            file: relativePath,
+            type: 'title',
+            message: 'Missing <title> tag',
+            severity: 'critical'
+          });
+        } else if (titleLength > 60) {
           issues.push({
             file: relativePath,
             type: 'title',
@@ -291,38 +317,90 @@ ${chalk.yellow('This command analyzes:')}
         }
         
         // Check description
-        const descLength = description.length;
-        if (descLength > 160) {
+        if (!descMatch) {
           issues.push({
             file: relativePath,
             type: 'description',
-            message: `Description too long (${descLength} chars, max 160)`,
+            message: 'Missing meta description',
+            severity: 'critical'
+          });
+        } else {
+          const descLength = description.length;
+          if (descLength > 160) {
+            issues.push({
+              file: relativePath,
+              type: 'description',
+              message: `Description too long (${descLength} chars, max 160)`,
             current: description,
             suggestion: description.substring(0, 157) + '...'
           });
-        } else if (descLength < 120) {
-          suggestions.push({
-            file: relativePath,
-            type: 'description',
-            message: `Description might be too short (${descLength} chars, ideal 140-160)`
-          });
+          } else if (descLength < 120) {
+            suggestions.push({
+              file: relativePath,
+              type: 'description',
+              message: `Description might be too short (${descLength} chars, ideal 140-160)`
+            });
+          }
         }
         
         // Check keywords
-        if (keywords.length === 0 && !frontMatter.description) {
+        if (!keywordsMatch || keywords.length === 0) {
           suggestions.push({
             file: relativePath,
             type: 'keywords',
-            message: 'No keywords defined in front matter'
+            message: 'No keywords meta tag found'
           });
         }
         
-        // Check for front matter
-        if (!frontMatter.title && !frontMatter.description) {
+        // Check canonical URL
+        if (!canonicalMatch) {
           suggestions.push({
             file: relativePath,
-            type: 'frontmatter',
-            message: 'No SEO front matter found'
+            type: 'canonical',
+            message: 'Missing canonical URL'
+          });
+        }
+        
+        // Check H1
+        if (!h1Match) {
+          issues.push({
+            file: relativePath,
+            type: 'h1',
+            message: 'Missing H1 tag',
+            severity: 'important'
+          });
+        } else if (h1 !== title.split(' | ')[0]) {
+          suggestions.push({
+            file: relativePath,
+            type: 'h1',
+            message: 'H1 differs from page title'
+          });
+        }
+        
+        // Check Open Graph tags
+        if (!ogTitleMatch || !ogDescMatch) {
+          suggestions.push({
+            file: relativePath,
+            type: 'opengraph',
+            message: 'Missing or incomplete Open Graph tags'
+          });
+        }
+        
+        // Check Twitter Card tags
+        if (!twitterTitleMatch || !twitterDescMatch) {
+          suggestions.push({
+            file: relativePath,
+            type: 'twitter',
+            message: 'Missing or incomplete Twitter Card tags'
+          });
+        }
+        
+        // Check structured data
+        if (!structuredDataMatch) {
+          suggestions.push({
+            file: relativePath,
+            type: 'structured-data',
+            message: 'Missing structured data (JSON-LD)'
           });
         }
       }
@@ -353,15 +431,16 @@ ${chalk.yellow('This command analyzes:')}
           });
         }
         
-        console.log(`\n${chalk.cyan('💡 Tips:')}`);
-        console.log('  • Add front matter to customize SEO per page');
+        console.log(`\n${chalk.cyan('💡 Tips to improve SEO:')}`);
+        console.log('  • Add front matter to markdown files to customize SEO');
         console.log('  • Keep titles between 50-60 characters');
         console.log('  • Write descriptions between 140-160 characters');
         console.log('  • Include relevant keywords in front matter');
-        console.log(`\n${chalk.gray('Example front matter:')}`);
+        console.log('  • Ensure each page has a unique title and description');
+        console.log(`\n${chalk.gray('Add to your markdown files:')}`);
         console.log(chalk.gray('---'));
         console.log(chalk.gray('title: "Your SEO Optimized Title Here"'));
-        console.log(chalk.gray('description: "A compelling description between 140-160 characters that includes keywords and encourages clicks."'));
+        console.log(chalk.gray('description: "A compelling description between 140-160 characters."'));
         console.log(chalk.gray('keywords: ["keyword1", "keyword2", "keyword3"]'));
         console.log(chalk.gray('---'));
       }

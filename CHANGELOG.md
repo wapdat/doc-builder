@@ -5,6 +5,29 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.8] - 2025-07-22
+
+### Changed
+- **BREAKING**: `seo-check` command now analyzes generated HTML files instead of markdown source files
+- Completely rewrote SEO analysis to inspect actual HTML output that search engines see
+- Added comprehensive checks for all SEO elements in HTML including:
+  - Title tags and optimal length
+  - Meta descriptions and character limits
+  - Keywords meta tags
+  - Canonical URLs
+  - H1 tags and consistency with titles
+  - Open Graph tags for social media
+  - Twitter Card tags
+  - Structured data (JSON-LD)
+- Updated help text and examples to reflect HTML analysis
+- Improved error messages to guide users to build HTML first
+
+### Why This Change?
+- SEO analysis should check what search engines actually see (the generated HTML)
+- Provides more accurate and comprehensive SEO insights
+- Can verify that all meta tags are properly generated
+- Ensures Open Graph and Twitter Cards are working correctly
+
 ## [1.5.7] - 2025-07-22
 
 ### Fixed
