@@ -119,7 +119,7 @@ Make your documentation discoverable on Google:
    - Your sitemap is automatically generated at `/sitemap.xml`
    - Submit it in Google Search Console
 
-3. **Full Instructions**: See the [Google Site Verification Guide](./guides/google-site-verification-guide.md)
+3. **Full Instructions**: See the [Search Engine Verification Guide](./guides/search-engine-verification-guide.md)
 
 ### Custom Domain (Optional)
 

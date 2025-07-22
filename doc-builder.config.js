@@ -35,6 +35,10 @@ module.exports = {
       {
         "name": "google-site-verification",
         "content": "FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ"
+      },
+      {
+        "name": "msvalidate.01",
+        "content": "B2D8C4C12C530D47AA962B24CAA09630"
       }
     ]
   }

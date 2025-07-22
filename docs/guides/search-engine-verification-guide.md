@@ -1,23 +1,34 @@
-# Google Site Verification Guide
+# Search Engine Verification Guide
 
-This guide explains how to verify your documentation site with Google Search Console using @knowcode/doc-builder.
+This guide explains how to verify your documentation site with Google Search Console and Bing Webmaster Tools using @knowcode/doc-builder.
 
 ## Overview
 
-Google Search Console verification allows you to:
+Search engine verification provides access to powerful webmaster tools:
+
+### Google Search Console
 - Monitor your site's performance in Google Search
 - Submit sitemaps for better indexing
 - View search analytics and keywords
 - Identify and fix crawl errors
 - Receive alerts about site issues
 
+### Bing Webmaster Tools
+- Track your site's performance in Bing and Yahoo
+- Submit sitemaps and monitor indexing
+- Analyze search keywords and backlinks
+- Identify SEO opportunities
+- Get crawl error reports
+
 ## Prerequisites
 
-- @knowcode/doc-builder v1.5.4 or higher
-- Access to Google Search Console
+- @knowcode/doc-builder v1.5.23 or higher (v1.5.4+ for Google only)
+- Access to Google Search Console and/or Bing Webmaster Tools
 - A deployed documentation site
 
-## Step 1: Get Your Verification Code
+## Google Search Console Verification
+
+### Step 1: Get Your Google Verification Code
 
 1. Go to [Google Search Console](https://search.google.com/search-console)
 2. Click "Add property" and enter your documentation site URL
@@ -28,9 +39,7 @@ Google Search Console verification allows you to:
    ```
 5. You only need the content value (e.g., `FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ`)
 
-## Step 2: Add Verification to Your Site
-
-Use the doc-builder CLI to add the verification meta tag:
+### Step 2: Add Google Verification
 
 ```bash
 doc-builder google-verify YOUR_VERIFICATION_CODE
@@ -41,10 +50,30 @@ Example:
 doc-builder google-verify FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ
 ```
 
-This command will:
-- Update your `doc-builder.config.js` file
-- Add the verification meta tag to the SEO configuration
-- Show confirmation of the added tag
+## Bing Webmaster Tools Verification
+
+### Step 1: Get Your Bing Verification Code
+
+1. Go to [Bing Webmaster Tools](https://www.bing.com/webmasters)
+2. Sign in with your Microsoft account
+3. Add your site URL
+4. Choose the "HTML Meta Tag" verification method
+5. Copy the verification code from the meta tag:
+   ```html
+   <meta name="msvalidate.01" content="YOUR_VERIFICATION_CODE" />
+   ```
+6. You only need the content value (e.g., `B2D8C4C12C530D47AA962B24CAA09630`)
+
+### Step 2: Add Bing Verification
+
+```bash
+doc-builder bing-verify YOUR_VERIFICATION_CODE
+```
+
+Example:
+```bash
+doc-builder bing-verify B2D8C4C12C530D47AA962B24CAA09630
+```
 
 ## Step 3: Rebuild and Deploy
 
@@ -86,7 +115,34 @@ module.exports = {
 
 ## Multiple Verifications
 
-You can add multiple verification codes or other custom meta tags:
+You can verify with multiple search engines:
+
+```bash
+# Google verification
+doc-builder google-verify YOUR_GOOGLE_CODE
+
+# Bing verification
+doc-builder bing-verify YOUR_BING_CODE
+```
+
+This creates the following configuration:
+
+```javascript
+seo: {
+  customMetaTags: [
+    {
+      name: "google-site-verification",
+      content: "YOUR_GOOGLE_CODE"
+    },
+    {
+      name: "msvalidate.01",
+      content: "YOUR_BING_CODE"
+    }
+  ]
+}
+```
+
+You can also add other search engines manually:
 
 ```javascript
 seo: {
@@ -96,23 +152,31 @@ seo: {
       content: "GOOGLE_CODE"
     },
     {
-      name: "bing-site-verification",
+      name: "msvalidate.01",
       content: "BING_CODE"
     },
     {
       name: "yandex-verification",
       content: "YANDEX_CODE"
+    },
+    {
+      name: "pinterest-site-verification",
+      content: "PINTEREST_CODE"
     }
   ]
 }
 ```
 
-## Updating Verification Code
+## Updating Verification Codes
 
 To update an existing verification code, simply run the command again with the new code:
 
 ```bash
-doc-builder google-verify NEW_VERIFICATION_CODE
+# Update Google verification
+doc-builder google-verify NEW_GOOGLE_CODE
+
+# Update Bing verification
+doc-builder bing-verify NEW_BING_CODE
 ```
 
 ## Troubleshooting
@@ -176,11 +240,34 @@ Your verification code is specific to your Google account and domain. It's safe 
 ## Next Steps
 
 After verification:
-1. Submit your sitemap in Search Console
+
+### For Google Search Console:
+1. Submit your sitemap at `/sitemap.xml`
 2. Set up email alerts for crawl errors
-3. Monitor search performance and impressions
-4. Use the data to improve your documentation SEO
+3. Monitor Core Web Vitals
+4. Review mobile usability reports
+
+### For Bing Webmaster Tools:
+1. Submit your sitemap URL
+2. Configure crawl control settings
+3. Use the SEO analyzer tool
+4. Set up email notifications
+
+## Comparison: Google vs Bing
+
+| Feature | Google Search Console | Bing Webmaster Tools |
+|---------|----------------------|---------------------|
+| Market Share | ~92% global | ~3% global (includes Yahoo) |
+| Verification Methods | HTML tag, DNS, File upload, Analytics | HTML tag, XML file, DNS |
+| Data Freshness | 2-3 days delay | Near real-time |
+| API Access | Yes | Yes |
+| Mobile Testing | Yes | Limited |
+| International Targeting | Yes | Yes |
 
 ---
 
-For more information about Google Search Console, visit the [official documentation](https://support.google.com/webmasters).
+## Resources
+
+- [Google Search Console Documentation](https://support.google.com/webmasters)
+- [Bing Webmaster Tools Help](https://www.bing.com/webmasters/help/)
+- [doc-builder SEO Guide](/guides/seo-optimization-guide)

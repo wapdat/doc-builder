@@ -639,4 +639,4 @@ Before publishing:
 
 ---
 
-For more help, see the [Google Site Verification Guide](./google-site-verification-guide.md) or join the [doc-builder community](https://github.com/knowcode/doc-builder/discussions).
+For more help, see the [Search Engine Verification Guide](./search-engine-verification-guide.md) or join the [doc-builder community](https://github.com/knowcode/doc-builder/discussions).

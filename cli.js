@@ -193,6 +193,79 @@ ${chalk.yellow('Get your verification code from Google Search Console.')}
     }
   });
 
+// Bing Site Verification command
+program
+  .command('bing-verify <verification-code>')
+  .description('Add Bing site verification meta tag to all pages')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .addHelpText('after', `
+${chalk.yellow('Examples:')}
+  ${chalk.gray('$')} doc-builder bing-verify B2D8C4C12C530D47AA962B24CAA09630
+  ${chalk.gray('$')} doc-builder bing-verify YOUR_VERIFICATION_CODE
+
+${chalk.yellow('This will add the Bing site verification meta tag to all generated HTML pages.')}
+${chalk.yellow('Get your verification code from Bing Webmaster Tools.')}
+`)
+  .action(async (verificationCode, options) => {
+    try {
+      const configPath = path.join(process.cwd(), options.config || 'doc-builder.config.js');
+      let config;
+      
+      if (fs.existsSync(configPath)) {
+        // Load existing config
+        delete require.cache[require.resolve(configPath)];
+        config = require(configPath);
+      } else {
+        console.log(chalk.yellow('⚠️  No config file found. Creating one...'));
+        await createDefaultConfig();
+        config = require(configPath);
+      }
+      
+      // Ensure SEO section exists
+      if (!config.seo) {
+        config.seo = {
+          enabled: true,
+          customMetaTags: []
+        };
+      }
+      
+      if (!config.seo.customMetaTags) {
+        config.seo.customMetaTags = [];
+      }
+      
+      // Check if Bing verification already exists
+      const bingVerifyIndex = config.seo.customMetaTags.findIndex(tag => 
+        tag.name === 'msvalidate.01'
+      );
+      
+      const newTag = {
+        name: 'msvalidate.01',
+        content: verificationCode
+      };
+      
+      if (bingVerifyIndex >= 0) {
+        // Update existing
+        config.seo.customMetaTags[bingVerifyIndex] = newTag;
+        console.log(chalk.green(`✅ Updated Bing site verification code`));
+      } else {
+        // Add new
+        config.seo.customMetaTags.push(newTag);
+        console.log(chalk.green(`✅ Added Bing site verification code`));
+      }
+      
+      // Write updated config
+      const configContent = `module.exports = ${JSON.stringify(config, null, 2)};\n`;
+      fs.writeFileSync(configPath, configContent);
+      
+      console.log(chalk.gray(`\nThe following meta tag will be added to all pages:`));
+      console.log(chalk.cyan(`<meta name="msvalidate.01" content="${verificationCode}" />`));
+      console.log(chalk.gray(`\nRun ${chalk.cyan('doc-builder build')} to regenerate your documentation.`));
+    } catch (error) {
+      console.error(chalk.red('Failed to add Bing verification:'), error.message);
+      process.exit(1);
+    }
+  });
+
 // SEO Check command
 program
   .command('seo-check [path]')
