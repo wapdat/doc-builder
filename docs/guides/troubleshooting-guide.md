@@ -135,16 +135,19 @@ npm install -g vercel
 
 # Verify installation
 vercel --version
+
+# Then retry deployment
+npx @knowcode/doc-builder deploy
 ```
 
 ### Deployment Fails
 
 **Common causes:**
 
-1. **Root Directory Issue**
+1. **Not Logged Into Vercel**
    ```bash
-   # Reset Vercel configuration
-   npx @knowcode/doc-builder reset-vercel
+   # Login to Vercel first
+   vercel login
    ```
 
 2. **Build Not Complete**
@@ -154,21 +157,25 @@ vercel --version
    npx @knowcode/doc-builder deploy
    ```
 
-3. **Wrong Directory**
-   - Ensure you're in project root
-   - Check that `html/` directory exists
+3. **Project Name Already Taken**
+   - Choose a different project name
+   - Or delete the existing project in Vercel dashboard
 
 ### Wrong Production URL Displayed
 
-**Problem:** Deployment shows incorrect URL (e.g., `doc.vercel.app` instead of `doc-builder-delta.vercel.app`)
+**Problem:** Deployment shows incorrect URL
 
-**Fixed in:** v1.4.22+
-
-**Solution:**
+**Solution 1:** Update to latest version
 ```bash
-# Update to latest version
+# Clear cache and update
 npx clear-npx-cache
 npx @knowcode/doc-builder@latest deploy
+```
+
+**Solution 2:** Set custom URL
+```bash
+# Set your actual production URL
+npx @knowcode/doc-builder set-production-url https://my-docs.vercel.app
 ```
 
 ## Configuration Issues
@@ -341,11 +348,12 @@ When reporting issues, include:
 | Problem | Solution |
 |---------|----------|
 | Old version running | `npx clear-npx-cache` |
-| Vercel deploy fails | `npx @knowcode/doc-builder reset-vercel` |
+| Vercel deploy fails | `vercel login` then retry |
 | No markdown found | Check `docs/` directory exists |
 | CSS not loading | Update to latest version |
 | Port in use | `--port 8080` |
 | Config not loading | Check filename and format |
+| 404 after deploy | Check Deployment Protection settings |
 
 ---
 

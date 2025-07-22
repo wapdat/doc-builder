@@ -86,22 +86,23 @@ doc-builder deploy
 
 ## First-Time Vercel Deployment
 
-When deploying for the first time, doc-builder will:
+The deployment process is now simpler than ever:
 
-1. Check if Vercel CLI is installed
-2. Guide you through project setup
-3. Create `vercel.json` configuration
-4. Link your project to Vercel
-5. Show important reminders about Vercel settings
+1. Run `npx @knowcode/doc-builder deploy`
+2. Answer a few simple questions (project name, etc.)
+3. Vercel CLI automatically detects and configures everything
+4. Get your live URL in seconds!
 
-### Important Vercel Settings
+### Making Your Docs Public
 
-After deployment, go to your Vercel dashboard:
+After deployment, if you want public access:
 
-1. Navigate to **Project Settings > General**
-2. Under **Security**, find **Deployment Protection**
-3. Set to **Disabled** for public access
-4. Or configure authentication for private docs
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Click your project → Settings → Deployment Protection
+3. Set **Vercel Authentication** to **Disabled**
+4. Save changes
+
+See the [First-Time Setup Guide](docs/vercel-first-time-setup-guide.md) for a complete walkthrough.
 
 ## Configuration (optional - can be managed with CLI)
 

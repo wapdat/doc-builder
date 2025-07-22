@@ -1,283 +1,189 @@
-# Vercel First-Time Setup Guide - Complete Prompt-by-Prompt Walkthrough
+# Vercel First-Time Setup Guide - Simplified Process
 
-**Generated**: 2025-07-21 20:45 UTC  
+**Generated**: 2025-07-22 UTC  
 **Status**: Complete  
 **Verified**: ✅
 
 ## Overview
 
-This guide provides a detailed explanation of every prompt you'll encounter during the first-time Vercel setup process when using `@knowcode/doc-builder deploy`. Understanding these prompts helps avoid common configuration errors and ensures successful deployment.
+This guide walks you through the streamlined Vercel deployment process when using `@knowcode/doc-builder deploy`. The new Vercel CLI experience has fewer prompts and clearer instructions, making deployment much simpler than before.
 
-## Pre-Setup Prompts (doc-builder specific)
+## The Simplified Process
 
-Before Vercel CLI starts, doc-builder asks several configuration questions:
+### Step 1: Run the Deploy Command
 
-### 1. Project Name Prompt
+```bash
+npx @knowcode/doc-builder deploy
+```
 
+### Step 2: doc-builder Configuration
+
+The tool will ask a few simple questions:
+
+#### Project Name
 ```
 ? What is your project name? › my-docs
 ```
-
-**What it means**: ✅
 - This becomes your Vercel project identifier
-- It will form part of your deployment URL: `project-name.vercel.app`
-- Must be lowercase, alphanumeric with hyphens only
-- Auto-generated from your site name with special characters removed
+- Will be part of your URL: `project-name.vercel.app`
+- Use lowercase letters, numbers, and hyphens only
 
-**Best practice**: 
-- Keep it short and memorable
-- Use hyphens instead of spaces
-- Example: `my-docs`, `company-docs`, `api-reference`
-
-### 2. Custom Production URL
-
+#### Custom Production URL (Optional)
 ```
 ? Custom production URL (optional)? › 
 ```
+- Press Enter to skip (recommended for first-time setup)
+- Or enter your custom domain if you have one
 
-**What it means**: ✅
-- Leave empty for auto-detection (recommended for new projects)
-- Or enter your custom domain/alias if you already have one
-- Can be a full URL or just the domain
+### Step 3: Vercel CLI Takes Over
 
-**Examples**:
-- Empty (press Enter) - Vercel will auto-assign
-- `docs.mycompany.com` - Custom domain
-- `my-docs-v2.vercel.app` - Specific Vercel subdomain
+The new Vercel CLI experience is much simpler with clearer prompts:
 
-### 3. Framework Preset
+#### Deploy Confirmation
+```
+Vercel CLI 28.0.0
+? Set up and deploy "~/path/to/your/project/html"? [Y/n]
+```
+- Answer **Yes** to proceed
+- This confirms you want to deploy the current directory
+
+#### Account Selection
+```
+? Which scope do you want to deploy to? › 
+  ○ Your Name
+  ○ Your Team (if applicable)
+```
+- Select your personal account or team
+- Use arrow keys to navigate, Enter to select
+
+#### Project Name Confirmation
+```
+? What's your project's name? (my-docs)
+```
+- Vercel suggests the name you provided earlier
+- Press Enter to accept or type a new name
+
+#### Framework Detection
+```
+? In which directory is your code located? ./
+```
+- Vercel automatically detects this is a static site
+- Usually defaults to `./` which is correct
+- Press Enter to accept
+
+### Step 4: Deployment Begins
+
+That's it! Vercel will now:
+1. Upload your files
+2. Deploy to their global CDN
+3. Provide your live URL
 
 ```
-? Which framework preset? › - Use arrow-keys. Return to submit.
-❯   Other (Static HTML)
-    Next.js
-    Vite
+✓ Production: https://my-docs.vercel.app [copied to clipboard]
 ```
 
-**What it means**: ✅
-- Determines build settings and optimizations
-- **ALWAYS choose "Other (Static HTML)"** for doc-builder
-- This ensures Vercel treats your docs as pre-built static files
+## What Changed from the Old Process?
 
-**Why this matters**:
-- Wrong selection can trigger unwanted build processes
-- May cause deployment failures or missing files
+The new Vercel CLI is much simpler:
 
-### 4. Public Access
+### Removed Prompts
+- ❌ No more "Found project xyz/html. Link to it?" confusion
+- ❌ No more "Link to different existing project?" complexity
+- ❌ No more manual framework selection (auto-detected)
+- ❌ No more "Make deployment publicly accessible?" (configured later)
 
-```
-? Make the deployment publicly accessible? › (Y/n)
-```
+### Improved Experience
+- ✅ Clearer prompts with better wording
+- ✅ Automatic framework detection
+- ✅ Fewer steps overall
+- ✅ Less chance for configuration errors
 
-**What it means**: ✅
-- **Yes (Y)**: Anyone with the URL can view your docs
-- **No (n)**: Only team members can access (requires Vercel login)
+## Post-Deployment Configuration
 
-**Considerations**:
-- Choose Yes for public documentation
-- Choose No for internal/private docs
-- Can be changed later in Vercel dashboard
+### Making Your Docs Public
 
-## Vercel CLI Link Process
+By default, Vercel may protect your deployment. To make docs publicly accessible:
 
-After the initial configuration, Vercel CLI takes over with its own prompts:
+1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
+2. Click on your project
+3. Navigate to **Settings → Deployment Protection**
+4. Set **Vercel Authentication** to **Disabled**
+5. Click **Save**
 
-### 5. Directory Confirmation
+### Custom Domain (Optional)
 
-```
-? Set up and deploy "~/Documents/.../html"? [Y/n]
-```
+To add a custom domain:
+1. Go to **Settings → Domains**
+2. Add your domain
+3. Follow DNS configuration instructions
 
-**What it means**: ✅
-- Vercel is asking to deploy from the current directory
-- This should show your `html` output directory path
-- **ALWAYS answer YES**
+### Environment Variables (If Using Authentication)
 
-**Common mistake**: 
-- If you see a different path, you may be running from wrong directory
-- Should be run from project root, not from inside `html` folder
+If you enabled authentication in doc-builder:
+1. Go to **Settings → Environment Variables**
+2. Add your auth credentials
+3. Redeploy to apply changes
 
-### 6. Scope Selection
+## Troubleshooting
 
-```
-? Which scope should contain your project? › 
-❯   Lindsay Smith (lindsay-smith)
-    Another Team (team-slug)
-```
+### "Vercel CLI not found"
 
-**What it means**: ✅
-- Determines which account/team owns the project
-- Personal accounts show as "Your Name (username)"
-- Team accounts show as "Team Name (team-slug)"
-- **Select your personal account for individual projects**
-
-**When to use teams**:
-- Collaborative projects
-- Company/organization deployments
-- Shared billing and permissions
-
-### 7. Existing Project Detection
-
-```
-? Found project "lindsay-1340s-projects/html". Link to it? [Y/n]
+If you see this error, install Vercel CLI:
+```bash
+npm install -g vercel
 ```
 
-**What it means**: ✅
-- Vercel found a project with similar name/path
-- This is often a **false match** - generic names like "html" are common
-- **ALWAYS answer NO unless you're 100% sure it's YOUR project**
+### "404 Not Found" After Deployment
 
-**Why this happens**:
-- Vercel searches for projects with matching directory names
-- Common folder names (html, docs, dist) often match other projects
-- The suggested project usually belongs to someone else
+Make sure you:
+1. Ran the deploy command from your project root
+2. Have markdown files in your `docs/` folder
+3. Didn't modify the build output
 
-### 8. Link to Different Project
+### "Authentication Required" Error
 
-```
-? Link to different existing project? [Y/n]
-```
+Your deployment is protected. Follow the "Making Your Docs Public" steps above.
 
-**What it means**: ✅
-- **Yes (Y)**: You have an existing Vercel project to connect to
-- **No (n)**: Create a brand new project
+### Deployment Fails
 
-**When to answer YES**:
-- You've deployed before and want to update existing project
-- You created a project in Vercel dashboard first
-- You're reconnecting after deleting `.vercel` folder
+Check that:
+1. You're using the latest version: `npx @knowcode/doc-builder@latest deploy`
+2. Your `docs/` folder contains `.md` files
+3. You have internet connection
 
-**When to answer NO**:
-- First time deploying this documentation
-- Want a fresh project with new URL
-- Previous project had configuration issues
-
-### 9A. Existing Project Name (if answered YES to #8)
+## Quick Checklist
 
 ```
-? What's the name of your existing project? › 
+✅ 1. Run: npx @knowcode/doc-builder deploy
+✅ 2. Enter project name (e.g., my-docs)
+✅ 3. Skip custom URL (press Enter)
+✅ 4. Confirm deployment when Vercel asks
+✅ 5. Select your account/scope
+✅ 6. Accept suggested project name
+✅ 7. Get your live URL!
 ```
 
-**What it means**: ✅
-- Enter the exact name of your existing Vercel project
-- Must match the project name in your Vercel dashboard
-- Case-sensitive
+## Best Practices
 
-**How to find project name**:
-1. Go to https://vercel.com/dashboard
-2. Look for your project in the list
-3. Use the exact name shown
-
-### 9B. New Project Name (if answered NO to #8)
-
-```
-? What is your project name? › my-docs
-```
-
-**What it means**: ✅
-- Creates a new project with this name
-- Will become your default URL: `project-name.vercel.app`
-- Must be unique across all Vercel projects
-
-**Best practices**:
-- Use same name as initial prompt for consistency
-- Keep it descriptive but concise
-- Avoid generic names like "docs" or "html"
-
-## Critical Post-Setup Configuration
-
-### Root Directory Warning
-
-After linking, you may see an error about "html/html does not exist". This means Vercel incorrectly set the Root Directory.
-
-**The Problem**: ❌
-- Vercel sometimes auto-sets Root Directory to "html"
-- But we're already deploying FROM the html directory
-- This creates a path like `html/html` which doesn't exist
-
-**The Solution**: ✅
-1. Go to your project settings: `https://vercel.com/[your-project]/settings`
-2. Find "Root Directory" under "Build & Development Settings"
-3. **DELETE any value** - leave it completely empty
-4. Click "Save"
-
-### Build Settings Configuration
-
-Vercel may also auto-detect build commands that interfere with static deployment.
-
-**Check these settings**:
-- **Build Command**: Should be empty
-- **Output Directory**: Should be empty or "./"
-- **Install Command**: Should be empty
-- **Development Command**: Should be empty
-
-**If any have values**:
-1. Clear them completely
-2. Save changes
-3. Redeploy
-
-## Deployment Protection Settings
-
-For public documentation:
-
-1. Navigate to **Project Settings > General**
-2. Find **"Deployment Protection"** under Security
-3. Set to **"Disabled"** for public access
-4. Or configure password protection if needed
-
-## Common Issues and Solutions
-
-### Issue 1: "Cannot read properties of null"
-
-**Cause**: Build settings conflict
-**Solution**: Clear all build settings in Vercel dashboard
-
-### Issue 2: "Directory html/html does not exist"
-
-**Cause**: Root Directory misconfiguration
-**Solution**: Remove "html" from Root Directory setting
-
-### Issue 3: "404 errors on deployment"
-
-**Cause**: Files not in correct location
-**Solution**: Ensure you ran `doc-builder build` before deploying
-
-### Issue 4: "Permission denied"
-
-**Cause**: Not logged into Vercel
-**Solution**: Run `vercel login` first
-
-## Quick Reference Checklist
-
-```
-✅ 1. Project name? → your-project-name
-✅ 2. Custom URL? → [Leave empty or enter domain]
-✅ 3. Framework? → Other (Static HTML)
-✅ 4. Public? → Yes (for public docs)
-✅ 5. Set up ~/html? → YES
-✅ 6. Which scope? → Your account
-✅ 7. Found project "xyz/html"? → NO
-✅ 8. Link to different project? → YES/NO (your choice)
-✅ 9. Project name? → [Based on #8 answer]
-✅ 10. Check Root Directory → Must be EMPTY
-```
-
-## Pro Tips
-
-1. **Save your answers**: Document your choices for future reference
-2. **Verify URLs**: Always check the deployment URL matches expectations
-3. **Use unique names**: Avoid conflicts with generic project names
-4. **Check settings**: Always verify Vercel dashboard settings after setup
-5. **Keep it simple**: Don't add build commands for static sites
+1. **First Time**: Just accept all defaults
+2. **Project Names**: Use descriptive names like `company-api-docs`
+3. **Custom Domains**: Add them after successful deployment
+4. **Updates**: Future deploys are even simpler - just run the same command
 
 ## Next Steps
 
-After successful setup:
-1. Your docs are live at `https://[project-name].vercel.app`
-2. Future deploys just need: `npx @knowcode/doc-builder deploy`
-3. Add custom domain in Vercel dashboard if needed
-4. Configure team access if required
+After successful deployment:
+1. Visit your live docs at the provided URL
+2. Make your docs public in Vercel settings if needed
+3. Add a custom domain if desired
+4. Share your documentation with the world!
+
+## Getting Help
+
+- **Vercel Dashboard**: https://vercel.com/dashboard
+- **Vercel Support**: https://vercel.com/support
+- **doc-builder Issues**: File on GitHub or npm
 
 ---
 
-This guide covers every prompt in the Vercel first-time setup process. For additional help, refer to the main [Vercel CLI Setup Guide](./vercel-cli-setup-guide.md).
+This guide reflects the new, simplified Vercel deployment process. For additional Vercel CLI configuration options, see the [Vercel CLI Setup Guide](./vercel-cli-setup-guide.md).
