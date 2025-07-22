@@ -5,6 +5,36 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.10] - 2025-07-22
+
+### Fixed
+- Automatically create missing docs directory when running build, dev, or deploy commands
+- No longer fails with "ENOENT: no such file or directory" when docs folder is missing
+- Creates placeholder README.md in newly created docs directory
+- Removed duplicate warning messages about missing docs directory
+
+### Improved
+- Better handling of empty projects - just run `doc-builder build` and it creates everything needed
+- Cleaner console output without redundant warnings
+- Ensures output directory exists before building
+
+## [1.5.9] - 2025-07-22
+
+### Added
+- Comprehensive SEO Optimization Guide with extensive external resources
+- Detailed explanations of all SEO features and how they work
+- References to 20+ external SEO tools and learning resources
+- Keyword research tools and performance testing recommendations
+- SEO monitoring strategies and success metrics
+- Actionable SEO checklist for documentation projects
+
+### Documentation
+- Created detailed guide explaining automatic meta tag generation
+- Added sections on Open Graph Protocol and Twitter Cards
+- Included structured data (JSON-LD) explanations
+- Referenced Google's official SEO guidelines and best practices
+- Added links to free SEO tools and validators
+
 ## [1.5.8] - 2025-07-22
 
 ### Changed

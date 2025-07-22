@@ -83,7 +83,7 @@ ${chalk.yellow('Examples:')}
     const spinner = ora('Building documentation...').start();
     
     try {
-      const config = await loadConfig(options.config || 'doc-builder.config.js', options);
+      const config = await loadConfig(options.config || 'doc-builder.config.js', { ...options, command: 'build' });
       await build(config);
       spinner.succeed('Documentation built successfully!');
     } catch (error) {
@@ -112,7 +112,7 @@ ${chalk.yellow('Examples:')}
 `)
   .action(async (options) => {
     try {
-      const config = await loadConfig(options.config, options);
+      const config = await loadConfig(options.config, { ...options, command: 'dev' });
       await startDevServer(config, options.port);
     } catch (error) {
       console.error(chalk.red(error.message));
@@ -645,7 +645,7 @@ ${chalk.yellow('Troubleshooting:')}
     const spinner = ora('Deploying to Vercel...').start();
     
     try {
-      const config = await loadConfig(options.config || 'doc-builder.config.js', options);
+      const config = await loadConfig(options.config || 'doc-builder.config.js', { ...options, command: 'deploy' });
       
       // First check if Vercel CLI is installed
       try {
