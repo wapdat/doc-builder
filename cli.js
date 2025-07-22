@@ -214,8 +214,16 @@ ${chalk.yellow('This command analyzes:')}
 `)
   .action(async (filePath, options) => {
     try {
-      const config = await loadConfig(options.config);
+      const config = await loadConfig(options.config || 'doc-builder.config.js', options);
       const docsDir = path.resolve(config.docsDir || 'docs');
+      
+      // Check if docsDir exists
+      if (!await fs.pathExists(docsDir)) {
+        console.error(chalk.red(`Documentation directory not found: ${docsDir}`));
+        console.log(chalk.yellow('\nPlease ensure you have a docs directory with markdown files.'));
+        console.log(chalk.gray(`Create it with: mkdir docs && echo "# Documentation" > docs/README.md`));
+        process.exit(1);
+      }
       
       console.log(chalk.cyan('🔍 Analyzing SEO...'));
       

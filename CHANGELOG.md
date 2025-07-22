@@ -5,6 +5,20 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.7] - 2025-07-22
+
+### Fixed
+- Fixed "path argument must be string" error when running seo-check via npx
+- Properly pass options to loadConfig in seo-check command
+- Added validation to check if docs directory exists before running SEO analysis
+- Improved error messages when docs directory is missing
+
+## [1.5.6] - 2025-07-22
+
+### Fixed
+- Fixed missing gray-matter import in cli.js causing seo-check command to fail
+- Resolved "path argument must be string" error when running seo-check
+
 ## [1.5.5] - 2025-07-22
 
 ### Added
