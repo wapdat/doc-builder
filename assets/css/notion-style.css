@@ -954,17 +954,37 @@ tr:hover {
   
   /* Hide sidebar on mobile */
   .sidebar {
-    position: absolute;
+    position: fixed;
     top: calc(var(--header-height) + var(--breadcrumb-height));
     left: 0;
     height: calc(100vh - var(--header-height) - var(--breadcrumb-height));
-    z-index: 999;
+    z-index: 1002; /* Above header and floating button */
     transform: translateX(-100%);
     transition: transform var(--duration-normal) var(--easing-out);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15); /* Add shadow for depth */
   }
   
   .sidebar.open {
     transform: translateX(0);
+  }
+  
+  /* Mobile menu overlay */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* Below sidebar but above content */
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+    opacity: 1;
   }
   
   .main-wrapper {
@@ -1577,6 +1597,62 @@ tr:hover {
 }
 
 /* Remove custom positioning variables - tooltips always go right */
+
+/* Floating Menu Button */
+.floating-menu-toggle {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-accent-blue);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 1001; /* Above sidebar */
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  transition: all var(--duration-normal) var(--easing-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-menu-toggle.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.floating-menu-toggle:hover {
+  transform: scale(1.1) translateY(0);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.floating-menu-toggle:active {
+  transform: scale(0.95) translateY(0);
+}
+
+.floating-menu-toggle i {
+  transition: transform var(--duration-fast) var(--easing-out);
+}
+
+.floating-menu-toggle:hover i {
+  transform: rotate(90deg);
+}
+
+/* Dark mode styles for floating button */
+.dark-mode .floating-menu-toggle {
+  background: var(--color-accent-blue);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .floating-menu-toggle:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.3);
+}
 
 /* Mobile adjustments */
 @media (max-width: 768px) {

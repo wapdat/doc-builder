@@ -512,11 +512,111 @@ function updateThemeIcon(theme) {
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 
+// Create overlay element for mobile
+let overlay = document.querySelector('.sidebar-overlay');
+if (!overlay && window.innerWidth <= 768) {
+  overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+}
+
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('open');
+    if (overlay) {
+      overlay.classList.toggle('active');
+    }
   });
 }
+
+// Close menu when clicking overlay
+if (overlay) {
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+}
+
+// Floating Menu Button for Mobile
+function initFloatingMenuButton() {
+  // Only initialize on mobile
+  if (window.innerWidth > 768) return;
+  
+  // Check if button already exists
+  if (document.getElementById('floating-menu-toggle')) return;
+  
+  // Create floating button
+  const floatingButton = document.createElement('button');
+  floatingButton.id = 'floating-menu-toggle';
+  floatingButton.className = 'floating-menu-toggle';
+  floatingButton.setAttribute('aria-label', 'Toggle menu');
+  floatingButton.innerHTML = '<i class="fas fa-bars"></i>';
+  floatingButton.style.display = 'flex'; // Always visible on mobile
+  floatingButton.classList.add('visible'); // Start visible
+  
+  // Add to body
+  document.body.appendChild(floatingButton);
+  
+  // Toggle sidebar on click
+  floatingButton.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    
+    // Handle overlay
+    let overlay = document.querySelector('.sidebar-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'sidebar-overlay';
+      document.body.appendChild(overlay);
+      
+      // Add overlay click handler
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        floatingButton.querySelector('i').className = 'fas fa-bars';
+      });
+    }
+    
+    if (overlay) {
+      overlay.classList.toggle('active');
+    }
+    
+    // Update icon based on state
+    const icon = floatingButton.querySelector('i');
+    if (sidebar.classList.contains('open')) {
+      icon.className = 'fas fa-times';
+    } else {
+      icon.className = 'fas fa-bars';
+    }
+  });
+  
+  // Remove scroll-based visibility - button is always visible on mobile
+  
+  // Update icon when sidebar state changes from other sources
+  const observer = new MutationObserver(() => {
+    const icon = floatingButton.querySelector('i');
+    if (sidebar.classList.contains('open')) {
+      icon.className = 'fas fa-times';
+    } else {
+      icon.className = 'fas fa-bars';
+    }
+  });
+  
+  observer.observe(sidebar, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+}
+
+// Initialize floating button on load and resize
+document.addEventListener('DOMContentLoaded', initFloatingMenuButton);
+window.addEventListener('resize', () => {
+  const existingButton = document.getElementById('floating-menu-toggle');
+  if (window.innerWidth > 768 && existingButton) {
+    existingButton.remove();
+  } else if (window.innerWidth <= 768 && !existingButton) {
+    initFloatingMenuButton();
+  }
+});
 
 // Prevent sidebar from closing when clicking nav items
 // Only close when clicking outside the sidebar or the close button
@@ -525,11 +625,21 @@ document.addEventListener('click', (e) => {
   if (window.innerWidth <= 768) {
     const isClickInsideSidebar = sidebar && sidebar.contains(e.target);
     const isMenuToggle = e.target.closest('#menu-toggle');
+    const isFloatingButton = e.target.closest('#floating-menu-toggle');
     const isNavItem = e.target.closest('.nav-item, .nav-title');
+    const overlay = document.querySelector('.sidebar-overlay');
     
     // Close sidebar only if clicking outside AND not on menu toggle AND not on nav items
-    if (!isClickInsideSidebar && !isMenuToggle && !isNavItem && sidebar?.classList.contains('open')) {
+    if (!isClickInsideSidebar && !isMenuToggle && !isFloatingButton && !isNavItem && sidebar?.classList.contains('open')) {
       sidebar.classList.remove('open');
+      if (overlay) {
+        overlay.classList.remove('active');
+      }
+      // Update floating button icon if it exists
+      const floatingBtn = document.getElementById('floating-menu-toggle');
+      if (floatingBtn) {
+        floatingBtn.querySelector('i').className = 'fas fa-bars';
+      }
     }
   }
 });
@@ -1318,8 +1428,31 @@ function initTooltips() {
   });
 }
 
+// Handle .md link redirects
+function initMarkdownLinkRedirects() {
+  // Check if current URL ends with .md and redirect
+  if (window.location.pathname.endsWith('.md')) {
+    const htmlPath = window.location.pathname.replace(/\.md$/, '.html');
+    console.log(`Redirecting from .md to .html: ${htmlPath}`);
+    window.location.replace(htmlPath);
+    return; // Stop execution as we're redirecting
+  }
+  
+  // Intercept clicks on .md links
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.href && link.href.endsWith('.md')) {
+      e.preventDefault();
+      const htmlUrl = link.href.replace(/\.md$/, '.html');
+      console.log(`Converting .md link to .html: ${htmlUrl}`);
+      window.location.href = htmlUrl;
+    }
+  });
+}
+
 // Initialize on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
+  initMarkdownLinkRedirects();
   highlightNavigation();
   generateTableOfContents();
   initSidebarResize();

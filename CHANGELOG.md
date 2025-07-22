@@ -5,6 +5,76 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.3] - 2025-07-22
+
+### Fixed
+- Fixed mobile menu not being visible when scrolled down by changing sidebar from absolute to fixed positioning
+- Increased sidebar z-index to 1002 to ensure it appears above header and other elements
+- Made floating menu button always visible on mobile (removed scroll-based visibility)
+- Added overlay backdrop when mobile menu is open for better UX
+- Fixed overlay and menu state synchronization across different toggle methods
+
+### Changed
+- Mobile sidebar now uses `position: fixed` instead of `position: absolute`
+- Floating menu button is now always visible on mobile for consistent access
+- Added semi-transparent overlay when mobile menu is open
+- Improved click-outside behavior to properly close menu and overlay
+
+## [1.5.2] - 2025-07-22
+
+### Added
+- Floating menu button for mobile devices that appears when scrolling down
+- Scroll detection to show/hide floating menu button based on scroll position
+- Smooth animations and transitions for floating button appearance
+- Icon changes between hamburger and close based on sidebar state
+
+### Fixed
+- Fixed mobile menu inaccessibility when scrolled down the page
+- Menu toggle button in header was scrolling off-screen, preventing sidebar access
+- Mobile users can now always access the navigation menu regardless of scroll position
+
+### Background
+- Users reported being unable to open the sidebar menu on mobile when scrolled down
+- Implemented floating action button (FAB) pattern common in mobile apps
+- Button appears when user scrolls past the header and disappears when scrolling back up
+
+## [1.5.1] - 2025-07-21
+
+### Added
+- Automatic redirect from .md URLs to their corresponding .html files
+- Client-side JavaScript to intercept clicks on .md links and redirect to .html
+- Custom 404.html page with automatic redirect logic for direct .md URL navigation
+- Enhanced vercel.json generation to include 404 page routing
+
+### Fixed
+- Fixed 404 errors when clicking or navigating to .md links
+- Links like `claude-workflow-guide.md` now automatically redirect to `claude-workflow-guide.html`
+
+### Background
+- Users reported that links to .md files resulted in 404 errors
+- Implemented client-side solution to handle both link clicks and direct navigation
+- Works seamlessly with Vercel's cleanUrls configuration
+
+## [1.5.0] - 2025-07-21
+
+### Added
+- Comprehensive SEO features including meta tags, Open Graph, Twitter Cards
+- JSON-LD structured data for better search engine understanding
+- Automatic sitemap.xml and robots.txt generation
+- Interactive `setup-seo` CLI command to configure SEO settings
+- SEO configuration options in doc-builder.config.js
+- Production URL configuration with `set-production-url` command
+- Support for custom production URLs via config file, CLI command, or deployment flag
+
+### Improved
+- Better deployment URL detection with multiple fallback methods
+- Enhanced meta tag generation with author, keywords, and canonical URLs
+- Social media preview support with customizable images and descriptions
+
+### Documentation
+- Added comprehensive SEO guide explaining all features and configuration
+- Updated troubleshooting guide with npx cache clearing instructions
+
 ## [1.4.26] - 2025-07-21
 
 ### Improved

@@ -139,14 +139,6 @@ module.exports = {
 };
 ```
 
-## Presets
-
-Use the `notion-inspired` preset for a clean, modern documentation style:
-
-```bash
-npx @knowcode/doc-builder build --preset notion-inspired
-```
-
 ## Commands
 
 ### set-production-url

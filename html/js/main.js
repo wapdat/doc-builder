@@ -518,6 +518,92 @@ if (menuToggle) {
   });
 }
 
+// Floating Menu Button for Mobile
+function initFloatingMenuButton() {
+  // Only initialize on mobile
+  if (window.innerWidth > 768) return;
+  
+  // Check if button already exists
+  if (document.getElementById('floating-menu-toggle')) return;
+  
+  // Create floating button
+  const floatingButton = document.createElement('button');
+  floatingButton.id = 'floating-menu-toggle';
+  floatingButton.className = 'floating-menu-toggle';
+  floatingButton.setAttribute('aria-label', 'Toggle menu');
+  floatingButton.innerHTML = '<i class="fas fa-bars"></i>';
+  floatingButton.style.display = 'none'; // Hidden by default
+  
+  // Add to body
+  document.body.appendChild(floatingButton);
+  
+  // Toggle sidebar on click
+  floatingButton.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    // Update icon based on state
+    const icon = floatingButton.querySelector('i');
+    if (sidebar.classList.contains('open')) {
+      icon.className = 'fas fa-times';
+    } else {
+      icon.className = 'fas fa-bars';
+    }
+  });
+  
+  // Show/hide based on scroll position
+  let scrollTimeout;
+  
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const headerHeight = document.querySelector('.header')?.offsetHeight || 64;
+      
+      // Show floating button when scrolled past header
+      if (scrollTop > headerHeight + 50) {
+        floatingButton.style.display = 'flex';
+        // Add slight delay for smooth appearance
+        setTimeout(() => {
+          floatingButton.classList.add('visible');
+        }, 10);
+      } else {
+        floatingButton.classList.remove('visible');
+        // Hide after transition completes
+        setTimeout(() => {
+          if (!floatingButton.classList.contains('visible')) {
+            floatingButton.style.display = 'none';
+          }
+        }, 300);
+      }
+    }, 100);
+  });
+  
+  // Update icon when sidebar state changes from other sources
+  const observer = new MutationObserver(() => {
+    const icon = floatingButton.querySelector('i');
+    if (sidebar.classList.contains('open')) {
+      icon.className = 'fas fa-times';
+    } else {
+      icon.className = 'fas fa-bars';
+    }
+  });
+  
+  observer.observe(sidebar, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+}
+
+// Initialize floating button on load and resize
+document.addEventListener('DOMContentLoaded', initFloatingMenuButton);
+window.addEventListener('resize', () => {
+  const existingButton = document.getElementById('floating-menu-toggle');
+  if (window.innerWidth > 768 && existingButton) {
+    existingButton.remove();
+  } else if (window.innerWidth <= 768 && !existingButton) {
+    initFloatingMenuButton();
+  }
+});
+
 // Prevent sidebar from closing when clicking nav items
 // Only close when clicking outside the sidebar or the close button
 document.addEventListener('click', (e) => {
@@ -1318,8 +1404,31 @@ function initTooltips() {
   });
 }
 
+// Handle .md link redirects
+function initMarkdownLinkRedirects() {
+  // Check if current URL ends with .md and redirect
+  if (window.location.pathname.endsWith('.md')) {
+    const htmlPath = window.location.pathname.replace(/\.md$/, '.html');
+    console.log(`Redirecting from .md to .html: ${htmlPath}`);
+    window.location.replace(htmlPath);
+    return; // Stop execution as we're redirecting
+  }
+  
+  // Intercept clicks on .md links
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.href && link.href.endsWith('.md')) {
+      e.preventDefault();
+      const htmlUrl = link.href.replace(/\.md$/, '.html');
+      console.log(`Converting .md link to .html: ${htmlUrl}`);
+      window.location.href = htmlUrl;
+    }
+  });
+}
+
 // Initialize on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
+  initMarkdownLinkRedirects();
   highlightNavigation();
   generateTableOfContents();
   initSidebarResize();
