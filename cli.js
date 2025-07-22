@@ -683,20 +683,12 @@ ${chalk.yellow('Troubleshooting:')}
       const vercelProjectPath = path.join(outputPath, '.vercel', 'project.json');
       if (!fs.existsSync(vercelProjectPath)) {
         spinner.stop();
-        console.log(chalk.yellow('\n🚀 First time deploying to Vercel!\n'));
+        console.log(chalk.blue('\n🚀 First time deploying to Vercel!\n'));
         
-        // Show critical warning about Root Directory
-        console.log(chalk.bgRed.white.bold('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'));
-        console.log(chalk.bgRed.white.bold(' ⚠️  CRITICAL WARNING - READ BEFORE CONTINUING! '));
-        console.log(chalk.bgRed.white.bold('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'));
-        
-        console.log(chalk.yellow.bold('During setup, if Vercel asks about Root Directory:'));
-        console.log(chalk.red.bold('• LEAVE IT EMPTY (blank)'));
-        console.log(chalk.red.bold('• DO NOT ENTER "html"'));
-        console.log(chalk.red.bold('• We are ALREADY deploying from the html folder!\n'));
-        
-        console.log(chalk.white('Setting Root Directory to "html" will cause errors.'));
-        console.log(chalk.white('You\'ll need to fix it in project settings later.\n'));
+        console.log(chalk.yellow('📝 Important: When asked about settings:'));
+        console.log(chalk.gray('   • Root Directory: ') + chalk.green('leave empty'));
+        console.log(chalk.gray('   • We handle the build process for you'));
+        console.log();
         
         const setupConfirm = await prompts({
           type: 'confirm',

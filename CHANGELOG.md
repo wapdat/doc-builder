@@ -5,6 +5,25 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.11] - 2025-07-22
+
+### Fixed
+- Fixed Vercel deployment error: "routes cannot be present with rewrites"
+- Replaced deprecated `routes` configuration with modern `rewrites` in vercel.json
+- Deployment now works correctly with Vercel's latest API
+
+### Improved
+- Dramatically simplified deployment prompts and warnings
+- Reduced verbosity of console output during deployment
+- Made setup instructions clearer and less intimidating
+- Removed redundant and scary "CRITICAL WARNING" messages
+- Streamlined the first-time deployment experience
+
+### Changed
+- vercel.json now uses `rewrites` instead of deprecated `routes` property
+- Cleaner, more professional console output throughout deployment process
+- Better error messages that are helpful rather than alarming
+
 ## [1.5.10] - 2025-07-22
 
 ### Fixed
