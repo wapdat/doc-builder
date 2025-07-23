@@ -758,7 +758,28 @@ ${chalk.yellow('Troubleshooting:')}
         spinner.stop();
         console.log(chalk.blue('\n🚀 First time deploying to Vercel!\n'));
         
-        console.log(chalk.yellow('📝 Important: When asked about settings:'));
+        // Check if user is running from project root
+        console.log(chalk.yellow('📍 Before proceeding, please confirm:'));
+        console.log(chalk.gray('   • Are you running this command from your project root directory?'));
+        console.log(chalk.gray('   • This directory should contain your docs/ folder and config files'));
+        console.log(chalk.gray('   • Current directory: ') + chalk.cyan(process.cwd()));
+        console.log();
+        
+        const rootConfirm = await prompts({
+          type: 'confirm',
+          name: 'value',
+          message: 'Are you running this from your project root directory?',
+          initial: true
+        });
+        
+        if (!rootConfirm.value) {
+          console.log(chalk.red('\n❌ Please navigate to your project root directory first.'));
+          console.log(chalk.gray('   Then run the deploy command again.'));
+          console.log(chalk.gray('   Example: cd /path/to/your/project && npx @knowcode/doc-builder@latest deploy'));
+          process.exit(1);
+        }
+        
+        console.log(chalk.yellow('\n📝 Important: When asked about Vercel settings:'));
         console.log(chalk.gray('   • Root Directory: ') + chalk.green('leave empty'));
         console.log(chalk.gray('   • We handle the build process for you'));
         console.log();
