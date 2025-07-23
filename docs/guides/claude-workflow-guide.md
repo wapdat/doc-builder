@@ -262,7 +262,79 @@ function handleError(error) {
 - [Contributing Guide](/CONTRIBUTING.md)
 ```
 
-### 1.2 Global CLAUDE.md Best Practices
+### 1.2 Setting Up Admin/Background/Environment Facts
+
+For Claude to generate accurate and consistent content, include key organizational and environmental facts in your CLAUDE.md. This ensures all generated documentation uses correct information:
+
+```markdown
+## Organization & Environment Facts
+
+### Company Information
+- **Organization Name**: Knowcode Ltd
+- **Website**: https://knowcode.tech
+- **Contact Email**: support@knowcode.tech
+- **GitHub Organization**: https://github.com/knowcode
+- **NPM Organization**: @knowcode
+
+### Author Information
+- **Primary Author**: Lindsay Smith
+- **Author Email**: lindsay@knowcode.tech
+- **Author Title**: Lead Developer
+- **GitHub Handle**: @lindsaysmith
+- **Twitter/X Handle**: @planbbackups
+
+### Project Environment
+- **Production URL**: https://doc-builder-delta.vercel.app
+- **Staging URL**: https://doc-builder-staging.vercel.app
+- **Documentation URL**: https://docs.knowcode.tech
+- **API Base URL**: https://api.knowcode.tech
+- **CDN URL**: https://cdn.knowcode.tech
+
+### Default Settings
+- **Default Language**: en-US
+- **Timezone**: UTC
+- **Date Format**: YYYY-MM-DD
+- **Copyright Year**: 2025
+- **License**: MIT
+- **Version**: 1.6.2
+
+### SEO Defaults
+- **Default Author**: Lindsay Smith
+- **Organization Type**: Software Company
+- **Twitter Handle**: @planbbackups
+- **LinkedIn**: https://linkedin.com/company/knowcode
+- **Facebook Page**: https://facebook.com/knowcode
+
+### Technical Stack
+- **Primary Language**: JavaScript/TypeScript
+- **Node Version**: 20.x LTS
+- **Package Manager**: npm (not yarn or pnpm)
+- **Cloud Provider**: AWS (primary), Vercel (hosting)
+- **Region**: eu-west-1
+- **Container Registry**: Docker Hub
+
+### Communication Standards
+- **Support Response Time**: 24-48 hours
+- **Documentation Language**: US English
+- **Tone**: Professional but friendly
+- **Technical Level**: Intermediate developers
+
+### Branding Guidelines
+- **Company Tagline**: "Beautiful documentation with the least effort possible"
+- **Primary Color**: #0070f3 (Vercel blue)
+- **Logo**: ✨ (sparkle emoji)
+- **Font Family**: Inter, system-ui
+```
+
+When these facts are included in your CLAUDE.md, Claude will:
+- ✅ Use correct contact information in examples
+- ✅ Reference the right URLs in documentation
+- ✅ Apply consistent author attribution
+- ✅ Generate accurate meta tags for SEO
+- ✅ Use proper organizational context
+- ✅ Follow established technical standards
+
+### 1.3 Global CLAUDE.md Best Practices
 
 Your global `~/.claude/CLAUDE.md` should include universal standards that apply to all projects. Here's an expanded example:
 
@@ -348,6 +420,56 @@ graph LR
     F --> F1[Docker V2]
     F --> F2[Build Optimization]
     F --> F3[Caching Strategies]
+```
+
+### 1.4 Benefits of Environment Facts in Documentation
+
+Including these environmental facts in your CLAUDE.md provides several key benefits:
+
+```mermaid
+graph TD
+    A[Environment Facts in CLAUDE.md] --> B[Accurate Content]
+    A --> C[Consistent Branding]
+    A --> D[Proper Attribution]
+    A --> E[SEO Optimization]
+    
+    B --> B1[Correct URLs in examples]
+    B --> B2[Valid email addresses]
+    B --> B3[Accurate version numbers]
+    
+    C --> C1[Company name consistency]
+    C --> C2[Tagline usage]
+    C --> C3[Brand colors]
+    
+    D --> D1[Author metadata]
+    D --> D2[Copyright notices]
+    D --> D3[License references]
+    
+    E --> E1[Meta tag generation]
+    E --> E2[Social media tags]
+    E --> E3[Structured data]
+    
+    style A fill:#e3f2fd
+    style B fill:#c8e6c9
+    style C fill:#fff9c4
+    style D fill:#ffccbc
+    style E fill:#d1c4e9
+```
+
+#### Example: Without Environment Facts
+```javascript
+// Claude might generate:
+const API_URL = 'https://api.example.com';  // ❓ Generic placeholder
+const author = 'Your Name';                 // ❓ Placeholder
+const email = 'email@example.com';          // ❓ Generic example
+```
+
+#### Example: With Environment Facts
+```javascript
+// Claude will generate:
+const API_URL = 'https://api.knowcode.tech';      // ✅ Actual API URL
+const author = 'Lindsay Smith';                    // ✅ Correct author
+const email = 'support@knowcode.tech';             // ✅ Real contact email
 ```
 
 ## Step 2: Initialize doc-builder
@@ -708,3 +830,4 @@ The key to success is iterative refinement of your CLAUDE.md file to capture you
 | Date | Author | Changes |
 |------|--------|---------|
 | 2025-07-21 | Claude | Initial creation |
+| 2025-07-23 | Lindsay Smith | Added section on environment facts for accurate content generation |
