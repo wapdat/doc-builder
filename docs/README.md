@@ -127,7 +127,8 @@ module.exports = {
   siteName: '@knowcode/doc-builder',
   siteDescription: 'Transform markdown into beautiful documentation',
   docsDir: 'docs',
-  outputDir: 'html'
+  outputDir: 'html',
+  favicon: '✨'  // Can be emoji or path to image
 };
 ```
 *The CLI creates and updates this for you*

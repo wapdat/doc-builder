@@ -203,6 +203,7 @@ module.exports = {
   // Site info
   siteName: '@knowcode/doc-builder',
   siteDescription: 'Transform markdown into beautiful documentation',
+  favicon: '✨',  // Can be emoji or path to image file
   
   // Production URL (optional)
   productionUrl: 'https://my-docs.vercel.app',  // Custom URL to display after deployment
