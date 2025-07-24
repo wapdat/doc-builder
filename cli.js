@@ -1443,6 +1443,65 @@ This comprehensive guide ensures consistent, high-quality documentation that is 
     }
   });
 
+// Add custom help command that shows settings
+program
+  .command('settings')
+  .description('Show current tool settings and configuration')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .action(async (options) => {
+    console.log(chalk.cyan('\n📋 Current Tool Settings\n'));
+    
+    try {
+      // Load configuration
+      const config = await loadConfig(options.config || 'doc-builder.config.js', {});
+      
+      // Display settings in a readable format
+      console.log(chalk.yellow('📁 Directories:'));
+      console.log(`  • Documentation source: ${chalk.green(config.docsDir || 'docs')}`);
+      console.log(`  • HTML output: ${chalk.green(config.outputDir || 'html')}`);
+      
+      console.log(chalk.yellow('\n🌐 Site Information:'));
+      console.log(`  • Site name: ${chalk.green(config.siteName || 'Documentation')}`);
+      console.log(`  • Description: ${chalk.green(config.siteDescription || 'Documentation site')}`);
+      console.log(`  • Favicon: ${chalk.green(config.favicon || '✨')}`);
+      
+      console.log(chalk.yellow('\n✨ Features:'));
+      console.log(`  • Authentication: ${config.features?.authentication ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
+      console.log(`  • Dark mode: ${config.features?.darkMode !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
+      console.log(`  • Mermaid diagrams: ${config.features?.mermaid !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
+      console.log(`  • Changelog: ${config.features?.changelog !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
+      console.log(`  • Phosphor icons: ${config.features?.phosphorIcons !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
+      console.log(`  • Title normalization: ${config.features?.normalizeTitle !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
+      console.log(`  • PDF download: ${config.features?.showPdfDownload !== false ? chalk.green('Shown') : chalk.gray('Hidden')}`);
+      console.log(`  • Menu default: ${config.features?.menuDefaultOpen !== false ? chalk.green('Open') : chalk.gray('Closed')}`);
+      
+      if (config.features?.authentication) {
+        console.log(chalk.yellow('\n🔐 Authentication:'));
+        console.log(`  • Username: ${chalk.green(config.auth?.username || 'admin')}`);
+        console.log(`  • Password: ${chalk.gray('***' + (config.auth?.password?.slice(-2) || '**'))}`);
+      }
+      
+      if (config.seo?.enabled) {
+        console.log(chalk.yellow('\n🔍 SEO:'));
+        console.log(`  • Site URL: ${chalk.green(config.seo.siteUrl || 'Not configured')}`);
+        console.log(`  • Author: ${chalk.green(config.seo.author || 'Not set')}`);
+        console.log(`  • Keywords: ${chalk.green((config.seo.keywords || []).join(', ') || 'None')}`);
+      }
+      
+      console.log(chalk.gray('\n💡 Tip: Use doc-builder build --help to see CLI options'));
+      
+    } catch (error) {
+      console.error(chalk.red('Error loading configuration:'), error.message);
+    }
+  });
+
+// Update the help text to mention the settings command
+program.addHelpText('after', `
+${chalk.cyan('📋 View Settings:')}
+  ${chalk.gray('$')} doc-builder settings                    ${chalk.gray('# Show current configuration')}
+  ${chalk.gray('$')} doc-builder settings --config custom.js  ${chalk.gray('# Show specific config file')}
+`);
+
 // Parse arguments
 program.parse(process.argv);
 
