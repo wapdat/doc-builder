@@ -9,7 +9,8 @@ module.exports = {
     "changelog": true,
     "mermaid": true,
     "darkMode": true,
-    "phosphorIcons": true
+    "phosphorIcons": true,
+    "menuDefaultOpen": false
   },
   "seo": {
     "enabled": true,

@@ -1003,6 +1003,20 @@ tr:hover {
   cursor: pointer;
   color: var(--color-text-primary);
   padding: var(--space-2);
+  border-radius: var(--radius-small);
+  transition: all var(--duration-fast) var(--easing-out);
+}
+
+.menu-toggle:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+/* Show menu toggle on desktop when menu starts closed or is closed */
+@media (min-width: 769px) {
+  body.menu-starts-closed .menu-toggle {
+    display: block;
+  }
 }
 
 /* Responsive Design */

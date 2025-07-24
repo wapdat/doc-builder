@@ -495,10 +495,12 @@ const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 
 // Set initial menu state based on configuration
+const menuDefaultOpen = window.docBuilderConfig?.features?.menuDefaultOpen !== false;
 if (sidebar && window.innerWidth > 768) {
-  const menuDefaultOpen = window.docBuilderConfig?.features?.menuDefaultOpen !== false;
   if (!menuDefaultOpen) {
     sidebar.classList.add('closed');
+    // Add class to body to show menu toggle on desktop when menu starts closed
+    document.body.classList.add('menu-starts-closed');
   }
 }
 
@@ -518,12 +520,31 @@ if (menuToggle) {
     } else {
       // Desktop: toggle 'closed' class
       sidebar.classList.toggle('closed');
+      // Update visibility of menu toggle based on sidebar state
+      updateMenuToggleVisibility();
     }
     if (overlay) {
       overlay.classList.toggle('active');
     }
   });
 }
+
+// Function to update menu toggle visibility
+function updateMenuToggleVisibility() {
+  if (window.innerWidth > 768) {
+    if (!menuDefaultOpen || sidebar.classList.contains('closed')) {
+      document.body.classList.add('show-menu-toggle');
+    } else {
+      document.body.classList.remove('show-menu-toggle');
+    }
+  }
+}
+
+// Initial check
+updateMenuToggleVisibility();
+
+// Update on window resize
+window.addEventListener('resize', updateMenuToggleVisibility);
 
 // Close menu when clicking overlay
 if (overlay) {

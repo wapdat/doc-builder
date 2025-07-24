@@ -5,6 +5,23 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.3] - 2025-07-24
+
+### Added
+- Hamburger menu icon is now always visible on desktop when menuDefaultOpen is false
+- New CSS class `menu-starts-closed` to ensure menu toggle visibility
+- Dynamic menu toggle visibility management with `updateMenuToggleVisibility()` function
+
+### Fixed
+- Fixed issue where users couldn't open the sidebar when menuDefaultOpen was false
+- Menu toggle now properly shows/hides based on sidebar state and configuration
+- Improved desktop navigation accessibility
+
+### Background
+- Previously, when menuDefaultOpen was false, the hamburger icon was hidden on desktop
+- This made it impossible to open the sidebar once it was closed
+- Now the hamburger icon remains visible when needed for better UX
+
 ## [1.5.20] - 2025-07-22
 
 ### Fixed
