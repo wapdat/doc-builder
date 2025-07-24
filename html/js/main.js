@@ -494,6 +494,14 @@ function updateThemeIcon(theme) {
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 
+// Set initial menu state based on configuration
+if (sidebar && window.innerWidth > 768) {
+  const menuDefaultOpen = window.docBuilderConfig?.features?.menuDefaultOpen !== false;
+  if (!menuDefaultOpen) {
+    sidebar.classList.add('closed');
+  }
+}
+
 // Create overlay element for mobile
 let overlay = document.querySelector('.sidebar-overlay');
 if (!overlay && window.innerWidth <= 768) {
@@ -504,7 +512,13 @@ if (!overlay && window.innerWidth <= 768) {
 
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
+    if (window.innerWidth <= 768) {
+      // Mobile: toggle 'open' class
+      sidebar.classList.toggle('open');
+    } else {
+      // Desktop: toggle 'closed' class
+      sidebar.classList.toggle('closed');
+    }
     if (overlay) {
       overlay.classList.toggle('active');
     }
@@ -1278,6 +1292,10 @@ function exportToPDF() {
 
 // Add PDF export button functionality
 function addPDFExportButton() {
+  // Check configuration - default to true if not set
+  const showPdfDownload = window.docBuilderConfig?.features?.showPdfDownload !== false;
+  if (!showPdfDownload) return;
+  
   const headerActions = document.querySelector('.header-actions');
   if (headerActions) {
     const pdfButton = document.createElement('button');

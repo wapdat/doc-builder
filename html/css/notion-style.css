@@ -319,7 +319,7 @@ pre code {
   background: var(--color-bg-secondary);
   border-right: 1px solid var(--color-border-default);
   overflow: hidden;
-  transition: width var(--duration-normal);
+  transition: width var(--duration-normal), transform 0.3s ease, margin-left 0.3s ease;
   min-width: 200px;
   max-width: 500px;
   user-select: none;
@@ -328,6 +328,14 @@ pre code {
   z-index: 100;
   flex-shrink: 0;
   height: 100%;
+}
+
+/* Desktop sidebar closed state */
+@media (min-width: 769px) {
+  .sidebar.closed {
+    transform: translateX(-100%);
+    margin-left: calc(var(--sidebar-width) * -1);
+  }
 }
 
 /* Banner adjustment no longer needed with relative positioning */
@@ -1958,31 +1966,33 @@ tr:hover {
 /* Phosphor Icons Alignment */
 .ph {
   display: inline-block;
-  vertical-align: text-top;
-  line-height: 0.8;
+  vertical-align: middle;
+  line-height: 1;
   position: relative;
-  top: 0.2em; /* Push down to align with x-height of text */
+  top: -0.05em; /* Slight upward adjustment for better baseline alignment */
 }
 
 /* Ensure icons in headings are properly aligned */
 h1 .ph, h2 .ph, h3 .ph, h4 .ph, h5 .ph, h6 .ph {
   font-size: 0.85em; /* Slightly smaller in headings */
-  line-height: 0.8;
-  top: 0.15em;
+  line-height: 1;
+  top: -0.05em;
 }
 
 /* Icons in lists need special handling */
 li .ph {
   margin-right: 0.3em;
-  font-size: 1.05em;
-  line-height: 0.85;
-  top: 0.15em;
+  font-size: 1.1em;
+  line-height: 1;
+  vertical-align: middle;
+  top: -0.05em;
 }
 
 /* Icons in tables */
 td .ph, th .ph {
-  line-height: 0.8;
-  top: 0.2em;
+  line-height: 1;
+  vertical-align: middle;
+  top: -0.05em;
 }
 
 /* Icons in navigation */
@@ -1995,7 +2005,7 @@ td .ph, th .ph {
 
 /* Icon size adjustments for better visual balance */
 .content p .ph {
-  font-size: 1.05em; /* Slightly larger than text for visual balance */
+  font-size: 1.1em; /* Slightly larger than text for visual balance */
 }
 
 /* Special handling for inline code with icons */
@@ -2008,5 +2018,5 @@ code .ph {
 
 /* Additional fine-tuning for specific contexts */
 .content-inner .ph {
-  transform: translateY(0.05em); /* Very slight additional adjustment */
+  /* Remove the transform as we're now using consistent vertical-align: middle */
 }

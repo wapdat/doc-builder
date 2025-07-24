@@ -63,8 +63,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-23T11:58:38.055Z",
-  "dateModified": "2025-07-23T11:58:38.055Z",
+  "datePublished": "2025-07-24T08:19:52.220Z",
+  "dateModified": "2025-07-24T08:19:52.220Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/documentation-standards.html"
@@ -103,7 +103,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.6.4">Last updated: Jul 23, 2025, 11:58 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.6.5">Last updated: Jul 24, 2025, 08:19 AM UTC</span>
                 </div>
                 
                 
@@ -154,7 +154,6 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/test-emojis.html" class="nav-item" data-tooltip="🆘 SOS/Emergency - Should convert to first-aid icon 🚨 Alert - Already working (siren icon) Money and Finance."><i class="fas fa-file-alt"></i> Test Emojis</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -197,7 +196,7 @@
 
 **Generated**: YYYY-MM-DD HH:MM UTC
 **Status**: Draft/In Progress/Complete  
-**Verified**: <i class="ph ph-check-circle" aria-label="checked"></i> (for verified information) / <i class="ph ph-question" aria-label="question"></i> (for speculated information)
+**Verified**: ✅ (for verified information) / ❓ (for speculated information)
 
 ## Overview
 
@@ -262,9 +261,9 @@ Brief description of the document&#39;s contents and purpose.
 </ul>
 <p>Example:</p>
 <pre><code class="language-markdown">### Feature Status
-- <i class="ph ph-check-circle" aria-label="checked"></i> **Markdown parsing**: Fully implemented and tested
-- <i class="ph ph-question" aria-label="question"></i> **Performance impact**: Estimated 100ms for 50 files
-- <i class="ph ph-warning-circle" aria-label="warning"></i> **Large files**: May timeout on files &gt; 10MB
+- ✅ **Markdown parsing**: Fully implemented and tested
+- ❓ **Performance impact**: Estimated 100ms for 50 files
+- ⚠️ **Large files**: May timeout on files &gt; 10MB
 - 🚧 **Search feature**: Currently in development
 </code></pre>
 <h3>3. Code Examples</h3>
@@ -280,9 +279,9 @@ const config = {
 
 try {
   await build(config);
-  console.log(&#39;<i class="ph ph-check-circle" aria-label="checked"></i> Build successful&#39;);
+  console.log(&#39;✅ Build successful&#39;);
 } catch (error) {
-  console.error(&#39;<i class="ph ph-x-circle" aria-label="error"></i> Build failed:&#39;, error.message);
+  console.error(&#39;❌ Build failed:&#39;, error.message);
 }
 </code></pre>
 <p>Guidelines:</p>
@@ -372,9 +371,9 @@ npx doc-builder deploy --prod
 <p>Keep tables readable and well-formatted:</p>
 <pre><code class="language-markdown">| Feature | Status | Version | Notes |
 |---------|--------|---------|-------|
-| Mermaid | <i class="ph ph-check-circle" aria-label="checked"></i> Ready | 1.0.0 | Full support |
+| Mermaid | ✅ Ready | 1.0.0 | Full support |
 | Search | 🚧 WIP | 1.5.0 | In development |
-| Auth | <i class="ph ph-check-circle" aria-label="checked"></i> Ready | 1.3.0 | Optional feature |
+| Auth | ✅ Ready | 1.3.0 | Optional feature |
 </code></pre>
 <h3>Links</h3>
 <ul>
@@ -419,7 +418,7 @@ npx doc-builder deploy --prod
 
 **Generated**: [date]
 **Status**: Complete
-**Verified**: <i class="ph ph-check-circle" aria-label="checked"></i>
+**Verified**: ✅
 
 ## Overview
 What the feature does and why it exists
@@ -442,7 +441,7 @@ Common issues and solutions
 
 **Generated**: [date]
 **Status**: Complete
-**Verified**: <i class="ph ph-check-circle" aria-label="checked"></i>
+**Verified**: ✅
 
 ## Overview
 Technical context and goals
@@ -465,7 +464,7 @@ Benchmarks and optimization
 
 **Generated**: [date]
 **Status**: Complete
-**Verified**: <i class="ph ph-check-circle" aria-label="checked"></i>
+**Verified**: ✅
 
 ## Overview
 What the API does
@@ -602,6 +601,15 @@ open html/index.html
     </div>
     
     <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: true
+      }
+    };
+    </script>
     <script src="/js/main.js"></script>
     
 </body>

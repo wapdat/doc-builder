@@ -63,8 +63,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-23T11:58:38.044Z",
-  "dateModified": "2025-07-23T11:58:38.044Z",
+  "datePublished": "2025-07-24T08:19:52.215Z",
+  "dateModified": "2025-07-24T08:19:52.215Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html"
@@ -103,7 +103,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.6.4">Last updated: Jul 23, 2025, 11:58 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.6.5">Last updated: Jul 24, 2025, 08:19 AM UTC</span>
                 </div>
                 
                 
@@ -154,7 +154,6 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/test-emojis.html" class="nav-item" data-tooltip="🆘 SOS/Emergency - Should convert to first-aid icon 🚨 Alert - Already working (siren icon) Money and Finance."><i class="fas fa-file-alt"></i> Test Emojis</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -231,7 +230,7 @@ This file provides comprehensive guidance for Claude Code when working in this p
 - Include metadata:
   - **Generated**: YYYY-MM-DD HH:MM UTC
   - **Status**: Draft/In Progress/Complete
-  - **Verified**: <i class="ph ph-check-circle" aria-label="checked"></i> (for verified information) / <i class="ph ph-question" aria-label="question"></i> (for speculated information)
+  - **Verified**: ✅ (for verified information) / ❓ (for speculated information)
 
 ### Document Structure
 - All documentation goes in the `/docs` directory
@@ -266,12 +265,12 @@ This file provides comprehensive guidance for Claude Code when working in this p
     </div>
 
 #### 2. Information Verification
-- Mark all information as either verified (<i class="ph ph-check-circle" aria-label="checked"></i>) or speculated (<i class="ph ph-question" aria-label="question"></i>)
+- Mark all information as either verified (✅) or speculated (❓)
 - Include sources for verified information
 - Clearly indicate assumptions
 - Example:
-  - <i class="ph ph-check-circle" aria-label="checked"></i> This API endpoint requires authentication (verified in auth.js:45)
-  - <i class="ph ph-question" aria-label="question"></i> Response time should be under 200ms (performance requirement assumed)
+  - ✅ This API endpoint requires authentication (verified in auth.js:45)
+  - ❓ Response time should be under 200ms (performance requirement assumed)
 
 #### 3. Code Examples
 - Use proper syntax highlighting with language identifiers
@@ -280,7 +279,7 @@ This file provides comprehensive guidance for Claude Code when working in this p
 - Add error handling in examples
 - Example:
 ```javascript
-// <i class="ph ph-check-circle" aria-label="checked"></i> Correct way to call the API
+// ✅ Correct way to call the API
 try {
   const response = await api.getData({ userId: 123 });
   console.log(&#39;Data:&#39;, response.data);
@@ -288,7 +287,7 @@ try {
   console.error(&#39;API Error:&#39;, error.message);
 }
 
-// <i class="ph ph-x-circle" aria-label="error"></i> Incorrect - missing error handling
+// ❌ Incorrect - missing error handling
 const response = await api.getData({ userId: 123 });
 </code></pre>
 <h4>4. Practical Examples</h4>
@@ -523,7 +522,7 @@ For Claude to generate accurate and consistent content, include key organization
 ### Branding Guidelines
 - **Company Tagline**: &quot;Beautiful documentation with the least effort possible&quot;
 - **Primary Color**: #0070f3 (Vercel blue)
-- **Logo**: <i class="ph ph-sparkle" aria-label="special"></i> (sparkle emoji)
+- **Logo**: ✨ (sparkle emoji)
 - **Font Family**: Inter, system-ui
 </code></pre>
 <p>When these facts are included in your CLAUDE.md, Claude will:</p>
@@ -551,8 +550,8 @@ For Claude to generate accurate and consistent content, include key organization
 
 ### Information Verification
 - Mark all verified vs. speculated information as a general document standard
-- Use <i class="ph ph-check-circle" aria-label="checked"></i> for verified information with source references
-- Use <i class="ph ph-question" aria-label="question"></i> for assumptions or unverified information
+- Use ✅ for verified information with source references
+- Use ❓ for assumptions or unverified information
 
 ### Development Practices
 - Use Docker V2 for containerization
@@ -651,15 +650,15 @@ For Claude to generate accurate and consistent content, include key organization
     </div>
 <h4>Example: Without Environment Facts</h4>
 <pre><code class="language-javascript">// Claude might generate:
-const API_URL = &#39;https://api.example.com&#39;;  // <i class="ph ph-question" aria-label="question"></i> Generic placeholder
-const author = &#39;Your Name&#39;;                 // <i class="ph ph-question" aria-label="question"></i> Placeholder
-const email = &#39;email@example.com&#39;;          // <i class="ph ph-question" aria-label="question"></i> Generic example
+const API_URL = &#39;https://api.example.com&#39;;  // ❓ Generic placeholder
+const author = &#39;Your Name&#39;;                 // ❓ Placeholder
+const email = &#39;email@example.com&#39;;          // ❓ Generic example
 </code></pre>
 <h4>Example: With Environment Facts</h4>
 <pre><code class="language-javascript">// Claude will generate:
-const API_URL = &#39;https://api.knowcode.tech&#39;;      // <i class="ph ph-check-circle" aria-label="checked"></i> Actual API URL
-const author = &#39;Lindsay Smith&#39;;                    // <i class="ph ph-check-circle" aria-label="checked"></i> Correct author
-const email = &#39;support@knowcode.tech&#39;;             // <i class="ph ph-check-circle" aria-label="checked"></i> Real contact email
+const API_URL = &#39;https://api.knowcode.tech&#39;;      // ✅ Actual API URL
+const author = &#39;Lindsay Smith&#39;;                    // ✅ Correct author
+const email = &#39;support@knowcode.tech&#39;;             // ✅ Real contact email
 </code></pre>
 <h2>Step 2: Initialize doc-builder</h2>
 <pre><code class="language-bash"># Install doc-builder
@@ -907,43 +906,43 @@ npm run deploy:docs
 ## Best Practices Summary
 
 ### Documentation Creation
-1. <i class="ph ph-check-circle" aria-label="checked"></i> Use CLAUDE.md to maintain consistency across all documentation
-2. <i class="ph ph-check-circle" aria-label="checked"></i> Include visual diagrams (Mermaid) for complex concepts and workflows
-3. <i class="ph ph-check-circle" aria-label="checked"></i> Provide practical, working examples that can be copy-pasted
-4. <i class="ph ph-check-circle" aria-label="checked"></i> Mark verification status (<i class="ph ph-check-circle" aria-label="checked"></i>/<i class="ph ph-question" aria-label="question"></i>) for all technical information
-5. <i class="ph ph-check-circle" aria-label="checked"></i> Keep documentation close to code in the /docs directory
-6. <i class="ph ph-check-circle" aria-label="checked"></i> Include metadata headers with timestamps and status
-7. <i class="ph ph-check-circle" aria-label="checked"></i> Add troubleshooting sections for common issues
-8. <i class="ph ph-check-circle" aria-label="checked"></i> Cross-reference related documentation
+1. ✅ Use CLAUDE.md to maintain consistency across all documentation
+2. ✅ Include visual diagrams (Mermaid) for complex concepts and workflows
+3. ✅ Provide practical, working examples that can be copy-pasted
+4. ✅ Mark verification status (✅/❓) for all technical information
+5. ✅ Keep documentation close to code in the /docs directory
+6. ✅ Include metadata headers with timestamps and status
+7. ✅ Add troubleshooting sections for common issues
+8. ✅ Cross-reference related documentation
 
 ### Claude Interaction
-1. <i class="ph ph-check-circle" aria-label="checked"></i> Provide clear, specific requests with expected output format
-2. <i class="ph ph-check-circle" aria-label="checked"></i> Reference existing patterns from CLAUDE.md
-3. <i class="ph ph-check-circle" aria-label="checked"></i> Request iterative improvements - review and refine
-4. <i class="ph ph-check-circle" aria-label="checked"></i> Verify technical accuracy of generated content
-5. <i class="ph ph-check-circle" aria-label="checked"></i> Ask for troubleshooting sections explicitly
-6. <i class="ph ph-check-circle" aria-label="checked"></i> Request examples with error handling
-7. <i class="ph ph-check-circle" aria-label="checked"></i> Specify diagram types needed (sequence, flow, state)
-8. <i class="ph ph-check-circle" aria-label="checked"></i> Ask Claude to check its own work against CLAUDE.md standards
+1. ✅ Provide clear, specific requests with expected output format
+2. ✅ Reference existing patterns from CLAUDE.md
+3. ✅ Request iterative improvements - review and refine
+4. ✅ Verify technical accuracy of generated content
+5. ✅ Ask for troubleshooting sections explicitly
+6. ✅ Request examples with error handling
+7. ✅ Specify diagram types needed (sequence, flow, state)
+8. ✅ Ask Claude to check its own work against CLAUDE.md standards
 
 ### Documentation Maintenance
-1. <i class="ph ph-check-circle" aria-label="checked"></i> Update docs when code changes
-2. <i class="ph ph-check-circle" aria-label="checked"></i> Archive outdated documentation
-3. <i class="ph ph-check-circle" aria-label="checked"></i> Maintain CHANGELOG.md
-4. <i class="ph ph-check-circle" aria-label="checked"></i> Review documentation quarterly
-5. <i class="ph ph-check-circle" aria-label="checked"></i> Test all code examples
-6. <i class="ph ph-check-circle" aria-label="checked"></i> Check for broken links
-7. <i class="ph ph-check-circle" aria-label="checked"></i> Update version references
+1. ✅ Update docs when code changes
+2. ✅ Archive outdated documentation
+3. ✅ Maintain CHANGELOG.md
+4. ✅ Review documentation quarterly
+5. ✅ Test all code examples
+6. ✅ Check for broken links
+7. ✅ Update version references
 
 ### Deployment
-1. <i class="ph ph-check-circle" aria-label="checked"></i> Test locally before deploying (npm run dev:docs)
-2. <i class="ph ph-check-circle" aria-label="checked"></i> Build and verify output (npm run build:docs)
-3. <i class="ph ph-check-circle" aria-label="checked"></i> Use preview deployments first
-4. <i class="ph ph-check-circle" aria-label="checked"></i> Configure custom domains if needed
-5. <i class="ph ph-check-circle" aria-label="checked"></i> Enable HTTPS (automatic with Vercel)
-6. <i class="ph ph-check-circle" aria-label="checked"></i> Monitor deployment health
-7. <i class="ph ph-check-circle" aria-label="checked"></i> Disable Vercel authentication for public docs
-8. <i class="ph ph-check-circle" aria-label="checked"></i> Commit documentation changes before deploying
+1. ✅ Test locally before deploying (npm run dev:docs)
+2. ✅ Build and verify output (npm run build:docs)
+3. ✅ Use preview deployments first
+4. ✅ Configure custom domains if needed
+5. ✅ Enable HTTPS (automatic with Vercel)
+6. ✅ Monitor deployment health
+7. ✅ Disable Vercel authentication for public docs
+8. ✅ Commit documentation changes before deploying
 
 ## Common Issues and Solutions
 
@@ -982,6 +981,15 @@ The key to success is iterative refinement of your CLAUDE.md file to capture you
     </div>
     
     <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: true
+      }
+    };
+    </script>
     <script src="/js/main.js"></script>
     
 </body>

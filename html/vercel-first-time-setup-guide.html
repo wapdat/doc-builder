@@ -63,8 +63,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-23T11:58:38.102Z",
-  "dateModified": "2025-07-23T11:58:38.102Z",
+  "datePublished": "2025-07-24T08:19:52.288Z",
+  "dateModified": "2025-07-24T08:19:52.288Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/vercel-first-time-setup-guide.html"
@@ -97,7 +97,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.6.4">Last updated: Jul 23, 2025, 11:58 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.6.5">Last updated: Jul 24, 2025, 08:19 AM UTC</span>
                 </div>
                 
                 
@@ -148,7 +148,6 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/test-emojis.html" class="nav-item" data-tooltip="🆘 SOS/Emergency - Should convert to first-aid icon 🚨 Alert - Already working (siren icon) Money and Finance."><i class="fas fa-file-alt"></i> Test Emojis</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item active" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -246,7 +245,7 @@
 <li>Deploy to their global CDN</li>
 <li>Provide your live URL</li>
 </ol>
-<pre><code><i class="ph ph-check" aria-label="check"></i> Production: https://my-docs.vercel.app [copied to clipboard]
+<pre><code>✓ Production: https://my-docs.vercel.app [copied to clipboard]
 </code></pre>
 <h2>Post-Deployment Configuration</h2>
 <h3>Making Your Docs Public</h3>
@@ -325,13 +324,13 @@
 <li>You have internet connection</li>
 </ol>
 <h2>Quick Checklist</h2>
-<pre><code><i class="ph ph-check-circle" aria-label="checked"></i> 1. Run: npx @knowcode/doc-builder@latest deploy
-<i class="ph ph-check-circle" aria-label="checked"></i> 2. Enter project name (e.g., my-docs)
-<i class="ph ph-check-circle" aria-label="checked"></i> 3. Skip custom URL (press Enter)
-<i class="ph ph-check-circle" aria-label="checked"></i> 4. Confirm deployment when Vercel asks
-<i class="ph ph-check-circle" aria-label="checked"></i> 5. Select your account/scope
-<i class="ph ph-check-circle" aria-label="checked"></i> 6. Accept suggested project name
-<i class="ph ph-check-circle" aria-label="checked"></i> 7. Get your live URL!
+<pre><code>✅ 1. Run: npx @knowcode/doc-builder@latest deploy
+✅ 2. Enter project name (e.g., my-docs)
+✅ 3. Skip custom URL (press Enter)
+✅ 4. Confirm deployment when Vercel asks
+✅ 5. Select your account/scope
+✅ 6. Accept suggested project name
+✅ 7. Get your live URL!
 </code></pre>
 <h2>Best Practices</h2>
 <ol>
@@ -362,6 +361,15 @@
     </div>
     
     <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: true
+      }
+    };
+    </script>
     <script src="/js/main.js"></script>
     
 </body>

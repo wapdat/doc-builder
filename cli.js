@@ -72,6 +72,8 @@ program
   .option('--legacy', 'use legacy mode for backward compatibility')
   .option('--no-auth', 'disable authentication even if configured')
   .option('--no-changelog', 'disable automatic changelog generation')
+  .option('--no-pdf', 'hide PDF download icon in header')
+  .option('--menu-closed', 'start with navigation menu closed')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder build                        ${chalk.gray('# Build with defaults')}

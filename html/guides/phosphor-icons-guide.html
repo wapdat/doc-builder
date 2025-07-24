@@ -63,8 +63,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-23T11:58:38.059Z",
-  "dateModified": "2025-07-23T11:58:38.059Z",
+  "datePublished": "2025-07-24T08:19:52.224Z",
+  "dateModified": "2025-07-24T08:19:52.224Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/phosphor-icons-guide.html"
@@ -103,7 +103,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.6.4">Last updated: Jul 23, 2025, 11:58 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.6.5">Last updated: Jul 24, 2025, 08:19 AM UTC</span>
                 </div>
                 
                 
@@ -154,7 +154,6 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/test-emojis.html" class="nav-item" data-tooltip="🆘 SOS/Emergency - Should convert to first-aid icon 🚨 Alert - Already working (siren icon) Money and Finance."><i class="fas fa-file-alt"></i> Test Emojis</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -193,9 +192,9 @@
 <h2>How It Works</h2>
 <h3>Automatic Conversion</h3>
 <p>When you write emojis in your markdown:</p>
-<pre><code class="language-markdown"><i class="ph ph-check-circle" aria-label="checked"></i> Task completed
-<i class="ph ph-x-circle" aria-label="error"></i> Issue found
-<i class="ph ph-rocket-launch" aria-label="launch"></i> Launching feature
+<pre><code class="language-markdown">✅ Task completed
+❌ Issue found
+🚀 Launching feature
 </code></pre>
 <p>They are automatically converted to Phosphor icons in HTML:</p>
 <ul>
@@ -370,23 +369,23 @@
 </ul>
 <h2>Usage Examples</h2>
 <h3>In Markdown Headers</h3>
-<pre><code class="language-markdown">## <i class="ph ph-rocket-launch" aria-label="launch"></i> Getting Started
-## <i class="ph ph-wrench" aria-label="settings"></i> Configuration
-## <i class="ph ph-books" aria-label="documentation"></i> API Reference
-## <i class="ph ph-x-circle" aria-label="error"></i> Common Errors
+<pre><code class="language-markdown">## 🚀 Getting Started
+## 🔧 Configuration
+## 📚 API Reference
+## ❌ Common Errors
 </code></pre>
 <h3>In Lists</h3>
-<pre><code class="language-markdown">- <i class="ph ph-check-circle" aria-label="checked"></i> Feature implemented
+<pre><code class="language-markdown">- ✅ Feature implemented
 - 🚧 Work in progress
-- <i class="ph ph-x-circle" aria-label="error"></i> Deprecated
-- <i class="ph ph-lightbulb" aria-label="idea"></i> Pro tip
+- ❌ Deprecated
+- 💡 Pro tip
 </code></pre>
 <h3>In Tables</h3>
 <pre><code class="language-markdown">| Status | Feature | Notes |
 |--------|---------|-------|
-| <i class="ph ph-check-circle" aria-label="checked"></i> | Search | Ready |
+| ✅ | Search | Ready |
 | 🚧 | Auth | In progress |
-| <i class="ph ph-x-circle" aria-label="error"></i> | Legacy API | Deprecated |
+| ❌ | Legacy API | Deprecated |
 </code></pre>
 <h2>Customization</h2>
 <h3>Custom Icon Sizes</h3>
@@ -492,6 +491,15 @@
     </div>
     
     <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: true
+      }
+    };
+    </script>
     <script src="/js/main.js"></script>
     
 </body>
