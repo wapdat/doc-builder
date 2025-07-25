@@ -5,6 +5,30 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.5] - 2025-07-25
+
+### Changed
+- **BREAKING**: Authentication is now disabled by default in all configurations
+- Changed default `authentication: false` in both defaultConfig and notionInspiredPreset
+- Public documentation sites now work out of the box without configuration
+- Authentication must be explicitly enabled with `authentication: 'supabase'`
+
+### Added
+- `--no-auth` flag for build command to override authentication settings
+- `--no-auth` flag for deploy command to override authentication settings
+- Documentation for public site deployment workflows
+- Migration guide for authentication changes
+
+### Improved
+- Simplified createDefaultConfig to only prompt for Supabase authentication
+- Better alignment with common use case of public documentation
+
+## [1.7.4] - 2025-07-24
+
+### Fixed
+- Republished package to fix potential npm registry issues
+- No code changes from 1.7.3
+
 ## [1.7.3] - 2025-07-24
 
 ### Added

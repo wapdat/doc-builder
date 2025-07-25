@@ -1,8 +1,16 @@
-# Authentication Guide for @knowcode/doc-builder
+# ⚠️ DEPRECATED: Basic Authentication Guide
+
+> **SECURITY WARNING**: This basic authentication method has been deprecated and removed due to security vulnerabilities. 
+> 
+> **Use [Supabase Authentication](supabase-auth-setup-guide.md) instead** for secure, enterprise-grade authentication.
+
+# Authentication Guide for @knowcode/doc-builder (DEPRECATED)
 
 ## Overview
 
-This guide explains how to configure and use the built-in authentication feature in @knowcode/doc-builder to protect your documentation with basic username/password access control.
+> 🚨 **This authentication method has been REMOVED in version 2.0.0** due to serious security flaws. Please migrate to [Supabase Authentication](supabase-auth-setup-guide.md).
+
+This guide explains the old, insecure authentication method that was available in @knowcode/doc-builder v1.x. It has been completely removed for security reasons.
 
 ## What is Authentication?
 

@@ -72,7 +72,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 
 ### 🎯 Advanced Features  
 - 🔍 **SEO Optimized** - Meta tags & structured data
-- 🔐 **Authentication** - Password protection
+- 🔐 **Optional Auth** - Supabase authentication (opt-in)
 - 📊 **Mermaid Diagrams** - Built-in diagram support
 - 🌙 **Dark Mode** - Automatic theme switching
 - ☁️ **Vercel Deploy** - One-command deployment
@@ -210,19 +210,37 @@ module.exports = {
   
   // Features
   features: {
-    authentication: true,
+    authentication: 'supabase',  // or false for no auth
     changelog: true,
     mermaid: true,
     darkMode: true
   },
   
-  // Authentication
+  // Supabase Authentication
   auth: {
-    username: 'admin',
-    password: 'secret'
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+    siteId: process.env.DOC_SITE_ID
   }
 };
 ```
+
+### 🔐 Authentication Setup
+
+For secure documentation sites, use Supabase authentication:
+
+```bash
+# Initialize authentication
+npx @knowcode/doc-builder auth:init
+
+# Add your site to database  
+npx @knowcode/doc-builder auth:add-site --domain docs.example.com --name "My Docs"
+
+# Grant user access
+npx @knowcode/doc-builder auth:grant --email user@example.com --site-id xxx
+```
+
+See the [Supabase Authentication Guide](docs/guides/supabase-auth-setup-guide.md) for complete setup instructions.
 
 ## 📋 Commands Overview
 
@@ -273,7 +291,6 @@ Options:
   -i, --input <dir>    Input directory (default: docs)
   -o, --output <dir>   Output directory (default: html)
   --preset <preset>    Use a preset configuration
-  --no-auth           Disable authentication
   --no-changelog      Disable changelog generation
 
 Examples:

@@ -13,6 +13,7 @@ const { loadConfig, createDefaultConfig } = require('./lib/config');
 const { generateDescription } = require('./lib/seo');
 const { execSync } = require('child_process');
 const matter = require('gray-matter');
+const SupabaseAuth = require('./lib/supabase-auth');
 
 // Package info
 const packageJson = require('./package.json');
@@ -70,22 +71,31 @@ program
   .option('-o, --output <dir>', 'output directory for HTML files (default: html)')
   .option('--preset <preset>', 'use a preset configuration (available: notion-inspired)')
   .option('--legacy', 'use legacy mode for backward compatibility')
-  .option('--no-auth', 'disable authentication even if configured')
   .option('--no-changelog', 'disable automatic changelog generation')
   .option('--no-pdf', 'hide PDF download icon in header')
   .option('--menu-closed', 'start with navigation menu closed')
+  .option('--no-auth', 'build without authentication (for public sites)')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder build                        ${chalk.gray('# Build with defaults')}
   ${chalk.gray('$')} doc-builder build --input docs --output dist
   ${chalk.gray('$')} doc-builder build --preset notion-inspired ${chalk.gray('# Use Notion-inspired preset')}
   ${chalk.gray('$')} doc-builder build --config my-config.js  ${chalk.gray('# Use custom config')}
+  ${chalk.gray('$')} doc-builder build --no-auth              ${chalk.gray('# Build public site without authentication')}
 `)
   .action(async (options) => {
     const spinner = ora('Building documentation...').start();
     
     try {
       const config = await loadConfig(options.config || 'doc-builder.config.js', { ...options, command: 'build' });
+      
+      // Handle no-auth option
+      if (options.auth === false) {
+        // Temporarily disable authentication for this build
+        config.features = config.features || {};
+        config.features.authentication = false;
+      }
+      
       await build(config);
       spinner.succeed('Documentation built successfully!');
     } catch (error) {
@@ -595,10 +605,12 @@ program
   .option('--no-prod', 'deploy as preview instead of production')
   .option('--force', 'force deployment without confirmation')
   .option('--production-url <url>', 'override production URL for this deployment')
+  .option('--no-auth', 'build without authentication (for public sites)')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder deploy                 ${chalk.gray('# Deploy to production')}
   ${chalk.gray('$')} doc-builder deploy --no-prod       ${chalk.gray('# Deploy preview only')}
+  ${chalk.gray('$')} doc-builder deploy --no-auth       ${chalk.gray('# Deploy public site without authentication')}
 
 ${chalk.yellow('First-time Vercel Setup:')}
   
@@ -742,6 +754,13 @@ ${chalk.yellow('Troubleshooting:')}
         config.productionUrl = options.productionUrl.startsWith('http') 
           ? options.productionUrl 
           : 'https://' + options.productionUrl;
+      }
+      
+      // Handle no-auth option
+      if (options.auth === false) {
+        // Temporarily disable authentication for this build
+        config.features = config.features || {};
+        config.features.authentication = false;
       }
       
       // Always build first
@@ -1466,7 +1485,7 @@ program
       console.log(`  • Favicon: ${chalk.green(config.favicon || '✨')}`);
       
       console.log(chalk.yellow('\n✨ Features:'));
-      console.log(`  • Authentication: ${config.features?.authentication ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
+      console.log(`  • Authentication: ${config.features?.authentication === 'supabase' ? chalk.green('Supabase') : chalk.gray('Disabled')}`);
       console.log(`  • Dark mode: ${config.features?.darkMode !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
       console.log(`  • Mermaid diagrams: ${config.features?.mermaid !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
       console.log(`  • Changelog: ${config.features?.changelog !== false ? chalk.green('Enabled') : chalk.gray('Disabled')}`);
@@ -1475,10 +1494,11 @@ program
       console.log(`  • PDF download: ${config.features?.showPdfDownload !== false ? chalk.green('Shown') : chalk.gray('Hidden')}`);
       console.log(`  • Menu default: ${config.features?.menuDefaultOpen !== false ? chalk.green('Open') : chalk.gray('Closed')}`);
       
-      if (config.features?.authentication) {
-        console.log(chalk.yellow('\n🔐 Authentication:'));
-        console.log(`  • Username: ${chalk.green(config.auth?.username || 'admin')}`);
-        console.log(`  • Password: ${chalk.gray('***' + (config.auth?.password?.slice(-2) || '**'))}`);
+      if (config.features?.authentication === 'supabase') {
+        console.log(chalk.yellow('\n🔐 Supabase Authentication:'));
+        console.log(`  • Supabase URL: ${config.auth?.supabaseUrl ? chalk.green('Configured') : chalk.red('Missing')}`);
+        console.log(`  • Anonymous Key: ${config.auth?.supabaseAnonKey ? chalk.green('Configured') : chalk.red('Missing')}`);
+        console.log(`  • Site ID: ${config.auth?.siteId ? chalk.green('Configured') : chalk.red('Missing')}`);
       }
       
       if (config.seo?.enabled) {
@@ -1495,11 +1515,198 @@ program
     }
   });
 
-// Update the help text to mention the settings command
+// Authentication management commands
+program
+  .command('auth:init')
+  .description('Initialize Supabase authentication for this project')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .action(async (options) => {
+    console.log(chalk.cyan('\n🔐 Initialize Supabase Authentication\n'));
+    
+    try {
+      const answers = await prompts([
+        {
+          type: 'text',
+          name: 'supabaseUrl',
+          message: 'Enter your Supabase project URL:',
+          validate: (value) => value.match(/^https:\/\/\w+\.supabase\.co$/) ? true : 'Please enter a valid Supabase URL (https://xxx.supabase.co)'
+        },
+        {
+          type: 'password',
+          name: 'supabaseAnonKey',
+          message: 'Enter your Supabase anonymous key:'
+        },
+        {
+          type: 'text',
+          name: 'siteName',
+          message: 'Enter a name for this documentation site:',
+          initial: 'Documentation'
+        }
+      ]);
+
+      if (!answers.supabaseUrl || !answers.supabaseAnonKey) {
+        console.log(chalk.yellow('Setup cancelled.'));
+        return;
+      }
+
+      // Create or update config file
+      const configPath = options.config || 'doc-builder.config.js';
+      const configContent = `module.exports = {
+  siteName: '${answers.siteName}',
+  
+  features: {
+    authentication: 'supabase'
+  },
+  
+  auth: {
+    supabaseUrl: '${answers.supabaseUrl}',
+    supabaseAnonKey: '${answers.supabaseAnonKey}',
+    siteId: ''  // Will be set after creating site in database
+  }
+};`;
+
+      await fs.writeFile(configPath, configContent);
+      console.log(chalk.green(`✓ Configuration saved to ${configPath}`));
+      
+      console.log(chalk.yellow('\n📋 Next steps:'));
+      console.log('1. Create the database tables in your Supabase project (see documentation)');
+      console.log('2. Add your site to the database using: doc-builder auth:add-site');
+      console.log('3. Update the siteId in your config file');
+      
+    } catch (error) {
+      console.error(chalk.red('Error initializing auth:'), error.message);
+    }
+  });
+
+program
+  .command('auth:add-site')
+  .description('Add a documentation site to Supabase database')
+  .requiredOption('--domain <domain>', 'site domain (e.g., docs.example.com)')
+  .requiredOption('--name <name>', 'site display name')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .action(async (options) => {
+    console.log(chalk.cyan('\n🌐 Add Documentation Site\n'));
+    
+    try {
+      const config = await loadConfig(options.config || 'doc-builder.config.js', {});
+      
+      if (config.features?.authentication !== 'supabase') {
+        console.error(chalk.red('Error: Supabase authentication is not configured. Run "doc-builder auth:init" first.'));
+        return;
+      }
+
+      // This would connect to Supabase and create the site record
+      console.log(chalk.yellow('🚧 This command requires Supabase admin integration.'));
+      console.log('For now, manually add to your Supabase database:');
+      console.log('');
+      console.log(chalk.gray('INSERT INTO docbuilder_sites (domain, name)'));
+      console.log(chalk.gray(`VALUES ('${options.domain}', '${options.name}');`));
+      console.log('');
+      console.log('Then update your config file with the returned site ID.');
+      
+    } catch (error) {
+      console.error(chalk.red('Error adding site:'), error.message);
+    }
+  });
+
+program
+  .command('auth:grant')
+  .description('Grant user access to documentation site')
+  .requiredOption('--email <email>', 'user email address')
+  .requiredOption('--site-id <id>', 'site ID from database')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .action(async (options) => {
+    console.log(chalk.cyan('\n👥 Grant User Access\n'));
+    
+    try {
+      const config = await loadConfig(options.config || 'doc-builder.config.js', {});
+      
+      if (config.features?.authentication !== 'supabase') {
+        console.error(chalk.red('Error: Supabase authentication is not configured.'));
+        return;
+      }
+
+      console.log(chalk.yellow('🚧 This command requires Supabase admin integration.'));
+      console.log('For now, manually add to your Supabase database:');
+      console.log('');
+      console.log(chalk.gray('-- First, get the user ID from auth.users where email = \'user@example.com\''));
+      console.log(chalk.gray('INSERT INTO docbuilder_access (user_id, site_id)'));
+      console.log(chalk.gray(`VALUES ('user-uuid-here', '${options.siteId}');`));
+      
+    } catch (error) {
+      console.error(chalk.red('Error granting access:'), error.message);
+    }
+  });
+
+program
+  .command('auth:revoke')
+  .description('Revoke user access to documentation site')
+  .requiredOption('--email <email>', 'user email address')
+  .requiredOption('--site-id <id>', 'site ID from database')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .action(async (options) => {
+    console.log(chalk.cyan('\n🚫 Revoke User Access\n'));
+    
+    try {
+      const config = await loadConfig(options.config || 'doc-builder.config.js', {});
+      
+      if (config.features?.authentication !== 'supabase') {
+        console.error(chalk.red('Error: Supabase authentication is not configured.'));
+        return;
+      }
+
+      console.log(chalk.yellow('🚧 This command requires Supabase admin integration.'));
+      console.log('For now, manually remove from your Supabase database:');
+      console.log('');
+      console.log(chalk.gray('DELETE FROM docbuilder_access'));
+      console.log(chalk.gray('WHERE user_id = (SELECT id FROM auth.users WHERE email = \'user@example.com\')'));
+      console.log(chalk.gray(`AND site_id = '${options.siteId}';`));
+      
+    } catch (error) {
+      console.error(chalk.red('Error revoking access:'), error.message);
+    }
+  });
+
+program
+  .command('auth:list-users')
+  .description('List users with access to documentation site')
+  .requiredOption('--site-id <id>', 'site ID from database')
+  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
+  .action(async (options) => {
+    console.log(chalk.cyan('\n👥 List Site Users\n'));
+    
+    try {
+      const config = await loadConfig(options.config || 'doc-builder.config.js', {});
+      
+      if (config.features?.authentication !== 'supabase') {
+        console.error(chalk.red('Error: Supabase authentication is not configured.'));
+        return;
+      }
+
+      console.log(chalk.yellow('🚧 This command requires Supabase admin integration.'));
+      console.log('For now, manually query your Supabase database:');
+      console.log('');
+      console.log(chalk.gray('SELECT u.email, da.created_at as granted_at'));
+      console.log(chalk.gray('FROM docbuilder_access da'));
+      console.log(chalk.gray('JOIN auth.users u ON u.id = da.user_id'));
+      console.log(chalk.gray(`WHERE da.site_id = '${options.siteId}';`));
+      
+    } catch (error) {
+      console.error(chalk.red('Error listing users:'), error.message);
+    }
+  });
+
+// Update the help text to mention new commands
 program.addHelpText('after', `
 ${chalk.cyan('📋 View Settings:')}
   ${chalk.gray('$')} doc-builder settings                    ${chalk.gray('# Show current configuration')}
   ${chalk.gray('$')} doc-builder settings --config custom.js  ${chalk.gray('# Show specific config file')}
+
+${chalk.cyan('🔐 Authentication Management:')}
+  ${chalk.gray('$')} doc-builder auth:init                   ${chalk.gray('# Set up Supabase authentication')}
+  ${chalk.gray('$')} doc-builder auth:add-site --domain docs.example.com --name "Company Docs"
+  ${chalk.gray('$')} doc-builder auth:grant --email user@example.com --site-id xxx
+  ${chalk.gray('$')} doc-builder auth:list-users --site-id xxx
 `);
 
 // Parse arguments
