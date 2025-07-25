@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform integrations,...">
-    <title>Launch Documentation - Test Documentation</title>
+    <meta name="description" content="This guide documents how to implement aggressive cache-busting headers in doc-builder, but we strongly recommend against using this approach. This...">
+    <title>Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites - Test Documentation</title>
     
 
     
@@ -112,12 +112,12 @@
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
-        <a class="nav-title collapsible" href="#" data-target="nav-guides-1" >
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
         </a>
-        <div class="nav-content collapsed" id="nav-guides-1">
+        <div class="nav-content" id="nav-guides-1">
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="🚨 This authentication method has been REMOVED in version 2.0.0 due to serious security flaws."><i class="fas fa-file-alt"></i> Authentication Guide</a>
-        <a href="/guides/cache-control-anti-pattern.html" class="nav-item" data-tooltip="Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites."><i class="fas fa-file-alt"></i> Cache Control Anti Pattern</a>
+        <a href="/guides/cache-control-anti-pattern.html" class="nav-item active" data-tooltip="Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites."><i class="fas fa-file-alt"></i> Cache Control Anti Pattern</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
         <a href="/guides/next-steps-walkthrough.html" class="nav-item" data-tooltip="Now that we&#039;ve implemented Supabase authentication, let&#039;s walk through testing the implementation and preparing for deployment."><i class="fas fa-file-alt"></i> Next Steps Walkthrough</a>
@@ -131,11 +131,11 @@
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
-        <a class="nav-title collapsible expanded" href="/launch/README.html" data-target="nav-launch-1" >
+        <a class="nav-title collapsible" href="/launch/README.html" data-target="nav-launch-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
         </a>
-        <div class="nav-content" id="nav-launch-1">
-        <a href="/launch/README.html" class="nav-item active" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="fas fa-file-alt"></i> Launch Overview</a>
+        <div class="nav-content collapsed" id="nav-launch-1">
+        <a href="/launch/README.html" class="nav-item" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="fas fa-file-alt"></i> Launch Overview</a>
         <a href="/launch/bubble-plugin-specification.html" class="nav-item" data-tooltip="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers..."><i class="fas fa-file-alt"></i> Bubble Plugin Specification</a>
         <a href="/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
         <a href="/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a></div></div>
@@ -146,86 +146,150 @@
         <!-- Content Area -->
         <main class="content">
             <div class="content-inner">
-                <h1>Launch Documentation</h1>
-<h2>Overview</h2>
-<p>This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform integrations, and marketing materials.</p>
-<h2>Documents</h2>
-<h3><i class="ph ph-clipboard-text" aria-label="clipboard"></i> Strategic Planning</h3>
+                <h1>Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites</h1>
+<h2><i class="ph ph-warning-circle" aria-label="warning"></i> Important Notice</h2>
+<p>This guide documents how to implement aggressive cache-busting headers in doc-builder, but <strong>we strongly recommend against using this approach</strong>. This documentation exists for educational purposes and to explain why this is considered an anti-pattern for static documentation sites.</p>
+<h2>Why Cache-Busting is a Bad Idea for Documentation</h2>
+<h3>1. Performance Degradation</h3>
 <ul>
-<li><strong><a href="./go-to-market-strategy.md">Go-to-Market Strategy</a></strong> - Comprehensive launch plan including gap analysis, pricing, and roadmap</li>
-<li><strong><a href="./bubble-plugin-specification.md">Bubble.io Plugin Specification</a></strong> - Technical specification for Bubble.io integration</li>
+<li><strong>Increased Load Times</strong>: Every page visit requires a full server round-trip</li>
+<li><strong>No Offline Access</strong>: Users can&#39;t view previously visited pages without internet</li>
+<li><strong>Bandwidth Waste</strong>: Repeatedly downloading unchanged content</li>
+<li><strong>Server Load</strong>: Unnecessary strain on your hosting infrastructure</li>
 </ul>
-<h3><i class="ph ph-megaphone" aria-label="announce"></i> Marketing Materials</h3>
+<h3>2. Poor User Experience</h3>
 <ul>
-<li><strong><a href="./launch-announcements.md">Launch Announcements</a></strong> - Ready-to-use templates for Product Hunt, Hacker News, social media, and more</li>
+<li>Documentation is typically static content that changes infrequently</li>
+<li>Users expect fast page loads when navigating documentation</li>
+<li>Browser back/forward navigation becomes sluggish</li>
+<li>Search engines may penalize sites with poor performance</li>
 </ul>
-<h2>Quick Links</h2>
-<h3>Current Status</h3>
+<h3>3. Cost Implications</h3>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Core product stable (v1.5.21)</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Documentation complete</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> npm package published</li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> Payment infrastructure</li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> Marketing website</li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> Bubble.io plugin</li>
+<li>Higher bandwidth costs on platforms like Vercel</li>
+<li>Increased CDN usage without benefits</li>
+<li>More compute resources needed to serve requests</li>
 </ul>
-<h3>Next Steps</h3>
+<h3>4. Against Web Best Practices</h3>
+<ul>
+<li>Static documentation should leverage browser caching</li>
+<li>CDNs exist specifically to cache and serve static content efficiently</li>
+<li>Modern web performance relies on intelligent caching strategies</li>
+</ul>
+<h2>How to Implement No-Cache Headers (Not Recommended)</h2>
+<p>Despite the downsides, here&#39;s how you would implement aggressive cache-busting if absolutely necessary:</p>
+<h3>Option 1: HTML Meta Tags</h3>
+<p>Add these meta tags to the HTML template in <code>lib/core-builder.js</code>:</p>
+<pre><code class="language-javascript">// In the generateHTML function, add to the &lt;head&gt; section:
+&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-cache, no-store, must-revalidate&quot;&gt;
+&lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;
+&lt;meta http-equiv=&quot;Expires&quot; content=&quot;0&quot;&gt;
+</code></pre>
+<h3>Option 2: Vercel Configuration</h3>
+<p>Create or modify <code>vercel.json</code> in your output directory:</p>
+<pre><code class="language-json">{
+  &quot;headers&quot;: [
+    {
+      &quot;source&quot;: &quot;/(.*)&quot;,
+      &quot;headers&quot;: [
+        {
+          &quot;key&quot;: &quot;Cache-Control&quot;,
+          &quot;value&quot;: &quot;no-cache, no-store, must-revalidate&quot;
+        },
+        {
+          &quot;key&quot;: &quot;Pragma&quot;,
+          &quot;value&quot;: &quot;no-cache&quot;
+        },
+        {
+          &quot;key&quot;: &quot;Expires&quot;,
+          &quot;value&quot;: &quot;0&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h3>Option 3: Modified Core Builder</h3>
+<p>To add cache-busting query parameters to all internal links:</p>
+<pre><code class="language-javascript">// In core-builder.js, modify link generation:
+function addCacheBuster(url) {
+  const timestamp = Date.now();
+  const separator = url.includes(&#39;?&#39;) ? &#39;&amp;&#39; : &#39;?&#39;;
+  return `${url}${separator}v=${timestamp}`;
+}
+</code></pre>
+<h2>Better Alternatives (Recommended)</h2>
+<h3>1. Intelligent Cache Headers</h3>
+<p>Instead of no-cache, use smart caching:</p>
+<pre><code class="language-json">{
+  &quot;headers&quot;: [
+    {
+      &quot;source&quot;: &quot;/(.*).html&quot;,
+      &quot;headers&quot;: [{
+        &quot;key&quot;: &quot;Cache-Control&quot;,
+        &quot;value&quot;: &quot;public, max-age=3600, stale-while-revalidate=86400&quot;
+      }]
+    },
+    {
+      &quot;source&quot;: &quot;/css/(.*)&quot;,
+      &quot;headers&quot;: [{
+        &quot;key&quot;: &quot;Cache-Control&quot;,
+        &quot;value&quot;: &quot;public, max-age=31536000, immutable&quot;
+      }]
+    }
+  ]
+}
+</code></pre>
+<h3>2. Version-Based Cache Busting</h3>
+<p>Only bust cache when content actually changes:</p>
+<pre><code class="language-javascript">// In doc-builder.config.js
+module.exports = {
+  // ... other config
+  buildVersion: require(&#39;./package.json&#39;).version,
+  // Assets will be served as: style.css?v=1.4.3
+};
+</code></pre>
+<h3>3. Content-Based Hashing</h3>
+<p>Use build tools to generate hashed filenames:</p>
+<ul>
+<li><code>style.css</code> → <code>style.a8f7c2.css</code></li>
+<li>Cache forever with new filename on changes</li>
+</ul>
+<h3>4. Service Worker Strategy</h3>
+<p>Implement a service worker for intelligent caching:</p>
+<ul>
+<li>Cache static assets aggressively</li>
+<li>Network-first for HTML content</li>
+<li>Offline fallback for better UX</li>
+</ul>
+<h2>The Real Solution to Browser Title Issues</h2>
+<p>The &quot;Quarterly Sales Report&quot; issue mentioned is likely due to:</p>
 <ol>
-<li>Review go-to-market strategy</li>
-<li>Decide on monetization model</li>
-<li>Begin marketing website development</li>
-<li>Start Bubble.io plugin development</li>
-<li>Prepare launch announcements</li>
+<li><strong>Browser Session Restore</strong>: Browser remembering old tab titles</li>
+<li><strong>History Cache</strong>: Browser&#39;s back/forward cache</li>
+<li><strong>Tab Suspension</strong>: Browser saving memory by caching tab state</li>
 </ol>
-<h3>Key Metrics to Track</h3>
+<h3>Simple Fixes:</h3>
 <ul>
-<li>npm downloads</li>
-<li>GitHub stars</li>
-<li>User sign-ups</li>
-<li>Conversion rate (free to paid)</li>
-<li>Monthly recurring revenue (MRR)</li>
+<li>Hard refresh: <code>Ctrl+Shift+R</code> (Windows/Linux) or <code>Cmd+Shift+R</code> (Mac)</li>
+<li>Clear browser cache for the specific site</li>
+<li>Open the page in an incognito/private window</li>
 </ul>
-<h2>Timeline</h2>
-<h3>Week 1-2: Foundation</h3>
+<h2>Conclusion</h2>
+<p>Aggressive cache-busting is an anti-pattern for documentation sites. The performance and user experience costs far outweigh any benefits. Instead:</p>
+<ol>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Use intelligent caching strategies</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Implement version-based cache busting for assets</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Trust browsers to handle HTML caching appropriately</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> Don&#39;t disable caching entirely</li>
+</ol>
+<p>Remember: Documentation sites are meant to be fast, reliable, and accessible. Proper caching is essential to achieving these goals.</p>
+<h2>See Also</h2>
 <ul>
-<li>Payment infrastructure setup</li>
-<li>Marketing website development</li>
-<li>Customer portal creation</li>
+<li><a href="./seo-optimization-guide.md">SEO Optimization Guide</a> - Proper meta tag configuration</li>
+<li><a href="https://web.dev/fast/">Performance Best Practices</a> - Google&#39;s web performance guidelines</li>
+<li><a href="https://vercel.com/docs/concepts/edge-network/caching">Vercel Caching Documentation</a> - Platform-specific caching strategies</li>
 </ul>
-<h3>Week 3-4: Integration</h3>
-<ul>
-<li>Bubble.io plugin development</li>
-<li>GitHub Action creation</li>
-<li>API documentation</li>
-</ul>
-<h3>Week 5-6: Launch Preparation</h3>
-<ul>
-<li>Beta testing with select users</li>
-<li>Collect testimonials</li>
-<li>Finalize pricing</li>
-</ul>
-<h3>Week 7-8: Public Launch</h3>
-<ul>
-<li>Product Hunt launch</li>
-<li>Social media campaign</li>
-<li>Dev community outreach</li>
-</ul>
-<hr>
-<h2>Document History</h2>
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Author</th>
-<th>Changes</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2025-07-22</td>
-<td>System</td>
-<td>Created launch directory and index</td>
-</tr>
-</tbody></table>
 
             </div>
         </main>
