@@ -5,6 +5,38 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.6] - 2025-07-25
+
+### Added
+- **Attachment Support**: Automatically copy Excel files, PDFs, and other attachments to deployment
+- New configuration option `features.attachments` (enabled by default)
+- Configurable `attachmentTypes` array for supported file extensions
+- `--no-attachments` flag for build and deploy commands to disable attachment copying
+- Support for preserving directory structure when copying attachments
+- Comprehensive file type support including:
+  - Documents: PDF, Excel, Word, PowerPoint, CSV, RTF
+  - Archives: ZIP, TAR, GZ, 7Z, RAR
+  - Images: PNG, JPG, JPEG, GIF, SVG, WEBP, ICO, BMP
+  - Data files: JSON, XML, YAML, YML, TOML
+  - Media: MP4, MP3, WAV, AVI, MOV
+
+### How it Works
+- During build, doc-builder scans for attachment files in your docs directory
+- Files with supported extensions are automatically copied to the output directory
+- Directory structure is preserved (e.g., `docs/data/report.xlsx` → `html/data/report.xlsx`)
+- Links in markdown files to these attachments will work seamlessly in the deployed site
+- Feature is enabled by default but can be disabled with `--no-attachments` flag
+
+### Configuration
+```javascript
+features: {
+  attachments: true  // Enable/disable attachment copying
+},
+attachmentTypes: [
+  '.pdf', '.xlsx', '.docx', // ... etc
+]
+```
+
 ## [1.7.5] - 2025-07-25
 
 ### Changed

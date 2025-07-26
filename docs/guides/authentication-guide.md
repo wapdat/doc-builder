@@ -1,276 +1,255 @@
-# ⚠️ DEPRECATED: Basic Authentication Guide
-
-> **SECURITY WARNING**: This basic authentication method has been deprecated and removed due to security vulnerabilities. 
-> 
-> **Use [Supabase Authentication](supabase-auth-setup-guide.md) instead** for secure, enterprise-grade authentication.
-
-# Authentication Guide for @knowcode/doc-builder (DEPRECATED)
+# Authentication Guide for @knowcode/doc-builder
 
 ## Overview
 
-> 🚨 **This authentication method has been REMOVED in version 2.0.0** due to serious security flaws. Please migrate to [Supabase Authentication](supabase-auth-setup-guide.md).
+@knowcode/doc-builder supports enterprise-grade authentication through **Supabase** - a secure, scalable authentication platform. This guide explains how to protect your documentation with proper user authentication and access control.
 
-This guide explains the old, insecure authentication method that was available in @knowcode/doc-builder v1.x. It has been completely removed for security reasons.
+## Why Supabase?
 
-## What is Authentication?
+- 🔐 **Enterprise Security**: JWT tokens, bcrypt password hashing, Row Level Security
+- 👥 **Multi-User Support**: Unlimited users with fine-grained access control
+- 🌍 **Scalable**: Built on PostgreSQL, handles millions of users
+- 🔄 **Real-time**: Live updates when permissions change
+- 💰 **Generous Free Tier**: 50,000 monthly active users free
 
-The authentication feature in doc-builder provides a simple way to protect your documentation from unauthorized access. When enabled, users must log in with a username and password before viewing any documentation pages.
-
-### Features
-- ✅ **Client-side authentication** - Works with static site hosting
-- ✅ **Cookie-based sessions** - Users stay logged in across pages
-- ✅ **Redirect handling** - Returns users to requested page after login
-- ✅ **Logout functionality** - Clear session and return to login
-- ✅ **Customizable credentials** - Set your own username/password
-
-### Limitations
-- ⚠️ **Basic security** - Suitable for casual protection only
-- ⚠️ **Client-side validation** - Not suitable for highly sensitive data
-- ⚠️ **Single user** - No multi-user or role-based access
-- ⚠️ **Credentials in JavaScript** - Visible in browser developer tools
-
-## How Authentication Works
+## How It Works
 
 ```mermaid
 graph TD
-    A[User visits page] --> B{Authenticated?}
+    A[User visits page] --> B{Has JWT Token?}
     B -->|No| C[Redirect to login]
-    B -->|Yes| D[Show content]
+    B -->|Yes| D[Verify with Supabase]
     C --> E[Enter credentials]
-    E --> F{Valid?}
-    F -->|No| G[Show error]
-    F -->|Yes| H[Set cookie]
-    H --> I[Redirect to original page]
-    G --> E
+    E --> F[Authenticate with Supabase]
+    F --> G{Valid?}
+    G -->|No| H[Show error]
+    G -->|Yes| I[Receive JWT token]
+    I --> J[Check site access]
+    J --> K{Has access?}
+    K -->|Yes| L[Show content]
+    K -->|No| M[Access denied]
+    D --> J
     
     style A fill:#e1f5fe
-    style D fill:#c8e6c9
-    style G fill:#ffcdd2
+    style L fill:#c8e6c9
+    style M fill:#ffcdd2
 ```
 
-### Technical Flow
+## Setting Up Authentication
 
-1. **Page Load**: Every page includes `auth.js` which checks for authentication
-2. **Cookie Check**: Looks for `doc-auth` cookie with valid token
-3. **Redirect**: Unauthenticated users sent to `/login.html`
-4. **Login**: Credentials validated client-side against config values
-5. **Session**: Base64-encoded token stored in cookie
-6. **Access**: Authenticated users can view all pages
+### Step 1: Create Supabase Project
 
-## Configuration
+1. Go to [Supabase](https://supabase.com)
+2. Create a new project
+3. Note your project URL and anon key
 
-### Enable Authentication
+### Step 2: Configure doc-builder
 
-Authentication can be enabled in three ways:
-
-#### 1. Configuration File
-Create `doc-builder.config.js` in your project root:
+Create or update `doc-builder.config.js`:
 
 ```javascript
 module.exports = {
-  siteName: '@knowcode/doc-builder',
-  siteDescription: 'Internal documentation portal',
+  siteName: 'My Documentation',
   
   features: {
-    authentication: true
+    authentication: 'supabase'  // Enable Supabase auth
   },
   
   auth: {
-    username: 'myusername',
-    password: 'mysecurepassword'
+    supabaseUrl: 'https://your-project.supabase.co',
+    supabaseAnonKey: 'your-anon-key',
+    siteId: 'your-site-id'  // From database after setup
   }
 };
 ```
 
-#### 2. Using Presets
-Use the notion-inspired preset which has authentication enabled by default:
+### Step 3: Set Up Database
 
-```bash
-npx @knowcode/doc-builder@latest build --preset notion-inspired
+Run these SQL commands in your Supabase SQL editor:
+
+```sql
+-- Create sites table
+CREATE TABLE docbuilder_sites (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    domain TEXT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Create access table
+CREATE TABLE docbuilder_access (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES auth.users(id),
+    site_id UUID NOT NULL REFERENCES docbuilder_sites(id),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(user_id, site_id)
+);
+
+-- Enable Row Level Security
+ALTER TABLE docbuilder_sites ENABLE ROW LEVEL SECURITY;
+ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
+
+-- Create policies
+CREATE POLICY "Sites visible to users with access" ON docbuilder_sites
+    FOR SELECT USING (
+        id IN (
+            SELECT site_id FROM docbuilder_access 
+            WHERE user_id = auth.uid()
+        )
+    );
+
+CREATE POLICY "Access visible to own user" ON docbuilder_access
+    FOR SELECT USING (user_id = auth.uid());
 ```
 
-Default credentials for preset:
-- Username: `admin`
-- Password: `docs2025`
+### Step 4: Add Your Site
 
-#### 3. Command Line
-Disable authentication for a specific build:
-
-```bash
-npx @knowcode/doc-builder@latest build --no-auth
+```sql
+INSERT INTO docbuilder_sites (domain, name)
+VALUES ('your-domain.com', 'Your Documentation Name');
 ```
 
-### Configuration Options
+Note the returned ID - this is your `siteId` for the config.
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `features.authentication` | boolean | `false` | Enable/disable authentication |
-| `auth.username` | string | `'admin'` | Login username |
-| `auth.password` | string | `'password'` | Login password |
+### Step 5: Create Users
 
-## Usage
+Users can sign up through Supabase Auth, or you can create them:
 
-### For Site Administrators
+```sql
+-- In Supabase dashboard, go to Authentication > Users
+-- Click "Invite user" and enter their email
+```
 
-1. **Set Credentials**: Configure username/password in `doc-builder.config.js`
-2. **Build Site**: Run `npx @knowcode/doc-builder@latest build`
-3. **Deploy**: Upload to your hosting provider
-4. **Share Credentials**: Provide login details to authorized users
+### Step 6: Grant Access
 
-### For End Users
+```sql
+-- Grant user access to your site
+INSERT INTO docbuilder_access (user_id, site_id)
+VALUES (
+    (SELECT id FROM auth.users WHERE email = 'user@example.com'),
+    'your-site-id'
+);
+```
 
-1. **Visit Site**: Navigate to any documentation page
-2. **Login**: Enter username and password on login page
-3. **Browse**: Access all documentation pages
-4. **Logout**: Click logout link in header (when available)
+## Deployment
 
-## Security Considerations
+### Build with Authentication
 
-### ⚠️ Important Warnings
+```bash
+# Build with auth enabled (reads from config)
+npx @knowcode/doc-builder build
 
-1. **Client-Side Only**: Authentication happens in the browser, making it unsuitable for truly sensitive data
-2. **Visible Credentials**: Username/password are embedded in JavaScript and visible to anyone who views page source
-3. **No Server Validation**: Any user who knows the credentials can access the site
-4. **Static Files**: All documentation files are still publicly accessible if URLs are known
+# Build without auth (override config)
+npx @knowcode/doc-builder build --no-auth
+```
 
-### When to Use
+### Deploy to Vercel
 
-✅ **Good for:**
-- Internal team documentation
-- Preview deployments
-- Casual access control
-- Preventing search engine indexing
-- Client presentations
+```bash
+# Deploy with auth
+npx @knowcode/doc-builder deploy
 
-❌ **Not suitable for:**
-- Highly confidential information
-- Personal data (GDPR/privacy)
-- Financial or legal documents
-- Source code or API keys
-- Medical records
+# Deploy public site
+npx @knowcode/doc-builder deploy --no-auth
+```
+
+## User Management
+
+### CLI Commands (Future)
+
+```bash
+# Add user to site
+npx @knowcode/doc-builder auth:grant --email user@example.com --site-id xxx
+
+# Remove user access
+npx @knowcode/doc-builder auth:revoke --email user@example.com --site-id xxx
+
+# List users with access
+npx @knowcode/doc-builder auth:list-users --site-id xxx
+```
+
+### Manual Management
+
+Use Supabase dashboard or SQL commands to manage users and access.
+
+## Security Features
+
+### What Supabase Provides
+
+- ✅ **JWT Authentication**: Industry-standard secure tokens
+- ✅ **Password Hashing**: bcrypt with salt
+- ✅ **Row Level Security**: Database-level access control
+- ✅ **Session Management**: Automatic token refresh
+- ✅ **Multi-Factor Auth**: Optional 2FA support
+- ✅ **OAuth Providers**: Google, GitHub, etc. (optional)
 
 ### Security Best Practices
 
-1. **Use HTTPS**: Always deploy to HTTPS-enabled hosting
-2. **Strong Passwords**: Use complex, unique passwords
-3. **Regular Updates**: Change credentials periodically
-4. **Monitor Access**: Check hosting logs for unusual activity
-5. **Consider Alternatives**: For sensitive data, use server-side authentication
+1. **Use environment variables** for sensitive config:
+   ```javascript
+   auth: {
+     supabaseUrl: process.env.SUPABASE_URL,
+     supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+     siteId: process.env.DOC_SITE_ID
+   }
+   ```
 
-## Implementation Details
-
-### Generated Files
-
-When authentication is enabled, doc-builder creates:
-
-1. **login.html** - Login page with form
-2. **logout.html** - Logout confirmation page  
-3. **auth.js** - Authentication check script (included on all pages)
-
-### Cookie Format
-
-The authentication cookie:
-- Name: `doc-auth`
-- Value: Base64-encoded `username:password`
-- Path: `/` (entire site)
-- Expiry: Session (until browser closed)
-
-### Customization
-
-The login/logout pages use the same CSS as your documentation, inheriting your site's theme and styling.
+2. **Enable RLS policies** on all tables
+3. **Regular access audits** - review who has access
+4. **Use custom domains** for professional appearance
+5. **Monitor usage** in Supabase dashboard
 
 ## Troubleshooting
 
 ### Common Issues
 
-**Users get logged out frequently**
-- Session cookies expire when browser closes
-- Consider implementing "remember me" functionality
+**Users can't log in**
+- Verify Supabase project is active
+- Check credentials are correct
+- Ensure user exists in auth.users
+- Verify site domain matches configuration
 
-**Login page shows but credentials don't work**
-- Verify credentials in config match exactly (case-sensitive)
-- Check browser console for JavaScript errors
-- Ensure cookies are enabled
+**Content flashes before redirect**
+- This is fixed in latest versions
+- Ensure you're using @knowcode/doc-builder v1.7.4+
 
-**Some pages accessible without login**
-- Verify all HTML pages include auth.js
-- Check for direct file access (PDFs, images)
-- Ensure no pages exclude authentication script
+**Access denied after login**
+- Check user has entry in docbuilder_access table
+- Verify site_id matches your configuration
+- Check RLS policies are correctly set up
 
-**Login redirects to wrong page**
-- Check redirect parameter handling
-- Verify relative vs absolute URLs
+### Debug Checklist
 
-### Debug Mode
+1. Check browser console for errors
+2. Verify JWT token in browser DevTools > Application > Storage
+3. Test Supabase connection separately
+4. Check network tab for API calls
+5. Verify domain in database matches deployment
 
-Check browser developer console for:
-- Cookie values
-- Redirect URLs  
-- JavaScript errors
-- Network requests
+## Migration from Old Auth
 
-## Alternatives
+If you were using the old authentication system:
 
-For more robust authentication, consider:
+1. **Remove old config**:
+   ```javascript
+   // Remove this:
+   auth: {
+     username: 'admin',
+     password: 'password'
+   }
+   ```
 
-1. **Vercel Authentication** - Built-in password protection
-2. **Netlify Identity** - User management service
-3. **Auth0** - Full authentication platform
-4. **Cloudflare Access** - Zero-trust security
-5. **Basic Auth** - Server-level protection
+2. **Set up Supabase** following this guide
 
-## Example Implementation
-
-### Simple Protected Docs
-
-```javascript
-// doc-builder.config.js
-module.exports = {
-  siteName: '@knowcode/doc-builder',
-  features: {
-    authentication: true
-  },
-  auth: {
-    username: 'team',
-    password: 'handbook2025'
-  }
-};
-```
-
-### Build and Deploy
-
-```bash
-# Build with authentication
-npx @knowcode/doc-builder@latest build
-
-# Deploy to Vercel
-npx @knowcode/doc-builder@latest deploy
-```
-
-### User Instructions
-
-Email to team:
-```
-Our documentation is now available at:
-https://docs.example.com
-
-Login credentials:
-Username: team
-Password: handbook2025
-
-Please bookmark the site after logging in.
-```
+3. **Update config** to use Supabase:
+   ```javascript
+   features: {
+     authentication: 'supabase'
+   }
+   ```
 
 ## Conclusion
 
-The authentication feature in @knowcode/doc-builder provides a simple way to add basic access control to your documentation. While not suitable for highly sensitive information, it's perfect for internal docs, client previews, and casual protection needs.
+Supabase authentication provides enterprise-grade security for your documentation while maintaining ease of use. With proper setup, you get secure, scalable authentication that grows with your needs.
 
-Remember: For production use with sensitive data, always implement proper server-side authentication with your hosting provider.
-
----
-
-## Document History
-
-| Date | Version | Author | Changes |
-|------|---------|--------|---------|
-| 2025-07-21 | 1.0 | System | Initial authentication guide |
+For public documentation that doesn't need authentication, simply set `authentication: false` or use the `--no-auth` flag during build/deploy.

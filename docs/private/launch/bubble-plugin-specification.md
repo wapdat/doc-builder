@@ -248,7 +248,7 @@ generateDocs({
 - [ ] Basic DocViewer element
 - [ ] Generate documentation action
 - [ ] Simple deployment to Vercel
-- [ ] Basic authentication
+- [ ] Supabase authentication integration
 
 ### Phase 2: Enhanced Features (2 weeks)
 - [ ] DocSearch element

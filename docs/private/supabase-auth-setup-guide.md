@@ -4,7 +4,7 @@ Complete guide for setting up secure authentication for your @knowcode/doc-build
 
 ## Overview
 
-@knowcode/doc-builder now supports enterprise-grade authentication through Supabase, replacing the previous insecure basic authentication. This provides:
+@knowcode/doc-builder supports enterprise-grade authentication through Supabase. This provides:
 
 - **Secure authentication** with industry-standard security practices
 - **Multi-site support** - one account can access multiple documentation sites
@@ -290,16 +290,15 @@ All data access is protected by RLS policies:
 - Check that config file has all required fields
 - Validate Supabase URL format (must be https://xxx.supabase.co)
 
-## Migration from Basic Auth
+## Security Best Practices
 
-If you were using the old basic authentication:
+When using Supabase authentication:
 
-1. **Update config** - Remove `username`/`password`, add Supabase fields
-2. **Create users** - Add your team members to Supabase
-3. **Grant access** - Give users access to your sites
-4. **Update deployments** - Rebuild and redeploy your documentation
-
-The old basic auth has been completely removed for security reasons.
+1. **Use environment variables** - Store credentials securely
+2. **Enable RLS** - Always use Row Level Security on tables
+3. **Regular audits** - Review user access permissions
+4. **Monitor logs** - Check Supabase dashboard for anomalies
+5. **Stay updated** - Keep @knowcode/doc-builder and dependencies current
 
 ## Advanced Configuration
 

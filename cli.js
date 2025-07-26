@@ -75,6 +75,7 @@ program
   .option('--no-pdf', 'hide PDF download icon in header')
   .option('--menu-closed', 'start with navigation menu closed')
   .option('--no-auth', 'build without authentication (for public sites)')
+  .option('--no-attachments', 'skip copying attachment files (Excel, PDF, etc.)')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder build                        ${chalk.gray('# Build with defaults')}
@@ -606,6 +607,7 @@ program
   .option('--force', 'force deployment without confirmation')
   .option('--production-url <url>', 'override production URL for this deployment')
   .option('--no-auth', 'build without authentication (for public sites)')
+  .option('--no-attachments', 'skip copying attachment files (Excel, PDF, etc.)')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder deploy                 ${chalk.gray('# Deploy to production')}
@@ -761,6 +763,12 @@ ${chalk.yellow('Troubleshooting:')}
         // Temporarily disable authentication for this build
         config.features = config.features || {};
         config.features.authentication = false;
+      }
+      
+      // Handle no-attachments option
+      if (options.attachments === false) {
+        config.features = config.features || {};
+        config.features.attachments = false;
       }
       
       // Always build first
@@ -1153,7 +1161,7 @@ ${chalk.yellow('What gets created:')}
         const exampleFiles = {
           'README.md': `# Welcome to Your Documentation\n\nThis is an example documentation site created with @knowcode/doc-builder.\n\n## Features\n\n- 📝 Write in Markdown\n- 🎨 Beautiful Notion-inspired design\n- 📊 Mermaid diagram support\n- 🌙 Dark mode\n- 🚀 Deploy to Vercel\n\n## Getting Started\n\n1. Edit this file and add your content\n2. Create new markdown files\n3. Run \`npx @knowcode/doc-builder@latest\` to build and deploy\n\n## Example Diagram\n\n\`\`\`mermaid\ngraph TD\n    A[Write Docs] --> B[Build]\n    B --> C[Deploy]\n    C --> D[Share]\n\`\`\`\n`,
           'getting-started.md': `# Getting Started\n\n**Generated**: ${new Date().toISOString().split('T')[0]}\n**Status**: Draft\n**Verified**: ❓\n\n## Overview\n\nThis guide will help you get started with your documentation.\n\n## Installation\n\nNo installation required! Just use:\n\n\`\`\`bash\nnpx @knowcode/doc-builder@latest\n\`\`\`\n\n## Writing Documentation\n\n1. Create markdown files in the \`docs\` folder\n2. Use folders to organize your content\n3. Add front matter for metadata\n\n## Building\n\nTo build your documentation:\n\n\`\`\`bash\nnpx @knowcode/doc-builder@latest build\n\`\`\`\n\n## Deployment\n\nDeploy to Vercel:\n\n\`\`\`bash\nnpx @knowcode/doc-builder@latest deploy\n\`\`\`\n`,
-          'guides/configuration.md': `# Configuration Guide\n\n**Generated**: ${new Date().toISOString().split('T')[0]}\n**Status**: Draft\n**Verified**: ❓\n\n## Overview\n\n@knowcode/doc-builder works with zero configuration, but you can customize it.\n\n## Configuration File\n\nCreate \`doc-builder.config.js\`:\n\n\`\`\`javascript\nmodule.exports = {\n  siteName: 'My Documentation',\n  siteDescription: 'Documentation for my project',\n  \n  features: {\n    authentication: false,\n    changelog: true,\n    mermaid: true,\n    darkMode: true\n  }\n};\n\`\`\`\n\n## Options\n\n### Site Information\n\n- \`siteName\`: Your documentation site name\n- \`siteDescription\`: Brief description\n\n### Directories\n\n- \`docsDir\`: Input directory (default: 'docs')\n- \`outputDir\`: Output directory (default: 'html')\n\n### Features\n\n- \`authentication\`: Enable password protection\n- \`changelog\`: Generate changelog automatically\n- \`mermaid\`: Support for diagrams\n- \`darkMode\`: Dark theme support\n`
+          'guides/configuration.md': `# Configuration Guide\n\n**Generated**: ${new Date().toISOString().split('T')[0]}\n**Status**: Draft\n**Verified**: ❓\n\n## Overview\n\n@knowcode/doc-builder works with zero configuration, but you can customize it.\n\n## Configuration File\n\nCreate \`doc-builder.config.js\`:\n\n\`\`\`javascript\nmodule.exports = {\n  siteName: 'My Documentation',\n  siteDescription: 'Documentation for my project',\n  \n  features: {\n    authentication: false,\n    changelog: true,\n    mermaid: true,\n    darkMode: true\n  }\n};\n\`\`\`\n\n## Options\n\n### Site Information\n\n- \`siteName\`: Your documentation site name\n- \`siteDescription\`: Brief description\n\n### Directories\n\n- \`docsDir\`: Input directory (default: 'docs')\n- \`outputDir\`: Output directory (default: 'html')\n\n### Features\n\n- \`authentication\`: Enable Supabase authentication\n- \`changelog\`: Generate changelog automatically\n- \`mermaid\`: Support for diagrams\n- \`darkMode\`: Dark theme support\n`
         };
         
         // Create example files

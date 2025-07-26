@@ -77,6 +77,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - 🌙 **Dark Mode** - Automatic theme switching
 - ☁️ **Vercel Deploy** - One-command deployment
 - ✅ **Google Verification** - Search Console ready
+- 📎 **Attachment Support** - Excel, PDF & more deploy with docs
 
 </td>
 </tr>
@@ -213,7 +214,8 @@ module.exports = {
     authentication: 'supabase',  // or false for no auth
     changelog: true,
     mermaid: true,
-    darkMode: true
+    darkMode: true,
+    attachments: true           // Copy PDFs, Excel files, etc. (default: true)
   },
   
   // Supabase Authentication
@@ -241,6 +243,23 @@ npx @knowcode/doc-builder auth:grant --email user@example.com --site-id xxx
 ```
 
 See the [Supabase Authentication Guide](docs/guides/supabase-auth-setup-guide.md) for complete setup instructions.
+
+### 📎 Attachment Support
+
+doc-builder automatically copies attachment files (Excel, PDF, images, etc.) to your deployment:
+
+- **Enabled by default** - No configuration needed
+- **Preserves directory structure** - Files maintain their relative paths
+- **Supported file types**:
+  - Documents: `.pdf`, `.doc`, `.docx`, `.xls`, `.xlsx`, `.csv`, `.ppt`, `.pptx`
+  - Images: `.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`, `.webp`
+  - Archives: `.zip`, `.tar`, `.gz`, `.7z`, `.rar`
+  - Data files: `.json`, `.xml`, `.yaml`, `.yml`
+  - And more...
+
+**Example**: If you have `docs/data/report.xlsx`, it will be copied to `html/data/report.xlsx` and links like `[Download Report](data/report.xlsx)` will work perfectly.
+
+To disable attachment copying, use the `--no-attachments` flag with build or deploy commands.
 
 ## 📋 Commands Overview
 
@@ -292,11 +311,13 @@ Options:
   -o, --output <dir>   Output directory (default: html)
   --preset <preset>    Use a preset configuration
   --no-changelog      Disable changelog generation
+  --no-attachments    Disable copying of attachment files
 
 Examples:
   doc-builder build                          # Build with defaults
   doc-builder build --input docs --output dist
   doc-builder build --preset notion-inspired
+  doc-builder build --no-attachments         # Build without copying PDFs, Excel files, etc.
 ```
 </details>
 
@@ -311,11 +332,13 @@ Options:
   --no-prod              Deploy as preview
   --force                Force without confirmation
   --production-url <url> Override production URL
+  --no-attachments       Disable copying of attachment files
 
 Examples:
   doc-builder deploy                    # Deploy to production
   doc-builder deploy --no-prod          # Deploy as preview
   doc-builder deploy --production-url my-docs.vercel.app
+  doc-builder deploy --no-attachments  # Deploy without attachment files
 ```
 </details>
 

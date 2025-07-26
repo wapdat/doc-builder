@@ -1,0 +1,15 @@
+# Example users file for bulk user additions
+# One email per line
+# Lines starting with # are ignored
+# Empty lines are ignored
+
+# Example users:
+john@example.com
+jane@example.com
+admin@mycompany.com
+
+# Real users for WRU project:
+# pmorgan@wru.cymru
+# clive@hyperforma.co.uk
+# robbie.macintosh@marbledropper.com
+# lindsay@knowcode.tech

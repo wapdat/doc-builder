@@ -142,15 +142,16 @@ Always indicate whether documentation is public or requires authentication in yo
 
 ## Migration Guide
 
-### From Basic Auth to Public
-If you were using basic authentication and want to make your site public:
+### From Authenticated to Public
+If you were using Supabase authentication and want to make your site public:
 
-1. **Remove old auth config**:
+1. **Remove auth config**:
    ```javascript
    // Remove this:
    auth: {
-     username: 'admin',
-     password: 'secret'
+     supabaseUrl: 'https://xxx.supabase.co',
+     supabaseAnonKey: 'xxx',
+     siteId: 'xxx'
    }
    ```
 
