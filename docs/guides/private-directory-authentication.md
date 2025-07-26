@@ -87,16 +87,18 @@ If you have **both** a private directory AND set authentication in your config:
 
 Both authentication modes use Supabase for secure user management. Here's how to configure it:
 
-### 1. Configure Credentials
+### 1. Credentials Are Automatic! (v1.8.2+)
 
-Add your Supabase credentials to `doc-builder.config.js`:
+No need to configure credentials anymore! The shared Supabase database is automatically configured. Each site gets a unique auto-generated site ID during build.
+
+To override with custom credentials (optional):
 
 ```javascript
 module.exports = {
   auth: {
-    supabaseUrl: 'https://your-project.supabase.co',
-    supabaseAnonKey: 'your-anon-key',
-    siteId: 'your-site-id'  // Unique identifier for this doc site
+    supabaseUrl: 'https://your-project.supabase.co',  // Optional override
+    supabaseAnonKey: 'your-anon-key',                 // Optional override
+    siteId: 'your-site-id'                            // Optional custom ID
   }
 };
 ```
@@ -126,13 +128,20 @@ INSERT INTO docbuilder_access (user_id, site_id)
 VALUES ('user-uuid-from-auth-users', 'your-site-id');
 ```
 
-### What Happens Without Credentials?
+### Automatic Credential Configuration
 
-If you enable authentication (via private directory or config) without configuring Supabase:
-- The login button still appears
-- Login page shows Supabase connection error
-- This reminds you to complete the configuration
-- Your documentation structure is ready, just needs credentials
+Starting from version 1.8.2, Supabase credentials are automatically configured:
+- All doc-builder sites share the same Supabase authentication database
+- Credentials are built into the package - no manual configuration needed
+- Each site gets a unique auto-generated site ID
+- You just need to add the site ID to the database to grant user access
+
+**Note**: The auto-generated site ID is displayed during build:
+```
+🔐 Found private directory - automatically enabling Supabase authentication
+📋 Generated site ID: documentation-1753525200000-abc123
+   Note: Add this site ID to your Supabase database to enable user access
+```
 
 ## Best Practices
 

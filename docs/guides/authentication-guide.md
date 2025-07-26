@@ -1,5 +1,7 @@
 # Authentication Guide for @knowcode/doc-builder
 
+> **🎉 Update v1.8.2**: Supabase credentials are now automatically configured! No manual setup needed - just enable authentication and add users to the database.
+
 ## Overview
 
 @knowcode/doc-builder supports enterprise-grade authentication through **Supabase** - a secure, scalable authentication platform. This guide explains how to protect your documentation with proper user authentication and access control.

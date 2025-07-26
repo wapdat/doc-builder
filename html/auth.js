@@ -16,7 +16,7 @@
     
     // Initialize Supabase client
     const { createClient } = supabase;
-    const supabaseClient = createClient('https://placeholder.supabase.co', 'placeholder-key', {
+    const supabaseClient = createClient('https://xcihhnfcitjrwbynxmka.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjaWhobmZjaXRqcndieW54bWthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0Mzc2MzcsImV4cCI6MjA2OTAxMzYzN30.zvWp3JFIR8fBIiwuFF5gqOR_Kxb42baZS5fsBz60XOY', {
         auth: {
             persistSession: true,
             autoRefreshToken: true,
@@ -51,7 +51,7 @@
                 .from('docbuilder_access')
                 .select('*')
                 .eq('user_id', user.id)
-                .eq('site_id', 'placeholder-site-id')
+                .eq('site_id', '-knowcode-doc-builder-1753526321904-eivutk')
                 .single();
             
             if (accessError || !access) {

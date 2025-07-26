@@ -5,6 +5,23 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.2] - 2025-07-26
+
+### Added
+- **Automatic Supabase Credentials**: No more placeholder errors! Credentials are now built into the package
+- **Auto-generated Site IDs**: Each site gets a unique ID automatically when authentication is enabled
+- Shared authentication database across all doc-builder sites for easier management
+
+### Changed
+- Supabase URL and anonymous key are now provided by default via `shared-auth-config.js`
+- Site IDs are auto-generated using site name, timestamp, and random string
+- Updated documentation to reflect zero-configuration authentication
+
+### Developer Experience
+- No need to configure Supabase credentials manually anymore
+- Just create a `private` directory and authentication works immediately
+- Site administrators only need to add the auto-generated site ID to the database
+
 ## [1.8.1] - 2025-07-26
 
 ### Fixed

@@ -175,10 +175,14 @@ Permanently delete a user (removes from ALL sites):
 
 ## ⚠️ Important Limitations
 
-The Supabase CLI doesn't support direct user creation. The script offers two workarounds:
+1. **User Creation**: The Supabase CLI doesn't support direct user creation. The script offers two workarounds:
+   - **Manual Creation** (Recommended): Opens the Supabase dashboard where you can invite users
+   - **Programmatic Creation** (Advanced): If you provide your service_role key, the script can create users using the Admin API
 
-1. **Manual Creation** (Recommended): Opens the Supabase dashboard where you can invite users
-2. **Programmatic Creation** (Advanced): If you provide your service_role key, the script can create users using the Admin API
+2. **SQL Execution**: Older versions of Supabase CLI (< 2.7) don't support `db execute`. The script will:
+   - Try to use `psql` if you have `DATABASE_URL` set
+   - Fall back to showing SQL for manual execution in the dashboard
+   - Consider updating: `npm update -g supabase`
 
 ## 🔐 Security Notes
 

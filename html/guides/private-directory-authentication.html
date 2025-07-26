@@ -98,8 +98,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-26T10:20:52.393Z",
-  "dateModified": "2025-07-26T10:20:52.393Z",
+  "datePublished": "2025-07-26T10:38:41.982Z",
+  "dateModified": "2025-07-26T10:38:41.982Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/private-directory-authentication.html"
@@ -138,7 +138,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.0">Last updated: Jul 26, 2025, 10:20 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.8.1">Last updated: Jul 26, 2025, 10:38 AM UTC</span>
                 </div>
                 
                 
@@ -264,11 +264,12 @@ module.exports = {
 };
 </code></pre>
 <h2>How They Work Together</h2>
-<p>If you have <strong>both</strong> a private directory AND set <code>authentication: &#39;supabase&#39;</code> in your config:</p>
+<p>If you have <strong>both</strong> a private directory AND set authentication in your config:</p>
 <ul>
-<li>The config setting takes precedence</li>
-<li>The entire site becomes private (full authentication mode)</li>
-<li>The private directory distinction becomes irrelevant since everything requires login</li>
+<li>The private directory <strong>always</strong> triggers authentication (for security)</li>
+<li>Setting <code>authentication: &#39;supabase&#39;</code> makes the entire site private</li>
+<li>Setting <code>authentication: false</code> is overridden by private directory presence</li>
+<li>This ensures private content is never accidentally exposed</li>
 </ul>
 <h2>User Experience</h2>
 <h3>Private Directory Mode</h3>
@@ -295,13 +296,14 @@ module.exports = {
 </ul>
 <h2>Setting Up Supabase Authentication</h2>
 <p>Both authentication modes use Supabase for secure user management. Here&#39;s how to configure it:</p>
-<h3>1. Configure Credentials</h3>
-<p>Add your Supabase credentials to <code>doc-builder.config.js</code>:</p>
+<h3>1. Credentials Are Automatic! (v1.8.2+)</h3>
+<p>No need to configure credentials anymore! The shared Supabase database is automatically configured. Each site gets a unique auto-generated site ID during build.</p>
+<p>To override with custom credentials (optional):</p>
 <pre><code class="language-javascript">module.exports = {
   auth: {
-    supabaseUrl: &#39;https://your-project.supabase.co&#39;,
-    supabaseAnonKey: &#39;your-anon-key&#39;,
-    siteId: &#39;your-site-id&#39;  // Unique identifier for this doc site
+    supabaseUrl: &#39;https://your-project.supabase.co&#39;,  // Optional override
+    supabaseAnonKey: &#39;your-anon-key&#39;,                 // Optional override
+    siteId: &#39;your-site-id&#39;                            // Optional custom ID
   }
 };
 </code></pre>
@@ -322,14 +324,19 @@ module.exports = {
 INSERT INTO docbuilder_access (user_id, site_id)
 VALUES (&#39;user-uuid-from-auth-users&#39;, &#39;your-site-id&#39;);
 </code></pre>
-<h3>What Happens Without Credentials?</h3>
-<p>If you enable authentication (via private directory or config) without configuring Supabase:</p>
+<h3>Automatic Credential Configuration</h3>
+<p>Starting from version 1.8.2, Supabase credentials are automatically configured:</p>
 <ul>
-<li>The login button still appears</li>
-<li>Login page shows Supabase connection error</li>
-<li>This reminds you to complete the configuration</li>
-<li>Your documentation structure is ready, just needs credentials</li>
+<li>All doc-builder sites share the same Supabase authentication database</li>
+<li>Credentials are built into the package - no manual configuration needed</li>
+<li>Each site gets a unique auto-generated site ID</li>
+<li>You just need to add the site ID to the database to grant user access</li>
 </ul>
+<p><strong>Note</strong>: The auto-generated site ID is displayed during build:</p>
+<pre><code>🔐 Found private directory - automatically enabling Supabase authentication
+📋 Generated site ID: documentation-1753525200000-abc123
+   Note: Add this site ID to your Supabase database to enable user access
+</code></pre>
 <h2>Best Practices</h2>
 <h3>Choosing the Right Mode</h3>
 <p><strong>Use Private Directory Mode when:</strong></p>

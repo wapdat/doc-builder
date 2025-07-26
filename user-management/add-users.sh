@@ -200,26 +200,52 @@ setup_project() {
     fi
 }
 
-# Execute SQL using Supabase CLI
+# Execute SQL - try different methods based on what's available
 execute_sql() {
     local sql="$1"
     local temp_file=$(mktemp)
     
     echo "$sql" > "$temp_file"
     
-    # Use db execute instead of db push for running queries
-    local output=$(supabase db execute -f "$temp_file" 2>&1)
-    local status=$?
-    
-    rm "$temp_file"
-    
-    if [ $status -eq 0 ]; then
-        echo "$output"
-        return 0
-    else
-        echo -e "${RED}SQL Error: $output${NC}" >&2
-        return 1
+    # Method 1: Try using psql if DATABASE_URL is available
+    if [ ! -z "$DATABASE_URL" ]; then
+        local output=$(psql "$DATABASE_URL" -f "$temp_file" 2>&1)
+        local status=$?
+        rm "$temp_file"
+        
+        if [ $status -eq 0 ]; then
+            echo "$output"
+            return 0
+        fi
     fi
+    
+    # Method 2: Try newer supabase db execute (for newer CLI versions)
+    if command -v supabase &> /dev/null && supabase db execute --help &> /dev/null 2>&1; then
+        local output=$(cat "$temp_file" | supabase db execute 2>&1)
+        local status=$?
+        rm "$temp_file"
+        
+        if [ $status -eq 0 ]; then
+            echo "$output"
+            return 0
+        fi
+    fi
+    
+    # Method 3: Manual instructions as fallback
+    rm "$temp_file"
+    echo -e "${YELLOW}⚠️  Cannot execute SQL automatically${NC}"
+    echo -e "${CYAN}Your Supabase CLI version doesn't support direct SQL execution.${NC}"
+    echo -e "${CYAN}Please run this SQL manually in Supabase SQL Editor:${NC}"
+    echo -e "${CYAN}https://supabase.com/dashboard/project/$PROJECT_ID/sql${NC}"
+    echo
+    echo -e "${BLUE}--- SQL TO RUN ---${NC}"
+    echo "$sql"
+    echo -e "${BLUE}--- END SQL ---${NC}"
+    echo
+    echo -e "${YELLOW}Press Enter after running the SQL...${NC}"
+    read -p ""
+    
+    return 0
 }
 
 # Create a user using SQL (Supabase doesn't have CLI user creation)
