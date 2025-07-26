@@ -5,6 +5,28 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2025-07-26
+
+### Added
+- **Automatic Private Directory Authentication**: Simply create a `docs/private/` folder to enable authentication
+- Private documents are completely hidden from unauthenticated users
+- Unified login/logout button that dynamically changes icon based on authentication state
+- Smart navigation filtering - private files only shown on authenticated pages
+- Comprehensive guide for private directory authentication feature
+
+### Changed
+- Navigation building now filters files based on authentication status
+- Auth button replaces separate logout button for cleaner UI
+- Public pages remain accessible even when authentication is enabled
+- Authentication script only redirects on private pages, not public ones
+
+### How it Works
+- Create a `docs/private/` directory and authentication is automatically enabled
+- Private documents don't appear in navigation for unauthenticated users
+- Attempting to access private URLs directly redirects to login
+- After login, users see complete navigation including private sections
+- Zero configuration required - just organize your files
+
 ## [1.7.6] - 2025-07-25
 
 ### Added
