@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The @knowcode/doc-builder now supports deploying public documentation sites without authentication. This is perfect for open-source projects, public APIs, or...">
-    <title>Deploying Public Documentation Sites | @knowcode/doc-builder</title>
+    <meta name="description" content="All references to the old client-side authentication system have been removed from @knowcode/doc-builder. The project now exclusively uses Supabase for...">
+    <title>Authentication System Cleanup Summary</title>
     
     <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, public, authentication">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, supabase, authentication">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/public-site-deployment.html">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/private/launch/auth-cleanup-summary.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/public-site-deployment.html">
-    <meta property="og:title" content="Deploying Public Documentation Sites | @knowcode/doc-builder">
-    <meta property="og:description" content="The @knowcode/doc-builder now supports deploying public documentation sites without authentication. This is perfect for open-source projects, public APIs, or...">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/private/launch/auth-cleanup-summary.html">
+    <meta property="og:title" content="Authentication System Cleanup Summary">
+    <meta property="og:description" content="All references to the old client-side authentication system have been removed from @knowcode/doc-builder. The project now exclusively uses Supabase for...">
     <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
     <meta property="og:site_name" content="@knowcode/doc-builder">
     <meta property="og:locale" content="en_US">
@@ -24,8 +24,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@planbbackups">
     <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="Deploying Public Documentation Sites | @knowcode/doc-builder">
-    <meta name="twitter:description" content="The @knowcode/doc-builder now supports deploying public documentation sites without authentication. This is perfect for open-source projects, public APIs, or...">
+    <meta name="twitter:title" content="Authentication System Cleanup Summary">
+    <meta name="twitter:description" content="All references to the old client-side authentication system have been removed from @knowcode/doc-builder. The project now exclusively uses Supabase for...">
     <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
     
     <!-- Custom Meta Tags -->
@@ -54,8 +54,8 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Deploying Public Documentation Sites",
-  "description": "The @knowcode/doc-builder now supports deploying public documentation sites without authentication. This is perfect for open-source projects, public APIs, or...",
+  "headline": "Authentication System Cleanup Summary",
+  "description": "All references to the old client-side authentication system have been removed from @knowcode/doc-builder. The project now exclusively uses Supabase for...",
   "author": {
     "@type": "Person",
     "name": "Lindsay Smith"
@@ -65,11 +65,11 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-26T09:56:36.681Z",
-  "dateModified": "2025-07-26T09:56:36.681Z",
+  "datePublished": "2025-07-26T09:56:36.709Z",
+  "dateModified": "2025-07-26T09:56:36.709Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/guides/public-site-deployment.html"
+    "@id": "https://doc-builder-delta.vercel.app/private/launch/auth-cleanup-summary.html"
   },
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -83,14 +83,20 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Guides",
-        "item": "https://doc-builder-delta.vercel.app/guides/"
+        "name": "Private",
+        "item": "https://doc-builder-delta.vercel.app/private/"
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Public Site Deployment",
-        "item": "https://doc-builder-delta.vercel.app/guides/public-site-deployment.html"
+        "name": "Launch",
+        "item": "https://doc-builder-delta.vercel.app/private/launch/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Auth Cleanup Summary",
+        "item": "https://doc-builder-delta.vercel.app/private/launch/auth-cleanup-summary.html"
       }
     ]
   }
@@ -159,17 +165,17 @@
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
-        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+        <a class="nav-title collapsible" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
         </a>
-        <div class="nav-content" id="nav-guides-1">
+        <div class="nav-content collapsed" id="nav-guides-1">
         <a href="/guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="fas fa-file-alt"></i> Authentication Default Change</a>
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now includes automatic authentication for documents placed in a directory."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
-        <a href="/guides/public-site-deployment.html" class="nav-item active" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
+        <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
         <a href="/guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="fas fa-file-alt"></i> Search Engine Verification Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
@@ -182,126 +188,45 @@
         <!-- Content Area -->
         <main class="content">
             <div class="content-inner">
-                <h1>Deploying Public Documentation Sites</h1>
+                <h1>Authentication System Cleanup Summary</h1>
 <h2>Overview</h2>
-<p>The @knowcode/doc-builder now supports deploying public documentation sites without authentication. This is perfect for open-source projects, public APIs, or any documentation that doesn&#39;t require access control.</p>
-<h2>Quick Start</h2>
-<h3>Option 1: Using CLI Flags (Recommended)</h3>
-<p>Deploy a public site without modifying your config:</p>
-<pre><code class="language-bash"># Build without authentication
-npx @knowcode/doc-builder build --no-auth
-
-# Deploy without authentication
-npx @knowcode/doc-builder deploy --no-auth
-</code></pre>
-<h3>Option 2: Configuration File</h3>
-<p>Create a config file with authentication disabled:</p>
-<pre><code class="language-javascript">// public-doc-builder.config.js
-module.exports = {
-  siteName: &#39;My Public Documentation&#39;,
-  siteDescription: &#39;Open source project documentation&#39;,
-  
-  features: {
-    authentication: false,  // Disable authentication
-    darkMode: true,
-    mermaid: true,
-    showPdfDownload: true,
-    menuDefaultOpen: true
-  }
-};
-</code></pre>
-<p>Then build and deploy:</p>
-<pre><code class="language-bash"># Build with custom config
-npx @knowcode/doc-builder build -c public-doc-builder.config.js
-
-# Deploy with custom config
-npx @knowcode/doc-builder deploy -c public-doc-builder.config.js
-</code></pre>
-<h2>Authentication Options</h2>
-<h3>1. No Authentication (Public Site)</h3>
-<pre><code class="language-javascript">features: {
-  authentication: false
-}
-</code></pre>
+<p>All references to the old client-side authentication system have been removed from @knowcode/doc-builder. The project now exclusively uses Supabase for authentication needs.</p>
+<h2>Changes Made</h2>
+<h3>1. Removed Files</h3>
 <ul>
-<li>Anyone can access the documentation</li>
-<li>No login required</li>
-<li>Best for public projects</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/assets/js/auth.js</code> - Old client-side auth script deleted</li>
 </ul>
-<h3>2. Supabase Authentication (Private Site)</h3>
+<h3>2. Updated Documentation</h3>
+<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/authentication-guide.md</code> - Completely rewritten for Supabase only</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/public-site-deployment.md</code> - Updated migration section</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/supabase-auth-setup-guide.md</code> - Removed old auth references</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/launch/bubble-plugin-specification.md</code> - Updated to Supabase auth</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Created <code>/docs/guides/supabase-auth-implementation-completed.md</code> - Records completion</li>
+</ul>
+<h3>3. CLI Updates</h3>
+<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Updated help text in <code>cli.js</code> to reference Supabase authentication</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Removed &quot;password protection&quot; terminology</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> All auth references now point to Supabase</li>
+</ul>
+<h3>4. Configuration Changes</h3>
+<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Default config has <code>authentication: false</code></li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Notion preset has <code>authentication: false</code> </li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Only Supabase auth can be enabled with <code>authentication: &#39;supabase&#39;</code></li>
+</ul>
+<h2>Current State</h2>
+<h3>Authentication Options</h3>
+<ol>
+<li><p><strong>No Authentication (Default)</strong></p>
+<pre><code class="language-javascript">// No config needed - public by default
+</code></pre>
+</li>
+<li><p><strong>Supabase Authentication</strong></p>
 <pre><code class="language-javascript">features: {
   authentication: &#39;supabase&#39;
 },
-auth: {
-  supabaseUrl: &#39;https://xxx.supabase.co&#39;,
-  supabaseAnonKey: &#39;your-anon-key&#39;,
-  siteId: &#39;your-site-id&#39;
-}
-</code></pre>
-<ul>
-<li>Users must log in to access</li>
-<li>Fine-grained access control</li>
-<li>Best for internal documentation</li>
-</ul>
-<h2>CLI Flag Behavior</h2>
-<p>The <code>--no-auth</code> flag temporarily overrides your configuration:</p>
-<ol>
-<li><strong>With existing auth config</strong>: Disables authentication for that build/deploy only</li>
-<li><strong>Without auth config</strong>: No effect (already public)</li>
-<li><strong>Priority</strong>: CLI flags always override config file settings</li>
-</ol>
-<h2>Example Workflows</h2>
-<h3>Public Open Source Documentation</h3>
-<pre><code class="language-bash"># One-time setup
-npx @knowcode/doc-builder init --example
-
-# Deploy publicly
-npx @knowcode/doc-builder deploy --no-auth
-</code></pre>
-<h3>Mixed Public/Private Sites</h3>
-<pre><code class="language-bash"># Private site (default config has auth)
-npx @knowcode/doc-builder deploy
-
-# Public site (override with flag)
-npx @knowcode/doc-builder deploy --no-auth --production-url public-docs.example.com
-</code></pre>
-<h3>Multiple Sites from Same Source</h3>
-<pre><code class="language-bash"># Internal docs with auth
-npx @knowcode/doc-builder build -c internal-config.js
-npx @knowcode/doc-builder deploy -c internal-config.js
-
-# Public docs without auth
-npx @knowcode/doc-builder build -c public-config.js
-npx @knowcode/doc-builder deploy -c public-config.js
-</code></pre>
-<h2>Vercel Deployment Notes</h2>
-<p>When deploying public sites to Vercel:</p>
-<ol>
-<li><strong>No special configuration needed</strong> - Public sites work out of the box</li>
-<li><strong>Deployment Protection</strong>: Already disabled for public access</li>
-<li><strong>Custom domains</strong>: Work the same for public and private sites</li>
-</ol>
-<h2>Best Practices</h2>
-<h3>1. Separate Configs</h3>
-<p>Create separate config files for public vs private deployments:</p>
-<ul>
-<li><code>doc-builder.config.js</code> - Default/private configuration</li>
-<li><code>public.config.js</code> - Public site configuration</li>
-</ul>
-<h3>2. Environment-Based Builds</h3>
-<p>Use environment variables to control authentication:</p>
-<pre><code class="language-javascript">features: {
-  authentication: process.env.PUBLIC_DOCS ? false : &#39;supabase&#39;
-}
-</code></pre>
-<h3>3. Clear Documentation</h3>
-<p>Always indicate whether documentation is public or requires authentication in your README or landing page.</p>
-<h2>Migration Guide</h2>
-<h3>From Authenticated to Public</h3>
-<p>If you were using Supabase authentication and want to make your site public:</p>
-<ol>
-<li><p><strong>Remove auth config</strong>:</p>
-<pre><code class="language-javascript">// Remove this:
 auth: {
   supabaseUrl: &#39;https://xxx.supabase.co&#39;,
   supabaseAnonKey: &#39;xxx&#39;,
@@ -309,26 +234,30 @@ auth: {
 }
 </code></pre>
 </li>
-<li><p><strong>Set authentication to false</strong>:</p>
-<pre><code class="language-javascript">features: {
-  authentication: false
-}
-</code></pre>
-</li>
-<li><p><strong>Rebuild and deploy</strong>:</p>
-<pre><code class="language-bash">npx @knowcode/doc-builder deploy
-</code></pre>
-</li>
 </ol>
-<h3>From Public to Supabase Auth</h3>
-<p>To add authentication to a public site, see the <a href="./supabase-auth-setup.md">Supabase Authentication Guide</a>.</p>
-<h2>Summary</h2>
+<h3>CLI Commands</h3>
 <ul>
-<li>Use <code>--no-auth</code> flag for quick public deployments</li>
-<li>Set <code>authentication: false</code> in config for permanent public sites</li>
-<li>Mix and match public/private sites using different configs</li>
-<li>No additional Vercel configuration needed for public sites</li>
+<li><code>npx @knowcode/doc-builder build</code> - Builds public site by default</li>
+<li><code>npx @knowcode/doc-builder build --no-auth</code> - Forces public build</li>
+<li><code>npx @knowcode/doc-builder deploy</code> - Deploys based on config</li>
+<li><code>npx @knowcode/doc-builder deploy --no-auth</code> - Forces public deployment</li>
 </ul>
+<h2>What Users Need to Know</h2>
+<ol>
+<li><strong>Authentication is disabled by default</strong> - Public docs work out of the box</li>
+<li><strong>Only Supabase is supported</strong> - No other auth methods available</li>
+<li><strong>Old configs won&#39;t work</strong> - Must migrate to Supabase if auth needed</li>
+<li><strong>Clear documentation</strong> - Full guide at <code>/docs/guides/authentication-guide.md</code></li>
+</ol>
+<h2>No Traces Remain</h2>
+<ul>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> No username/password fields in config</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> No client-side credential checking</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> No references to &quot;basic auth&quot; in active code</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> No old auth.js files</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> All documentation updated</li>
+</ul>
+<p>The cleanup is complete. @knowcode/doc-builder now has a clean, secure authentication system powered exclusively by Supabase.</p>
 
             </div>
         </main>
