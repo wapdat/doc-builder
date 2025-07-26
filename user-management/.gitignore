@@ -1,0 +1,15 @@
+# Supabase configuration
+.supabase-config
+supabase/.temp/
+supabase/.branches/
+
+# Environment files
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log

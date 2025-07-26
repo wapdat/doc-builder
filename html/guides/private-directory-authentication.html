@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The @knowcode/doc-builder now includes automatic authentication for documents placed in a `private` directory. This feature provides a simple,...">
+    <meta name="description" content="The @knowcode/doc-builder provides flexible authentication options to protect your documentation. You can either protect specific documents using a `private`...">
     <title>Private Directory Authentication Guide</title>
     
     <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, private, directory">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, private, authentication">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/private-directory-authentication.html">
     
@@ -15,7 +15,7 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/private-directory-authentication.html">
     <meta property="og:title" content="Private Directory Authentication Guide">
-    <meta property="og:description" content="The @knowcode/doc-builder now includes automatic authentication for documents placed in a `private` directory. This feature provides a simple,...">
+    <meta property="og:description" content="The @knowcode/doc-builder provides flexible authentication options to protect your documentation. You can either protect specific documents using a `private`...">
     <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
     <meta property="og:site_name" content="@knowcode/doc-builder">
     <meta property="og:locale" content="en_US">
@@ -25,7 +25,7 @@
     <meta name="twitter:site" content="@planbbackups">
     <meta name="twitter:creator" content="@planbbackups">
     <meta name="twitter:title" content="Private Directory Authentication Guide">
-    <meta name="twitter:description" content="The @knowcode/doc-builder now includes automatic authentication for documents placed in a `private` directory. This feature provides a simple,...">
+    <meta name="twitter:description" content="The @knowcode/doc-builder provides flexible authentication options to protect your documentation. You can either protect specific documents using a `private`...">
     <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
     
     <!-- Custom Meta Tags -->
@@ -46,6 +46,39 @@
     <link rel="stylesheet" href="/css/notion-style.css">
     
     
+    <!-- Hide content until auth check -->
+    <style>
+      body { 
+        visibility: hidden; 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+      }
+      body.authenticated { 
+        visibility: visible; 
+        opacity: 1; 
+      }
+      /* Show login/logout pages immediately */
+      body.auth-page {
+        visibility: visible;
+        opacity: 1;
+      }
+      /* Style auth button consistently */
+      .auth-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+      }
+      .auth-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+      }
+    </style>
+    
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
@@ -55,7 +88,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Private Directory Authentication Guide",
-  "description": "The @knowcode/doc-builder now includes automatic authentication for documents placed in a `private` directory. This feature provides a simple,...",
+  "description": "The @knowcode/doc-builder provides flexible authentication options to protect your documentation. You can either protect specific documents using a `private`...",
   "author": {
     "@type": "Person",
     "name": "Lindsay Smith"
@@ -65,8 +98,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-26T09:59:22.958Z",
-  "dateModified": "2025-07-26T09:59:22.958Z",
+  "datePublished": "2025-07-26T10:20:52.393Z",
+  "dateModified": "2025-07-26T10:20:52.393Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/private-directory-authentication.html"
@@ -105,9 +138,13 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.0">Last updated: Jul 26, 2025, 09:59 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.8.0">Last updated: Jul 26, 2025, 10:20 AM UTC</span>
                 </div>
                 
+                
+                <a href="../../login.html" class="auth-btn" title="Login/Logout">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -168,7 +205,7 @@
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
-        <a href="/guides/private-directory-authentication.html" class="nav-item active" data-tooltip="The @knowcode/doc-builder now includes automatic authentication for documents placed in a directory."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
+        <a href="/guides/private-directory-authentication.html" class="nav-item active" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
         <a href="/guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="fas fa-file-alt"></i> Search Engine Verification Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
@@ -184,58 +221,92 @@
             <div class="content-inner">
                 <h1>Private Directory Authentication Guide</h1>
 <h2>Overview</h2>
-<p>The @knowcode/doc-builder now includes automatic authentication for documents placed in a <code>private</code> directory. This feature provides a simple, convention-based approach to protecting sensitive documentation without requiring complex configuration.</p>
-<h2>How It Works</h2>
-<h3>Automatic Detection</h3>
-<p>When the doc-builder detects a <code>docs/private/</code> directory during the build process, it automatically:</p>
-<ol>
-<li>Enables Supabase authentication for the entire site</li>
-<li>Hides all private documents from unauthenticated users</li>
-<li>Shows a login button in the header</li>
-<li>Requires authentication to access any document in the private directory</li>
-</ol>
-<h3>Zero Configuration</h3>
-<p>Simply create a <code>private</code> folder in your docs directory:</p>
+<p>The @knowcode/doc-builder provides flexible authentication options to protect your documentation. You can either protect specific documents using a <code>private</code> directory or secure your entire documentation site.</p>
+<h2>Two Authentication Modes</h2>
+<h3>1. Private Directory Mode (Mixed Public/Private)</h3>
+<p>Create a <code>docs/private/</code> directory to automatically enable authentication for sensitive documents while keeping the rest of your documentation public.</p>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Documents in <code>private/</code> folder require authentication</li>
+<li>Documents outside <code>private/</code> remain publicly accessible</li>
+<li>Login button appears in the header</li>
+<li>Perfect for documentation with some sensitive content</li>
+</ul>
+<p><strong>Example structure:</strong></p>
 <pre><code>docs/
-├── README.md           # Public documentation
-├── guides/            # Public guides
-│   └── setup.md
-└── private/           # 🔐 Protected documents
-    ├── api-keys.md
-    ├── internal/
-    │   └── architecture.md
-    └── team-notes.md
+├── README.md              # ✅ Public - Anyone can access
+├── getting-started.md     # ✅ Public - Anyone can access
+├── guides/               
+│   ├── installation.md    # ✅ Public - Anyone can access
+│   └── usage.md          # ✅ Public - Anyone can access
+└── private/              
+    ├── api-keys.md       # 🔐 Private - Login required
+    ├── deployment.md     # 🔐 Private - Login required
+    └── internal/         
+        └── secrets.md    # 🔐 Private - Login required
 </code></pre>
-<p>That&#39;s it! No configuration changes needed.</p>
+<h3>2. Full Site Authentication Mode</h3>
+<p>Make your entire documentation site private by setting authentication in your configuration file.</p>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>ALL documents require authentication</li>
+<li>No public access whatsoever</li>
+<li>Login required before viewing any page</li>
+<li>Perfect for internal company documentation</li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: &#39;supabase&#39;  // Entire site requires login
+  },
+  // ... other config
+};
+</code></pre>
+<h2>How They Work Together</h2>
+<p>If you have <strong>both</strong> a private directory AND set <code>authentication: &#39;supabase&#39;</code> in your config:</p>
+<ul>
+<li>The config setting takes precedence</li>
+<li>The entire site becomes private (full authentication mode)</li>
+<li>The private directory distinction becomes irrelevant since everything requires login</li>
+</ul>
 <h2>User Experience</h2>
-<h3>For Unauthenticated Users</h3>
+<h3>Private Directory Mode</h3>
+<p><strong>Unauthenticated users see:</strong></p>
 <ul>
-<li>Private documents are completely invisible in the navigation menu</li>
-<li>Attempting to access a private URL directly redirects to login</li>
-<li>Only public documentation is shown</li>
-<li>Login icon appears in the header</li>
+<li>Only public documents in navigation</li>
+<li>Login button in header</li>
+<li>Access to all public content</li>
+<li>Redirect to login if trying to access private URLs</li>
 </ul>
-<h3>For Authenticated Users</h3>
+<p><strong>Authenticated users see:</strong></p>
 <ul>
-<li>Full navigation menu including private documents</li>
-<li>Seamless access to all documentation</li>
-<li>Logout icon replaces login icon in header</li>
-<li>No visual distinction between public and private docs</li>
+<li>Complete navigation including private folders</li>
+<li>Logout button in header  </li>
+<li>Full access to all documentation</li>
+<li>Seamless experience across public and private content</li>
 </ul>
-<h2>Setting Up Authentication</h2>
-<p>While the private directory triggers authentication automatically, you still need to configure Supabase credentials:</p>
-<h3>1. Configure Supabase</h3>
-<p>In your <code>doc-builder.config.js</code>:</p>
+<h3>Full Site Mode</h3>
+<p><strong>Everyone must:</strong></p>
+<ul>
+<li>Login before accessing any content</li>
+<li>Authenticate to see navigation</li>
+<li>Have valid credentials to view any page</li>
+</ul>
+<h2>Setting Up Supabase Authentication</h2>
+<p>Both authentication modes use Supabase for secure user management. Here&#39;s how to configure it:</p>
+<h3>1. Configure Credentials</h3>
+<p>Add your Supabase credentials to <code>doc-builder.config.js</code>:</p>
 <pre><code class="language-javascript">module.exports = {
   auth: {
     supabaseUrl: &#39;https://your-project.supabase.co&#39;,
     supabaseAnonKey: &#39;your-anon-key&#39;,
-    siteId: &#39;your-site-id&#39;
+    siteId: &#39;your-site-id&#39;  // Unique identifier for this doc site
   }
 };
 </code></pre>
-<h3>2. Set Up Database Access</h3>
-<p>Create the <code>docbuilder_access</code> table in Supabase:</p>
+<h3>2. Create Access Control Table</h3>
+<p>In your Supabase dashboard, run this SQL to create the access control table:</p>
 <pre><code class="language-sql">CREATE TABLE docbuilder_access (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -245,92 +316,140 @@
 );
 </code></pre>
 <h3>3. Grant User Access</h3>
-<p>Add users to your site:</p>
-<pre><code class="language-sql">INSERT INTO docbuilder_access (user_id, site_id)
-VALUES (&#39;user-uuid-here&#39;, &#39;your-site-id&#39;);
+<p>Add authorized users by inserting records:</p>
+<pre><code class="language-sql">-- First, create a user in Supabase Auth
+-- Then grant them access to your documentation
+INSERT INTO docbuilder_access (user_id, site_id)
+VALUES (&#39;user-uuid-from-auth-users&#39;, &#39;your-site-id&#39;);
 </code></pre>
+<h3>What Happens Without Credentials?</h3>
+<p>If you enable authentication (via private directory or config) without configuring Supabase:</p>
+<ul>
+<li>The login button still appears</li>
+<li>Login page shows Supabase connection error</li>
+<li>This reminds you to complete the configuration</li>
+<li>Your documentation structure is ready, just needs credentials</li>
+</ul>
 <h2>Best Practices</h2>
+<h3>Choosing the Right Mode</h3>
+<p><strong>Use Private Directory Mode when:</strong></p>
+<ul>
+<li>Most documentation is public</li>
+<li>Only specific sections need protection</li>
+<li>You want easy public access to general docs</li>
+<li>Examples: Open source projects with private contributor guides</li>
+</ul>
+<p><strong>Use Full Site Mode when:</strong></p>
+<ul>
+<li>All content is confidential</li>
+<li>Documentation is for internal use only</li>
+<li>You need maximum security</li>
+<li>Examples: Company handbooks, internal APIs</li>
+</ul>
 <h3>Organizing Private Content</h3>
-<p>Structure your private directory logically:</p>
+<p>Structure your private directory meaningfully:</p>
 <pre><code>private/
 ├── admin/              # Admin-only documentation
-├── api/                # Internal API docs
-├── deployment/         # Deployment guides
-├── keys-and-secrets/   # Sensitive configurations
-└── team/               # Team-specific docs
+├── api/                # Internal API docs  
+├── deployment/         # Deployment procedures
+├── credentials/        # API keys and secrets
+└── team/              # Team processes
 </code></pre>
-<h3>Security Considerations</h3>
+<h3>Security Features</h3>
 <ol>
-<li><strong>Complete Isolation</strong>: Private documents are never sent to unauthenticated users</li>
-<li><strong>No Partial Access</strong>: Users either see all private docs or none</li>
-<li><strong>Server-Side Protection</strong>: Navigation filtering happens during build time</li>
-<li><strong>Client-Side Verification</strong>: Additional checks on the client prevent unauthorized access</li>
+<li><strong>Build-Time Protection</strong>: Private files excluded from public navigation during build</li>
+<li><strong>URL Protection</strong>: Direct access to private URLs redirects to login</li>
+<li><strong>Session Management</strong>: Supabase handles secure sessions</li>
+<li><strong>Access Control</strong>: Fine-grained permissions via database</li>
 </ol>
-<h3>Migration Tips</h3>
-<p>If you have existing documentation:</p>
+<h3>Migration Strategies</h3>
+<p><strong>Moving to Private Directory Mode:</strong></p>
 <ol>
-<li>Identify sensitive documents</li>
-<li>Move them to the <code>private/</code> directory</li>
-<li>Update any internal links</li>
-<li>Rebuild and deploy</li>
+<li>Create <code>docs/private/</code> folder</li>
+<li>Move sensitive documents into it</li>
+<li>Update internal links if needed</li>
+<li>Deploy - authentication automatically enabled</li>
 </ol>
-<h2>Examples</h2>
-<h3>Simple Private Document</h3>
-<p>Create <code>docs/private/api-keys.md</code>:</p>
-<pre><code class="language-markdown"># API Keys and Secrets
-
-## Production Keys
-
-- API Gateway: `sk_live_...`
-- Database: `postgres://...`
-- Third-party service: `...`
-</code></pre>
-<p>This document will only be visible to authenticated users.</p>
-<h3>Mixed Public/Private Structure</h3>
-<pre><code>docs/
-├── README.md                    # ✅ Public
-├── guides/
-│   ├── getting-started.md      # ✅ Public
-│   └── troubleshooting.md      # ✅ Public
-├── api/
-│   ├── overview.md             # ✅ Public
-│   └── endpoints.md            # ✅ Public
-└── private/
-    ├── deployment-guide.md     # 🔐 Private
-    ├── internal-api.md         # 🔐 Private
-    └── team/
-        ├── onboarding.md       # 🔐 Private
-        └── processes.md        # 🔐 Private
-</code></pre>
-<h2>Troubleshooting</h2>
-<h3>Private Directory Not Detected</h3>
-<p>Ensure your private directory is directly under the docs folder:</p>
-<ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>docs/private/</code></li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> <code>docs/guides/private/</code></li>
-</ul>
-<h3>Authentication Not Working</h3>
-<p>Check the console for messages:</p>
-<ul>
-<li>&quot;<i class="ph ph-lock-key" aria-label="secure"></i> Found private directory - automatically enabling Supabase authentication&quot;</li>
-<li>&quot;<i class="ph ph-warning-circle" aria-label="warning"></i> Supabase credentials not configured&quot;</li>
-</ul>
-<h3>Users Can&#39;t Access Private Docs</h3>
-<p>Verify:</p>
+<p><strong>Moving to Full Site Mode:</strong></p>
 <ol>
-<li>User exists in Supabase Auth</li>
-<li>User has entry in <code>docbuilder_access</code> table</li>
-<li><code>site_id</code> matches your configuration</li>
-</ol>
-<h2>Summary</h2>
-<p>The private directory feature provides the simplest way to protect sensitive documentation:</p>
-<ol>
-<li>Create <code>docs/private/</code> directory</li>
-<li>Put sensitive docs inside</li>
+<li>Add <code>authentication: &#39;supabase&#39;</code> to config</li>
 <li>Configure Supabase credentials</li>
-<li>Deploy</li>
+<li>Deploy - entire site now requires login</li>
 </ol>
-<p>No complex configuration, no manual setup - just organize your files and go!</p>
+<h2>Common Scenarios</h2>
+<h3>Example 1: Open Source Project with Private Docs</h3>
+<pre><code>docs/
+├── README.md                    # ✅ Public - Project overview
+├── contributing.md              # ✅ Public - How to contribute
+├── api-reference.md            # ✅ Public - API documentation
+└── private/
+    ├── deployment.md           # 🔐 Private - How to deploy
+    ├── api-keys.md            # 🔐 Private - Production keys
+    └── maintenance.md         # 🔐 Private - Admin procedures
+</code></pre>
+<p>Perfect for: Open source projects where most docs are public but deployment and admin info is private.</p>
+<h3>Example 2: Company Documentation Portal</h3>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: &#39;supabase&#39;  // Everything requires login
+  }
+};
+</code></pre>
+<p>Perfect for: Internal company wikis where all content is confidential.</p>
+<h3>Example 3: Client Documentation with Mixed Access</h3>
+<pre><code>docs/
+├── getting-started.md          # ✅ Public - Basic setup
+├── faq.md                     # ✅ Public - Common questions
+├── changelog.md               # ✅ Public - Version history
+└── private/
+    ├── advanced-config.md     # 🔐 Private - Advanced setup
+    ├── troubleshooting.md     # 🔐 Private - Debug guides
+    └── support-contacts.md    # 🔐 Private - Direct contacts
+</code></pre>
+<p>Perfect for: SaaS products where basic docs are public but advanced guides require authentication.</p>
+<h2>Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Private Directory Mode</th>
+<th>Full Site Mode</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Trigger</strong></td>
+<td>Create <code>docs/private/</code> folder</td>
+<td>Set <code>authentication: &#39;supabase&#39;</code> in config</td>
+</tr>
+<tr>
+<td><strong>Public Access</strong></td>
+<td>Yes, for non-private docs</td>
+<td>No, everything requires login</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Mixed public/private content</td>
+<td>Fully private documentation</td>
+</tr>
+<tr>
+<td><strong>Configuration</strong></td>
+<td>Zero config (just create folder)</td>
+<td>One line in config file</td>
+</tr>
+<tr>
+<td><strong>Login Button</strong></td>
+<td>Shows when private folder exists</td>
+<td>Shows when config enabled</td>
+</tr>
+</tbody></table>
+<h2>Summary</h2>
+<p>The @knowcode/doc-builder provides two simple ways to protect your documentation:</p>
+<ol>
+<li><strong>Private Directory</strong>: Just create a <code>private</code> folder for mixed public/private sites</li>
+<li><strong>Full Authentication</strong>: Add one line to config for completely private sites</li>
+</ol>
+<p>Both approaches use the same secure Supabase authentication system, giving you flexibility to choose the right protection level for your documentation needs.</p>
 
             </div>
         </main>
@@ -347,6 +466,7 @@ VALUES (&#39;user-uuid-here&#39;, &#39;your-site-id&#39;);
     };
     </script>
     <script src="/js/main.js"></script>
-    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="/js/auth.js"></script>
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Test Documentation</title>
+    <title>Login - @knowcode/doc-builder</title>
     <link rel="stylesheet" href="css/notion-style.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body class="auth-page">
     <div class="auth-container">
         <div class="auth-box">
-            <h1>Login to Test Documentation</h1>
+            <h1>Login to @knowcode/doc-builder</h1>
             <form id="login-form">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -32,7 +32,7 @@
     <script>
         // Initialize Supabase
         const { createClient } = supabase;
-        const supabaseClient = createClient('https://xcihhnfcitjrwbynxmka.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjaWhobmZjaXRqcndieW54bWthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0Mzc2MzcsImV4cCI6MjA2OTAxMzYzN30.zvWp3JFIR8fBIiwuFF5gqOR_Kxb42baZS5fsBz60XOY');
+        const supabaseClient = createClient('https://placeholder.supabase.co', 'placeholder-key');
         
         // Handle login form
         document.getElementById('login-form').addEventListener('submit', async function(e) {
@@ -56,7 +56,7 @@
                     .from('docbuilder_access')
                     .select('*')
                     .eq('user_id', data.user.id)
-                    .eq('site_id', '4d8a53bf-dcdd-48c0-98e0-cd1451518735')
+                    .eq('site_id', 'placeholder-site-id')
                     .single();
                 
                 if (accessError || !access) {

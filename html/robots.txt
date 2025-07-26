@@ -3,3 +3,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://doc-builder-delta.vercel.app/sitemap.xml
+
+# Authentication pages
+Disallow: /login.html
+Disallow: /logout.html

@@ -5,6 +5,13 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] - 2025-07-26
+
+### Fixed
+- Private directory now **always** enables authentication, even when config explicitly sets `authentication: false`
+- This is a security enhancement to ensure private content is never accidentally exposed
+- Updated documentation to clarify that private directories override config settings for security
+
 ## [1.8.0] - 2025-07-26
 
 ### Added

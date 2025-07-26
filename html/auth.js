@@ -16,7 +16,7 @@
     
     // Initialize Supabase client
     const { createClient } = supabase;
-    const supabaseClient = createClient('https://xcihhnfcitjrwbynxmka.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjaWhobmZjaXRqcndieW54bWthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0Mzc2MzcsImV4cCI6MjA2OTAxMzYzN30.zvWp3JFIR8fBIiwuFF5gqOR_Kxb42baZS5fsBz60XOY', {
+    const supabaseClient = createClient('https://placeholder.supabase.co', 'placeholder-key', {
         auth: {
             persistSession: true,
             autoRefreshToken: true,
@@ -27,11 +27,22 @@
     // Check authentication and site access
     async function checkAuth() {
         try {
+            // Check if current page is in private directory
+            const currentPath = window.location.pathname;
+            const isPrivatePage = currentPath.includes('/private/');
+            
             // Get current user session
             const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
             
             if (userError || !user) {
-                redirectToLogin();
+                // Only redirect if we're on a private page
+                if (isPrivatePage) {
+                    redirectToLogin();
+                } else {
+                    // Public page, just show it
+                    document.body.classList.add('authenticated'); // Use same class to show body
+                    updateAuthButton(false);
+                }
                 return;
             }
             
@@ -40,21 +51,34 @@
                 .from('docbuilder_access')
                 .select('*')
                 .eq('user_id', user.id)
-                .eq('site_id', '4d8a53bf-dcdd-48c0-98e0-cd1451518735')
+                .eq('site_id', 'placeholder-site-id')
                 .single();
             
             if (accessError || !access) {
-                showAccessDenied();
+                if (isPrivatePage) {
+                    showAccessDenied();
+                } else {
+                    // Public page, just show it
+                    document.body.classList.add('authenticated');
+                    updateAuthButton(false);
+                }
                 return;
             }
             
             // User is authenticated and has access
             console.log('User authenticated and authorized');
             document.body.classList.add('authenticated');
+            updateAuthButton(true);
             
         } catch (error) {
             console.error('Auth check failed:', error);
-            redirectToLogin();
+            if (window.location.pathname.includes('/private/')) {
+                redirectToLogin();
+            } else {
+                // Public page, show it anyway
+                document.body.classList.add('authenticated');
+                updateAuthButton(false);
+            }
         }
     }
     
@@ -79,16 +103,41 @@
         `;
     }
     
-    // Add logout functionality
+    // Function to update auth button
+    function updateAuthButton(isAuthenticated) {
+        const authBtn = document.querySelector('.auth-btn');
+        if (authBtn) {
+            const icon = authBtn.querySelector('i');
+            if (icon) {
+                if (isAuthenticated) {
+                    icon.className = 'fas fa-sign-out-alt';
+                    authBtn.title = 'Logout';
+                    authBtn.href = '/logout.html';
+                } else {
+                    icon.className = 'fas fa-sign-in-alt';
+                    authBtn.title = 'Login';
+                    authBtn.href = '/login.html';
+                }
+            }
+        }
+    }
+    
+    // Add auth button functionality
     document.addEventListener('DOMContentLoaded', function() {
-        const logoutLinks = document.querySelectorAll('a[href*="logout"]');
-        logoutLinks.forEach(link => {
-            link.addEventListener('click', async function(e) {
-                e.preventDefault();
-                await supabaseClient.auth.signOut();
-                window.location.href = '/logout.html';
+        const authBtn = document.querySelector('.auth-btn');
+        if (authBtn) {
+            authBtn.addEventListener('click', async function(e) {
+                // Check if we're logged in
+                const { data: { user } } = await supabaseClient.auth.getUser();
+                if (user) {
+                    // Logged in - sign out
+                    e.preventDefault();
+                    await supabaseClient.auth.signOut();
+                    window.location.href = '/logout.html';
+                }
+                // If not logged in, normal navigation to login page will occur
             });
-        });
+        }
     });
     
     // Run auth check

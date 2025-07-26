@@ -46,6 +46,39 @@
     <link rel="stylesheet" href="/css/notion-style.css">
     
     
+    <!-- Hide content until auth check -->
+    <style>
+      body { 
+        visibility: hidden; 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+      }
+      body.authenticated { 
+        visibility: visible; 
+        opacity: 1; 
+      }
+      /* Show login/logout pages immediately */
+      body.auth-page {
+        visibility: visible;
+        opacity: 1;
+      }
+      /* Style auth button consistently */
+      .auth-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+      }
+      .auth-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+      }
+    </style>
+    
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
@@ -65,8 +98,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-26T09:59:22.949Z",
-  "dateModified": "2025-07-26T09:59:22.949Z",
+  "datePublished": "2025-07-26T10:20:52.384Z",
+  "dateModified": "2025-07-26T10:20:52.384Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html"
@@ -105,9 +138,13 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.0">Last updated: Jul 26, 2025, 09:59 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.8.0">Last updated: Jul 26, 2025, 10:20 AM UTC</span>
                 </div>
                 
+                
+                <a href="../../login.html" class="auth-btn" title="Login/Logout">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -168,7 +205,7 @@
         <a href="/guides/claude-workflow-guide.html" class="nav-item active" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
-        <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now includes automatic authentication for documents placed in a directory."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
+        <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
         <a href="/guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="fas fa-file-alt"></i> Search Engine Verification Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
@@ -987,6 +1024,7 @@ The key to success is iterative refinement of your CLAUDE.md file to capture you
     };
     </script>
     <script src="/js/main.js"></script>
-    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="/js/auth.js"></script>
 </body>
 </html>

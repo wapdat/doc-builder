@@ -46,6 +46,39 @@
     <link rel="stylesheet" href="/css/notion-style.css">
     
     
+    <!-- Hide content until auth check -->
+    <style>
+      body { 
+        visibility: hidden; 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+      }
+      body.authenticated { 
+        visibility: visible; 
+        opacity: 1; 
+      }
+      /* Show login/logout pages immediately */
+      body.auth-page {
+        visibility: visible;
+        opacity: 1;
+      }
+      /* Style auth button consistently */
+      .auth-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+      }
+      .auth-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+      }
+    </style>
+    
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
@@ -65,8 +98,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-26T09:59:22.993Z",
-  "dateModified": "2025-07-26T09:59:22.993Z",
+  "datePublished": "2025-07-26T10:20:52.426Z",
+  "dateModified": "2025-07-26T10:20:52.426Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/private/launch/go-to-market-strategy.html"
@@ -111,9 +144,13 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.0">Last updated: Jul 26, 2025, 09:59 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.8.0">Last updated: Jul 26, 2025, 10:20 AM UTC</span>
                 </div>
                 
+                
+                <a href="../../../login.html" class="auth-btn" title="Login/Logout">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -174,13 +211,36 @@
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
-        <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now includes automatic authentication for documents placed in a directory."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
+        <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
         <a href="/guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="fas fa-file-alt"></i> Search Engine Verification Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-private-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
+        </a>
+        <div class="nav-content" id="nav-private-1">
+        <a href="/private/cache-control-anti-pattern.html" class="nav-item" data-tooltip="Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites."><i class="fas fa-file-alt"></i> Cache Control Anti Pattern</a>
+        <a href="/private/next-steps-walkthrough.html" class="nav-item" data-tooltip="Now that we&#039;ve implemented Supabase authentication, let&#039;s walk through testing the implementation and preparing for deployment."><i class="fas fa-file-alt"></i> Next Steps Walkthrough</a>
+        <a href="/private/supabase-auth-implementation-completed.html" class="nav-item" data-tooltip="This document records the successful implementation of Supabase authentication in @knowcode/doc-builder v1.7.5+."><i class="fas fa-file-alt"></i> Supabase Auth Implementation Completed</a>
+        <a href="/private/supabase-auth-implementation-plan.html" class="nav-item" data-tooltip="Supabase Auth Implementation Plan for @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Supabase Auth Implementation Plan</a>
+        <a href="/private/supabase-auth-integration-plan.html" class="nav-item" data-tooltip="Supabase Authentication Integration Plan for @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Supabase Auth Integration Plan</a>
+        <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
+        <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a></div></div>
+      <div class="nav-section" data-level="2">
+        <a class="nav-title collapsible expanded" href="/private/launch/README.html" data-target="nav-private-launch-2" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
+        </a>
+        <div class="nav-content" id="nav-private-launch-2">
+        <a href="/private/launch/README.html" class="nav-item" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="fas fa-file-alt"></i> Launch Overview</a>
+        <a href="/private/launch/auth-cleanup-summary.html" class="nav-item" data-tooltip="All references to the old client-side authentication system have been removed from @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Auth Cleanup Summary</a>
+        <a href="/private/launch/bubble-plugin-specification.html" class="nav-item" data-tooltip="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers..."><i class="fas fa-file-alt"></i> Bubble Plugin Specification</a>
+        <a href="/private/launch/go-to-market-strategy.html" class="nav-item active" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
+        <a href="/private/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a>
+        <a href="/private/launch/vercel-deployment-auth-setup.html" class="nav-item" data-tooltip="Vercel Deployment Authentication Setup Guide."><i class="fas fa-file-alt"></i> Vercel Deployment Auth Setup</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -650,6 +710,7 @@
     };
     </script>
     <script src="/js/main.js"></script>
-    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="/js/auth.js"></script>
 </body>
 </html>

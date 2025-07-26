@@ -2,74 +2,108 @@
 
 ## Overview
 
-The @knowcode/doc-builder now includes automatic authentication for documents placed in a `private` directory. This feature provides a simple, convention-based approach to protecting sensitive documentation without requiring complex configuration.
+The @knowcode/doc-builder provides flexible authentication options to protect your documentation. You can either protect specific documents using a `private` directory or secure your entire documentation site.
 
-## How It Works
+## Two Authentication Modes
 
-### Automatic Detection
+### 1. Private Directory Mode (Mixed Public/Private)
 
-When the doc-builder detects a `docs/private/` directory during the build process, it automatically:
+Create a `docs/private/` directory to automatically enable authentication for sensitive documents while keeping the rest of your documentation public.
 
-1. Enables Supabase authentication for the entire site
-2. Hides all private documents from unauthenticated users
-3. Shows a login button in the header
-4. Requires authentication to access any document in the private directory
+**How it works:**
+- Documents in `private/` folder require authentication
+- Documents outside `private/` remain publicly accessible
+- Login button appears in the header
+- Perfect for documentation with some sensitive content
 
-### Zero Configuration
-
-Simply create a `private` folder in your docs directory:
-
+**Example structure:**
 ```
 docs/
-├── README.md           # Public documentation
-├── guides/            # Public guides
-│   └── setup.md
-└── private/           # 🔐 Protected documents
-    ├── api-keys.md
-    ├── internal/
-    │   └── architecture.md
-    └── team-notes.md
+├── README.md              # ✅ Public - Anyone can access
+├── getting-started.md     # ✅ Public - Anyone can access
+├── guides/               
+│   ├── installation.md    # ✅ Public - Anyone can access
+│   └── usage.md          # ✅ Public - Anyone can access
+└── private/              
+    ├── api-keys.md       # 🔐 Private - Login required
+    ├── deployment.md     # 🔐 Private - Login required
+    └── internal/         
+        └── secrets.md    # 🔐 Private - Login required
 ```
 
-That's it! No configuration changes needed.
+### 2. Full Site Authentication Mode
+
+Make your entire documentation site private by setting authentication in your configuration file.
+
+**How it works:**
+- ALL documents require authentication
+- No public access whatsoever
+- Login required before viewing any page
+- Perfect for internal company documentation
+
+**Configuration:**
+```javascript
+// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: 'supabase'  // Entire site requires login
+  },
+  // ... other config
+};
+```
+
+## How They Work Together
+
+If you have **both** a private directory AND set authentication in your config:
+- The private directory **always** triggers authentication (for security)
+- Setting `authentication: 'supabase'` makes the entire site private
+- Setting `authentication: false` is overridden by private directory presence
+- This ensures private content is never accidentally exposed
 
 ## User Experience
 
-### For Unauthenticated Users
+### Private Directory Mode
 
-- Private documents are completely invisible in the navigation menu
-- Attempting to access a private URL directly redirects to login
-- Only public documentation is shown
-- Login icon appears in the header
+**Unauthenticated users see:**
+- Only public documents in navigation
+- Login button in header
+- Access to all public content
+- Redirect to login if trying to access private URLs
 
-### For Authenticated Users
+**Authenticated users see:**
+- Complete navigation including private folders
+- Logout button in header  
+- Full access to all documentation
+- Seamless experience across public and private content
 
-- Full navigation menu including private documents
-- Seamless access to all documentation
-- Logout icon replaces login icon in header
-- No visual distinction between public and private docs
+### Full Site Mode
 
-## Setting Up Authentication
+**Everyone must:**
+- Login before accessing any content
+- Authenticate to see navigation
+- Have valid credentials to view any page
 
-While the private directory triggers authentication automatically, you still need to configure Supabase credentials:
+## Setting Up Supabase Authentication
 
-### 1. Configure Supabase
+Both authentication modes use Supabase for secure user management. Here's how to configure it:
 
-In your `doc-builder.config.js`:
+### 1. Configure Credentials
+
+Add your Supabase credentials to `doc-builder.config.js`:
 
 ```javascript
 module.exports = {
   auth: {
     supabaseUrl: 'https://your-project.supabase.co',
     supabaseAnonKey: 'your-anon-key',
-    siteId: 'your-site-id'
+    siteId: 'your-site-id'  // Unique identifier for this doc site
   }
 };
 ```
 
-### 2. Set Up Database Access
+### 2. Create Access Control Table
 
-Create the `docbuilder_access` table in Supabase:
+In your Supabase dashboard, run this SQL to create the access control table:
 
 ```sql
 CREATE TABLE docbuilder_access (
@@ -83,109 +117,132 @@ CREATE TABLE docbuilder_access (
 
 ### 3. Grant User Access
 
-Add users to your site:
+Add authorized users by inserting records:
 
 ```sql
+-- First, create a user in Supabase Auth
+-- Then grant them access to your documentation
 INSERT INTO docbuilder_access (user_id, site_id)
-VALUES ('user-uuid-here', 'your-site-id');
+VALUES ('user-uuid-from-auth-users', 'your-site-id');
 ```
+
+### What Happens Without Credentials?
+
+If you enable authentication (via private directory or config) without configuring Supabase:
+- The login button still appears
+- Login page shows Supabase connection error
+- This reminds you to complete the configuration
+- Your documentation structure is ready, just needs credentials
 
 ## Best Practices
 
+### Choosing the Right Mode
+
+**Use Private Directory Mode when:**
+- Most documentation is public
+- Only specific sections need protection
+- You want easy public access to general docs
+- Examples: Open source projects with private contributor guides
+
+**Use Full Site Mode when:**
+- All content is confidential
+- Documentation is for internal use only
+- You need maximum security
+- Examples: Company handbooks, internal APIs
+
 ### Organizing Private Content
 
-Structure your private directory logically:
+Structure your private directory meaningfully:
 
 ```
 private/
 ├── admin/              # Admin-only documentation
-├── api/                # Internal API docs
-├── deployment/         # Deployment guides
-├── keys-and-secrets/   # Sensitive configurations
-└── team/               # Team-specific docs
+├── api/                # Internal API docs  
+├── deployment/         # Deployment procedures
+├── credentials/        # API keys and secrets
+└── team/              # Team processes
 ```
 
-### Security Considerations
+### Security Features
 
-1. **Complete Isolation**: Private documents are never sent to unauthenticated users
-2. **No Partial Access**: Users either see all private docs or none
-3. **Server-Side Protection**: Navigation filtering happens during build time
-4. **Client-Side Verification**: Additional checks on the client prevent unauthorized access
+1. **Build-Time Protection**: Private files excluded from public navigation during build
+2. **URL Protection**: Direct access to private URLs redirects to login
+3. **Session Management**: Supabase handles secure sessions
+4. **Access Control**: Fine-grained permissions via database
 
-### Migration Tips
+### Migration Strategies
 
-If you have existing documentation:
+**Moving to Private Directory Mode:**
+1. Create `docs/private/` folder
+2. Move sensitive documents into it
+3. Update internal links if needed
+4. Deploy - authentication automatically enabled
 
-1. Identify sensitive documents
-2. Move them to the `private/` directory
-3. Update any internal links
-4. Rebuild and deploy
+**Moving to Full Site Mode:**
+1. Add `authentication: 'supabase'` to config
+2. Configure Supabase credentials
+3. Deploy - entire site now requires login
 
-## Examples
+## Common Scenarios
 
-### Simple Private Document
-
-Create `docs/private/api-keys.md`:
-
-```markdown
-# API Keys and Secrets
-
-## Production Keys
-
-- API Gateway: `sk_live_...`
-- Database: `postgres://...`
-- Third-party service: `...`
-```
-
-This document will only be visible to authenticated users.
-
-### Mixed Public/Private Structure
+### Example 1: Open Source Project with Private Docs
 
 ```
 docs/
-├── README.md                    # ✅ Public
-├── guides/
-│   ├── getting-started.md      # ✅ Public
-│   └── troubleshooting.md      # ✅ Public
-├── api/
-│   ├── overview.md             # ✅ Public
-│   └── endpoints.md            # ✅ Public
+├── README.md                    # ✅ Public - Project overview
+├── contributing.md              # ✅ Public - How to contribute
+├── api-reference.md            # ✅ Public - API documentation
 └── private/
-    ├── deployment-guide.md     # 🔐 Private
-    ├── internal-api.md         # 🔐 Private
-    └── team/
-        ├── onboarding.md       # 🔐 Private
-        └── processes.md        # 🔐 Private
+    ├── deployment.md           # 🔐 Private - How to deploy
+    ├── api-keys.md            # 🔐 Private - Production keys
+    └── maintenance.md         # 🔐 Private - Admin procedures
 ```
 
-## Troubleshooting
+Perfect for: Open source projects where most docs are public but deployment and admin info is private.
 
-### Private Directory Not Detected
+### Example 2: Company Documentation Portal
 
-Ensure your private directory is directly under the docs folder:
-- ✅ `docs/private/`
-- ❌ `docs/guides/private/`
+```javascript
+// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: 'supabase'  // Everything requires login
+  }
+};
+```
 
-### Authentication Not Working
+Perfect for: Internal company wikis where all content is confidential.
 
-Check the console for messages:
-- "🔐 Found private directory - automatically enabling Supabase authentication"
-- "⚠️ Supabase credentials not configured"
+### Example 3: Client Documentation with Mixed Access
 
-### Users Can't Access Private Docs
+```
+docs/
+├── getting-started.md          # ✅ Public - Basic setup
+├── faq.md                     # ✅ Public - Common questions
+├── changelog.md               # ✅ Public - Version history
+└── private/
+    ├── advanced-config.md     # 🔐 Private - Advanced setup
+    ├── troubleshooting.md     # 🔐 Private - Debug guides
+    └── support-contacts.md    # 🔐 Private - Direct contacts
+```
 
-Verify:
-1. User exists in Supabase Auth
-2. User has entry in `docbuilder_access` table
-3. `site_id` matches your configuration
+Perfect for: SaaS products where basic docs are public but advanced guides require authentication.
+
+## Quick Reference
+
+| Feature | Private Directory Mode | Full Site Mode |
+|---------|----------------------|----------------|
+| **Trigger** | Create `docs/private/` folder | Set `authentication: 'supabase'` in config |
+| **Public Access** | Yes, for non-private docs | No, everything requires login |
+| **Use Case** | Mixed public/private content | Fully private documentation |
+| **Configuration** | Zero config (just create folder) | One line in config file |
+| **Login Button** | Shows when private folder exists | Shows when config enabled |
 
 ## Summary
 
-The private directory feature provides the simplest way to protect sensitive documentation:
+The @knowcode/doc-builder provides two simple ways to protect your documentation:
 
-1. Create `docs/private/` directory
-2. Put sensitive docs inside
-3. Configure Supabase credentials
-4. Deploy
+1. **Private Directory**: Just create a `private` folder for mixed public/private sites
+2. **Full Authentication**: Add one line to config for completely private sites
 
-No complex configuration, no manual setup - just organize your files and go!
+Both approaches use the same secure Supabase authentication system, giving you flexibility to choose the right protection level for your documentation needs.
