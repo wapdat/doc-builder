@@ -3,14 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Beautiful documentation with the least effort possible">
-    <title>Phosphor Icons Integration Guide - @knowcode/doc-builder</title>
+    <meta name="description" content="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML. This provides...">
+    <title>Phosphor Icons Integration Guide | @knowcode/doc-builder</title>
+    
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, icon, icons">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/phosphor-icons-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/phosphor-icons-guide.html">
+    <meta property="og:title" content="Phosphor Icons Integration Guide | @knowcode/doc-builder">
+    <meta property="og:description" content="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML. This provides...">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="Phosphor Icons Integration Guide | @knowcode/doc-builder">
+    <meta name="twitter:description" content="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML. This provides...">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -18,8 +45,90 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
+    
+    <!-- Hide content until auth check -->
+    <style>
+      body { 
+        visibility: hidden; 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+      }
+      body.authenticated { 
+        visibility: visible; 
+        opacity: 1; 
+      }
+      /* Show login/logout pages immediately */
+      body.auth-page {
+        visibility: visible;
+        opacity: 1;
+      }
+      /* Style auth button consistently */
+      .auth-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+      }
+      .auth-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+      }
+    </style>
+    
+    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Phosphor Icons Integration Guide",
+  "description": "@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML. This provides...",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-07-27T08:30:00.610Z",
+  "dateModified": "2025-07-27T08:30:00.610Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/phosphor-icons-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Phosphor Icons Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/phosphor-icons-guide.html"
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body>
     <!-- Header -->
@@ -29,9 +138,13 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:25 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.9.0">Last updated: Jul 27, 2025, 08:30 AM UTC</span>
                 </div>
                 
+                
+                <a href="../../login.html" class="auth-btn" title="Login/Logout">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -100,7 +213,7 @@
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
-      <div class="nav-section" data-level="1">
+      <div class="nav-section private-nav" data-level="1">
         <a class="nav-title collapsible" href="#" data-target="nav-private-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
         </a>
@@ -113,7 +226,7 @@
         <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
         <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a>
         <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="fas fa-file-alt"></i> User Management Tooling</a></div></div>
-      <div class="nav-section" data-level="2">
+      <div class="nav-section private-nav" data-level="2">
         <a class="nav-title collapsible" href="/private/launch/README.html" data-target="nav-private-launch-2" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
         </a>
@@ -149,9 +262,9 @@
 </code></pre>
 <p>They are automatically converted to Phosphor icons in HTML:</p>
 <ul>
-<li>✅ → Check circle icon</li>
-<li>❌ → X circle icon  </li>
-<li>🚀 → Rocket launch icon</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> → Check circle icon</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> → X circle icon  </li>
+<li><i class="ph ph-rocket-launch" aria-label="launch"></i> → Rocket launch icon</li>
 </ul>
 <h3>Benefits</h3>
 <ul>
@@ -192,27 +305,27 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>✅</td>
+<td><i class="ph ph-check-circle" aria-label="checked"></i></td>
 <td>Check circle</td>
 <td>Success, completed, verified</td>
 </tr>
 <tr>
-<td>❌</td>
+<td><i class="ph ph-x-circle" aria-label="error"></i></td>
 <td>X circle</td>
 <td>Error, failed, incorrect</td>
 </tr>
 <tr>
-<td>❓</td>
+<td><i class="ph ph-question" aria-label="question"></i></td>
 <td>Question mark</td>
 <td>Unknown, uncertain</td>
 </tr>
 <tr>
-<td>⚠️</td>
+<td><i class="ph ph-warning-circle" aria-label="warning"></i></td>
 <td>Warning circle</td>
 <td>Caution, important note</td>
 </tr>
 <tr>
-<td>🚫</td>
+<td><i class="ph ph-prohibit-inset" aria-label="not allowed"></i></td>
 <td>Prohibit</td>
 <td>Not allowed, forbidden</td>
 </tr>
@@ -227,27 +340,27 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>💻</td>
+<td><i class="ph ph-laptop" aria-label="laptop"></i></td>
 <td>Laptop</td>
 <td>Development, coding</td>
 </tr>
 <tr>
-<td>🔧</td>
+<td><i class="ph ph-wrench" aria-label="settings"></i></td>
 <td>Wrench</td>
 <td>Configuration, settings</td>
 </tr>
 <tr>
-<td>🐛</td>
+<td><i class="ph ph-bug" aria-label="bug"></i></td>
 <td>Bug</td>
 <td>Issues, debugging</td>
 </tr>
 <tr>
-<td>🚀</td>
+<td><i class="ph ph-rocket-launch" aria-label="launch"></i></td>
 <td>Rocket</td>
 <td>Launch, deploy, release</td>
 </tr>
 <tr>
-<td>⚡</td>
+<td><i class="ph ph-lightning" aria-label="fast"></i></td>
 <td>Lightning</td>
 <td>Performance, speed</td>
 </tr>
@@ -262,22 +375,22 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>📝</td>
+<td><i class="ph ph-note-pencil" aria-label="edit"></i></td>
 <td>Note pencil</td>
 <td>Edit, write</td>
 </tr>
 <tr>
-<td>📚</td>
+<td><i class="ph ph-books" aria-label="documentation"></i></td>
 <td>Books</td>
 <td>Documentation, guides</td>
 </tr>
 <tr>
-<td>📁</td>
+<td><i class="ph ph-folder" aria-label="folder"></i></td>
 <td>Folder</td>
 <td>Directory, category</td>
 </tr>
 <tr>
-<td>🔗</td>
+<td><i class="ph ph-link" aria-label="link"></i></td>
 <td>Link</td>
 <td>URL, connection</td>
 </tr>
@@ -292,17 +405,17 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>💬</td>
+<td><i class="ph ph-chat-circle" aria-label="chat"></i></td>
 <td>Chat circle</td>
 <td>Comments, discussion</td>
 </tr>
 <tr>
-<td>📧</td>
+<td><i class="ph ph-envelope" aria-label="email"></i></td>
 <td>Envelope</td>
 <td>Email, message</td>
 </tr>
 <tr>
-<td>🔔</td>
+<td><i class="ph ph-bell" aria-label="notification"></i></td>
 <td>Bell</td>
 <td>Notification, alert</td>
 </tr>
@@ -442,7 +555,17 @@
     </div>
     
     <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false
+      }
+    };
+    </script>
     <script src="/js/main.js"></script>
-    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="/js/auth.js"></script>
 </body>
 </html>
