@@ -2042,3 +2042,170 @@ code .ph {
 .content-inner .ph {
   /* Remove the transform as we're now using consistent vertical-align: middle */
 }
+
+/* ============================================================================
+   Private Navigation Visibility
+   ============================================================================ */
+
+/* Hide private navigation sections by default */
+.private-nav {
+  display: none;
+}
+
+/* Show private navigation when user is authenticated */
+body.authenticated .private-nav {
+  display: block;
+}
+
+/* Smooth transition for authentication state changes */
+.nav-section {
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Optional: Add a lock icon to private sections */
+.private-nav .nav-title::after {
+  content: ' 🔒';
+  font-size: 0.8em;
+}
+
+/* ============================================================================
+   Image Modal System
+   ============================================================================ */
+
+/* Style all content images to be clickable */
+.content img {
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--easing-out);
+  border-radius: var(--radius-md);
+  max-width: 100%;
+  height: auto;
+}
+
+.content img:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Modal overlay - hidden by default */
+.image-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--easing-out);
+}
+
+/* Show modal when active */
+.image-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+/* Modal content container */
+.image-modal-content {
+  position: relative;
+  max-width: 95%;
+  max-height: 95%;
+  margin: auto;
+  cursor: default;
+}
+
+/* Modal image */
+.image-modal-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100vh;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+/* Close button */
+.image-modal-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all var(--duration-fast) var(--easing-out);
+  backdrop-filter: blur(10px);
+}
+
+.image-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+/* Image caption in modal */
+.image-modal-caption {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .image-modal {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="dark"] .image-modal-close {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .image-modal-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .image-modal-content {
+    max-width: 98%;
+    max-height: 98%;
+  }
+  
+  .image-modal-close {
+    top: -40px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+  
+  .image-modal-caption {
+    bottom: -40px;
+    font-size: var(--text-xs);
+    padding: var(--space-2) var(--space-3);
+  }
+}
+  opacity: 0.6;
+}

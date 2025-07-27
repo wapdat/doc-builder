@@ -1475,6 +1475,81 @@ function initMarkdownLinkRedirects() {
   });
 }
 
+// Image Modal System
+function initImageModal() {
+  // Create modal HTML structure
+  const modalHTML = `
+    <div class="image-modal" id="imageModal">
+      <div class="image-modal-content">
+        <div class="image-modal-close" id="imageModalClose">&times;</div>
+        <img class="image-modal-img" id="imageModalImg" src="" alt="">
+        <div class="image-modal-caption" id="imageModalCaption"></div>
+      </div>
+    </div>
+  `;
+  
+  // Add modal to document body
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('imageModalImg');
+  const modalCaption = document.getElementById('imageModalCaption');
+  const closeBtn = document.getElementById('imageModalClose');
+  
+  // Add click handlers to all content images
+  const contentImages = document.querySelectorAll('.content img');
+  contentImages.forEach(img => {
+    img.addEventListener('click', function() {
+      modal.classList.add('active');
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+      modalCaption.textContent = this.alt;
+      
+      // Hide caption if no alt text
+      if (!this.alt) {
+        modalCaption.style.display = 'none';
+      } else {
+        modalCaption.style.display = 'block';
+      }
+      
+      // Prevent body scrolling
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  
+  // Close modal functions
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  // Close on X button click
+  closeBtn.addEventListener('click', closeModal);
+  
+  // Close on overlay click (but not on image click)
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+  
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+  
+  // Prevent modal content from closing modal when clicked
+  modalImg.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+  
+  document.querySelector('.image-modal-content').addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+}
+
 // Initialize on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
   initMarkdownLinkRedirects();
@@ -1485,5 +1560,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigationFilter();
   addPDFExportButton();
   generateBreadcrumbs();
+  initImageModal();
   initTooltips();
 });
