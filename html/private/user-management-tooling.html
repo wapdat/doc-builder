@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This document provides comprehensive documentation for the Supabase user management system created for doc-builder authenticated sites.">
-    <title>User Management Tooling | @knowcode/doc-builder</title>
-    
-    <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, user, supabase">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/private/user-management-tooling.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/private/user-management-tooling.html">
-    <meta property="og:title" content="User Management Tooling | @knowcode/doc-builder">
-    <meta property="og:description" content="This document provides comprehensive documentation for the Supabase user management system created for doc-builder authenticated sites.">
-    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    <meta property="og:site_name" content="@knowcode/doc-builder">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@planbbackups">
-    <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="User Management Tooling | @knowcode/doc-builder">
-    <meta name="twitter:description" content="This document provides comprehensive documentation for the Supabase user management system created for doc-builder authenticated sites.">
-    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    
-    <!-- Custom Meta Tags -->
-    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
-    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    <meta name="description" content="Beautiful documentation with the least effort possible">
+    <title>User Management Tooling - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -45,90 +18,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
-    
-    <!-- Hide content until auth check -->
-    <style>
-      body { 
-        visibility: hidden; 
-        opacity: 0; 
-        transition: opacity 0.3s ease;
-      }
-      body.authenticated { 
-        visibility: visible; 
-        opacity: 1; 
-      }
-      /* Show login/logout pages immediately */
-      body.auth-page {
-        visibility: visible;
-        opacity: 1;
-      }
-      /* Style auth button consistently */
-      .auth-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        font-size: 1.1rem;
-      }
-      .auth-btn:hover {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-      }
-    </style>
-    
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "User Management Tooling",
-  "description": "This document provides comprehensive documentation for the Supabase user management system created for doc-builder authenticated sites.",
-  "author": {
-    "@type": "Person",
-    "name": "Lindsay Smith"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Knowcode Ltd",
-    "url": "https://knowcode.tech"
-  },
-  "datePublished": "2025-07-26T10:38:42.038Z",
-  "dateModified": "2025-07-26T10:38:42.038Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/private/user-management-tooling.html"
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "@knowcode/doc-builder",
-        "item": "https://doc-builder-delta.vercel.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Private",
-        "item": "https://doc-builder-delta.vercel.app/private/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "User Management Tooling",
-        "item": "https://doc-builder-delta.vercel.app/private/user-management-tooling.html"
-      }
-    ]
-  }
-}
-</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
     <!-- Header -->
@@ -138,13 +29,9 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.1">Last updated: Jul 26, 2025, 10:38 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:25 AM UTC</span>
                 </div>
                 
-                
-                <a href="../../login.html" class="auth-btn" title="Login/Logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -193,6 +80,7 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
+        <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="fas fa-file-alt"></i> Image Modal Test</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -236,6 +124,12 @@
         <a href="/private/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
         <a href="/private/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a>
         <a href="/private/launch/vercel-deployment-auth-setup.html" class="nav-item" data-tooltip="Vercel Deployment Authentication Setup Guide."><i class="fas fa-file-alt"></i> Vercel Deployment Auth Setup</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="/prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="fas fa-file-alt"></i> Markdown Document Standards</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -273,21 +167,15 @@
 </li>
 </ol>
 <h3>Database Schema</h3>
-<p>The system works with two main tables:</p>
-<p><strong>docbuilder_sites</strong></p>
-<ul>
-<li><code>id</code> (UUID) - Primary key</li>
-<li><code>domain</code> (TEXT) - Site URL without https://</li>
-<li><code>name</code> (TEXT) - Display name</li>
-<li><code>created_at</code> (TIMESTAMP)</li>
-</ul>
+<p>The system now uses a simplified single-table design:</p>
 <p><strong>docbuilder_access</strong></p>
 <ul>
 <li><code>user_id</code> (UUID) - References auth.users</li>
-<li><code>site_id</code> (UUID) - References docbuilder_sites</li>
+<li><code>domain</code> (TEXT) - Site domain (e.g., docs.example.com)</li>
 <li><code>created_at</code> (TIMESTAMP)</li>
-<li>Composite primary key on (user_id, site_id)</li>
+<li>Primary key on (user_id, domain)</li>
 </ul>
+<p>No more site registration needed! The system automatically uses the current domain.</p>
 <h2>Implementation Details</h2>
 <h3>User Creation Methods</h3>
 <p>Due to Supabase CLI limitations (no direct user creation commands), the system offers three methods:</p>
@@ -571,17 +459,7 @@ DATABASE_URL=postgresql://postgres:[password]@db.[project-id].supabase.co:5432/p
     </div>
     
     <!-- Scripts -->
-    <script>
-    // Pass configuration to frontend
-    window.docBuilderConfig = {
-      features: {
-        showPdfDownload: true,
-        menuDefaultOpen: false
-      }
-    };
-    </script>
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="/js/auth.js"></script>
+    
 </body>
 </html>

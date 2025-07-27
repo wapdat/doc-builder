@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Beautiful documentation with the least effort possible">
-    <title>@knowcode/doc-builder - @knowcode/doc-builder</title>
+    <title>Markdown Document Standards Prompt - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -74,20 +74,20 @@
             <nav class="navigation">
                 
       <div class="nav-section" data-level="0">
-        <a class="nav-title expanded" href="/README.html"  >
+        <a class="nav-title" href="/README.html"  >
           <i class="fas fa-home"></i> Documentation
         </a>
         <div class="nav-content" >
-        <a href="/README.html" class="nav-item active" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
+        <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
         <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="fas fa-file-alt"></i> Image Modal Test</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
-        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+        <a class="nav-title collapsible" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
         </a>
-        <div class="nav-content" id="nav-guides-1">
+        <div class="nav-content collapsed" id="nav-guides-1">
         <a href="/guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="fas fa-file-alt"></i> Authentication Default Change</a>
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
@@ -101,10 +101,10 @@
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
-        <a class="nav-title collapsible expanded" href="#" data-target="nav-private-1" >
+        <a class="nav-title collapsible" href="#" data-target="nav-private-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
         </a>
-        <div class="nav-content" id="nav-private-1">
+        <div class="nav-content collapsed" id="nav-private-1">
         <a href="/private/cache-control-anti-pattern.html" class="nav-item" data-tooltip="Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites."><i class="fas fa-file-alt"></i> Cache Control Anti Pattern</a>
         <a href="/private/next-steps-walkthrough.html" class="nav-item" data-tooltip="Now that we&#039;ve implemented Supabase authentication, let&#039;s walk through testing the implementation and preparing for deployment."><i class="fas fa-file-alt"></i> Next Steps Walkthrough</a>
         <a href="/private/supabase-auth-implementation-completed.html" class="nav-item" data-tooltip="This document records the successful implementation of Supabase authentication in @knowcode/doc-builder v1.7.5+."><i class="fas fa-file-alt"></i> Supabase Auth Implementation Completed</a>
@@ -129,7 +129,7 @@
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Prompts
         </a>
         <div class="nav-content" id="nav-prompts-1">
-        <a href="/prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="fas fa-file-alt"></i> Markdown Document Standards</a></div></div>
+        <a href="/prompts/markdown-document-standards.html" class="nav-item active" data-tooltip="Detailed introduction to the topic..."><i class="fas fa-file-alt"></i> Markdown Document Standards</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -137,243 +137,144 @@
         <!-- Content Area -->
         <main class="content">
             <div class="content-inner">
-                <h1>@knowcode/doc-builder</h1>
-<div align="center">
+                <h1>Markdown Document Standards Prompt</h1>
+<p>Use this prompt when creating or updating documentation for doc-builder projects to ensure consistency and quality.</p>
+<h2>Prompt</h2>
+<p>Please follow these markdown documentation standards when creating or editing documents:</p>
+<h3>1. Document Structure</h3>
+<p><strong>Required Elements:</strong></p>
+<ul>
+<li>Start with a clear H1 title (<code># Document Title</code>)</li>
+<li>Include a brief overview paragraph immediately after the title</li>
+<li>Use hierarchical heading structure (H2 for main sections, H3 for subsections)</li>
+<li>End with a summary or conclusion when appropriate</li>
+</ul>
+<p><strong>Example Structure:</strong></p>
+<pre><code class="language-markdown"># Feature Guide Title
 
-<blockquote>
-<p>Transform your markdown documentation into beautiful, searchable websites with Notion-inspired styling</p>
-</blockquote>
-<p><a href="https://www.npmjs.com/package/@knowcode/doc-builder"><img src="https://img.shields.io/npm/v/@knowcode/doc-builder" alt="npm version"></a><br><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a></p>
-<h3>🚀 Quick Start</h3>
-<pre><code class="language-bash">npx @knowcode/doc-builder@latest deploy
+Brief overview explaining what this document covers and why it&#39;s important.
+
+## Overview
+Detailed introduction to the topic...
+
+## Main Section
+### Subsection
+Content...
+
+## Conclusion
+Summary of key points...
 </code></pre>
-<p><a href="https://doc-builder-delta.vercel.app"><strong>You are looking at a demo</strong></a> | <a href="https://www.npmjs.com/package/@knowcode/doc-builder"><strong>NPM Package</strong></a> | <a href="https://github.com/wapdat/doc-builder"><strong>GitHub</strong></a></p>
-</div>
-
-<hr>
-<h2>✨ Features</h2>
-<table>
-<tr>
-<td width="50%">
-
-<h3>🎨 Design &amp; UX</h3>
+<h3>2. File Naming Conventions</h3>
 <ul>
-<li><strong>Notion-inspired UI</strong> - Clean, modern interface</li>
-<li><strong>Dark mode support</strong> - Automatic theme switching</li>
-<li><strong>Responsive layout</strong> - Perfect on any device</li>
-<li><strong>Syntax highlighting</strong> - Beautiful code blocks</li>
+<li>Use lowercase with hyphens: <code>feature-name-guide.md</code></li>
+<li>Be descriptive but concise: <code>authentication-setup.md</code> not <code>auth.md</code></li>
+<li>Use standard suffixes:<ul>
+<li><code>-guide.md</code> for how-to guides</li>
+<li><code>-reference.md</code> for API/technical references</li>
+<li><code>-overview.md</code> for conceptual explanations</li>
+<li><code>-troubleshooting.md</code> for problem-solving docs</li>
 </ul>
-<h3>🔍 Navigation</h3>
+</li>
+</ul>
+<h3>3. Image Guidelines</h3>
+<p><strong>When including images:</strong></p>
 <ul>
-<li><strong>Full-text search</strong> - Find anything instantly</li>
-<li><strong>Smart navigation</strong> - Hierarchical structure</li>
-<li><strong>Breadcrumbs</strong> - Always know where you are</li>
-<li><strong>Keyboard shortcuts</strong> - Navigate like a pro</li>
+<li>Always use meaningful alt text that describes the image content</li>
+<li>Store images in an <code>images/</code> or <code>assets/</code> subdirectory</li>
+<li>Use descriptive filenames: <code>authentication-flow-diagram.png</code> not <code>img1.png</code></li>
 </ul>
-</td>
-<td width="50%">
-
-<h3>📊 Content Support</h3>
-<ul>
-<li><strong>Mermaid diagrams</strong> - Visual documentation</li>
-<li><strong>GitHub markdown</strong> - Full GFM support</li>
-<li><strong>Interactive tooltips</strong> - Document previews</li>
-<li><strong>Version tracking</strong> - Build metadata</li>
-</ul>
-<h3>🚀 Deployment</h3>
-<ul>
-<li><strong>One-command deploy</strong> - Push to Vercel</li>
-<li><strong>Static generation</strong> - Fast &amp; secure</li>
-<li><strong>Custom domains</strong> - Your brand</li>
-<li><strong>Preview deploys</strong> - Test changes</li>
-</ul>
-</td>
-</tr>
-</table>
-
-<h2>🎯 Use Cases</h2>
-<table>
-<tr>
-<td width="25%">
-
-<h3>Open Source</h3>
-<p>Beautiful docs for your community</p>
-</td>
-<td width="25%">
-
-<h3>Technical Teams</h3>
-<p>Internal docs developers love</p>
-</td>
-<td width="25%">
-
-<h3>API Docs</h3>
-<p>Clear, searchable references</p>
-</td>
-<td width="25%">
-
-<h3>Knowledge Base</h3>
-<p>Organize team knowledge</p>
-</td>
-</tr>
-</table>
-
-<h2>🛠️ Simple Workflow</h2>
-<table>
-<tr>
-<td width="50%">
-
-<h3>1️⃣ Setup</h3>
-<pre><code class="language-bash">npx @knowcode/doc-builder@latest init
+<p><strong>Image Markdown Format:</strong></p>
+<pre><code class="language-markdown">![Description of what the image shows](images/feature-screenshot.png)
 </code></pre>
-<p><em>Create project structure and configure doc-builder</em></p>
-</td>
-<td width="50%">
-
-<h3>2️⃣ Deploy</h3>
-<pre><code class="language-bash">npx @knowcode/doc-builder@latest deploy
-</code></pre>
-<p><em>Build your markdown files and deploy to production</em></p>
-</td>
-</tr>
-</table>
-
-<h2>⚙️ Configuration</h2>
-<p>Configuration is fully managed through the CLI tools - no manual file editing required! The tool handles all settings automatically during setup and deployment.</p>
-<table>
-<tr>
-<td width="50%">
-
-<h3>Basic Config (Reference Only)</h3>
-<pre><code class="language-javascript">// doc-builder.config.js
-// This file is auto-generated and managed by the CLI
-module.exports = {
-  siteName: &#39;@knowcode/doc-builder&#39;,
-  siteDescription: &#39;Transform markdown into beautiful documentation&#39;,
-  docsDir: &#39;docs&#39;,
-  outputDir: &#39;html&#39;,
-  favicon: &#39;✨&#39;  // Can be emoji or path to image
+<p><strong>Good Alt Text Examples:</strong></p>
+<ul>
+<li>✅ <code>![Vercel deployment settings page showing environment variables section](images/vercel-env-setup.png)</code></li>
+<li>✅ <code>![Flow diagram illustrating the authentication process from login to dashboard](images/auth-flow.png)</code></li>
+<li>❌ <code>![Screenshot](img1.png)</code></li>
+<li>❌ <code>![Image](screenshot.png)</code></li>
+</ul>
+<h3>4. Code Examples</h3>
+<p><strong>Code Block Requirements:</strong></p>
+<ul>
+<li>Always specify the language for syntax highlighting</li>
+<li>Include comments for complex code</li>
+<li>Show both correct and incorrect usage when relevant</li>
+<li>Keep examples concise and focused</li>
+</ul>
+<pre><code class="language-javascript">// Good example with language specified
+const config = {
+  siteName: &#39;My Documentation&#39;,
+  features: {
+    authentication: true
+  }
 };
 </code></pre>
-<p><em>The CLI creates and updates this for you</em></p>
-</td>
-<td width="50%">
-
-<h3>Advanced Features (Reference Only)</h3>
-<pre><code class="language-javascript">// Also managed via CLI commands
-features: {
-  mermaid: true,      // Diagrams
-  darkMode: true,     // Theme toggle
-  authentication: true, // Password
-  changelog: true     // Auto-generate
-}
+<h3>5. Special Folders and Files</h3>
+<p><strong>Navigation Control:</strong></p>
+<ul>
+<li>Files/folders starting with <code>_</code> are excluded from navigation</li>
+<li>Use for drafts: <code>_draft-feature.md</code></li>
+<li>Use for internal notes: <code>_internal/planning.md</code></li>
+</ul>
+<p><strong>Special Files:</strong></p>
+<ul>
+<li><code>README.md</code> in any folder becomes the folder&#39;s overview page</li>
+<li><code>index.md</code> takes priority over <code>README.md</code> for the main page</li>
+</ul>
+<h3>6. Content Guidelines</h3>
+<p><strong>Writing Style:</strong></p>
+<ul>
+<li>Use clear, concise language</li>
+<li>Write in active voice</li>
+<li>Use present tense for instructions</li>
+<li>Include examples whenever possible</li>
+</ul>
+<p><strong>Lists and Tables:</strong></p>
+<ul>
+<li>Use bullet points for unordered information</li>
+<li>Use numbered lists for sequential steps</li>
+<li>Include tables for comparing options or listing parameters</li>
+</ul>
+<p><strong>Links:</strong></p>
+<ul>
+<li>Use descriptive link text: <code>[See the authentication guide](auth-guide.md)</code></li>
+<li>Never use &quot;click here&quot; or bare URLs</li>
+<li>Prefer relative links for internal documentation</li>
+</ul>
+<h3>7. Front Matter (Optional)</h3>
+<p>For SEO and page customization:</p>
+<pre><code class="language-yaml">---
+title: Custom Page Title
+description: Brief description for SEO
+keywords: authentication, setup, configuration
+---
 </code></pre>
-<p><em>Use <code>init</code> or <code>deploy</code> commands to configure</em></p>
-</td>
-</tr>
-</table>
-
-<h2>📊 Rich Content Examples</h2>
-<table>
-<tr>
-<td width="50%">
-
-<h3>Mermaid Diagrams</h3>
-<div class="mermaid-wrapper">
+<h3>8. Accessibility</h3>
+<ul>
+<li>Use proper heading hierarchy (don&#39;t skip levels)</li>
+<li>Include alt text for all images</li>
+<li>Use descriptive link text</li>
+<li>Ensure code examples are screen-reader friendly</li>
+</ul>
+<h3>9. Mermaid Diagrams</h3>
+<p>When using Mermaid diagrams:</p>
+<pre><code class="language-markdown"><div class="mermaid-wrapper">
       <div class="mermaid-title">Diagram</div>
-      <div class="mermaid">graph LR
-    A[Write] --> B[Build]
-    B --> C[Deploy]
-    C --> D[Share]
-    
-    style A fill:#e1f5fe
-    style D fill:#c8e6c9</div>
+      <div class="mermaid">graph TD
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Process]
+    B -->|No| D[End]</div>
     </div>
-</td>
-<td width="50%">
 
-<h3>Code with Syntax Highlighting</h3>
-<pre><code class="language-javascript">// Beautiful code blocks
-const docBuilder = require(&#39;@knowcode/doc-builder&#39;);
+### 10. Version References
 
-docBuilder.build({
-  siteName: &#39;@knowcode/doc-builder&#39;,
-  features: { darkMode: true }
-});
+When mentioning version-specific features:
+- Always specify the version: &quot;Available in v1.8.5+&quot;
+- Link to changelog when discussing changes
+- Use semantic versioning consistently
+
+Remember: These standards ensure documentation is consistent, accessible, and easy to maintain. When in doubt, prioritize clarity and user experience.
 </code></pre>
-</td>
-</tr>
-</table>
-
-<h2>🌟 Why Choose doc-builder?</h2>
-<table>
-<tr>
-<td width="33%">
-
-<h3>🚀 Performance</h3>
-<ul>
-<li><strong>Lightning fast</strong> - Static generation</li>
-<li><strong>SEO optimized</strong> - Search friendly</li>
-<li><strong>Accessible</strong> - WCAG compliant</li>
-</ul>
-</td>
-<td width="33%">
-
-<h3>🛠️ Developer Experience</h3>
-<ul>
-<li><strong>Zero config</strong> - Works instantly</li>
-<li><strong>Version control</strong> - Git-friendly</li>
-<li><strong>Open source</strong> - MIT licensed</li>
-</ul>
-</td>
-<td width="33%">
-
-<h3>💰 Cost Effective</h3>
-<ul>
-<li><strong>Free hosting</strong> - Vercel free tier</li>
-<li><strong>No vendor lock-in</strong> - Your content</li>
-<li><strong>Export anywhere</strong> - Static HTML</li>
-</ul>
-</td>
-</tr>
-</table>
-
-<h2>🤝 Get Involved</h2>
-<table>
-<tr>
-<td width="50%">
-
-<h3>Contributing</h3>
-<p>We welcome contributions! Check our <a href="https://github.com/wapdat/doc-builder">contribution guide</a> to get started.</p>
-<p><strong>Ways to help:</strong></p>
-<ul>
-<li>🐛 Report bugs</li>
-<li>💡 Suggest features</li>
-<li>📝 Improve docs</li>
-<li>🔧 Submit PRs</li>
-</ul>
-</td>
-<td width="50%">
-
-<h3>Community</h3>
-<p>Join our growing community of documentation enthusiasts!</p>
-<p><strong>Connect with us:</strong></p>
-<ul>
-<li>📦 <a href="https://www.npmjs.com/package/@knowcode/doc-builder">NPM Package</a></li>
-<li>🐙 <a href="https://github.com/wapdat/doc-builder">GitHub Repo</a></li>
-<li>🌐 <a href="https://knowcode.com">Website</a></li>
-<li>💬 <a href="https://github.com/wapdat/doc-builder/discussions">Discussions</a></li>
-</ul>
-</td>
-</tr>
-</table>
-
-<hr>
-<div align="center">
-
-<h3>📝 License: MIT © KnowCode</h3>
-<p>Built with ❤️ by developers, for developers</p>
-<p><a href="https://www.npmjs.com/package/@knowcode/doc-builder"><strong>Get Started</strong></a> | <a href="https://doc-builder-delta.vercel.app"><strong>You are looking at a demo</strong></a> | <a href="https://github.com/wapdat/doc-builder"><strong>Star on GitHub</strong></a></p>
-</div>
 
             </div>
         </main>

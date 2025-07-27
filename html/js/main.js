@@ -79,6 +79,9 @@ function initializeMermaidFullScreen() {
     const toolbar = document.createElement('div');
     toolbar.className = 'mermaid-toolbar';
     
+    const title = document.createElement('div');
+    title.textContent = 'Mermaid Diagram';
+    
     const actions = document.createElement('div');
     actions.className = 'mermaid-actions';
     
@@ -88,8 +91,23 @@ function initializeMermaidFullScreen() {
     fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i> Full Screen';
     fullScreenBtn.addEventListener('click', () => openMermaidFullScreen(mermaidDiv, index));
     
-    actions.appendChild(fullScreenBtn);
+    // Copy SVG button
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'mermaid-btn';
+    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy SVG';
+    copyBtn.addEventListener('click', () => copyMermaidSVG(mermaidDiv));
     
+    // Copy Mermaid source button
+    const copyMermaidBtn = document.createElement('button');
+    copyMermaidBtn.className = 'mermaid-btn';
+    copyMermaidBtn.innerHTML = '<i class="fas fa-code"></i> Copy Mermaid';
+    copyMermaidBtn.addEventListener('click', () => copyMermaidSource(mermaidDiv));
+    
+    actions.appendChild(fullScreenBtn);
+    actions.appendChild(copyBtn);
+    actions.appendChild(copyMermaidBtn);
+    
+    toolbar.appendChild(title);
     toolbar.appendChild(actions);
     
     // Create wrapper for the diagram
@@ -494,146 +512,11 @@ function updateThemeIcon(theme) {
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 
-// Set initial menu state based on configuration
-const menuDefaultOpen = window.docBuilderConfig?.features?.menuDefaultOpen !== false;
-if (sidebar && window.innerWidth > 768) {
-  if (!menuDefaultOpen) {
-    sidebar.classList.add('closed');
-    // Add class to body to show menu toggle on desktop when menu starts closed
-    document.body.classList.add('menu-starts-closed');
-  }
-}
-
-// Create overlay element for mobile
-let overlay = document.querySelector('.sidebar-overlay');
-if (!overlay && window.innerWidth <= 768) {
-  overlay = document.createElement('div');
-  overlay.className = 'sidebar-overlay';
-  document.body.appendChild(overlay);
-}
-
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      // Mobile: toggle 'open' class
-      sidebar.classList.toggle('open');
-    } else {
-      // Desktop: toggle 'closed' class
-      sidebar.classList.toggle('closed');
-      // Update visibility of menu toggle based on sidebar state
-      updateMenuToggleVisibility();
-    }
-    if (overlay) {
-      overlay.classList.toggle('active');
-    }
-  });
-}
-
-// Function to update menu toggle visibility
-function updateMenuToggleVisibility() {
-  if (window.innerWidth > 768) {
-    if (!menuDefaultOpen || sidebar.classList.contains('closed')) {
-      document.body.classList.add('show-menu-toggle');
-    } else {
-      document.body.classList.remove('show-menu-toggle');
-    }
-  }
-}
-
-// Initial check
-updateMenuToggleVisibility();
-
-// Update on window resize
-window.addEventListener('resize', updateMenuToggleVisibility);
-
-// Close menu when clicking overlay
-if (overlay) {
-  overlay.addEventListener('click', () => {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('active');
-  });
-}
-
-// Floating Menu Button for Mobile
-function initFloatingMenuButton() {
-  // Only initialize on mobile
-  if (window.innerWidth > 768) return;
-  
-  // Check if button already exists
-  if (document.getElementById('floating-menu-toggle')) return;
-  
-  // Create floating button
-  const floatingButton = document.createElement('button');
-  floatingButton.id = 'floating-menu-toggle';
-  floatingButton.className = 'floating-menu-toggle';
-  floatingButton.setAttribute('aria-label', 'Toggle menu');
-  floatingButton.innerHTML = '<i class="fas fa-bars"></i>';
-  floatingButton.style.display = 'flex'; // Always visible on mobile
-  floatingButton.classList.add('visible'); // Start visible
-  
-  // Add to body
-  document.body.appendChild(floatingButton);
-  
-  // Toggle sidebar on click
-  floatingButton.addEventListener('click', () => {
     sidebar.classList.toggle('open');
-    
-    // Handle overlay
-    let overlay = document.querySelector('.sidebar-overlay');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.className = 'sidebar-overlay';
-      document.body.appendChild(overlay);
-      
-      // Add overlay click handler
-      overlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
-        floatingButton.querySelector('i').className = 'fas fa-bars';
-      });
-    }
-    
-    if (overlay) {
-      overlay.classList.toggle('active');
-    }
-    
-    // Update icon based on state
-    const icon = floatingButton.querySelector('i');
-    if (sidebar.classList.contains('open')) {
-      icon.className = 'fas fa-times';
-    } else {
-      icon.className = 'fas fa-bars';
-    }
-  });
-  
-  // Remove scroll-based visibility - button is always visible on mobile
-  
-  // Update icon when sidebar state changes from other sources
-  const observer = new MutationObserver(() => {
-    const icon = floatingButton.querySelector('i');
-    if (sidebar.classList.contains('open')) {
-      icon.className = 'fas fa-times';
-    } else {
-      icon.className = 'fas fa-bars';
-    }
-  });
-  
-  observer.observe(sidebar, {
-    attributes: true,
-    attributeFilter: ['class']
   });
 }
-
-// Initialize floating button on load and resize
-document.addEventListener('DOMContentLoaded', initFloatingMenuButton);
-window.addEventListener('resize', () => {
-  const existingButton = document.getElementById('floating-menu-toggle');
-  if (window.innerWidth > 768 && existingButton) {
-    existingButton.remove();
-  } else if (window.innerWidth <= 768 && !existingButton) {
-    initFloatingMenuButton();
-  }
-});
 
 // Prevent sidebar from closing when clicking nav items
 // Only close when clicking outside the sidebar or the close button
@@ -642,21 +525,11 @@ document.addEventListener('click', (e) => {
   if (window.innerWidth <= 768) {
     const isClickInsideSidebar = sidebar && sidebar.contains(e.target);
     const isMenuToggle = e.target.closest('#menu-toggle');
-    const isFloatingButton = e.target.closest('#floating-menu-toggle');
     const isNavItem = e.target.closest('.nav-item, .nav-title');
-    const overlay = document.querySelector('.sidebar-overlay');
     
     // Close sidebar only if clicking outside AND not on menu toggle AND not on nav items
-    if (!isClickInsideSidebar && !isMenuToggle && !isFloatingButton && !isNavItem && sidebar?.classList.contains('open')) {
+    if (!isClickInsideSidebar && !isMenuToggle && !isNavItem && sidebar?.classList.contains('open')) {
       sidebar.classList.remove('open');
-      if (overlay) {
-        overlay.classList.remove('active');
-      }
-      // Update floating button icon if it exists
-      const floatingBtn = document.getElementById('floating-menu-toggle');
-      if (floatingBtn) {
-        floatingBtn.querySelector('i').className = 'fas fa-bars';
-      }
     }
   }
 });
@@ -665,16 +538,12 @@ document.addEventListener('click', (e) => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
-    const href = this.getAttribute('href');
-    // Skip if href is just '#' (prevents querySelector error)
-    if (href && href !== '#') {
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   });
 });
@@ -1317,10 +1186,6 @@ function exportToPDF() {
 
 // Add PDF export button functionality
 function addPDFExportButton() {
-  // Check configuration - default to true if not set
-  const showPdfDownload = window.docBuilderConfig?.features?.showPdfDownload !== false;
-  if (!showPdfDownload) return;
-  
   const headerActions = document.querySelector('.header-actions');
   if (headerActions) {
     const pdfButton = document.createElement('button');
@@ -1453,31 +1318,8 @@ function initTooltips() {
   });
 }
 
-// Handle .md link redirects
-function initMarkdownLinkRedirects() {
-  // Check if current URL ends with .md and redirect
-  if (window.location.pathname.endsWith('.md')) {
-    const htmlPath = window.location.pathname.replace(/\.md$/, '.html');
-    console.log(`Redirecting from .md to .html: ${htmlPath}`);
-    window.location.replace(htmlPath);
-    return; // Stop execution as we're redirecting
-  }
-  
-  // Intercept clicks on .md links
-  document.addEventListener('click', function(e) {
-    const link = e.target.closest('a');
-    if (link && link.href && link.href.endsWith('.md')) {
-      e.preventDefault();
-      const htmlUrl = link.href.replace(/\.md$/, '.html');
-      console.log(`Converting .md link to .html: ${htmlUrl}`);
-      window.location.href = htmlUrl;
-    }
-  });
-}
-
 // Initialize on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
-  initMarkdownLinkRedirects();
   highlightNavigation();
   generateTableOfContents();
   initSidebarResize();

@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This document outlines the complete plan for integrating Supabase authentication into @knowcode/doc-builder, providing a simple but secure authentication...">
-    <title>Supabase Auth Implementation Plan for @knowcode...</title>
-    
-    <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, auth, supabase">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/private/supabase-auth-implementation-plan.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/private/supabase-auth-implementation-plan.html">
-    <meta property="og:title" content="Supabase Auth Implementation Plan for @knowcode...">
-    <meta property="og:description" content="This document outlines the complete plan for integrating Supabase authentication into @knowcode/doc-builder, providing a simple but secure authentication...">
-    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    <meta property="og:site_name" content="@knowcode/doc-builder">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@planbbackups">
-    <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="Supabase Auth Implementation Plan for @knowcode...">
-    <meta name="twitter:description" content="This document outlines the complete plan for integrating Supabase authentication into @knowcode/doc-builder, providing a simple but secure authentication...">
-    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    
-    <!-- Custom Meta Tags -->
-    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
-    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    <meta name="description" content="Beautiful documentation with the least effort possible">
+    <title>Supabase Auth Implementation Plan for @knowcode/doc-builder - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -45,90 +18,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
-    
-    <!-- Hide content until auth check -->
-    <style>
-      body { 
-        visibility: hidden; 
-        opacity: 0; 
-        transition: opacity 0.3s ease;
-      }
-      body.authenticated { 
-        visibility: visible; 
-        opacity: 1; 
-      }
-      /* Show login/logout pages immediately */
-      body.auth-page {
-        visibility: visible;
-        opacity: 1;
-      }
-      /* Style auth button consistently */
-      .auth-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        font-size: 1.1rem;
-      }
-      .auth-btn:hover {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-      }
-    </style>
-    
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Supabase Auth Implementation Plan for @knowcode/doc-builder",
-  "description": "This document outlines the complete plan for integrating Supabase authentication into @knowcode/doc-builder, providing a simple but secure authentication...",
-  "author": {
-    "@type": "Person",
-    "name": "Lindsay Smith"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Knowcode Ltd",
-    "url": "https://knowcode.tech"
-  },
-  "datePublished": "2025-07-26T10:38:42.030Z",
-  "dateModified": "2025-07-26T10:38:42.030Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/private/supabase-auth-implementation-plan.html"
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "@knowcode/doc-builder",
-        "item": "https://doc-builder-delta.vercel.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Private",
-        "item": "https://doc-builder-delta.vercel.app/private/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Supabase Auth Implementation Plan",
-        "item": "https://doc-builder-delta.vercel.app/private/supabase-auth-implementation-plan.html"
-      }
-    ]
-  }
-}
-</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
     <!-- Header -->
@@ -138,13 +29,9 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.1">Last updated: Jul 26, 2025, 10:38 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:25 AM UTC</span>
                 </div>
                 
-                
-                <a href="../../login.html" class="auth-btn" title="Login/Logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -193,6 +80,7 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
+        <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="fas fa-file-alt"></i> Image Modal Test</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -236,6 +124,12 @@
         <a href="/private/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
         <a href="/private/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a>
         <a href="/private/launch/vercel-deployment-auth-setup.html" class="nav-item" data-tooltip="Vercel Deployment Authentication Setup Guide."><i class="fas fa-file-alt"></i> Vercel Deployment Auth Setup</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="/prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="fas fa-file-alt"></i> Markdown Document Standards</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -255,6 +149,7 @@
 </ol>
 <h2>Architecture Summary</h2>
 <div class="mermaid-wrapper">
+      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
     subgraph "Build Time"
         Config[doc-builder.config.js]
@@ -278,43 +173,26 @@
     
     subgraph "Supabase"
         AuthUsers[auth.users]
-        DocSites[docbuilder_sites]
-        DocAccess[docbuilder_access]
+        DocAccess[docbuilder_access with domain]
         AuthUsers -.-> DocAccess
-        DocAccess -.-> DocSites
     end</div>
     </div>
 <h2>Database Schema</h2>
-<pre><code class="language-sql">-- Table 1: Documentation sites
-CREATE TABLE docbuilder_sites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    domain TEXT UNIQUE NOT NULL,
-    name TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Table 2: User access mapping
+<pre><code class="language-sql">-- Single table for user access control (simplified!)
 CREATE TABLE docbuilder_access (
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-    site_id UUID REFERENCES docbuilder_sites(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    PRIMARY KEY (user_id, site_id)
+    PRIMARY KEY (user_id, domain)
 );
 
+-- Create index for faster lookups
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
+
 -- Enable Row Level Security
-ALTER TABLE docbuilder_sites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
 
--- RLS Policies
-CREATE POLICY &quot;Users see accessible sites&quot; ON docbuilder_sites
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM docbuilder_access
-            WHERE site_id = docbuilder_sites.id
-            AND user_id = auth.uid()
-        )
-    );
-
+-- RLS Policy: Users can only see their own access
 CREATE POLICY &quot;Users see own access&quot; ON docbuilder_access
     FOR SELECT USING (user_id = auth.uid());
 </code></pre>
@@ -329,10 +207,10 @@ CREATE POLICY &quot;Users see own access&quot; ON docbuilder_access
 <p><strong>File</strong>: <code>lib/config.js</code></p>
 <pre><code class="language-javascript">// Updated auth configuration - REMOVE basic auth fields
 auth: {
-  // Only Supabase fields remain
+  // Only Supabase fields remain (domain-based, no siteId!)
   supabaseUrl: &#39;&#39;,
-  supabaseAnonKey: &#39;&#39;,
-  siteId: &#39;&#39;
+  supabaseAnonKey: &#39;&#39;
+  // Domain is detected automatically from window.location.host
 }
 </code></pre>
 <h4>1.2 Create Supabase Auth Module</h4>
@@ -525,34 +403,34 @@ npx @knowcode/doc-builder auth:list-sites --email user@example.com
 <li><strong>Security</strong>: Follow Supabase best practices</li>
 <li><strong>Support</strong>: Provide clear documentation and migration guide</li>
 </ol>
-<h2><i class="ph ph-check-circle" aria-label="checked"></i> Implementation Status: COMPLETE</h2>
+<h2>✅ Implementation Status: COMPLETE</h2>
 <p>All planned phases have been successfully implemented:</p>
-<h3><i class="ph ph-check-circle" aria-label="checked"></i> Phase 1: Core Infrastructure - COMPLETE</h3>
+<h3>✅ Phase 1: Core Infrastructure - COMPLETE</h3>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> Updated configuration system to remove basic auth</li>
 <li><input checked="" disabled="" type="checkbox"> Added Supabase SDK dependency</li>
 <li><input checked="" disabled="" type="checkbox"> Created Supabase auth module (<code>lib/supabase-auth.js</code>)</li>
 <li><input checked="" disabled="" type="checkbox"> Updated core-builder.js integration</li>
 </ul>
-<h3><i class="ph ph-check-circle" aria-label="checked"></i> Phase 2: Client-Side Implementation - COMPLETE</h3>
+<h3>✅ Phase 2: Client-Side Implementation - COMPLETE</h3>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> Generated Supabase auth script replaces basic auth</li>
 <li><input checked="" disabled="" type="checkbox"> Secure login page with Supabase integration</li>
 <li><input checked="" disabled="" type="checkbox"> Logout functionality with proper session cleanup</li>
 </ul>
-<h3><i class="ph ph-check-circle" aria-label="checked"></i> Phase 3: Build Process Updates - COMPLETE</h3>
+<h3>✅ Phase 3: Build Process Updates - COMPLETE</h3>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> Supabase SDK integration in build output</li>
 <li><input checked="" disabled="" type="checkbox"> Environment variable support</li>
 <li><input checked="" disabled="" type="checkbox"> Build validation and error handling</li>
 </ul>
-<h3><i class="ph ph-check-circle" aria-label="checked"></i> Phase 4: User Management Tools - COMPLETE</h3>
+<h3>✅ Phase 4: User Management Tools - COMPLETE</h3>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> CLI commands: <code>auth:init</code>, <code>auth:add-site</code>, <code>auth:grant</code>, <code>auth:revoke</code>, <code>auth:list-users</code></li>
 <li><input checked="" disabled="" type="checkbox"> Updated settings command to show Supabase config</li>
 <li><input checked="" disabled="" type="checkbox"> Removed insecure <code>--no-auth</code> flag</li>
 </ul>
-<h3><i class="ph ph-check-circle" aria-label="checked"></i> Phase 5: Documentation and Migration - COMPLETE</h3>
+<h3>✅ Phase 5: Documentation and Migration - COMPLETE</h3>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> Comprehensive Supabase setup guide created</li>
 <li><input checked="" disabled="" type="checkbox"> Updated main README with new auth information</li>
@@ -575,17 +453,7 @@ npx @knowcode/doc-builder auth:list-sites --email user@example.com
     </div>
     
     <!-- Scripts -->
-    <script>
-    // Pass configuration to frontend
-    window.docBuilderConfig = {
-      features: {
-        showPdfDownload: true,
-        menuDefaultOpen: false
-      }
-    };
-    </script>
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="/js/auth.js"></script>
+    
 </body>
 </html>

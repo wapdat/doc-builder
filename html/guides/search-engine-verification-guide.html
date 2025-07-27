@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This guide explains how to verify your documentation site with Google Search Console and Bing Webmaster Tools using @knowcode/doc-builder.">
-    <title>Search Engine Verification Guide | @knowcode/doc-builder</title>
-    
-    <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, your, verification">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/search-engine-verification-guide.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/search-engine-verification-guide.html">
-    <meta property="og:title" content="Search Engine Verification Guide | @knowcode/doc-builder">
-    <meta property="og:description" content="This guide explains how to verify your documentation site with Google Search Console and Bing Webmaster Tools using @knowcode/doc-builder.">
-    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    <meta property="og:site_name" content="@knowcode/doc-builder">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@planbbackups">
-    <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="Search Engine Verification Guide | @knowcode/doc-builder">
-    <meta name="twitter:description" content="This guide explains how to verify your documentation site with Google Search Console and Bing Webmaster Tools using @knowcode/doc-builder.">
-    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    
-    <!-- Custom Meta Tags -->
-    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
-    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    <meta name="description" content="Beautiful documentation with the least effort possible">
+    <title>Search Engine Verification Guide - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -45,90 +18,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
-    
-    <!-- Hide content until auth check -->
-    <style>
-      body { 
-        visibility: hidden; 
-        opacity: 0; 
-        transition: opacity 0.3s ease;
-      }
-      body.authenticated { 
-        visibility: visible; 
-        opacity: 1; 
-      }
-      /* Show login/logout pages immediately */
-      body.auth-page {
-        visibility: visible;
-        opacity: 1;
-      }
-      /* Style auth button consistently */
-      .auth-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        font-size: 1.1rem;
-      }
-      .auth-btn:hover {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-      }
-    </style>
-    
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Search Engine Verification Guide",
-  "description": "This guide explains how to verify your documentation site with Google Search Console and Bing Webmaster Tools using @knowcode/doc-builder.",
-  "author": {
-    "@type": "Person",
-    "name": "Lindsay Smith"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Knowcode Ltd",
-    "url": "https://knowcode.tech"
-  },
-  "datePublished": "2025-07-26T10:38:41.985Z",
-  "dateModified": "2025-07-26T10:38:41.985Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/guides/search-engine-verification-guide.html"
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "@knowcode/doc-builder",
-        "item": "https://doc-builder-delta.vercel.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Guides",
-        "item": "https://doc-builder-delta.vercel.app/guides/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Search Engine Verification Guide",
-        "item": "https://doc-builder-delta.vercel.app/guides/search-engine-verification-guide.html"
-      }
-    ]
-  }
-}
-</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
     <!-- Header -->
@@ -138,13 +29,9 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.1">Last updated: Jul 26, 2025, 10:38 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:25 AM UTC</span>
                 </div>
                 
-                
-                <a href="../../login.html" class="auth-btn" title="Login/Logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -193,6 +80,7 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
+        <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="fas fa-file-alt"></i> Image Modal Test</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -212,6 +100,36 @@
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-private-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
+        </a>
+        <div class="nav-content collapsed" id="nav-private-1">
+        <a href="/private/cache-control-anti-pattern.html" class="nav-item" data-tooltip="Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites."><i class="fas fa-file-alt"></i> Cache Control Anti Pattern</a>
+        <a href="/private/next-steps-walkthrough.html" class="nav-item" data-tooltip="Now that we&#039;ve implemented Supabase authentication, let&#039;s walk through testing the implementation and preparing for deployment."><i class="fas fa-file-alt"></i> Next Steps Walkthrough</a>
+        <a href="/private/supabase-auth-implementation-completed.html" class="nav-item" data-tooltip="This document records the successful implementation of Supabase authentication in @knowcode/doc-builder v1.7.5+."><i class="fas fa-file-alt"></i> Supabase Auth Implementation Completed</a>
+        <a href="/private/supabase-auth-implementation-plan.html" class="nav-item" data-tooltip="Supabase Auth Implementation Plan for @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Supabase Auth Implementation Plan</a>
+        <a href="/private/supabase-auth-integration-plan.html" class="nav-item" data-tooltip="Supabase Authentication Integration Plan for @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Supabase Auth Integration Plan</a>
+        <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
+        <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a>
+        <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="fas fa-file-alt"></i> User Management Tooling</a></div></div>
+      <div class="nav-section" data-level="2">
+        <a class="nav-title collapsible" href="/private/launch/README.html" data-target="nav-private-launch-2" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
+        </a>
+        <div class="nav-content collapsed" id="nav-private-launch-2">
+        <a href="/private/launch/README.html" class="nav-item" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="fas fa-file-alt"></i> Launch Overview</a>
+        <a href="/private/launch/auth-cleanup-summary.html" class="nav-item" data-tooltip="All references to the old client-side authentication system have been removed from @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Auth Cleanup Summary</a>
+        <a href="/private/launch/bubble-plugin-specification.html" class="nav-item" data-tooltip="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers..."><i class="fas fa-file-alt"></i> Bubble Plugin Specification</a>
+        <a href="/private/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
+        <a href="/private/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a>
+        <a href="/private/launch/vercel-deployment-auth-setup.html" class="nav-item" data-tooltip="Vercel Deployment Authentication Setup Guide."><i class="fas fa-file-alt"></i> Vercel Deployment Auth Setup</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="/prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="fas fa-file-alt"></i> Markdown Document Standards</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -482,17 +400,7 @@ doc-builder bing-verify NEW_BING_CODE
     </div>
     
     <!-- Scripts -->
-    <script>
-    // Pass configuration to frontend
-    window.docBuilderConfig = {
-      features: {
-        showPdfDownload: true,
-        menuDefaultOpen: false
-      }
-    };
-    </script>
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="/js/auth.js"></script>
+    
 </body>
 </html>

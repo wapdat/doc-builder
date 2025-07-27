@@ -51,12 +51,12 @@
                 
                 if (error) throw error;
                 
-                // Check if user has access to this site
+                // Check if user has access to this site (using domain)
                 const { data: access, error: accessError } = await supabaseClient
                     .from('docbuilder_access')
                     .select('*')
                     .eq('user_id', data.user.id)
-                    .eq('site_id', '-knowcode-doc-builder-1753526321904-eivutk')
+                    .eq('domain', window.location.host)
                     .single();
                 
                 if (accessError || !access) {

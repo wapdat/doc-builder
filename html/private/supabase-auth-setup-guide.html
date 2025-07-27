@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete guide for setting up secure authentication for your @knowcode/doc-builder documentation sites using Supabase.">
-    <title>Supabase Authentication Setup Guide | @knowcode/doc-builder</title>
-    
-    <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, supabase, your">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/private/supabase-auth-setup-guide.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/private/supabase-auth-setup-guide.html">
-    <meta property="og:title" content="Supabase Authentication Setup Guide | @knowcode/doc-builder">
-    <meta property="og:description" content="Complete guide for setting up secure authentication for your @knowcode/doc-builder documentation sites using Supabase.">
-    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    <meta property="og:site_name" content="@knowcode/doc-builder">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@planbbackups">
-    <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="Supabase Authentication Setup Guide | @knowcode/doc-builder">
-    <meta name="twitter:description" content="Complete guide for setting up secure authentication for your @knowcode/doc-builder documentation sites using Supabase.">
-    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    
-    <!-- Custom Meta Tags -->
-    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
-    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    <meta name="description" content="Beautiful documentation with the least effort possible">
+    <title>Supabase Authentication Setup Guide - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -45,90 +18,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
-    
-    <!-- Hide content until auth check -->
-    <style>
-      body { 
-        visibility: hidden; 
-        opacity: 0; 
-        transition: opacity 0.3s ease;
-      }
-      body.authenticated { 
-        visibility: visible; 
-        opacity: 1; 
-      }
-      /* Show login/logout pages immediately */
-      body.auth-page {
-        visibility: visible;
-        opacity: 1;
-      }
-      /* Style auth button consistently */
-      .auth-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        font-size: 1.1rem;
-      }
-      .auth-btn:hover {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-      }
-    </style>
-    
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Supabase Authentication Setup Guide",
-  "description": "Complete guide for setting up secure authentication for your @knowcode/doc-builder documentation sites using Supabase.",
-  "author": {
-    "@type": "Person",
-    "name": "Lindsay Smith"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Knowcode Ltd",
-    "url": "https://knowcode.tech"
-  },
-  "datePublished": "2025-07-26T10:38:42.034Z",
-  "dateModified": "2025-07-26T10:38:42.034Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/private/supabase-auth-setup-guide.html"
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "@knowcode/doc-builder",
-        "item": "https://doc-builder-delta.vercel.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Private",
-        "item": "https://doc-builder-delta.vercel.app/private/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Supabase Auth Setup Guide",
-        "item": "https://doc-builder-delta.vercel.app/private/supabase-auth-setup-guide.html"
-      }
-    ]
-  }
-}
-</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
     <!-- Header -->
@@ -138,13 +29,9 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.8.1">Last updated: Jul 26, 2025, 10:38 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:25 AM UTC</span>
                 </div>
                 
-                
-                <a href="../../login.html" class="auth-btn" title="Login/Logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -193,6 +80,7 @@
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
+        <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="fas fa-file-alt"></i> Image Modal Test</a>
         <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
@@ -236,6 +124,12 @@
         <a href="/private/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
         <a href="/private/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a>
         <a href="/private/launch/vercel-deployment-auth-setup.html" class="nav-item" data-tooltip="Vercel Deployment Authentication Setup Guide."><i class="fas fa-file-alt"></i> Vercel Deployment Auth Setup</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="/prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="fas fa-file-alt"></i> Markdown Document Standards</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -249,10 +143,11 @@
 <p>@knowcode/doc-builder supports enterprise-grade authentication through Supabase. This provides:</p>
 <ul>
 <li><strong>Secure authentication</strong> with industry-standard security practices</li>
-<li><strong>Multi-site support</strong> - one account can access multiple documentation sites</li>
+<li><strong>Domain-based access</strong> - automatic authentication based on site domain</li>
 <li><strong>User management</strong> through CLI commands</li>
 <li><strong>Password reset</strong> functionality built-in</li>
 <li><strong>Enterprise features</strong> like audit logging and access control</li>
+<li><strong>Zero configuration</strong> - built-in credentials (v1.8.2+)</li>
 </ul>
 <h2>Prerequisites</h2>
 <ol>
@@ -272,41 +167,30 @@
 <p>Wait for the project to be created (usually 1-2 minutes).</p>
 <h2>Step 2: Create Database Tables</h2>
 <p>In your Supabase dashboard, go to <strong>SQL Editor</strong> and run this SQL:</p>
-<pre><code class="language-sql">-- Table 1: Documentation sites
-CREATE TABLE docbuilder_sites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    domain TEXT UNIQUE NOT NULL,
-    name TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Table 2: User access mapping
+<pre><code class="language-sql">-- Single table for user access control (simplified!)
 CREATE TABLE docbuilder_access (
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-    site_id UUID REFERENCES docbuilder_sites(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    PRIMARY KEY (user_id, site_id)
+    PRIMARY KEY (user_id, domain)
 );
 
+-- Create index for faster lookups
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
+
 -- Enable Row Level Security
-ALTER TABLE docbuilder_sites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
 
--- RLS Policy: Users can only see sites they have access to
-CREATE POLICY &quot;Users see accessible sites&quot; ON docbuilder_sites
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM docbuilder_access
-            WHERE site_id = docbuilder_sites.id
-            AND user_id = auth.uid()
-        )
-    );
-
--- RLS Policy: Users can see their own access
+-- RLS Policy: Users can only see their own access
 CREATE POLICY &quot;Users see own access&quot; ON docbuilder_access
     FOR SELECT USING (user_id = auth.uid());
 </code></pre>
-<h2>Step 3: Get Supabase Credentials</h2>
+<h2>Step 3: Configure Authentication (Automatic in v1.8.2+)</h2>
+<p>As of version 1.8.2, Supabase credentials are automatically configured! You have two options:</p>
+<h3>Option 1: Use Built-in Credentials (Recommended)</h3>
+<p>Simply create a <code>docs/private/</code> directory or set <code>authentication: &#39;supabase&#39;</code> in your config. The system will automatically use the shared authentication database.</p>
+<h3>Option 2: Use Custom Supabase Project</h3>
+<p>If you want to use your own Supabase project:</p>
 <ol>
 <li>In your Supabase dashboard, go to <strong>Settings</strong> → <strong>API</strong></li>
 <li>Copy these values:<ul>
@@ -315,18 +199,22 @@ CREATE POLICY &quot;Users see own access&quot; ON docbuilder_access
 </ul>
 </li>
 </ol>
-<p><i class="ph ph-warning-circle" aria-label="warning"></i> <strong>Never share your service role key</strong> - only use the anon/public key for doc-builder.</p>
+<p>⚠️ <strong>Never share your service role key</strong> - only use the anon/public key for doc-builder.</p>
 <h2>Step 4: Initialize Authentication</h2>
-<p>Run the initialization command in your documentation project:</p>
-<pre><code class="language-bash">npx @knowcode/doc-builder auth:init
+<h3>Option 1: Automatic Setup (v1.8.2+)</h3>
+<p>Just create a config file or use the <code>--preset</code> flag:</p>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  siteName: &#39;My Documentation&#39;,
+  
+  features: {
+    authentication: &#39;supabase&#39;
+  }
+  // No auth config needed - uses built-in credentials!
+};
 </code></pre>
-<p>This will prompt you for:</p>
-<ul>
-<li>Your Supabase project URL</li>
-<li>Your Supabase anonymous key  </li>
-<li>A name for your documentation site</li>
-</ul>
-<p>It creates a <code>doc-builder.config.js</code> file like this:</p>
+<h3>Option 2: Custom Supabase Project</h3>
+<p>If using your own Supabase project:</p>
 <pre><code class="language-javascript">module.exports = {
   siteName: &#39;My Documentation&#39;,
   
@@ -336,24 +224,13 @@ CREATE POLICY &quot;Users see own access&quot; ON docbuilder_access
   
   auth: {
     supabaseUrl: &#39;https://xxx.supabase.co&#39;,
-    supabaseAnonKey: &#39;eyJ...&#39;,
-    siteId: &#39;&#39;  // Will be set in next step
+    supabaseAnonKey: &#39;eyJ...&#39;
+    // No siteId needed - uses domain automatically!
   }
 };
 </code></pre>
-<h2>Step 5: Add Your Site to Database</h2>
-<h3>Option A: Using SQL (Recommended)</h3>
-<p>In Supabase SQL Editor, run:</p>
-<pre><code class="language-sql">INSERT INTO docbuilder_sites (domain, name) 
-VALUES (&#39;docs.yourcompany.com&#39;, &#39;Company Documentation&#39;)
-RETURNING id;
-</code></pre>
-<p>Copy the returned ID and update your config file&#39;s <code>siteId</code> field.</p>
-<h3>Option B: Using CLI (Coming Soon)</h3>
-<pre><code class="language-bash">npx @knowcode/doc-builder auth:add-site \
-  --domain docs.yourcompany.com \
-  --name &quot;Company Documentation&quot;
-</code></pre>
+<h2>Step 5: No Site Registration Needed!</h2>
+<p>The new domain-based system eliminates the need for site registration. The system automatically uses the current domain (e.g., <code>docs.example.com</code>) as the access key. Just grant users access to your domain in the next step.</p>
 <h2>Step 6: Create Your First User</h2>
 <h3>Method 1: Through Supabase Dashboard</h3>
 <ol>
@@ -367,14 +244,23 @@ RETURNING id;
 <p>Users can sign up when they visit your documentation site and try to log in.</p>
 <h2>Step 7: Grant User Access</h2>
 <h3>Using SQL:</h3>
-<pre><code class="language-sql">-- Replace with actual user ID and site ID
-INSERT INTO docbuilder_access (user_id, site_id)
-VALUES (&#39;user-uuid-here&#39;, &#39;site-uuid-here&#39;);
+<pre><code class="language-sql">-- Grant access by domain (no site ID needed!)
+INSERT INTO docbuilder_access (user_id, domain)
+VALUES (
+  (SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;),
+  &#39;docs.yourcompany.com&#39;
+);
+
+-- Grant access to multiple domains
+INSERT INTO docbuilder_access (user_id, domain) VALUES
+  ((SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;), &#39;docs.yourcompany.com&#39;),
+  ((SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;), &#39;staging-docs.yourcompany.com&#39;),
+  ((SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;), &#39;localhost:3000&#39;);
 </code></pre>
 <h3>Using CLI (Coming Soon):</h3>
 <pre><code class="language-bash">npx @knowcode/doc-builder auth:grant \
   --email user@example.com \
-  --site-id your-site-uuid
+  --domain docs.yourcompany.com
 </code></pre>
 <h2>Step 8: Build and Deploy</h2>
 <pre><code class="language-bash"># Build with Supabase authentication
@@ -383,74 +269,71 @@ npx @knowcode/doc-builder build
 # Deploy to Vercel
 npx @knowcode/doc-builder deploy
 </code></pre>
-<p>Your documentation site now has secure authentication! <i class="ph ph-confetti" aria-label="party"></i></p>
+<p>Your documentation site now has secure authentication! 🎉</p>
 <h2>User Management</h2>
 <h3>List Users with Access</h3>
-<pre><code class="language-sql">SELECT u.email, da.created_at as granted_at
+<pre><code class="language-sql">-- List all users for a specific domain
+SELECT u.email, da.created_at as granted_at
 FROM docbuilder_access da
 JOIN auth.users u ON u.id = da.user_id
-WHERE da.site_id = &#39;your-site-id&#39;;
+WHERE da.domain = &#39;docs.yourcompany.com&#39;;
 </code></pre>
 <h3>Revoke Access</h3>
-<pre><code class="language-sql">DELETE FROM docbuilder_access 
+<pre><code class="language-sql">-- Remove access for a specific domain
+DELETE FROM docbuilder_access 
 WHERE user_id = (SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;)
-AND site_id = &#39;your-site-id&#39;;
+AND domain = &#39;docs.yourcompany.com&#39;;
 </code></pre>
 <h3>Reset User Password</h3>
 <p>Users can reset their own passwords through the login page &quot;Forgot Password&quot; link.</p>
 <h2>Environment Variables (Optional)</h2>
-<p>For better security, use environment variables:</p>
+<p>For better security with custom Supabase projects, use environment variables:</p>
 <pre><code class="language-bash"># .env
 SUPABASE_URL=https://xxx.supabase.co
 SUPABASE_ANON_KEY=eyJ...
-DOC_SITE_ID=your-site-uuid
 </code></pre>
 <p>Update your config:</p>
 <pre><code class="language-javascript">module.exports = {
   auth: {
     supabaseUrl: process.env.SUPABASE_URL,
-    supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
-    siteId: process.env.DOC_SITE_ID
+    supabaseAnonKey: process.env.SUPABASE_ANON_KEY
+    // No siteId needed - uses domain automatically!
   }
 };
 </code></pre>
 <h2>Multi-Site Setup</h2>
-<p>To use one Supabase project for multiple documentation sites:</p>
+<p>The domain-based system makes multi-site setup incredibly simple:</p>
 <ol>
-<li>Add each site to the database:</li>
-</ol>
-<pre><code class="language-sql">INSERT INTO docbuilder_sites (domain, name) VALUES
-(&#39;docs.product1.com&#39;, &#39;Product 1 Docs&#39;),
-(&#39;internal.company.com&#39;, &#39;Internal Docs&#39;),
-(&#39;api.company.com&#39;, &#39;API Documentation&#39;);
-</code></pre>
-<ol start="2">
-<li><p>Create separate config files for each site with different <code>siteId</code> values</p>
+<li><p><strong>No site registration needed</strong> - Each domain is automatically recognized</p>
 </li>
-<li><p>Grant users access to specific sites:</p>
+<li><p><strong>Grant users access to multiple domains</strong>:</p>
 </li>
 </ol>
-<pre><code class="language-sql">-- User can access both Product 1 and Internal docs
-INSERT INTO docbuilder_access (user_id, site_id) VALUES
-(&#39;user-uuid&#39;, &#39;product1-site-uuid&#39;),
-(&#39;user-uuid&#39;, &#39;internal-site-uuid&#39;);
+<pre><code class="language-sql">-- User can access multiple documentation sites
+INSERT INTO docbuilder_access (user_id, domain) VALUES
+  ((SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;), &#39;docs.product1.com&#39;),
+  ((SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;), &#39;internal.company.com&#39;),
+  ((SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;), &#39;api.company.com&#39;);
 </code></pre>
+<ol start="3">
+<li><strong>Same configuration for all sites</strong> - Just deploy to different domains!</li>
+</ol>
 <h2>Security Features</h2>
 <h3>What Supabase Provides</h3>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Password hashing</strong> with bcrypt</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>JWT tokens</strong> with automatic refresh</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Session management</strong> with secure cookies</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Rate limiting</strong> on authentication endpoints</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Email verification</strong> (optional)</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Password reset</strong> flows</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Multi-factor authentication</strong> (optional)</li>
+<li>✅ <strong>Password hashing</strong> with bcrypt</li>
+<li>✅ <strong>JWT tokens</strong> with automatic refresh</li>
+<li>✅ <strong>Session management</strong> with secure cookies</li>
+<li>✅ <strong>Rate limiting</strong> on authentication endpoints</li>
+<li>✅ <strong>Email verification</strong> (optional)</li>
+<li>✅ <strong>Password reset</strong> flows</li>
+<li>✅ <strong>Multi-factor authentication</strong> (optional)</li>
 </ul>
 <h3>Row Level Security</h3>
 <p>All data access is protected by RLS policies:</p>
 <ul>
-<li>Users can only see sites they have access to</li>
 <li>Users can only see their own access records</li>
+<li>Domain-based access is automatically enforced</li>
 <li>No way to access other users&#39; data</li>
 </ul>
 <h2>Troubleshooting</h2>
@@ -463,8 +346,8 @@ INSERT INTO docbuilder_access (user_id, site_id) VALUES
 <h3>Users Can&#39;t Access Site</h3>
 <ul>
 <li>Verify the user exists in <code>auth.users</code> table</li>
-<li>Check that user has access in <code>docbuilder_access</code> table  </li>
-<li>Confirm the <code>site_id</code> matches your config</li>
+<li>Check that user has access in <code>docbuilder_access</code> table for the correct domain</li>
+<li>Confirm the domain in the database matches your deployment URL</li>
 </ul>
 <h3>Login Page Not Working</h3>
 <ul>
@@ -530,17 +413,7 @@ INSERT INTO docbuilder_access (user_id, site_id) VALUES
     </div>
     
     <!-- Scripts -->
-    <script>
-    // Pass configuration to frontend
-    window.docBuilderConfig = {
-      features: {
-        showPdfDownload: true,
-        menuDefaultOpen: false
-      }
-    };
-    </script>
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="/js/auth.js"></script>
+    
 </body>
 </html>
