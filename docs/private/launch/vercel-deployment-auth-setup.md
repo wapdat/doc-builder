@@ -5,19 +5,20 @@
 Your test documentation site is now live at:
 - **URL**: https://doc-builder-2znroyb5z-lindsay-1340s-projects.vercel.app
 
-## Step 1: Update Supabase Database
+## Step 1: Grant User Access for Vercel Domain
 
-You need to update the domain in your Supabase database to allow authentication from the Vercel domain.
+Since we now use domain-based authentication, you need to grant users access to the Vercel domain.
 
 ### Option A: Using Supabase Dashboard (Recommended)
 
 1. Go to your Supabase project: https://supabase.com/dashboard/project/xcihhnfcitjrwbynxmka
 2. Click on **Table Editor** in the left sidebar
-3. Select the `docbuilder_sites` table
-4. Find the row with ID `4d8a53bf-dcdd-48c0-98e0-cd1451518735`
-5. Click the edit icon (pencil)
-6. Change the `domain` field from `localhost:3000` to `doc-builder-2znroyb5z-lindsay-1340s-projects.vercel.app`
-7. Click **Save**
+3. Select the `docbuilder_access` table
+4. Click **Insert row**
+5. Add:
+   - `user_id`: Select the test user from dropdown
+   - `domain`: `doc-builder-2znroyb5z-lindsay-1340s-projects.vercel.app`
+6. Click **Save**
 
 ### Option B: Using SQL Editor
 
@@ -26,15 +27,18 @@ You need to update the domain in your Supabase database to allow authentication 
 3. Run this SQL command:
 
 ```sql
--- Update domain for Vercel deployment
-UPDATE docbuilder_sites 
-SET domain = 'doc-builder-2znroyb5z-lindsay-1340s-projects.vercel.app'
-WHERE id = '4d8a53bf-dcdd-48c0-98e0-cd1451518735';
+-- Grant user access to Vercel deployment domain
+INSERT INTO docbuilder_access (user_id, domain)
+VALUES (
+  (SELECT id FROM auth.users WHERE email = 'testuser@example.com'),
+  'doc-builder-2znroyb5z-lindsay-1340s-projects.vercel.app'
+);
 
--- Verify the update
-SELECT id, domain, name 
-FROM docbuilder_sites 
-WHERE id = '4d8a53bf-dcdd-48c0-98e0-cd1451518735';
+-- Verify the access
+SELECT u.email, da.domain, da.created_at
+FROM docbuilder_access da
+JOIN auth.users u ON u.id = da.user_id
+WHERE da.domain = 'doc-builder-2znroyb5z-lindsay-1340s-projects.vercel.app';
 ```
 
 ## Step 2: Test Authentication Flow
@@ -99,8 +103,8 @@ After successful testing, you can:
    ```
 
 4. **Deploy Multiple Sites**:
-   - Each site gets unique site_id
-   - Users can have access to multiple sites
+   - Each site uses its domain for authentication
+   - Users can have access to multiple domains
    - Central authentication system
 
 ## Security Notes

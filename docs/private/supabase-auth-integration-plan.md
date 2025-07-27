@@ -47,82 +47,45 @@ graph TB
 
 ## Database Schema
 
-### Core Tables
+### Simplified Domain-Based Design
 
 ```sql
--- Organizations table
-CREATE TABLE organizations (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    name TEXT NOT NULL,
-    slug TEXT UNIQUE NOT NULL,
+-- Single table for user access control
+CREATE TABLE docbuilder_access (
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    settings JSONB DEFAULT '{}'::jsonb
+    PRIMARY KEY (user_id, domain)
 );
 
--- Documentation sites table
-CREATE TABLE doc_sites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    org_id UUID REFERENCES organizations(id),
-    name TEXT NOT NULL,
-    domain TEXT UNIQUE NOT NULL,
-    config JSONB DEFAULT '{}'::jsonb,
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    is_active BOOLEAN DEFAULT true
-);
+-- Create index for faster lookups
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
 
--- User access table (many-to-many)
-CREATE TABLE user_site_access (
-    user_id UUID REFERENCES auth.users(id),
-    site_id UUID REFERENCES doc_sites(id),
-    role TEXT NOT NULL DEFAULT 'viewer',
-    granted_at TIMESTAMPTZ DEFAULT NOW(),
-    granted_by UUID REFERENCES auth.users(id),
-    expires_at TIMESTAMPTZ,
-    PRIMARY KEY (user_id, site_id)
-);
-
--- Access logs for audit trail
+-- Optional: Access logs for audit trail
 CREATE TABLE access_logs (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES auth.users(id),
-    site_id UUID REFERENCES doc_sites(id),
+    domain TEXT NOT NULL,
     action TEXT NOT NULL,
     metadata JSONB DEFAULT '{}'::jsonb,
     ip_address INET,
     user_agent TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
-
--- Invitation links
-CREATE TABLE invitations (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    site_id UUID REFERENCES doc_sites(id),
-    email TEXT NOT NULL,
-    role TEXT NOT NULL DEFAULT 'viewer',
-    token TEXT UNIQUE NOT NULL,
-    created_by UUID REFERENCES auth.users(id),
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    expires_at TIMESTAMPTZ NOT NULL,
-    claimed_at TIMESTAMPTZ,
-    claimed_by UUID REFERENCES auth.users(id)
-);
 ```
 
 ### Row Level Security Policies
 
 ```sql
--- Users can only see sites they have access to
-CREATE POLICY "Users can view accessible sites" ON doc_sites
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM user_site_access
-            WHERE site_id = doc_sites.id
-            AND user_id = auth.uid()
-            AND (expires_at IS NULL OR expires_at > NOW())
-        )
-    );
+-- Enable RLS on tables
+ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
+ALTER TABLE access_logs ENABLE ROW LEVEL SECURITY;
 
--- Access logs are append-only
+-- Users can only see their own access records
+CREATE POLICY "Users see own access" ON docbuilder_access
+    FOR SELECT USING (user_id = auth.uid());
+
+-- Access logs are append-only by authenticated users
 CREATE POLICY "Insert access logs" ON access_logs
     FOR INSERT WITH CHECK (user_id = auth.uid());
 
@@ -187,18 +150,20 @@ class SupabaseAuthManager {
         }
       }
     );
-    this.siteId = config.siteId;
   }
 
   async checkAccess() {
     const { data: { user } } = await this.supabase.auth.getUser();
     if (!user) return false;
 
+    // Use current domain for access check
+    const domain = window.location.host;
+    
     const { data, error } = await this.supabase
-      .from('user_site_access')
-      .select('role, expires_at')
+      .from('docbuilder_access')
+      .select('created_at')
       .eq('user_id', user.id)
-      .eq('site_id', this.siteId)
+      .eq('domain', domain)
       .single();
 
     if (error || !data) return false;
@@ -241,7 +206,7 @@ class SupabaseAuthManager {
 
   async logAccess(action, metadata = {}) {
     await this.supabase.from('access_logs').insert({
-      site_id: this.siteId,
+      domain: window.location.host,
       action,
       metadata,
       ip_address: await this.getClientIP(),
@@ -260,8 +225,8 @@ async function buildWithSupabaseAuth(config) {
     // Inject Supabase configuration
     const supabaseConfig = {
       supabaseUrl: config.auth.supabaseUrl,
-      supabaseAnonKey: config.auth.supabaseAnonKey,
-      siteId: config.auth.siteId
+      supabaseAnonKey: config.auth.supabaseAnonKey
+      // Domain is detected automatically from window.location.host
     };
 
     // Create enhanced auth.js with Supabase integration
@@ -299,8 +264,8 @@ module.exports = {
   auth: {
     // Supabase configuration
     supabaseUrl: process.env.SUPABASE_URL,
-    supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
-    siteId: process.env.DOC_SITE_ID,
+    supabaseAnonKey: process.env.SUPABASE_ANON_KEY
+    // Domain-based authentication - no siteId needed
     
     // Optional: Custom login page styling
     loginTheme: {

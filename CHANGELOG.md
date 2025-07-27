@@ -5,22 +5,88 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.7] - 2025-07-26
+
+### Fixed
+- Eliminated duplicate "Documentation" heading in navigation when root files exist
+- All root-level files now properly contained within single Documentation section
+
+## [1.8.6] - 2025-07-26
+
+### Changed
+- **Improved navigation ordering**: Overview (README) → Folders (alphabetically) → Files (alphabetically)
+- Removed hardcoded folder ordering in favor of alphabetical sorting
+
+### Developer Experience
+- Cleaner navigation structure with logical content organization
+- More intuitive navigation flow for documentation sites
+
+## [1.8.5] - 2025-07-26
+
+### Added
+- Files and folders starting with underscore (`_`) are now excluded from navigation
+- Useful for draft documents, internal notes, and work-in-progress content
+
+### Changed
+- Updated `getAllMarkdownFiles` to skip underscore-prefixed files and folders
+- Enhanced documentation to explain file naming conventions
+
+### Developer Experience
+- Keep drafts and internal docs in your docs folder without publishing them
+- Example: `_draft.md`, `_internal/notes.md` won't appear in navigation
+
+## [1.8.4] - 2025-07-26
+
+### Added
+- Private navigation sections now visible to authenticated users on all pages
+- CSS-based dynamic navigation - private sections show/hide based on authentication state
+- Lock icon (🔒) indicator on private navigation sections
+
+### Changed
+- Navigation now includes all files (public and private) in HTML
+- Private sections hidden by default with CSS, shown when body has 'authenticated' class
+- Better UX - authenticated users can discover all available content
+
+### Security
+- Private content URLs still require authentication to access
+- Only navigation visibility changed - content protection unchanged
+
+## [1.8.3] - 2025-07-26
+
+### Changed
+- Complete overhaul of authentication system to use domain-based access instead of site IDs
+- **BREAKING**: Removed site ID system entirely - authentication now uses `window.location.host`
+- Simplified database schema to single `docbuilder_access` table with (user_id, domain) primary key
+- No more site registration required - just grant users access to domains
+
+### Updated
+- All documentation updated to reflect domain-based authentication
+- CLI commands simplified - no more site ID parameters needed
+- User management tools now work with domains directly
+
+### Developer Experience
+- Much simpler setup - no site registration step
+- Automatic domain detection from browser location
+- Easier multi-site management - just use different domains
+
 ## [1.8.2] - 2025-07-26
 
 ### Added
 - **Automatic Supabase Credentials**: No more placeholder errors! Credentials are now built into the package
-- **Auto-generated Site IDs**: Each site gets a unique ID automatically when authentication is enabled
+- **Domain-based Authentication**: No more site IDs! Authentication now uses the current domain automatically
 - Shared authentication database across all doc-builder sites for easier management
 
 ### Changed
 - Supabase URL and anonymous key are now provided by default via `shared-auth-config.js`
-- Site IDs are auto-generated using site name, timestamp, and random string
+- **BREAKING**: Removed site ID system in favor of domain-based authentication
+- Authentication now uses `window.location.host` for access control
+- Simplified database schema to single `docbuilder_access` table
 - Updated documentation to reflect zero-configuration authentication
 
 ### Developer Experience
 - No need to configure Supabase credentials manually anymore
 - Just create a `private` directory and authentication works immediately
-- Site administrators only need to add the auto-generated site ID to the database
+- Site administrators only need to grant users access to domains, no site registration needed
 
 ## [1.8.1] - 2025-07-26
 

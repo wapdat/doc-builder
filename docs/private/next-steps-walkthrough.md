@@ -30,37 +30,21 @@ npm install
 2. **Run this SQL** to create the required tables:
 
 ```sql
--- Table 1: Documentation sites
-CREATE TABLE docbuilder_sites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    domain TEXT UNIQUE NOT NULL,
-    name TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Table 2: User access mapping
+-- Single table for user access control (simplified!)
 CREATE TABLE docbuilder_access (
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-    site_id UUID REFERENCES docbuilder_sites(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    PRIMARY KEY (user_id, site_id)
+    PRIMARY KEY (user_id, domain)
 );
 
+-- Create index for faster lookups
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
+
 -- Enable Row Level Security
-ALTER TABLE docbuilder_sites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
 
--- RLS Policy: Users can only see sites they have access to
-CREATE POLICY "Users see accessible sites" ON docbuilder_sites
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM docbuilder_access
-            WHERE site_id = docbuilder_sites.id
-            AND user_id = auth.uid()
-        )
-    );
-
--- RLS Policy: Users can see their own access
+-- RLS Policy: Users can only see their own access
 CREATE POLICY "Users see own access" ON docbuilder_access
     FOR SELECT USING (user_id = auth.uid());
 ```
@@ -87,9 +71,8 @@ module.exports = {
   },
   
   auth: {
-    supabaseUrl: 'YOUR_SUPABASE_URL_HERE',
-    supabaseAnonKey: 'YOUR_ANON_KEY_HERE',
-    siteId: ''  // Will be filled in next step
+    supabaseUrl: 'YOUR_SUPABASE_URL_HERE',  // Optional - has defaults
+    supabaseAnonKey: 'YOUR_ANON_KEY_HERE'    // Optional - has defaults
   }
 };
 EOF
@@ -107,20 +90,7 @@ node cli.js auth:init --config test-config.js
 
 This should prompt you for Supabase credentials and create/update the config.
 
-2. **Add a test site to database**:
-
-```sql
--- Run in Supabase SQL Editor
-INSERT INTO docbuilder_sites (domain, name) 
-VALUES ('localhost:3000', 'Test Site')
-RETURNING id;
-```
-
-3. **Copy the returned site ID** and update your `test-config.js`:
-
-```javascript
-siteId: 'the-uuid-returned-from-above'
-```
+2. **No site registration needed!** The new system uses domains automatically.
 
 ### Step 7: Create Test Documentation
 
@@ -194,9 +164,9 @@ node cli.js dev --config test-config.js --input test-docs --port 3001
 
 ```sql
 -- Run in Supabase SQL Editor
--- Replace with actual user ID and site ID
-INSERT INTO docbuilder_access (user_id, site_id)
-VALUES ('USER_ID_FROM_STEP_10', 'SITE_ID_FROM_STEP_6');
+-- Replace with actual user ID from step 10
+INSERT INTO docbuilder_access (user_id, domain)
+VALUES ('USER_ID_FROM_STEP_10', 'localhost:3001');
 ```
 
 ### Step 12: Test Complete Flow

@@ -56,9 +56,9 @@ module.exports = {
     authentication: 'supabase'  // Must explicitly enable
   },
   auth: {
-    supabaseUrl: 'https://xxx.supabase.co',
-    supabaseAnonKey: 'your-anon-key',
-    siteId: 'your-site-id'
+    supabaseUrl: 'https://xxx.supabase.co',  // Optional - has defaults
+    supabaseAnonKey: 'your-anon-key'         // Optional - has defaults
+    // No siteId needed - uses domain automatically!
   }
 };
 ```

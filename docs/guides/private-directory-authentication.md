@@ -105,42 +105,62 @@ module.exports = {
 
 ### 2. Create Access Control Table
 
-In your Supabase dashboard, run this SQL to create the access control table:
+In your Supabase dashboard, run this SQL (or use setup-database-v2.sql):
 
 ```sql
 CREATE TABLE docbuilder_access (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-  site_id TEXT NOT NULL,
+  domain TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  UNIQUE(user_id, site_id)
+  PRIMARY KEY (user_id, domain)
 );
+
+-- Create index for performance
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
+
+-- Enable Row Level Security
+ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
+
+-- RLS Policy
+CREATE POLICY "Users see own access" ON docbuilder_access
+    FOR SELECT USING (user_id = auth.uid());
 ```
 
 ### 3. Grant User Access
 
-Add authorized users by inserting records:
+Add authorized users by domain:
 
 ```sql
 -- First, create a user in Supabase Auth
--- Then grant them access to your documentation
-INSERT INTO docbuilder_access (user_id, site_id)
-VALUES ('user-uuid-from-auth-users', 'your-site-id');
+-- Then grant them access to your documentation domain
+INSERT INTO docbuilder_access (user_id, domain)
+VALUES ('user-uuid-from-auth-users', 'docs.example.com');
+
+-- Or grant access to multiple domains
+INSERT INTO docbuilder_access (user_id, domain) VALUES 
+  ('user-uuid', 'docs.example.com'),
+  ('user-uuid', 'staging-docs.example.com'),
+  ('user-uuid', 'localhost:3000');
 ```
 
 ### Automatic Credential Configuration
 
-Starting from version 1.8.2, Supabase credentials are automatically configured:
+Starting from version 1.8.2, authentication is truly zero-configuration:
 - All doc-builder sites share the same Supabase authentication database
 - Credentials are built into the package - no manual configuration needed
-- Each site gets a unique auto-generated site ID
-- You just need to add the site ID to the database to grant user access
+- No site IDs needed - the system uses your domain automatically
+- Just grant users access to your domain in the database
 
-**Note**: The auto-generated site ID is displayed during build:
+**Note**: When you build with a private directory:
 ```
 🔐 Found private directory - automatically enabling Supabase authentication
-📋 Generated site ID: documentation-1753525200000-abc123
-   Note: Add this site ID to your Supabase database to enable user access
+   Note: Grant users access by adding domain to the docbuilder_access table
+```
+
+**Example**: For a site at `docs.example.com`, grant access with:
+```sql
+INSERT INTO docbuilder_access (user_id, domain) 
+VALUES ('user-uuid', 'docs.example.com');
 ```
 
 ## Best Practices

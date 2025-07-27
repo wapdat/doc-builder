@@ -7,10 +7,11 @@ Complete guide for setting up secure authentication for your @knowcode/doc-build
 @knowcode/doc-builder supports enterprise-grade authentication through Supabase. This provides:
 
 - **Secure authentication** with industry-standard security practices
-- **Multi-site support** - one account can access multiple documentation sites
+- **Domain-based access** - automatic authentication based on site domain
 - **User management** through CLI commands
 - **Password reset** functionality built-in
 - **Enterprise features** like audit logging and access control
+- **Zero configuration** - built-in credentials (v1.8.2+)
 
 ## Prerequisites
 
@@ -34,42 +35,34 @@ Wait for the project to be created (usually 1-2 minutes).
 In your Supabase dashboard, go to **SQL Editor** and run this SQL:
 
 ```sql
--- Table 1: Documentation sites
-CREATE TABLE docbuilder_sites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    domain TEXT UNIQUE NOT NULL,
-    name TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Table 2: User access mapping
+-- Single table for user access control (simplified!)
 CREATE TABLE docbuilder_access (
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-    site_id UUID REFERENCES docbuilder_sites(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    PRIMARY KEY (user_id, site_id)
+    PRIMARY KEY (user_id, domain)
 );
 
+-- Create index for faster lookups
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
+
 -- Enable Row Level Security
-ALTER TABLE docbuilder_sites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
 
--- RLS Policy: Users can only see sites they have access to
-CREATE POLICY "Users see accessible sites" ON docbuilder_sites
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM docbuilder_access
-            WHERE site_id = docbuilder_sites.id
-            AND user_id = auth.uid()
-        )
-    );
-
--- RLS Policy: Users can see their own access
+-- RLS Policy: Users can only see their own access
 CREATE POLICY "Users see own access" ON docbuilder_access
     FOR SELECT USING (user_id = auth.uid());
 ```
 
-## Step 3: Get Supabase Credentials
+## Step 3: Configure Authentication (Automatic in v1.8.2+)
+
+As of version 1.8.2, Supabase credentials are automatically configured! You have two options:
+
+### Option 1: Use Built-in Credentials (Recommended)
+Simply create a `docs/private/` directory or set `authentication: 'supabase'` in your config. The system will automatically use the shared authentication database.
+
+### Option 2: Use Custom Supabase Project
+If you want to use your own Supabase project:
 
 1. In your Supabase dashboard, go to **Settings** → **API**
 2. Copy these values:
@@ -80,18 +73,23 @@ CREATE POLICY "Users see own access" ON docbuilder_access
 
 ## Step 4: Initialize Authentication
 
-Run the initialization command in your documentation project:
+### Option 1: Automatic Setup (v1.8.2+)
+Just create a config file or use the `--preset` flag:
 
-```bash
-npx @knowcode/doc-builder auth:init
+```javascript
+// doc-builder.config.js
+module.exports = {
+  siteName: 'My Documentation',
+  
+  features: {
+    authentication: 'supabase'
+  }
+  // No auth config needed - uses built-in credentials!
+};
 ```
 
-This will prompt you for:
-- Your Supabase project URL
-- Your Supabase anonymous key  
-- A name for your documentation site
-
-It creates a `doc-builder.config.js` file like this:
+### Option 2: Custom Supabase Project
+If using your own Supabase project:
 
 ```javascript
 module.exports = {
@@ -103,33 +101,15 @@ module.exports = {
   
   auth: {
     supabaseUrl: 'https://xxx.supabase.co',
-    supabaseAnonKey: 'eyJ...',
-    siteId: ''  // Will be set in next step
+    supabaseAnonKey: 'eyJ...'
+    // No siteId needed - uses domain automatically!
   }
 };
 ```
 
-## Step 5: Add Your Site to Database
+## Step 5: No Site Registration Needed!
 
-### Option A: Using SQL (Recommended)
-
-In Supabase SQL Editor, run:
-
-```sql
-INSERT INTO docbuilder_sites (domain, name) 
-VALUES ('docs.yourcompany.com', 'Company Documentation')
-RETURNING id;
-```
-
-Copy the returned ID and update your config file's `siteId` field.
-
-### Option B: Using CLI (Coming Soon)
-
-```bash
-npx @knowcode/doc-builder auth:add-site \
-  --domain docs.yourcompany.com \
-  --name "Company Documentation"
-```
+The new domain-based system eliminates the need for site registration. The system automatically uses the current domain (e.g., `docs.example.com`) as the access key. Just grant users access to your domain in the next step.
 
 ## Step 6: Create Your First User
 
@@ -150,9 +130,18 @@ Users can sign up when they visit your documentation site and try to log in.
 ### Using SQL:
 
 ```sql
--- Replace with actual user ID and site ID
-INSERT INTO docbuilder_access (user_id, site_id)
-VALUES ('user-uuid-here', 'site-uuid-here');
+-- Grant access by domain (no site ID needed!)
+INSERT INTO docbuilder_access (user_id, domain)
+VALUES (
+  (SELECT id FROM auth.users WHERE email = 'user@example.com'),
+  'docs.yourcompany.com'
+);
+
+-- Grant access to multiple domains
+INSERT INTO docbuilder_access (user_id, domain) VALUES
+  ((SELECT id FROM auth.users WHERE email = 'user@example.com'), 'docs.yourcompany.com'),
+  ((SELECT id FROM auth.users WHERE email = 'user@example.com'), 'staging-docs.yourcompany.com'),
+  ((SELECT id FROM auth.users WHERE email = 'user@example.com'), 'localhost:3000');
 ```
 
 ### Using CLI (Coming Soon):
@@ -160,7 +149,7 @@ VALUES ('user-uuid-here', 'site-uuid-here');
 ```bash
 npx @knowcode/doc-builder auth:grant \
   --email user@example.com \
-  --site-id your-site-uuid
+  --domain docs.yourcompany.com
 ```
 
 ## Step 8: Build and Deploy
@@ -180,18 +169,20 @@ Your documentation site now has secure authentication! 🎉
 ### List Users with Access
 
 ```sql
+-- List all users for a specific domain
 SELECT u.email, da.created_at as granted_at
 FROM docbuilder_access da
 JOIN auth.users u ON u.id = da.user_id
-WHERE da.site_id = 'your-site-id';
+WHERE da.domain = 'docs.yourcompany.com';
 ```
 
 ### Revoke Access
 
 ```sql
+-- Remove access for a specific domain
 DELETE FROM docbuilder_access 
 WHERE user_id = (SELECT id FROM auth.users WHERE email = 'user@example.com')
-AND site_id = 'your-site-id';
+AND domain = 'docs.yourcompany.com';
 ```
 
 ### Reset User Password
@@ -200,13 +191,12 @@ Users can reset their own passwords through the login page "Forgot Password" lin
 
 ## Environment Variables (Optional)
 
-For better security, use environment variables:
+For better security with custom Supabase projects, use environment variables:
 
 ```bash
 # .env
 SUPABASE_URL=https://xxx.supabase.co
 SUPABASE_ANON_KEY=eyJ...
-DOC_SITE_ID=your-site-uuid
 ```
 
 Update your config:
@@ -215,35 +205,29 @@ Update your config:
 module.exports = {
   auth: {
     supabaseUrl: process.env.SUPABASE_URL,
-    supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
-    siteId: process.env.DOC_SITE_ID
+    supabaseAnonKey: process.env.SUPABASE_ANON_KEY
+    // No siteId needed - uses domain automatically!
   }
 };
 ```
 
 ## Multi-Site Setup
 
-To use one Supabase project for multiple documentation sites:
+The domain-based system makes multi-site setup incredibly simple:
 
-1. Add each site to the database:
+1. **No site registration needed** - Each domain is automatically recognized
 
-```sql
-INSERT INTO docbuilder_sites (domain, name) VALUES
-('docs.product1.com', 'Product 1 Docs'),
-('internal.company.com', 'Internal Docs'),
-('api.company.com', 'API Documentation');
-```
-
-2. Create separate config files for each site with different `siteId` values
-
-3. Grant users access to specific sites:
+2. **Grant users access to multiple domains**:
 
 ```sql
--- User can access both Product 1 and Internal docs
-INSERT INTO docbuilder_access (user_id, site_id) VALUES
-('user-uuid', 'product1-site-uuid'),
-('user-uuid', 'internal-site-uuid');
+-- User can access multiple documentation sites
+INSERT INTO docbuilder_access (user_id, domain) VALUES
+  ((SELECT id FROM auth.users WHERE email = 'user@example.com'), 'docs.product1.com'),
+  ((SELECT id FROM auth.users WHERE email = 'user@example.com'), 'internal.company.com'),
+  ((SELECT id FROM auth.users WHERE email = 'user@example.com'), 'api.company.com');
 ```
+
+3. **Same configuration for all sites** - Just deploy to different domains!
 
 ## Security Features
 
@@ -260,8 +244,8 @@ INSERT INTO docbuilder_access (user_id, site_id) VALUES
 ### Row Level Security
 
 All data access is protected by RLS policies:
-- Users can only see sites they have access to
 - Users can only see their own access records
+- Domain-based access is automatically enforced
 - No way to access other users' data
 
 ## Troubleshooting
@@ -275,8 +259,8 @@ All data access is protected by RLS policies:
 ### Users Can't Access Site
 
 - Verify the user exists in `auth.users` table
-- Check that user has access in `docbuilder_access` table  
-- Confirm the `site_id` matches your config
+- Check that user has access in `docbuilder_access` table for the correct domain
+- Confirm the domain in the database matches your deployment URL
 
 ### Login Page Not Working
 

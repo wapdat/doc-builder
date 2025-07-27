@@ -45,9 +45,15 @@ graph TD
 2. Create a new project
 3. Note your project URL and anon key
 
-### Step 2: Configure doc-builder
+### Step 2: Configure doc-builder (Mostly Automatic!)
 
-Create or update `doc-builder.config.js`:
+As of v1.8.2, Supabase credentials are automatically configured. You have two options:
+
+**Option 1: Automatic (Recommended)**
+Just create a `docs/private/` directory and authentication is automatically enabled with built-in credentials.
+
+**Option 2: Custom Configuration**
+Create or update `doc-builder.config.js` (only if using your own Supabase project):
 
 ```javascript
 module.exports = {
@@ -58,60 +64,41 @@ module.exports = {
   },
   
   auth: {
-    supabaseUrl: 'https://your-project.supabase.co',
-    supabaseAnonKey: 'your-anon-key',
-    siteId: 'your-site-id'  // From database after setup
+    supabaseUrl: 'https://your-project.supabase.co',  // Optional - has defaults
+    supabaseAnonKey: 'your-anon-key'                  // Optional - has defaults
   }
 };
 ```
 
+Note: No more `siteId` needed! The system uses domains automatically.
+
 ### Step 3: Set Up Database
 
-Run these SQL commands in your Supabase SQL editor:
+Run this SQL command in your Supabase SQL editor (or use setup-database-v2.sql):
 
 ```sql
--- Create sites table
-CREATE TABLE docbuilder_sites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    domain TEXT UNIQUE NOT NULL,
-    name TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
+-- Single table for user access control
+CREATE TABLE docbuilder_access (
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    PRIMARY KEY (user_id, domain)
 );
 
--- Create access table
-CREATE TABLE docbuilder_access (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES auth.users(id),
-    site_id UUID NOT NULL REFERENCES docbuilder_sites(id),
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    UNIQUE(user_id, site_id)
-);
+-- Create index for faster lookups
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
 
 -- Enable Row Level Security
-ALTER TABLE docbuilder_sites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
 
--- Create policies
-CREATE POLICY "Sites visible to users with access" ON docbuilder_sites
-    FOR SELECT USING (
-        id IN (
-            SELECT site_id FROM docbuilder_access 
-            WHERE user_id = auth.uid()
-        )
-    );
-
-CREATE POLICY "Access visible to own user" ON docbuilder_access
+-- RLS Policy: Users can only see their own access
+CREATE POLICY "Users see own access" ON docbuilder_access
     FOR SELECT USING (user_id = auth.uid());
 ```
 
-### Step 4: Add Your Site
+### Step 4: No Site Registration Needed!
 
-```sql
-INSERT INTO docbuilder_sites (domain, name)
-VALUES ('your-domain.com', 'Your Documentation Name');
-```
-
-Note the returned ID - this is your `siteId` for the config.
+With the new domain-based system, you don't need to register sites. The system automatically uses the current domain (e.g., docs.example.com) as the access key.
 
 ### Step 5: Create Users
 
@@ -125,12 +112,18 @@ Users can sign up through Supabase Auth, or you can create them:
 ### Step 6: Grant Access
 
 ```sql
--- Grant user access to your site
-INSERT INTO docbuilder_access (user_id, site_id)
+-- Grant user access to your documentation domain
+INSERT INTO docbuilder_access (user_id, domain)
 VALUES (
     (SELECT id FROM auth.users WHERE email = 'user@example.com'),
-    'your-site-id'
+    'docs.example.com'
 );
+
+-- Grant multiple users access
+INSERT INTO docbuilder_access (user_id, domain)
+SELECT id, 'docs.example.com' 
+FROM auth.users 
+WHERE email IN ('user1@example.com', 'user2@example.com', 'user3@example.com');
 ```
 
 ## Deployment
@@ -187,12 +180,11 @@ Use Supabase dashboard or SQL commands to manage users and access.
 
 ### Security Best Practices
 
-1. **Use environment variables** for sensitive config:
+1. **Use environment variables** for custom config (optional):
    ```javascript
    auth: {
-     supabaseUrl: process.env.SUPABASE_URL,
-     supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
-     siteId: process.env.DOC_SITE_ID
+     supabaseUrl: process.env.SUPABASE_URL || defaultUrl,
+     supabaseAnonKey: process.env.SUPABASE_ANON_KEY || defaultKey
    }
    ```
 

@@ -37,46 +37,29 @@ graph TD
     
     subgraph "Supabase"
         AuthUsers[auth.users]
-        DocSites[docbuilder_sites]
-        DocAccess[docbuilder_access]
+        DocAccess[docbuilder_access with domain]
         AuthUsers -.-> DocAccess
-        DocAccess -.-> DocSites
     end
 ```
 
 ## Database Schema
 
 ```sql
--- Table 1: Documentation sites
-CREATE TABLE docbuilder_sites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    domain TEXT UNIQUE NOT NULL,
-    name TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Table 2: User access mapping
+-- Single table for user access control (simplified!)
 CREATE TABLE docbuilder_access (
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-    site_id UUID REFERENCES docbuilder_sites(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    PRIMARY KEY (user_id, site_id)
+    PRIMARY KEY (user_id, domain)
 );
 
+-- Create index for faster lookups
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
+
 -- Enable Row Level Security
-ALTER TABLE docbuilder_sites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
 
--- RLS Policies
-CREATE POLICY "Users see accessible sites" ON docbuilder_sites
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM docbuilder_access
-            WHERE site_id = docbuilder_sites.id
-            AND user_id = auth.uid()
-        )
-    );
-
+-- RLS Policy: Users can only see their own access
 CREATE POLICY "Users see own access" ON docbuilder_access
     FOR SELECT USING (user_id = auth.uid());
 ```
@@ -94,10 +77,10 @@ CREATE POLICY "Users see own access" ON docbuilder_access
 ```javascript
 // Updated auth configuration - REMOVE basic auth fields
 auth: {
-  // Only Supabase fields remain
+  // Only Supabase fields remain (domain-based, no siteId!)
   supabaseUrl: '',
-  supabaseAnonKey: '',
-  siteId: ''
+  supabaseAnonKey: ''
+  // Domain is detected automatically from window.location.host
 }
 ```
 

@@ -66,9 +66,9 @@ features: {
   authentication: 'supabase'
 },
 auth: {
-  supabaseUrl: 'https://xxx.supabase.co',
-  supabaseAnonKey: 'your-anon-key',
-  siteId: 'your-site-id'
+  supabaseUrl: 'https://xxx.supabase.co',  // Optional - has defaults
+  supabaseAnonKey: 'your-anon-key'         // Optional - has defaults
+  // Domain-based auth - no siteId needed!
 }
 ```
 - Users must log in to access
@@ -147,11 +147,10 @@ If you were using Supabase authentication and want to make your site public:
 
 1. **Remove auth config**:
    ```javascript
-   // Remove this:
+   // Remove this (or keep for custom Supabase):
    auth: {
      supabaseUrl: 'https://xxx.supabase.co',
-     supabaseAnonKey: 'xxx',
-     siteId: 'xxx'
+     supabaseAnonKey: 'xxx'
    }
    ```
 

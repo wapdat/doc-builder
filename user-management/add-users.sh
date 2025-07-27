@@ -18,7 +18,13 @@ NC='\033[0m' # No Color
 # Configuration
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CONFIG_FILE="$SCRIPT_DIR/.supabase-config"
+ENV_FILE="$SCRIPT_DIR/.env"
 PROJECT_ID="xcihhnfcitjrwbynxmka"  # Default project ID
+
+# Load .env file if exists
+if [ -f "$ENV_FILE" ]; then
+    source "$ENV_FILE"
+fi
 
 # Load configuration if exists
 if [ -f "$CONFIG_FILE" ]; then
@@ -209,7 +215,7 @@ execute_sql() {
     
     # Method 1: Try using psql if DATABASE_URL is available
     if [ ! -z "$DATABASE_URL" ]; then
-        local output=$(psql "$DATABASE_URL" -f "$temp_file" 2>&1)
+        local output=$(psql "$DATABASE_URL" -t -A -f "$temp_file" 2>&1)
         local status=$?
         rm "$temp_file"
         
@@ -219,15 +225,21 @@ execute_sql() {
         fi
     fi
     
-    # Method 2: Try newer supabase db execute (for newer CLI versions)
-    if command -v supabase &> /dev/null && supabase db execute --help &> /dev/null 2>&1; then
-        local output=$(cat "$temp_file" | supabase db execute 2>&1)
-        local status=$?
-        rm "$temp_file"
+    # Method 2: Try using supabase db dump to get connection details
+    if command -v supabase &> /dev/null; then
+        # Get database URL from supabase status
+        local db_url=$(supabase status --output json 2>/dev/null | grep -o '"db_url":"[^"]*' | cut -d'"' -f4)
         
-        if [ $status -eq 0 ]; then
-            echo "$output"
-            return 0
+        if [ ! -z "$db_url" ] && [ "$db_url" != "null" ]; then
+            # Try psql with the extracted URL
+            local output=$(psql "$db_url" -t -A -f "$temp_file" 2>&1)
+            local status=$?
+            rm "$temp_file"
+            
+            if [ $status -eq 0 ]; then
+                echo "$output"
+                return 0
+            fi
         fi
     fi
     
@@ -257,9 +269,17 @@ create_user() {
     # Check if user exists first
     local check_sql="SELECT id, email FROM auth.users WHERE email = '$email';"
     
-    local result=$(execute_sql "$check_sql")
+    echo -e "${CYAN}Checking database for user...${NC}"
+    local result=$(execute_sql "$check_sql" 2>&1)
     
-    if echo "$result" | grep -q "$email"; then
+    # Debug output
+    if [ ! -z "$DEBUG" ]; then
+        echo -e "${BLUE}[DEBUG] SQL Result:${NC}"
+        echo "$result"
+    fi
+    
+    # Check if the result contains the email (case insensitive)
+    if echo "$result" | grep -qi "$email"; then
         echo -e "${YELLOW}ℹ️  User already exists${NC}"
         return 0
     else

@@ -1506,7 +1506,6 @@ program
         console.log(chalk.yellow('\n🔐 Supabase Authentication:'));
         console.log(`  • Supabase URL: ${config.auth?.supabaseUrl ? chalk.green('Configured') : chalk.red('Missing')}`);
         console.log(`  • Anonymous Key: ${config.auth?.supabaseAnonKey ? chalk.green('Configured') : chalk.red('Missing')}`);
-        console.log(`  • Site ID: ${config.auth?.siteId ? chalk.green('Configured') : chalk.red('Missing')}`);
       }
       
       if (config.seo?.enabled) {
@@ -1568,8 +1567,7 @@ program
   
   auth: {
     supabaseUrl: '${answers.supabaseUrl}',
-    supabaseAnonKey: '${answers.supabaseAnonKey}',
-    siteId: ''  // Will be set after creating site in database
+    supabaseAnonKey: '${answers.supabaseAnonKey}'
   }
 };`;
 
@@ -1577,51 +1575,22 @@ program
       console.log(chalk.green(`✓ Configuration saved to ${configPath}`));
       
       console.log(chalk.yellow('\n📋 Next steps:'));
-      console.log('1. Create the database tables in your Supabase project (see documentation)');
-      console.log('2. Add your site to the database using: doc-builder auth:add-site');
-      console.log('3. Update the siteId in your config file');
+      console.log('1. Create the database tables in your Supabase project (see setup-database-v2.sql)');
+      console.log('2. Grant users access by adding their domain to docbuilder_access table');
       
     } catch (error) {
       console.error(chalk.red('Error initializing auth:'), error.message);
     }
   });
 
-program
-  .command('auth:add-site')
-  .description('Add a documentation site to Supabase database')
-  .requiredOption('--domain <domain>', 'site domain (e.g., docs.example.com)')
-  .requiredOption('--name <name>', 'site display name')
-  .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
-  .action(async (options) => {
-    console.log(chalk.cyan('\n🌐 Add Documentation Site\n'));
-    
-    try {
-      const config = await loadConfig(options.config || 'doc-builder.config.js', {});
-      
-      if (config.features?.authentication !== 'supabase') {
-        console.error(chalk.red('Error: Supabase authentication is not configured. Run "doc-builder auth:init" first.'));
-        return;
-      }
-
-      // This would connect to Supabase and create the site record
-      console.log(chalk.yellow('🚧 This command requires Supabase admin integration.'));
-      console.log('For now, manually add to your Supabase database:');
-      console.log('');
-      console.log(chalk.gray('INSERT INTO docbuilder_sites (domain, name)'));
-      console.log(chalk.gray(`VALUES ('${options.domain}', '${options.name}');`));
-      console.log('');
-      console.log('Then update your config file with the returned site ID.');
-      
-    } catch (error) {
-      console.error(chalk.red('Error adding site:'), error.message);
-    }
-  });
+// Note: auth:add-site command is no longer needed with domain-based authentication
+// Sites don't need to be registered - just grant users access to domains directly
 
 program
   .command('auth:grant')
   .description('Grant user access to documentation site')
   .requiredOption('--email <email>', 'user email address')
-  .requiredOption('--site-id <id>', 'site ID from database')
+  .requiredOption('--domain <domain>', 'site domain (e.g., docs.example.com)')
   .option('-c, --config <path>', 'path to config file (default: doc-builder.config.js)')
   .action(async (options) => {
     console.log(chalk.cyan('\n👥 Grant User Access\n'));
@@ -1637,9 +1606,9 @@ program
       console.log(chalk.yellow('🚧 This command requires Supabase admin integration.'));
       console.log('For now, manually add to your Supabase database:');
       console.log('');
-      console.log(chalk.gray('-- First, get the user ID from auth.users where email = \'user@example.com\''));
-      console.log(chalk.gray('INSERT INTO docbuilder_access (user_id, site_id)'));
-      console.log(chalk.gray(`VALUES ('user-uuid-here', '${options.siteId}');`));
+      console.log(chalk.gray(`-- First, get the user ID from auth.users where email = '${options.email}'`));
+      console.log(chalk.gray('INSERT INTO docbuilder_access (user_id, domain)'));
+      console.log(chalk.gray(`VALUES ('user-uuid-here', '${options.domain}');`));
       
     } catch (error) {
       console.error(chalk.red('Error granting access:'), error.message);

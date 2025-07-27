@@ -217,10 +217,7 @@ Run the setup command:
 
 ### "Site not found"
 
-Make sure the site exists in the `docbuilder_sites` table. You can check with:
-```bash
-./add-users.sh sites
-```
+With the new domain-based system, sites no longer need to be registered. Just use the domain directly when granting access.
 
 ### "User already exists"
 
@@ -232,29 +229,23 @@ The user already has access to this site. No action needed.
 
 ## 📊 Database Schema
 
-The system uses two main tables:
-
-### docbuilder_sites
-- `id` (UUID) - Primary key
-- `domain` (TEXT) - Site URL without https://
-- `name` (TEXT) - Display name
-- `created_at` (TIMESTAMP)
+The system uses a single table with domain-based access:
 
 ### docbuilder_access
 - `user_id` (UUID) - References auth.users
-- `site_id` (UUID) - References docbuilder_sites
+- `domain` (TEXT) - Site domain (e.g., docs.example.com)
 - `created_at` (TIMESTAMP)
+- Primary key on (user_id, domain)
 
 ## 🎯 Common Workflows
 
 ### Setting up a new documentation site
 
-1. Add the site to the database (manually or via SQL)
-2. Add users who should have access:
-   ```bash
-   ./add-users.sh add my-docs.vercel.app user1@example.com
-   ./add-users.sh add my-docs.vercel.app user2@example.com
-   ```
+No site registration needed! Just add users with domain access:
+```bash
+./add-users.sh add my-docs.vercel.app user1@example.com
+./add-users.sh add my-docs.vercel.app user2@example.com
+```
 
 ### Onboarding multiple team members
 

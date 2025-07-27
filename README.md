@@ -218,11 +218,11 @@ module.exports = {
     attachments: true           // Copy PDFs, Excel files, etc. (default: true)
   },
   
-  // Supabase Authentication
+  // Supabase Authentication (v1.8.2+ has built-in defaults)
   auth: {
-    supabaseUrl: process.env.SUPABASE_URL,
-    supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
-    siteId: process.env.DOC_SITE_ID
+    supabaseUrl: process.env.SUPABASE_URL,       // Optional
+    supabaseAnonKey: process.env.SUPABASE_ANON_KEY  // Optional
+    // Domain-based auth - no siteId needed!
   }
 };
 ```
@@ -387,6 +387,33 @@ my-project/
 ├── doc-builder.config.js  # Configuration (optional)
 └── package.json
 ```
+
+### File and Folder Naming Conventions
+
+- **Hidden files**: Files and folders starting with `.` (dot) are ignored
+- **Private files**: Files and folders starting with `_` (underscore) are excluded from navigation
+- **Authentication**: Use a `private/` folder for content requiring authentication
+
+#### Examples:
+
+```
+docs/
+├── README.md           # ✅ Included in navigation
+├── guide.md            # ✅ Included
+├── _draft.md           # ❌ Excluded (starts with underscore)
+├── .hidden.md          # ❌ Excluded (starts with dot)
+├── _internal/          # ❌ Entire folder excluded
+│   └── notes.md        # ❌ Not visible in navigation
+├── private/            # 🔐 Requires authentication
+│   └── admin.md        # 🔐 Only visible to authenticated users
+└── public/             # ✅ Normal folder
+    └── faq.md          # ✅ Included
+```
+
+This is useful for:
+- Keeping draft documents in your docs folder without publishing them
+- Storing internal notes or templates
+- Maintaining work-in-progress files alongside published documentation
 
 ## Working with Claude Code
 

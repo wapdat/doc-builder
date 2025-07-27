@@ -27,19 +27,15 @@ The user management system is a set of tools designed to manage user access to S
 
 ### Database Schema
 
-The system works with two main tables:
-
-**docbuilder_sites**
-- `id` (UUID) - Primary key
-- `domain` (TEXT) - Site URL without https://
-- `name` (TEXT) - Display name
-- `created_at` (TIMESTAMP)
+The system now uses a simplified single-table design:
 
 **docbuilder_access**
 - `user_id` (UUID) - References auth.users
-- `site_id` (UUID) - References docbuilder_sites
+- `domain` (TEXT) - Site domain (e.g., docs.example.com)
 - `created_at` (TIMESTAMP)
-- Composite primary key on (user_id, site_id)
+- Primary key on (user_id, domain)
+
+No more site registration needed! The system automatically uses the current domain.
 
 ## Implementation Details
 
