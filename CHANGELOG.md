@@ -5,6 +5,33 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2025-07-27
+
+### Added
+- **Image Modal System** - Click any image to view in full-screen modal
+- Professional image modal with smooth animations and backdrop blur
+- Multiple close methods: X button, overlay click, Escape key
+- Auto-displays alt text as captions when available
+- Responsive design for mobile and desktop
+- Dark theme support with proper styling
+- Hover effects on images with subtle transform and shadow
+- Comprehensive markdown document standards guide
+
+### Features
+- All content images automatically become clickable
+- Modal prevents body scrolling when open
+- Professional styling with rounded corners and shadows
+- Keyboard accessibility with Escape key support
+- Alt text integration for meaningful captions
+- Mobile-optimized with adjusted button and caption sizes
+
+### Technical Details
+- CSS-first approach with minimal JavaScript
+- Auto-initialization for all content images via `initImageModal()`
+- Event delegation for proper cleanup and performance
+- Uses CSS variables for consistent theming
+- Backdrop filter effects for modern browser support
+
 ## [1.8.7] - 2025-07-26
 
 ### Fixed
