@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Now that we&#039;ve implemented Supabase authentication, let&#039;s walk through testing the implementation and preparing for deployment. This guide provides detailed,...">
-    <title>Next Steps: Testing and Deployment Walkthrough</title>
-    
-    <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, test, step">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/private/next-steps-walkthrough.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/private/next-steps-walkthrough.html">
-    <meta property="og:title" content="Next Steps: Testing and Deployment Walkthrough">
-    <meta property="og:description" content="Now that we&#39;ve implemented Supabase authentication, let&#39;s walk through testing the implementation and preparing for deployment. This guide provides detailed,...">
-    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    <meta property="og:site_name" content="@knowcode/doc-builder">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@planbbackups">
-    <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="Next Steps: Testing and Deployment Walkthrough">
-    <meta name="twitter:description" content="Now that we&#39;ve implemented Supabase authentication, let&#39;s walk through testing the implementation and preparing for deployment. This guide provides detailed,...">
-    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    
-    <!-- Custom Meta Tags -->
-    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
-    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    <meta name="description" content="Beautiful documentation with the least effort possible">
+    <title>Next Steps: Testing and Deployment Walkthrough - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -45,90 +18,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
-    
-    <!-- Hide content until auth check -->
-    <style>
-      body { 
-        visibility: hidden; 
-        opacity: 0; 
-        transition: opacity 0.3s ease;
-      }
-      body.authenticated { 
-        visibility: visible; 
-        opacity: 1; 
-      }
-      /* Show login/logout pages immediately */
-      body.auth-page {
-        visibility: visible;
-        opacity: 1;
-      }
-      /* Style auth button consistently */
-      .auth-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        font-size: 1.1rem;
-      }
-      .auth-btn:hover {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-      }
-    </style>
-    
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Next Steps: Testing and Deployment Walkthrough",
-  "description": "Now that we've implemented Supabase authentication, let's walk through testing the implementation and preparing for deployment. This guide provides detailed,...",
-  "author": {
-    "@type": "Person",
-    "name": "Lindsay Smith"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Knowcode Ltd",
-    "url": "https://knowcode.tech"
-  },
-  "datePublished": "2025-07-27T08:30:00.660Z",
-  "dateModified": "2025-07-27T08:30:00.660Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/private/next-steps-walkthrough.html"
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "@knowcode/doc-builder",
-        "item": "https://doc-builder-delta.vercel.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Private",
-        "item": "https://doc-builder-delta.vercel.app/private/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Next Steps Walkthrough",
-        "item": "https://doc-builder-delta.vercel.app/private/next-steps-walkthrough.html"
-      }
-    ]
-  }
-}
-</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
     <!-- Header -->
@@ -138,13 +29,9 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.9.0">Last updated: Jul 27, 2025, 08:30 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:32 AM UTC</span>
                 </div>
                 
-                
-                <a href="../../login.html" class="auth-btn" title="Login/Logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -205,6 +92,7 @@
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
+        <a href="/guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="fas fa-file-alt"></i> Image Modal Guide</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
@@ -213,7 +101,7 @@
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
-      <div class="nav-section private-nav" data-level="1">
+      <div class="nav-section" data-level="1">
         <a class="nav-title collapsible expanded" href="#" data-target="nav-private-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
         </a>
@@ -226,7 +114,7 @@
         <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
         <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a>
         <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="fas fa-file-alt"></i> User Management Tooling</a></div></div>
-      <div class="nav-section private-nav" data-level="2">
+      <div class="nav-section" data-level="2">
         <a class="nav-title collapsible" href="/private/launch/README.html" data-target="nav-private-launch-2" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
         </a>
@@ -253,7 +141,7 @@
                 <h1>Next Steps: Testing and Deployment Walkthrough</h1>
 <h2>Overview</h2>
 <p>Now that we&#39;ve implemented Supabase authentication, let&#39;s walk through testing the implementation and preparing for deployment. This guide provides detailed, step-by-step instructions.</p>
-<h2><i class="ph ph-test-tube" aria-label="test"></i> Phase 1: Local Testing</h2>
+<h2>🧪 Phase 1: Local Testing</h2>
 <h3>Step 1: Install Dependencies</h3>
 <p>First, install the new Supabase dependency:</p>
 <pre><code class="language-bash">cd /Users/lindsaysmith/Documents/lambda1.nosync/doc-builder
@@ -419,7 +307,7 @@ VALUES (&#39;USER_ID_FROM_STEP_10&#39;, &#39;localhost:3001&#39;);
 <li><strong>Should see the test content</strong></li>
 <li><strong>Logout should work</strong></li>
 </ol>
-<h2><i class="ph ph-rocket-launch" aria-label="launch"></i> Phase 2: Deployment Testing</h2>
+<h2>🚀 Phase 2: Deployment Testing</h2>
 <h3>Step 13: Test Vercel Deployment</h3>
 <ol>
 <li><strong>Update config for deployment</strong>:</li>
@@ -474,7 +362,7 @@ UPDATE docbuilder_sites
 SET domain = &#39;your-vercel-url.vercel.app&#39;
 WHERE id = &#39;your-site-id&#39;;
 </code></pre>
-<h2><i class="ph ph-wrench" aria-label="settings"></i> Phase 3: Version Management</h2>
+<h2>🔧 Phase 3: Version Management</h2>
 <h3>Step 15: Update Version Number</h3>
 <ol>
 <li><strong>Update package.json</strong>:</li>
@@ -534,7 +422,7 @@ npm install ../doc-builder/*.tgz
 npx doc-builder --version
 npx doc-builder --help
 </code></pre>
-<h2><i class="ph ph-clipboard-text" aria-label="clipboard"></i> Phase 4: Quality Assurance</h2>
+<h2>📋 Phase 4: Quality Assurance</h2>
 <h3>Step 17: Test All CLI Commands</h3>
 <pre><code class="language-bash"># Test help
 node cli.js --help
@@ -572,7 +460,7 @@ grep -r &quot;username.*:&quot; test-html/ || echo &quot;Good - no hardcoded use
 <h3>Step 19: Cross-Platform Testing</h3>
 <p>If possible, test on different systems:</p>
 <ul>
-<li><strong>macOS</strong>: Current system <i class="ph ph-check-circle" aria-label="checked"></i></li>
+<li><strong>macOS</strong>: Current system ✅</li>
 <li><strong>Windows</strong>: Test in WSL or Windows machine</li>
 <li><strong>Linux</strong>: Test in Docker or Linux VM</li>
 </ul>
@@ -591,7 +479,7 @@ find docs/ -name &quot;*.md&quot; -exec grep -l &quot;]\(&quot; {} \;
 </ul>
 </li>
 </ol>
-<h2><i class="ph ph-target" aria-label="goal"></i> Success Criteria Checklist</h2>
+<h2>🎯 Success Criteria Checklist</h2>
 <p>Before considering deployment ready:</p>
 <h3>Functionality</h3>
 <ul>
@@ -625,7 +513,7 @@ find docs/ -name &quot;*.md&quot; -exec grep -l &quot;]\(&quot; {} \;
 <li><input disabled="" type="checkbox"> Environment variable support</li>
 <li><input disabled="" type="checkbox"> Cross-platform functionality</li>
 </ul>
-<h2><i class="ph ph-siren" aria-label="alert"></i> Issues to Watch For</h2>
+<h2>🚨 Issues to Watch For</h2>
 <h3>Common Problems</h3>
 <ol>
 <li><strong>Supabase URL format errors</strong> - Must be <code>https://xxx.supabase.co</code></li>
@@ -650,17 +538,7 @@ find docs/ -name &quot;*.md&quot; -exec grep -l &quot;]\(&quot; {} \;
     </div>
     
     <!-- Scripts -->
-    <script>
-    // Pass configuration to frontend
-    window.docBuilderConfig = {
-      features: {
-        showPdfDownload: true,
-        menuDefaultOpen: false
-      }
-    };
-    </script>
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="/js/auth.js"></script>
+    
 </body>
 </html>

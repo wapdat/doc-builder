@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Beautiful documentation with the least effort possible">
-    <title>Vercel CLI Setup Guide - @knowcode/doc-builder</title>
+    <title>Image Modal Guide - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -74,25 +74,25 @@
             <nav class="navigation">
                 
       <div class="nav-section" data-level="0">
-        <a class="nav-title expanded" href="/README.html"  >
+        <a class="nav-title" href="/README.html"  >
           <i class="fas fa-home"></i> Documentation
         </a>
         <div class="nav-content" >
         <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
         <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
         <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="fas fa-file-alt"></i> Image Modal Test</a>
-        <a href="/vercel-cli-setup-guide.html" class="nav-item active" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
+        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
         <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
-        <a class="nav-title collapsible" href="#" data-target="nav-guides-1" >
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
         </a>
-        <div class="nav-content collapsed" id="nav-guides-1">
+        <div class="nav-content" id="nav-guides-1">
         <a href="/guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="fas fa-file-alt"></i> Authentication Default Change</a>
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
-        <a href="/guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="fas fa-file-alt"></i> Image Modal Guide</a>
+        <a href="/guides/image-modal-guide.html" class="nav-item active" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="fas fa-file-alt"></i> Image Modal Guide</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
@@ -138,222 +138,237 @@
         <!-- Content Area -->
         <main class="content">
             <div class="content-inner">
-                <h1>Vercel CLI Setup Guide</h1>
+                <h1>Image Modal Guide</h1>
+<p>The @knowcode/doc-builder includes a powerful image modal system that automatically transforms all images in your documentation into clickable, full-screen experiences.</p>
 <h2>Overview</h2>
-<p>This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems. While <code>@knowcode/doc-builder</code> handles most deployment complexity for you, understanding Vercel CLI installation and advanced features can be helpful for power users.</p>
-<h2>Prerequisites</h2>
+<p>When users click on any image in your generated documentation, it opens in a professional modal overlay with:</p>
 <ul>
-<li><strong>Node.js</strong>: Version 14.x or higher ✅</li>
-<li><strong>npm</strong> or <strong>yarn</strong>: Package manager ✅</li>
-<li><strong>Git</strong>: For version control (optional but recommended) ✅</li>
+<li>Full-screen viewing experience</li>
+<li>Smooth animations and transitions</li>
+<li>Multiple close methods</li>
+<li>Alt text displayed as captions</li>
+<li>Responsive design for all devices</li>
+<li>Dark theme support</li>
 </ul>
-<h2>Installation Methods</h2>
-<h3>Method 1: npm (Recommended)</h3>
-<pre><code class="language-bash">npm install -g vercel
-</code></pre>
-<p><strong>Official Documentation</strong>: <a href="https://vercel.com/docs/cli#installing-vercel-cli">https://vercel.com/docs/cli#installing-vercel-cli</a></p>
-<h3>Method 2: yarn</h3>
-<pre><code class="language-bash">yarn global add vercel
-</code></pre>
-<h3>Method 3: pnpm</h3>
-<pre><code class="language-bash">pnpm add -g vercel
-</code></pre>
-<h3>Method 4: Homebrew (macOS/Linux)</h3>
-<pre><code class="language-bash">brew install vercel-cli
-</code></pre>
-<p><strong>Homebrew Formula</strong>: <a href="https://formulae.brew.sh/formula/vercel-cli">https://formulae.brew.sh/formula/vercel-cli</a></p>
-<h3>Method 5: Standalone Binary</h3>
-<p>Download directly from: <a href="https://vercel.com/download">https://vercel.com/download</a></p>
-<h2>Quick Start for doc-builder Users</h2>
-<p>If you&#39;re using <code>@knowcode/doc-builder</code>, you only need to:</p>
-<ol>
-<li><p><strong>Install Vercel CLI</strong> (if not already installed):</p>
-<pre><code class="language-bash">npm install -g vercel
-</code></pre>
-</li>
-<li><p><strong>Login to Vercel</strong> (one-time setup):</p>
-<pre><code class="language-bash">vercel login
-</code></pre>
-</li>
-<li><p><strong>Deploy with doc-builder</strong>:</p>
-<pre><code class="language-bash">npx @knowcode/doc-builder@latest deploy
-</code></pre>
-</li>
-</ol>
-<p>That&#39;s it! doc-builder handles all the configuration for you.</p>
-<h2>Detailed Installation Instructions</h2>
-<h2>Understanding Vercel CLI</h2>
-<h3>What Gets Installed</h3>
-<p>The Vercel CLI stores configuration in:</p>
+<h2>Features</h2>
+<h3>Automatic Enhancement</h3>
 <ul>
-<li><strong>macOS/Linux</strong>: <code>~/.vercel/</code></li>
-<li><strong>Windows</strong>: <code>%USERPROFILE%\.vercel\</code></li>
+<li><strong>Zero Configuration</strong>: All content images automatically become clickable</li>
+<li><strong>Hover Effects</strong>: Images show subtle hover animations to indicate they&#39;re interactive</li>
+<li><strong>Professional Styling</strong>: Rounded corners, shadows, and smooth transitions</li>
 </ul>
-<h3>Authentication</h3>
-<pre><code class="language-bash"># Check who you&#39;re logged in as
-vercel whoami
+<h3>Modal Experience</h3>
+<ul>
+<li><strong>Full-Screen Display</strong>: Images scale to fit the screen while maintaining aspect ratio</li>
+<li><strong>Professional Overlay</strong>: Dark backdrop with blur effects</li>
+<li><strong>Caption Support</strong>: Alt text appears as captions below the modal image</li>
+<li><strong>Responsive Design</strong>: Optimized for desktop, tablet, and mobile devices</li>
+</ul>
+<h3>Accessibility</h3>
+<ul>
+<li><strong>Keyboard Navigation</strong>: Press Escape to close the modal</li>
+<li><strong>Multiple Close Methods</strong>: Click X button, click outside image, or press Escape</li>
+<li><strong>Alt Text Integration</strong>: Screen readers can access image descriptions</li>
+<li><strong>Focus Management</strong>: Proper focus handling when modal opens/closes</li>
+</ul>
+<h2>How to Use</h2>
+<h3>Basic Usage</h3>
+<p>Simply include images in your markdown files as normal:</p>
+<pre><code class="language-markdown">![Screenshot of the dashboard showing analytics and metrics](images/dashboard-screenshot.png)
 
-# Log out
-vercel logout
-
-# Log in again
-vercel login
+![Architecture diagram illustrating the data flow between components](diagrams/system-architecture.svg)
 </code></pre>
-<p><strong>Note</strong>: doc-builder automatically generates the necessary <code>vercel.json</code> configuration for you, so you don&#39;t need to create it manually.</p>
-<h2>Advanced Vercel CLI Commands</h2>
-<p>While doc-builder handles deployment, you might want to use these Vercel CLI commands directly:</p>
-<h3>Project Management</h3>
-<pre><code class="language-bash"># List your projects
-vercel project ls
+<h3>Best Practices for Alt Text</h3>
+<p>Since alt text becomes the modal caption, write descriptive, meaningful descriptions:</p>
+<p><strong>✅ Good Alt Text:</strong></p>
+<pre><code class="language-markdown">![User profile settings page with form fields for name, email, and password](images/profile-settings.png)
 
-# View project details
-vercel project &lt;project-name&gt;
+![Mermaid diagram showing the authentication flow from login to dashboard access](diagrams/auth-flow.png)
 
-# Remove a project
-vercel project rm &lt;project-name&gt;
+![Screenshot of Vercel deployment dashboard with project settings highlighted](images/vercel-deployment.png)
 </code></pre>
-<h3>Domain Management</h3>
-<pre><code class="language-bash"># List domains
-vercel domains ls
-
-# Add a domain to a project
-vercel domains add &lt;domain&gt; &lt;project&gt;
-
-# Remove a domain
-vercel domains rm &lt;domain&gt;
+<p><strong>❌ Poor Alt Text:</strong></p>
+<pre><code class="language-markdown">![Screenshot](img1.png)
+![Image](picture.jpg)
+![](diagram.svg)
 </code></pre>
-<h3>Deployment Management</h3>
-<pre><code class="language-bash"># List recent deployments
-vercel ls
-
-# Inspect a deployment
-vercel inspect &lt;deployment-url&gt;
-
-# Remove a deployment
-vercel rm &lt;deployment-url&gt;
+<h3>Image Organization</h3>
+<p>Organize your images in dedicated folders for better maintenance:</p>
+<pre><code>docs/
+├── images/
+│   ├── screenshots/
+│   │   ├── dashboard.png
+│   │   └── settings.png
+│   └── diagrams/
+│       ├── architecture.svg
+│       └── workflow.png
+└── guides/
+    └── setup-guide.md
 </code></pre>
-<h3>Environment Variables</h3>
-<pre><code class="language-bash"># Add environment variable
-vercel env add &lt;name&gt;
+<p>Then reference them in your markdown:</p>
+<pre><code class="language-markdown">![Dashboard overview with analytics charts](../images/screenshots/dashboard.png)
+</code></pre>
+<h2>Styling and Theming</h2>
+<h3>CSS Customization</h3>
+<p>The modal system uses CSS variables that you can customize:</p>
+<pre><code class="language-css">:root {
+  /* Modal overlay background */
+  --color-bg-overlay: rgba(0, 0, 0, 0.9);
+  
+  /* Animation timing */
+  --duration-normal: 0.3s;
+  --easing-out: cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Border radius for modal image */
+  --radius-lg: 12px;
+}
+</code></pre>
+<h3>Dark Theme Support</h3>
+<p>The modal automatically adapts to dark theme:</p>
+<ul>
+<li>Darker overlay background</li>
+<li>Adjusted close button styling</li>
+<li>Proper contrast for captions</li>
+</ul>
+<h2>Technical Implementation</h2>
+<h3>Automatic Initialization</h3>
+<p>The modal system initializes automatically when the page loads:</p>
+<pre><code class="language-javascript">// Automatically called on DOM ready
+initImageModal();
+</code></pre>
+<h3>Event Handling</h3>
+<p>The system uses efficient event delegation:</p>
+<ul>
+<li>Single event listener on the document</li>
+<li>Dynamically handles all current and future images</li>
+<li>Proper cleanup when modal closes</li>
+</ul>
+<h3>Performance Optimizations</h3>
+<ul>
+<li><strong>CSS-First Approach</strong>: Minimal JavaScript for better performance</li>
+<li><strong>Event Delegation</strong>: Efficient handling of multiple images</li>
+<li><strong>Smooth Animations</strong>: Hardware-accelerated CSS transitions</li>
+<li><strong>Memory Management</strong>: Proper event cleanup</li>
+</ul>
+<h2>Supported Image Formats</h2>
+<p>The modal works with all web-compatible image formats:</p>
+<ul>
+<li><strong>Raster Images</strong>: PNG, JPG, JPEG, GIF, WEBP</li>
+<li><strong>Vector Images</strong>: SVG</li>
+<li><strong>Animated Images</strong>: Animated GIFs, WEBP animations</li>
+</ul>
+<h2>Mobile Experience</h2>
+<h3>Touch-Friendly Interface</h3>
+<ul>
+<li><strong>Large Close Button</strong>: Easy to tap on mobile devices</li>
+<li><strong>Gesture Support</strong>: Tap outside image to close</li>
+<li><strong>Responsive Sizing</strong>: Images scale appropriately for screen size</li>
+<li><strong>Optimized Layout</strong>: Adjusted button and caption sizes for mobile</li>
+</ul>
+<h3>Performance on Mobile</h3>
+<ul>
+<li><strong>Lightweight Implementation</strong>: Minimal impact on mobile performance</li>
+<li><strong>Touch Optimizations</strong>: Proper touch event handling</li>
+<li><strong>Viewport Considerations</strong>: Respects device viewport settings</li>
+</ul>
+<h2>Examples</h2>
+<h3>Documentation Screenshots</h3>
+<pre><code class="language-markdown"># Setup Guide
 
-# List environment variables
-vercel env ls
+Follow these steps to configure your application:
 
-# Remove environment variable
-vercel env rm &lt;name&gt;
+1. **Access Settings**
+   
+   ![Settings page with configuration options and form fields for API keys](images/setup/settings-page.png)
+
+2. **Configure API Keys**
+   
+   ![API configuration panel showing input fields for various service keys](images/setup/api-config.png)
+
+3. **Save and Deploy**
+   
+   ![Deployment confirmation screen with success message and next steps](images/setup/deployment-success.png)
+</code></pre>
+<h3>Technical Diagrams</h3>
+<pre><code class="language-markdown"># System Architecture
+
+Our system follows a microservices architecture:
+
+![High-level architecture diagram showing API gateway, microservices, and database layers](diagrams/system-overview.png)
+
+The authentication flow works as follows:
+
+![Sequence diagram illustrating the OAuth authentication process between client, server, and identity provider](diagrams/auth-sequence.png)
+</code></pre>
+<h3>Before/After Comparisons</h3>
+<pre><code class="language-markdown"># UI Improvements
+
+We&#39;ve redesigned the dashboard for better usability:
+
+**Before:**
+![Old dashboard interface with cluttered layout and poor visual hierarchy](images/comparison/dashboard-before.png)
+
+**After:**
+![New dashboard with clean design, improved spacing, and intuitive navigation](images/comparison/dashboard-after.png)
 </code></pre>
 <h2>Troubleshooting</h2>
-<h3>Common Installation Issues</h3>
-<h4>Command Not Found</h4>
-<p>If <code>vercel</code> command is not found after installation:</p>
-<pre><code class="language-bash"># Find npm global bin location
-npm bin -g
+<h3>Images Not Clickable</h3>
+<p><strong>Problem</strong>: Images don&#39;t show hover effects or modal<br><strong>Solution</strong>: Ensure images are within content areas with the <code>.content</code> class</p>
+<h3>Modal Not Opening</h3>
+<p><strong>Problem</strong>: Clicking images doesn&#39;t open modal<br><strong>Solution</strong>: Check that main.js is properly loaded and no JavaScript errors exist</p>
+<h3>Caption Not Showing</h3>
+<p><strong>Problem</strong>: Alt text doesn&#39;t appear as caption<br><strong>Solution</strong>: Verify alt text is present in the markdown image syntax</p>
+<h3>Styling Issues</h3>
+<p><strong>Problem</strong>: Modal appears broken or unstyled<br><strong>Solution</strong>: Ensure notion-style.css is properly loaded</p>
+<h2>Advanced Usage</h2>
+<h3>Custom Image Classes</h3>
+<p>Add custom classes to images for special styling:</p>
+<pre><code class="language-markdown">![Large hero image of the product dashboard](){.hero-image}
+</code></pre>
+<h3>Image Galleries</h3>
+<p>Create image galleries with multiple related images:</p>
+<pre><code class="language-markdown">## Product Screenshots
 
-# Add to PATH (add to your ~/.bashrc or ~/.zshrc)
-export PATH=&quot;$(npm bin -g):$PATH&quot;
+![Dashboard home page with overview widgets](gallery/dashboard-home.png)
+![Analytics page showing detailed metrics and charts](gallery/analytics-view.png)
+![Settings panel with configuration options](gallery/settings-panel.png)
+![User management interface with role assignments](gallery/user-management.png)
 </code></pre>
-<h4>Permission Errors</h4>
-<p>If you get EACCES errors during installation:</p>
-<pre><code class="language-bash"># Option 1: Use npx instead (recommended)
-npx vercel
+<h2>Integration with Other Features</h2>
+<h3>Mermaid Diagrams</h3>
+<p>Mermaid diagrams can also benefit from the modal system when exported as images:</p>
+<pre><code class="language-markdown"><div class="mermaid-wrapper">
+      <div class="mermaid-title">Diagram</div>
+      <div class="mermaid">graph TD
+    A[User Request] --> B{Authentication}
+    B -->|Valid| C[Process Request]
+    B -->|Invalid| D[Return Error]
+    C --> E[Return Response]</div>
+    </div>
 
-# Option 2: Fix npm permissions
-# See: https://docs.npmjs.com/resolving-eacces-permissions-errors
+### PDF Export
 
-# Option 3: Use a Node version manager like nvm
-# See: https://github.com/nvm-sh/nvm
-</code></pre>
-<h4>Authentication Issues</h4>
-<pre><code class="language-bash"># If login fails, try:
-vercel logout
-vercel login
+When using PDF export features, images maintain their quality and alt text information.
 
-# For corporate proxies:
-export HTTP_PROXY=http://proxy.company.com:8080
-export HTTPS_PROXY=http://proxy.company.com:8080
-</code></pre>
-<h2>Platform-Specific Instructions</h2>
-<h3>macOS</h3>
-<ol>
-<li><p><strong>Install via Homebrew</strong> (recommended):</p>
-<pre><code class="language-bash">brew install vercel-cli
-</code></pre>
-</li>
-<li><p><strong>Verify Xcode Command Line Tools</strong>:</p>
-<pre><code class="language-bash">xcode-select --install
-</code></pre>
-</li>
-</ol>
-<p><strong>macOS Guide</strong>: <a href="https://vercel.com/docs/cli#macos-installation">https://vercel.com/docs/cli#macos-installation</a></p>
-<h3>Windows</h3>
-<ol>
-<li><p><strong>Install Node.js</strong> from <a href="https://nodejs.org/">https://nodejs.org/</a></p>
-</li>
-<li><p><strong>Use PowerShell as Administrator</strong>:</p>
-<pre><code class="language-powershell">npm install -g vercel
-</code></pre>
-</li>
-<li><p><strong>Windows-specific issues</strong>: <a href="https://vercel.com/docs/cli#windows-installation">https://vercel.com/docs/cli#windows-installation</a></p>
-</li>
-</ol>
-<h3>Linux</h3>
-<ol>
-<li><p><strong>Install Node.js via package manager</strong>:</p>
-<pre><code class="language-bash"># Ubuntu/Debian
-sudo apt update
-sudo apt install nodejs npm
+### Search Integration
 
-# Fedora
-sudo dnf install nodejs npm
+Alt text content is indexed for search functionality, making images discoverable.
 
-# Arch
-sudo pacman -S nodejs npm
-</code></pre>
-</li>
-<li><p><strong>Install Vercel CLI</strong>:</p>
-<pre><code class="language-bash">sudo npm install -g vercel
-</code></pre>
-</li>
-</ol>
-<p><strong>Linux Guide</strong>: <a href="https://vercel.com/docs/cli#linux-installation">https://vercel.com/docs/cli#linux-installation</a></p>
-<h2>Using Vercel CLI with doc-builder</h2>
-<h3>Deploying to Production</h3>
-<p>While doc-builder handles deployment, you can also use Vercel CLI directly:</p>
-<pre><code class="language-bash"># From your html output directory
-cd html
-vercel --prod
-</code></pre>
-<h3>Working with Teams</h3>
-<pre><code class="language-bash"># Switch between personal and team accounts
-vercel switch
+## Best Practices Summary
 
-# Deploy to a specific team
-vercel --scope team-name
+1. **Write Descriptive Alt Text**: Use meaningful descriptions that work as captions
+2. **Organize Images**: Keep images in dedicated folders with logical structure
+3. **Optimize File Sizes**: Use appropriate image compression for web delivery
+4. **Consider Accessibility**: Ensure alt text provides value for screen readers
+5. **Test Responsiveness**: Verify images work well on different device sizes
+6. **Use Appropriate Formats**: Choose the right image format for your content type
+
+## Conclusion
+
+The image modal system in @knowcode/doc-builder provides a professional, accessible way to showcase images in your documentation. With zero configuration required, it automatically enhances the user experience while maintaining excellent performance and accessibility standards.
+
+For more advanced customization options or troubleshooting, refer to the main documentation or reach out to the community for support.
 </code></pre>
-<h3>CI/CD Integration</h3>
-<p>For automated deployments:</p>
-<pre><code class="language-yaml"># GitHub Actions example
-- name: Deploy Documentation
-  run: |
-    npm install -g @knowcode/doc-builder@latest vercel
-    doc-builder build
-    vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-</code></pre>
-<h2>Key Resources</h2>
-<h3>Official Documentation</h3>
-<ul>
-<li><strong>Vercel CLI Docs</strong>: <a href="https://vercel.com/docs/cli">https://vercel.com/docs/cli</a></li>
-<li><strong>Vercel Dashboard</strong>: <a href="https://vercel.com/dashboard">https://vercel.com/dashboard</a></li>
-<li><strong>Support</strong>: <a href="https://vercel.com/support">https://vercel.com/support</a></li>
-</ul>
-<h3>For doc-builder Users</h3>
-<ul>
-<li><strong>First-Time Setup Guide</strong>: <a href="./vercel-first-time-setup-guide.md">vercel-first-time-setup-guide.md</a></li>
-<li><strong>Troubleshooting Guide</strong>: <a href="./troubleshooting-guide.md">troubleshooting-guide.md</a></li>
-<li><strong>doc-builder Documentation</strong>: <a href="https://www.npmjs.com/package/@knowcode/doc-builder">https://www.npmjs.com/package/@knowcode/doc-builder</a></li>
-</ul>
-<hr>
-<p>This guide covers Vercel CLI installation and advanced usage. For most doc-builder users, the simplified deployment process handles everything automatically. See the <a href="./vercel-first-time-setup-guide.md">First-Time Setup Guide</a> for the streamlined deployment experience.</p>
 
             </div>
         </main>

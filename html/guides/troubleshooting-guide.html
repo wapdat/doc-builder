@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.">
-    <title>Troubleshooting Guide for @knowcode/doc-builder</title>
-    
-    <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, issues, check">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html">
-    <meta property="og:title" content="Troubleshooting Guide for @knowcode/doc-builder">
-    <meta property="og:description" content="This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.">
-    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    <meta property="og:site_name" content="@knowcode/doc-builder">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@planbbackups">
-    <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="Troubleshooting Guide for @knowcode/doc-builder">
-    <meta name="twitter:description" content="This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.">
-    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    
-    <!-- Custom Meta Tags -->
-    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
-    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    <meta name="description" content="Beautiful documentation with the least effort possible">
+    <title>Troubleshooting Guide for @knowcode/doc-builder - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -45,90 +18,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
-    
-    <!-- Hide content until auth check -->
-    <style>
-      body { 
-        visibility: hidden; 
-        opacity: 0; 
-        transition: opacity 0.3s ease;
-      }
-      body.authenticated { 
-        visibility: visible; 
-        opacity: 1; 
-      }
-      /* Show login/logout pages immediately */
-      body.auth-page {
-        visibility: visible;
-        opacity: 1;
-      }
-      /* Style auth button consistently */
-      .auth-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        font-size: 1.1rem;
-      }
-      .auth-btn:hover {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-      }
-    </style>
-    
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Troubleshooting Guide for @knowcode/doc-builder",
-  "description": "This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.",
-  "author": {
-    "@type": "Person",
-    "name": "Lindsay Smith"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Knowcode Ltd",
-    "url": "https://knowcode.tech"
-  },
-  "datePublished": "2025-07-27T08:30:00.631Z",
-  "dateModified": "2025-07-27T08:30:00.631Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html"
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "@knowcode/doc-builder",
-        "item": "https://doc-builder-delta.vercel.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Guides",
-        "item": "https://doc-builder-delta.vercel.app/guides/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Troubleshooting Guide",
-        "item": "https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html"
-      }
-    ]
-  }
-}
-</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
     <!-- Header -->
@@ -138,13 +29,9 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.9.0">Last updated: Jul 27, 2025, 08:30 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:32 AM UTC</span>
                 </div>
                 
-                
-                <a href="../../login.html" class="auth-btn" title="Login/Logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -205,6 +92,7 @@
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
+        <a href="/guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="fas fa-file-alt"></i> Image Modal Guide</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
@@ -213,7 +101,7 @@
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item active" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
-      <div class="nav-section private-nav" data-level="1">
+      <div class="nav-section" data-level="1">
         <a class="nav-title collapsible" href="#" data-target="nav-private-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
         </a>
@@ -226,7 +114,7 @@
         <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
         <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a>
         <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="fas fa-file-alt"></i> User Management Tooling</a></div></div>
-      <div class="nav-section private-nav" data-level="2">
+      <div class="nav-section" data-level="2">
         <a class="nav-title collapsible" href="/private/launch/README.html" data-target="nav-private-launch-2" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
         </a>
@@ -258,10 +146,10 @@
 <p>The most common issue users face is npx caching an older version of doc-builder.</p>
 <p><strong>Symptoms:</strong></p>
 <ul>
-<li><i class="ph ph-x-circle" aria-label="error"></i> Running <code>npx @knowcode/doc-builder</code> shows an old version number</li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> New features aren&#39;t available despite updating</li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> Bug fixes don&#39;t appear to be working</li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> Version shown doesn&#39;t match npm registry</li>
+<li>❌ Running <code>npx @knowcode/doc-builder</code> shows an old version number</li>
+<li>❌ New features aren&#39;t available despite updating</li>
+<li>❌ Bug fixes don&#39;t appear to be working</li>
+<li>❌ Version shown doesn&#39;t match npm registry</li>
 </ul>
 <p><strong>Example:</strong></p>
 <pre><code class="language-bash">$ npx @knowcode/doc-builder@latest --version
@@ -283,6 +171,7 @@ npx @knowcode/doc-builder@1.4.22
 </code></pre>
 <h3>Why This Happens</h3>
 <div class="mermaid-wrapper">
+      <div class="mermaid-title">Diagram</div>
       <div class="mermaid">graph TD
     A[Run npx @knowcode/doc-builder] --> B{Package in cache?}
     B -->|Yes| C[Use cached version]
@@ -324,10 +213,10 @@ npx doc-builder deploy  # Uses local version
 </li>
 <li><p><strong>Ensure correct file extensions:</strong></p>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>README.md</code></li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>guide.md</code></li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> <code>README.txt</code></li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> <code>guide.markdown</code></li>
+<li>✅ <code>README.md</code></li>
+<li>✅ <code>guide.md</code></li>
+<li>❌ <code>README.txt</code></li>
+<li>❌ <code>guide.markdown</code></li>
 </ul>
 </li>
 <li><p><strong>Use custom input directory:</strong></p>
@@ -407,9 +296,9 @@ npx @knowcode/doc-builder@latest set-production-url https://my-docs.vercel.app
 <ol>
 <li><p><strong>Check file name:</strong></p>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>doc-builder.config.js</code></li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> <code>docbuilder.config.js</code></li>
-<li><i class="ph ph-x-circle" aria-label="error"></i> <code>doc-builder-config.js</code></li>
+<li>✅ <code>doc-builder.config.js</code></li>
+<li>❌ <code>docbuilder.config.js</code></li>
+<li>❌ <code>doc-builder-config.js</code></li>
 </ul>
 </li>
 <li><p><strong>Verify export format:</strong></p>
@@ -604,17 +493,7 @@ npm --version
     </div>
     
     <!-- Scripts -->
-    <script>
-    // Pass configuration to frontend
-    window.docBuilderConfig = {
-      features: {
-        showPdfDownload: true,
-        menuDefaultOpen: false
-      }
-    };
-    </script>
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="/js/auth.js"></script>
+    
 </body>
 </html>

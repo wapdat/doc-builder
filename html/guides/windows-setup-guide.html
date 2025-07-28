@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel. Based on real...">
-    <title>Windows Setup Guide for Claude Code &amp; @knowcode...</title>
-    
-    <meta name="author" content="Lindsay Smith">
-    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, claude, code">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html">
-    <meta property="og:title" content="Windows Setup Guide for Claude Code &amp; @knowcode...">
-    <meta property="og:description" content="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel. Based on real...">
-    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    <meta property="og:site_name" content="@knowcode/doc-builder">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@planbbackups">
-    <meta name="twitter:creator" content="@planbbackups">
-    <meta name="twitter:title" content="Windows Setup Guide for Claude Code &amp; @knowcode...">
-    <meta name="twitter:description" content="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel. Based on real...">
-    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
-    
-    <!-- Custom Meta Tags -->
-    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
-    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    <meta name="description" content="Beautiful documentation with the least effort possible">
+    <title>Windows Setup Guide for Claude Code & @knowcode/doc-builder - @knowcode/doc-builder</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -45,90 +18,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
-    
-    <!-- Hide content until auth check -->
-    <style>
-      body { 
-        visibility: hidden; 
-        opacity: 0; 
-        transition: opacity 0.3s ease;
-      }
-      body.authenticated { 
-        visibility: visible; 
-        opacity: 1; 
-      }
-      /* Show login/logout pages immediately */
-      body.auth-page {
-        visibility: visible;
-        opacity: 1;
-      }
-      /* Style auth button consistently */
-      .auth-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        font-size: 1.1rem;
-      }
-      .auth-btn:hover {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-      }
-    </style>
-    
-    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "Windows Setup Guide for Claude Code & @knowcode/doc-builder",
-  "description": "This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel. Based on real...",
-  "author": {
-    "@type": "Person",
-    "name": "Lindsay Smith"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Knowcode Ltd",
-    "url": "https://knowcode.tech"
-  },
-  "datePublished": "2025-07-27T08:30:00.636Z",
-  "dateModified": "2025-07-27T08:30:00.636Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html"
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "@knowcode/doc-builder",
-        "item": "https://doc-builder-delta.vercel.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Guides",
-        "item": "https://doc-builder-delta.vercel.app/guides/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Windows Setup Guide",
-        "item": "https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html"
-      }
-    ]
-  }
-}
-</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
     <!-- Header -->
@@ -138,13 +29,9 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.9.0">Last updated: Jul 27, 2025, 08:30 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:32 AM UTC</span>
                 </div>
                 
-                
-                <a href="../../login.html" class="auth-btn" title="Login/Logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -205,6 +92,7 @@
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
+        <a href="/guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="fas fa-file-alt"></i> Image Modal Guide</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
@@ -213,7 +101,7 @@
         <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item active" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
-      <div class="nav-section private-nav" data-level="1">
+      <div class="nav-section" data-level="1">
         <a class="nav-title collapsible" href="#" data-target="nav-private-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
         </a>
@@ -226,7 +114,7 @@
         <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
         <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a>
         <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="fas fa-file-alt"></i> User Management Tooling</a></div></div>
-      <div class="nav-section private-nav" data-level="2">
+      <div class="nav-section" data-level="2">
         <a class="nav-title collapsible" href="/private/launch/README.html" data-target="nav-private-launch-2" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
         </a>
@@ -256,17 +144,17 @@
 <h2>Quick Prerequisites Overview</h2>
 <p><strong>Required Accounts:</strong></p>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Claude Pro or Max</strong> subscription ($20-200/month) - <a href="https://claude.ai">claude.ai</a></li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Vercel</strong> account (free Hobby plan) - <a href="https://vercel.com">vercel.com</a></li>
-<li><i class="ph ph-star" aria-label="star"></i> <strong>GitHub</strong> account (optional but recommended) - <a href="https://github.com">github.com</a></li>
+<li>✅ <strong>Claude Pro or Max</strong> subscription ($20-200/month) - <a href="https://claude.ai">claude.ai</a></li>
+<li>✅ <strong>Vercel</strong> account (free Hobby plan) - <a href="https://vercel.com">vercel.com</a></li>
+<li>⭐ <strong>GitHub</strong> account (optional but recommended) - <a href="https://github.com">github.com</a></li>
 </ul>
 <p><strong>Required Software:</strong></p>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Windows 10/11 with Administrator access</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Node.js 14+ and npm - <a href="https://nodejs.org">nodejs.org</a></li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Git for Windows - <a href="https://gitforwindows.org">gitforwindows.org</a></li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> PowerShell 5.1+ (included with Windows)</li>
-<li><i class="ph ph-star" aria-label="star"></i> Visual Studio Code (recommended) - <a href="https://code.visualstudio.com">code.visualstudio.com</a></li>
+<li>✅ Windows 10/11 with Administrator access</li>
+<li>✅ Node.js 14+ and npm - <a href="https://nodejs.org">nodejs.org</a></li>
+<li>✅ Git for Windows - <a href="https://gitforwindows.org">gitforwindows.org</a></li>
+<li>✅ PowerShell 5.1+ (included with Windows)</li>
+<li>⭐ Visual Studio Code (recommended) - <a href="https://code.visualstudio.com">code.visualstudio.com</a></li>
 </ul>
 <h2>Understanding Claude vs Claude Code</h2>
 <h3>What&#39;s the Difference?</h3>
@@ -361,37 +249,37 @@
 <td><strong>Windows</strong></td>
 <td>10 or 11</td>
 <td>Operating system</td>
-<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+<td>✅ Required</td>
 </tr>
 <tr>
 <td><strong>Node.js</strong></td>
 <td>14.0+</td>
 <td>JavaScript runtime</td>
-<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+<td>✅ Required</td>
 </tr>
 <tr>
 <td><strong>npm</strong></td>
 <td>(included)</td>
 <td>Package manager</td>
-<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+<td>✅ Required</td>
 </tr>
 <tr>
 <td><strong>Git</strong></td>
 <td>Latest</td>
 <td>Version control</td>
-<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+<td>✅ Required</td>
 </tr>
 <tr>
 <td><strong>PowerShell</strong></td>
 <td>5.1+</td>
 <td>Command line</td>
-<td><i class="ph ph-check-circle" aria-label="checked"></i> Required</td>
+<td>✅ Required</td>
 </tr>
 <tr>
 <td><strong>VS Code</strong></td>
 <td>Latest</td>
 <td>Code editor</td>
-<td><i class="ph ph-star" aria-label="star"></i> Recommended</td>
+<td>⭐ Recommended</td>
 </tr>
 </tbody></table>
 <h3>Administrative Requirements</h3>
@@ -471,7 +359,7 @@
 </li>
 </ul>
 <h2>Step 1: Enable PowerShell Script Execution</h2>
-<p><strong><i class="ph ph-warning-circle" aria-label="warning"></i> IMPORTANT</strong>: This must be done FIRST as Administrator</p>
+<p><strong>⚠️ IMPORTANT</strong>: This must be done FIRST as Administrator</p>
 <h3>Open PowerShell as Administrator</h3>
 <ol>
 <li>Press <code>Windows + X</code></li>
@@ -493,11 +381,11 @@
 <li>Go to <a href="https://nodejs.org/en/download/">Node.js Downloads</a></li>
 <li>Download the <strong>Windows Installer (.msi)</strong> for your system (64-bit recommended)</li>
 <li>Run the installer with these settings:<ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Accept the license agreement</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Default installation location</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>IMPORTANT</strong>: Ensure &quot;npm package manager&quot; is checked</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Add to PATH (should be checked by default)</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Automatically install necessary tools (optional but recommended)</li>
+<li>✅ Accept the license agreement</li>
+<li>✅ Default installation location</li>
+<li>✅ <strong>IMPORTANT</strong>: Ensure &quot;npm package manager&quot; is checked</li>
+<li>✅ Add to PATH (should be checked by default)</li>
+<li>✅ Automatically install necessary tools (optional but recommended)</li>
 </ul>
 </li>
 </ol>
@@ -520,11 +408,11 @@ npm -v
 <li>Go to <a href="https://gitforwindows.org/">Git for Windows</a></li>
 <li>Download the installer</li>
 <li>Run with these recommended settings:<ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Use Visual Studio Code as default editor</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Git from the command line and also from 3rd-party software</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Use bundled OpenSSH</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Checkout Windows-style, commit Unix-style line endings</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Use Windows&#39; default console window</li>
+<li>✅ Use Visual Studio Code as default editor</li>
+<li>✅ Git from the command line and also from 3rd-party software</li>
+<li>✅ Use bundled OpenSSH</li>
+<li>✅ Checkout Windows-style, commit Unix-style line endings</li>
+<li>✅ Use Windows&#39; default console window</li>
 </ul>
 </li>
 </ol>
@@ -546,19 +434,19 @@ npm -v
 <tbody><tr>
 <td><strong>Free</strong></td>
 <td>$0/month</td>
-<td><i class="ph ph-x-circle" aria-label="error"></i> No access</td>
+<td>❌ No access</td>
 <td>Basic chat only</td>
 </tr>
 <tr>
 <td><strong>Pro</strong></td>
 <td>$20/month</td>
-<td><i class="ph ph-check-circle" aria-label="checked"></i> Full access</td>
+<td>✅ Full access</td>
 <td>Individual developers</td>
 </tr>
 <tr>
 <td><strong>Max</strong></td>
 <td>$200/month</td>
-<td><i class="ph ph-check-circle" aria-label="checked"></i> Full access</td>
+<td>✅ Full access</td>
 <td>Power users, higher limits</td>
 </tr>
 </tbody></table>
@@ -740,10 +628,10 @@ vercel login
 </ol>
 <p><strong>Solution</strong>:<br>Use a valid project name following these rules:</p>
 <ul>
-<li><strong>Lowercase only</strong>: <code>my-docs</code> <i class="ph ph-check-circle" aria-label="checked"></i>, <code>My-Docs</code> <i class="ph ph-x-circle" aria-label="error"></i></li>
-<li><strong>Start with letter</strong>: <code>api-docs</code> <i class="ph ph-check-circle" aria-label="checked"></i>, <code>123-docs</code> <i class="ph ph-x-circle" aria-label="error"></i></li>
+<li><strong>Lowercase only</strong>: <code>my-docs</code> ✅, <code>My-Docs</code> ❌</li>
+<li><strong>Start with letter</strong>: <code>api-docs</code> ✅, <code>123-docs</code> ❌</li>
 <li><strong>Valid characters</strong>: Letters, numbers, <code>.</code>, <code>_</code>, <code>-</code></li>
-<li><strong>No triple hyphens</strong>: <code>my-cool-docs</code> <i class="ph ph-check-circle" aria-label="checked"></i>, <code>my---docs</code> <i class="ph ph-x-circle" aria-label="error"></i></li>
+<li><strong>No triple hyphens</strong>: <code>my-cool-docs</code> ✅, <code>my---docs</code> ❌</li>
 </ul>
 <p><strong>Examples of valid names</strong>:</p>
 <ul>
@@ -830,17 +718,7 @@ npm cache clean --force
     </div>
     
     <!-- Scripts -->
-    <script>
-    // Pass configuration to frontend
-    window.docBuilderConfig = {
-      features: {
-        showPdfDownload: true,
-        menuDefaultOpen: false
-      }
-    };
-    </script>
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="/js/auth.js"></script>
+    
 </body>
 </html>
