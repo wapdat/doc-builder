@@ -36,6 +36,7 @@ npx @knowcode/doc-builder@latest deploy
 
 - **Scans** your markdown files and automatically generates navigation
 - **Converts** markdown to HTML with syntax highlighting and diagram support
+- **Enhances** images with clickable modals for full-screen viewing
 - **Styles** everything with a clean, Notion-inspired theme
 - **Deploys** to Vercel with a single command - leveraging their generous free tier
 - **Provides** optional features like authentication, dark mode, and changelog generation, SEO
@@ -74,6 +75,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - 🔍 **SEO Optimized** - Meta tags & structured data
 - 🔐 **Optional Auth** - Supabase authentication (opt-in)
 - 📊 **Mermaid Diagrams** - Built-in diagram support
+- 🖼️ **Image Modals** - Click any image for full-screen view
 - 🌙 **Dark Mode** - Automatic theme switching
 - ☁️ **Vercel Deploy** - One-command deployment
 - ✅ **Google Verification** - Search Console ready
