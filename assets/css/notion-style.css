@@ -2052,8 +2052,8 @@ code .ph {
   display: none;
 }
 
-/* Show private navigation when user is authenticated */
-body.authenticated .private-nav {
+/* Show private navigation when user has private access */
+body.has-private-access .private-nav {
   display: block;
 }
 
