@@ -80,6 +80,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 - ☁️ **Vercel Deploy** - One-command deployment
 - ✅ **Google Verification** - Search Console ready
 - 📎 **Attachment Support** - Excel, PDF & more deploy with docs
+- 🌐 **HTML Embedding** - Include interactive HTML pages via iframes
 
 </td>
 </tr>

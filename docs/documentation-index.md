@@ -38,6 +38,7 @@ docs/
 | Document Standards | [guides/documentation-standards.md](./guides/documentation-standards.md) | How to write docs for this project |
 | Authentication Guide | [guides/authentication-guide.md](./guides/authentication-guide.md) | Setting up password protection |
 | Image Modal Guide | [guides/image-modal-guide.md](./guides/image-modal-guide.md) | Full-screen image viewing feature |
+| HTML Embedding Guide | [guides/html-embedding-guide.md](./guides/html-embedding-guide.md) | Embed interactive HTML via iframes |
 | SEO Guide | [guides/seo-guide.md](./guides/seo-guide.md) | SEO features and configuration |
 | SEO Optimization Guide | [guides/seo-optimization-guide.md](./guides/seo-optimization-guide.md) | Comprehensive SEO best practices |
 | Phosphor Icons Guide | [guides/phosphor-icons-guide.md](./guides/phosphor-icons-guide.md) | Emoji to icon conversion feature |

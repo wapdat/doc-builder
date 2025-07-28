@@ -5,6 +5,35 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.2] - 2025-07-28
+
+### Added
+- **HTML File Support** - HTML files (.html, .htm) are now treated as attachments and automatically copied during build
+- **Interactive Content Embedding** - Embed custom HTML pages, widgets, and interactive demos using iframes
+- Comprehensive HTML Embedding Guide with security best practices and examples
+- Support for maintaining HTML file directory structure in output
+
+### Changed
+- Updated attachment types configuration to include web files (.html, .htm)
+- Enhanced documentation to showcase HTML embedding capabilities
+
+## [1.9.1] - 2025-07-28
+
+### Added
+- Added 12 new Unicode emoji to Phosphor icon mappings:
+  - 🏔️ → mountains icon
+  - 🏞️ → park/nature icon
+  - 🌅 → sunrise icon
+  - ♿ → wheelchair/accessibility icon
+  - 🌓 → moon-stars/half moon icon
+  - 🃏 → cards/joker card icon
+  - 🧩 → puzzle piece icon
+  - ⏳ → hourglass icon
+  - 👆 → hand pointing up icon
+  - 📑 → file-text/document icon
+  - 💀 → skull icon
+  - 🔤 → textbox/letters icon
+
 ## [1.9.0] - 2025-07-27
 
 ### Added

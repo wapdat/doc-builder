@@ -20,6 +20,41 @@ This file provides comprehensive guidance for Claude Code when working with the 
 - 📱 **Fully responsive** design
 - 🔧 **Zero configuration** - works with sensible defaults
 
+## Emoji to Icon Mapping
+
+The project includes automatic emoji to Phosphor icon conversion in markdown files. To add new emoji mappings:
+
+### Adding New Emoji Mappings
+
+1. **Location**: Edit `lib/emoji-mapper.js`
+2. **Structure**: Add entries to the `emojiToPhosphor` object
+3. **Format**: `'🏷️': '<i class="ph ph-tag" aria-label="tag"></i>'`
+
+### Guidelines for New Mappings
+
+- **Categorization**: Place emojis in appropriate sections (UI & Design, Actions & Navigation, etc.)
+- **Icon Selection**: Use appropriate Phosphor icons from https://phosphoricons.com
+- **Aria Labels**: Include descriptive aria-label attributes for accessibility
+- **Semantic Matching**: Choose icons that best represent the emoji's meaning
+
+### Example Addition
+
+```javascript
+// In the UI & Design section
+'🏷️': '<i class="ph ph-tag" aria-label="tag"></i>',
+'👁️': '<i class="ph ph-eye" aria-label="view"></i>',
+```
+
+### Available Phosphor Icon Weights
+
+The system supports different icon weights via configuration:
+- `regular` (default)
+- `thin`
+- `light` 
+- `bold`
+- `fill`
+- `duotone`
+
 ## Documentation Guidelines
 
 - For this project documentation, do not include in each document:
