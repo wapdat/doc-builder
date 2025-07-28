@@ -3,14 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Beautiful documentation with the least effort possible">
-    <title>SEO Optimization Guide - @knowcode/doc-builder</title>
+    <meta name="description" content="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.">
+    <title>SEO Optimization Guide for @knowcode/doc-builder</title>
+    
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, SEO, optimization">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html">
+    <meta property="og:title" content="SEO Optimization Guide for @knowcode/doc-builder">
+    <meta property="og:description" content="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="SEO Optimization Guide for @knowcode/doc-builder">
+    <meta name="twitter:description" content="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
     
     <!-- Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -18,8 +45,90 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
     
+    
+    <!-- Hide content until auth check -->
+    <style>
+      body { 
+        visibility: hidden; 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+      }
+      body.authenticated { 
+        visibility: visible; 
+        opacity: 1; 
+      }
+      /* Show login/logout pages immediately */
+      body.auth-page {
+        visibility: visible;
+        opacity: 1;
+      }
+      /* Style auth button consistently */
+      .auth-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+      }
+      .auth-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+      }
+    </style>
+    
+    
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "SEO Optimization Guide for @knowcode/doc-builder",
+  "description": "Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-07-28T14:59:21.696Z",
+  "dateModified": "2025-07-28T14:59:21.696Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Seo Optimization Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html"
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body>
     <!-- Header -->
@@ -29,9 +138,13 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.4.21">Last updated: Jul 27, 2025, 08:32 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.9.2">Last updated: Jul 28, 2025, 02:59 PM UTC</span>
                 </div>
                 
+                
+                <a href="../../login.html" class="auth-btn" title="Login/Logout">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
                 
                 
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -92,16 +205,18 @@
         <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
         <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
         <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
+        <a href="/guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="fas fa-file-alt"></i> Html Embedding Guide</a>
         <a href="/guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="fas fa-file-alt"></i> Image Modal Guide</a>
         <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
         <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
+        <a href="/guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="fas fa-file-alt"></i> Private Directory Authentication Troubleshooting</a>
         <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
         <a href="/guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="fas fa-file-alt"></i> Search Engine Verification Guide</a>
         <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
         <a href="/guides/seo-optimization-guide.html" class="nav-item active" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
         <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
         <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
-      <div class="nav-section" data-level="1">
+      <div class="nav-section private-nav" data-level="1">
         <a class="nav-title collapsible" href="#" data-target="nav-private-1" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
         </a>
@@ -114,7 +229,7 @@
         <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
         <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a>
         <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="fas fa-file-alt"></i> User Management Tooling</a></div></div>
-      <div class="nav-section" data-level="2">
+      <div class="nav-section private-nav" data-level="2">
         <a class="nav-title collapsible" href="/private/launch/README.html" data-target="nav-private-launch-2" >
           <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
         </a>
@@ -138,9 +253,7 @@
         <!-- Content Area -->
         <main class="content">
             <div class="content-inner">
-                <hr>
-<h2>title: &quot;SEO Optimization Guide for @knowcode/doc-builder&quot;<br>description: &quot;Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.&quot;<br>keywords: [&quot;SEO&quot;, &quot;documentation&quot;, &quot;optimization&quot;, &quot;front matter&quot;, &quot;meta tags&quot;, &quot;search engines&quot;, &quot;doc-builder&quot;]<br>author: &quot;Doc Builder Team&quot;<br>date: &quot;2025-07-22&quot;</h2>
-<h1>SEO Optimization Guide</h1>
+                <h1>SEO Optimization Guide</h1>
 <h2>Overview</h2>
 <p>@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search engines. This guide explains what these features do, how to use them effectively, and provides references to authoritative SEO resources.</p>
 <h2>Why SEO Matters for Documentation</h2>
@@ -274,15 +387,15 @@ keywords: [&quot;authentication&quot;, &quot;security&quot;, &quot;password prot
 <h3>Examples</h3>
 <p>Good titles:</p>
 <ul>
-<li>✅ &quot;Authentication Guide | Doc Builder&quot; (38 chars)</li>
-<li>✅ &quot;SEO Best Practices for Documentation | MyDocs&quot; (45 chars)</li>
-<li>✅ &quot;Quick Start: Deploy to Vercel | Doc Builder&quot; (43 chars)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> &quot;Authentication Guide | Doc Builder&quot; (38 chars)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> &quot;SEO Best Practices for Documentation | MyDocs&quot; (45 chars)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> &quot;Quick Start: Deploy to Vercel | Doc Builder&quot; (43 chars)</li>
 </ul>
 <p>Bad titles:</p>
 <ul>
-<li>❌ &quot;Guide&quot; (5 chars - too short)</li>
-<li>❌ &quot;The Complete Comprehensive Guide to Setting Up Authentication and Security for Your Documentation Website | Doc Builder&quot; (118 chars - too long)</li>
-<li>❌ &quot;Page Title | Site Name | Category | Subcategory&quot; (keyword stuffing)</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> &quot;Guide&quot; (5 chars - too short)</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> &quot;The Complete Comprehensive Guide to Setting Up Authentication and Security for Your Documentation Website | Doc Builder&quot; (118 chars - too long)</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> &quot;Page Title | Site Name | Category | Subcategory&quot; (keyword stuffing)</li>
 </ul>
 <h2>Meta Descriptions</h2>
 <h3>Best Practices</h3>
@@ -304,13 +417,13 @@ keywords: [&quot;authentication&quot;, &quot;security&quot;, &quot;password prot
 <h3>Examples</h3>
 <p>Good descriptions:</p>
 <ul>
-<li>✅ &quot;Learn how to implement authentication in your documentation site. Step-by-step guide with code examples and security best practices.&quot; (139 chars)</li>
-<li>✅ &quot;Optimize your documentation for search engines with our comprehensive SEO guide. Covers titles, descriptions, and keyword strategies.&quot; (143 chars)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> &quot;Learn how to implement authentication in your documentation site. Step-by-step guide with code examples and security best practices.&quot; (139 chars)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> &quot;Optimize your documentation for search engines with our comprehensive SEO guide. Covers titles, descriptions, and keyword strategies.&quot; (143 chars)</li>
 </ul>
 <p>Bad descriptions:</p>
 <ul>
-<li>❌ &quot;This page is about authentication.&quot; (35 chars - too short)</li>
-<li>❌ &quot;Authentication authentication authentication...&quot; (keyword stuffing)</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> &quot;This page is about authentication.&quot; (35 chars - too short)</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> &quot;Authentication authentication authentication...&quot; (keyword stuffing)</li>
 </ul>
 <h2>Keywords Strategy</h2>
 <h3>Modern Keyword Approach (2025)</h3>
@@ -354,14 +467,14 @@ doc-builder seo-check html/guide.html
 <h3>What It Analyzes in HTML</h3>
 <p>The command inspects the actual HTML output that search engines see:</p>
 <ul>
-<li>✅ <strong>Title tags</strong> - Presence and optimal length (50-60 chars)</li>
-<li>✅ <strong>Meta descriptions</strong> - Quality and character count (140-160)</li>
-<li>✅ <strong>Keywords meta tag</strong> - Presence of relevant keywords</li>
-<li>✅ <strong>Canonical URLs</strong> - Prevents duplicate content penalties</li>
-<li>✅ <strong>H1 tags</strong> - Ensures proper heading structure</li>
-<li>✅ <strong>Open Graph tags</strong> - Social media optimization</li>
-<li>✅ <strong>Twitter Card tags</strong> - Twitter/X optimization</li>
-<li>✅ <strong>Structured data</strong> - JSON-LD implementation</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Title tags</strong> - Presence and optimal length (50-60 chars)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Meta descriptions</strong> - Quality and character count (140-160)</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Keywords meta tag</strong> - Presence of relevant keywords</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Canonical URLs</strong> - Prevents duplicate content penalties</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>H1 tags</strong> - Ensures proper heading structure</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Open Graph tags</strong> - Social media optimization</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Twitter Card tags</strong> - Twitter/X optimization</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> <strong>Structured data</strong> - JSON-LD implementation</li>
 </ul>
 <h3>Example Output</h3>
 <pre><code>🔍 Analyzing SEO in generated HTML files...
@@ -444,28 +557,28 @@ Your content here...
 <h2>Common SEO Mistakes to Avoid</h2>
 <h3>1. Duplicate Content</h3>
 <ul>
-<li>❌ Same description on multiple pages</li>
-<li>✅ Unique descriptions for each page</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> Same description on multiple pages</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Unique descriptions for each page</li>
 </ul>
 <h3>2. Keyword Stuffing</h3>
 <ul>
-<li>❌ &quot;Guide guide documentation guide tutorial guide&quot;</li>
-<li>✅ Natural keyword usage in context</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> &quot;Guide guide documentation guide tutorial guide&quot;</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Natural keyword usage in context</li>
 </ul>
 <h3>3. Ignoring Mobile</h3>
 <ul>
-<li>❌ Long titles that get cut off on mobile</li>
-<li>✅ Test how titles appear on different devices</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> Long titles that get cut off on mobile</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Test how titles appear on different devices</li>
 </ul>
 <h3>4. Missing Descriptions</h3>
 <ul>
-<li>❌ Leaving description blank</li>
-<li>✅ Always provide meaningful descriptions</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> Leaving description blank</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Always provide meaningful descriptions</li>
 </ul>
 <h3>5. Generic Titles</h3>
 <ul>
-<li>❌ &quot;Documentation&quot;, &quot;Guide&quot;, &quot;Page 1&quot;</li>
-<li>✅ Specific, descriptive titles</li>
+<li><i class="ph ph-x-circle" aria-label="error"></i> &quot;Documentation&quot;, &quot;Guide&quot;, &quot;Page 1&quot;</li>
+<li><i class="ph ph-check-circle" aria-label="checked"></i> Specific, descriptive titles</li>
 </ul>
 <h2>SEO Checklist</h2>
 <p>Before publishing, ensure:</p>
@@ -748,7 +861,17 @@ doc-builder deploy
     </div>
     
     <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false
+      }
+    };
+    </script>
     <script src="/js/main.js"></script>
-    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="/js/auth.js"></script>
 </body>
 </html>

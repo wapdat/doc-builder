@@ -2,277 +2,301 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://doc-builder-delta.vercel.app/404.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/README.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/claude-workflow-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/documentation-index.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc-builder-delta.vercel.app/examples/interactive-demo.html</loc>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/authentication-default-change.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/authentication-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/cache-control-anti-pattern.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/document-standards.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/documentation-standards.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc-builder-delta.vercel.app/guides/html-embedding-guide.html</loc>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc-builder-delta.vercel.app/guides/image-modal-guide.html</loc>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/next-steps-walkthrough.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/phosphor-icons-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc-builder-delta.vercel.app/guides/private-directory-authentication-troubleshooting.html</loc>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/private-directory-authentication.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/public-site-deployment.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/search-engine-verification-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/seo-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/supabase-auth-implementation-plan.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/supabase-auth-integration-plan.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/supabase-auth-setup-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/vercel-deployment-auth-setup.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/guides/windows-setup-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/image-modal-test.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/index.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/launch/README.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/launch/bubble-plugin-specification.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/launch/go-to-market-strategy.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/launch/launch-announcements.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/cache-control-anti-pattern.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/launch/README.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/launch/auth-cleanup-summary.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/launch/bubble-plugin-specification.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/launch/go-to-market-strategy.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/launch/launch-announcements.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/launch/vercel-deployment-auth-setup.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/next-steps-walkthrough.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/supabase-auth-implementation-completed.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/supabase-auth-implementation-plan.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/supabase-auth-integration-plan.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/supabase-auth-setup-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/test-private-doc.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/private/user-management-tooling.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/prompts/markdown-document-standards.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/vercel-cli-setup-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://doc-builder-delta.vercel.app/vercel-first-time-setup-guide.html</loc>
-    <lastmod>2025-07-27T08:30:10.848Z</lastmod>
+    <lastmod>2025-07-28T14:59:21.759Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

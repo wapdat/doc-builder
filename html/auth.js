@@ -58,16 +58,17 @@
                 if (isPrivatePage) {
                     showAccessDenied();
                 } else {
-                    // Public page, just show it
-                    document.body.classList.add('authenticated');
+                    // Public page, show it but don't grant private navigation access
+                    document.body.classList.add('authenticated'); // Show body content
                     updateAuthButton(false);
                 }
                 return;
             }
             
-            // User is authenticated and has access
+            // User is authenticated and has domain access - grant full access including private nav
             console.log('User authenticated and authorized');
             document.body.classList.add('authenticated');
+            document.body.classList.add('has-private-access'); // Grant private navigation access
             updateAuthButton(true);
             
         } catch (error) {
