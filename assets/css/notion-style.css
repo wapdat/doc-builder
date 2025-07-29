@@ -1097,11 +1097,11 @@ tr:hover {
 /* Mermaid Full Screen Viewer */
 .mermaid-container {
   position: relative;
-  margin: var(--space-3) 0;
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--color-bg-default);
+  margin: var(--space-6) 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
 }
 
 .mermaid-title {
@@ -1114,14 +1114,27 @@ tr:hover {
 }
 
 .mermaid-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-bg-secondary);
-  border-bottom: 1px solid var(--color-border-default);
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-muted);
+  padding: var(--space-1);
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+}
+
+.mermaid-container:hover .mermaid-toolbar {
+  opacity: 1;
+}
+
+/* Subtle hover effects for diagram containers */
+.mermaid-container:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .mermaid-actions {
@@ -1130,32 +1143,28 @@ tr:hover {
 }
 
 .mermaid-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1-5);
-  padding: var(--space-1-5) var(--space-3);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  background: var(--color-bg-default);
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: var(--text-sm);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
   cursor: pointer;
   transition: all var(--duration-fast);
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mermaid-btn:hover {
   background: var(--color-accent-blue);
-  color: var(--color-text-inverse);
-  border-color: var(--color-accent-blue);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  color: white;
+  transform: scale(1.05);
 }
 
 .mermaid-btn i {
-  font-size: var(--text-xs);
-  flex-shrink: 0;
+  font-size: 14px;
 }
 
 .mermaid-wrapper {
