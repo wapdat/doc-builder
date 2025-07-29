@@ -2079,12 +2079,41 @@ body.has-private-access .private-nav {
   border-radius: var(--radius-md);
   max-width: 100%;
   height: auto;
+  margin: var(--space-8) 0; /* Add generous vertical spacing */
 }
 
 .content img:hover {
   opacity: 0.9;
   transform: scale(1.02);
   box-shadow: var(--shadow-lg);
+}
+
+/* Images within paragraphs - center them with extra spacing */
+.content p img {
+  margin: var(--space-6) auto; /* 24px top/bottom, auto left/right for centering */
+  display: block; /* Ensure block-level behavior for centering */
+}
+
+/* Extra spacing between consecutive images */
+.content img + img {
+  margin-top: var(--space-12); /* 48px between consecutive images */
+}
+
+/* Figure elements for better image presentation */
+.content figure {
+  margin: var(--space-10) 0; /* 40px top/bottom for figures */
+  text-align: center; /* Center figures by default */
+}
+
+.content figure img {
+  margin: 0; /* Reset margin for images within figures */
+}
+
+.content figcaption {
+  margin-top: var(--space-3); /* 12px spacing above captions */
+  font-size: var(--text-sm); /* Smaller text for captions */
+  color: var(--text-muted); /* Muted color for captions */
+  font-style: italic; /* Italic style for captions */
 }
 
 /* Modal overlay - hidden by default */
