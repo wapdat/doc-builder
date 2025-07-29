@@ -85,7 +85,8 @@ function initializeMermaidFullScreen() {
     // Full screen button
     const fullScreenBtn = document.createElement('button');
     fullScreenBtn.className = 'mermaid-btn';
-    fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i> Full Screen';
+    fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+    fullScreenBtn.title = 'Full Screen';
     fullScreenBtn.addEventListener('click', () => openMermaidFullScreen(mermaidDiv, index));
     
     actions.appendChild(fullScreenBtn);
