@@ -310,6 +310,23 @@ doc-builder automatically copies attachment files (Excel, PDF, images, etc.) to 
 
 To disable attachment copying, use the `--no-attachments` flag with build or deploy commands.
 
+### 🛡️ File Safety & Non-Printable Character Handling
+
+doc-builder v1.9.26+ automatically handles files with non-printable characters in their names to prevent build failures:
+
+- **Automatic Detection**: Files with non-printable ASCII characters (0x00-0x1F, 0x7F-0x9F) are automatically detected
+- **Safe Processing**: Problematic files are skipped during scanning with a warning message
+- **Clear Feedback**: You'll see messages like: `⚠️ Skipping file with non-printable characters: [sanitized name]`
+- **Prevents Errors**: Eliminates YAML parsing errors and build failures caused by malformed filenames
+
+**Common scenarios this fixes**:
+- Files copied from certain operating systems with special characters
+- Documents exported from applications that add invisible control characters
+- Files with corruption in their metadata
+- Cross-platform compatibility issues
+
+This ensures your documentation builds successfully even when your source directory contains files with problematic names.
+
 ## 📋 Commands Overview
 
 <table>

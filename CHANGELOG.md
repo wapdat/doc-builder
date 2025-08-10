@@ -5,6 +5,25 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.26] - 2025-08-10
+
+### Added
+- **Non-Printable Character Handling** - Automatically detects and skips files with non-printable ASCII characters (0x00-0x1F, 0x7F-0x9F) in their names
+- **Safe File Processing** - Prevents YAML parsing errors and build failures caused by malformed filenames
+- **Clear User Feedback** - Displays warning messages with sanitized filenames when problematic files are encountered
+- **Cross-Platform Compatibility** - Handles files with special characters from different operating systems
+
+### Fixed
+- **Build Failures** - Resolved "stream contains non-printable characters" YAML parsing errors during deployment
+- **File Scanning Issues** - Fixed crashes when encountering files with control characters or corrupted metadata
+- **Deployment Errors** - Eliminated deployment failures caused by problematic filenames in source directories
+
+### Technical
+- Added `hasNonPrintableChars()` function to detect problematic filenames
+- Added `sanitizeFilename()` function for safe display of problematic names
+- Updated all file scanning functions (`getAllMarkdownFiles`, `getAllAttachmentFiles`, `findHtmlFiles`)
+- Enhanced `fs.readdir` and `fs.readdirSync` operations with safety checks
+
 ## [1.9.18] - 2025-08-02
 
 ### Added

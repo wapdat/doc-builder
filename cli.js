@@ -36,6 +36,7 @@ ${chalk.yellow('What it does:')}
   • Deploys to Vercel with one command (zero configuration)
   • ${chalk.green.bold('NEW:')} Shows help by default, use 'deploy' to publish (v1.3.0+)
   • Optional authentication to protect private documentation
+  • Handles files with non-printable characters safely (v1.9.26+)
 
 ${chalk.yellow('Requirements:')}
   • Node.js 14+ installed
@@ -87,6 +88,10 @@ ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder build --no-auth              ${chalk.gray('# Build public site without authentication')}
   ${chalk.gray('$')} doc-builder build --no-static            ${chalk.gray('# Skip static output generation')}
   ${chalk.gray('$')} doc-builder build --static-dir public    ${chalk.gray('# Use custom static output directory')}
+
+${chalk.yellow('File Safety:')}
+  Files with non-printable characters in their names are automatically skipped
+  to prevent build failures. You'll see warnings for any problematic files.
 `)
   .action(async (options) => {
     const spinner = ora('Building documentation...').start();
@@ -627,6 +632,10 @@ ${chalk.yellow('Examples:')}
   ${chalk.gray('$')} doc-builder deploy                 ${chalk.gray('# Deploy to production')}
   ${chalk.gray('$')} doc-builder deploy --no-prod       ${chalk.gray('# Deploy preview only')}
   ${chalk.gray('$')} doc-builder deploy --no-auth       ${chalk.gray('# Deploy public site without authentication')}
+
+${chalk.yellow('File Safety:')}
+  Files with non-printable characters are automatically skipped during deployment
+  to prevent YAML parsing errors. You'll see warnings for any problematic files.
 
 ${chalk.yellow('First-time Vercel Setup:')}
   
