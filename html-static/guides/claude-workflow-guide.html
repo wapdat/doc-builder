@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it to...">
+    <title>Claude + CLAUDE.md Documentation Workflow Guide</title>
+    
+    <meta name="generator" content="@knowcode/doc-builder by Knowcode Ltd">
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, claude, error">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html">
+    <meta property="og:title" content="Claude + CLAUDE.md Documentation Workflow Guide">
+    <meta property="og:description" content="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it to...">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="Claude + CLAUDE.md Documentation Workflow Guide">
+    <meta name="twitter:description" content="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it to...">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/notion-style.css">
+    
+    
+    <!-- Blue theme and white background overrides for static output -->
+    <style>
+      /* Override green colors with blue */
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #dbeafe;
+        --accent: #3b82f6;
+        --color-accent-green: #2563eb;
+        --color-accent-emerald: #3b82f6;
+        
+        /* White backgrounds for cleaner appearance */
+        --color-bg-secondary: #FFFFFF;
+        --color-bg-tertiary: #FAFAFA;
+        --color-bg-hover: #F8F9FA;
+      }
+      
+      /* Override green status colors with blue variants */
+      .nav-item.active {
+        background-color: #dbeafe !important;
+        color: #1d4ed8 !important;
+      }
+      
+      .nav-item:hover {
+        background-color: #eff6ff !important;
+      }
+      
+      /* Override complete/success icons to blue */
+      .ph-check-circle[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override README/home icon color */
+      .ph-house[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override links */
+      a {
+        color: #2563eb;
+      }
+      
+      a:hover {
+        color: #1d4ed8;
+      }
+      
+      /* Override buttons and interactive elements */
+      .theme-toggle:hover,
+      .menu-toggle:hover {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+      
+      /* Override nav title hover */
+      .nav-title:hover {
+        background-color: #eff6ff;
+      }
+      
+      /* White backgrounds for sidebar and navigation */
+      body:not(.dark-mode) .sidebar {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .nav-section {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .nav-content {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .navigation {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      /* Subtle separation for nav sections */
+      body:not(.dark-mode) .nav-section + .nav-section {
+        border-top: 1px solid #F3F4F6;
+      }
+      
+      /* Adjust hover states for white backgrounds */
+      body:not(.dark-mode) .nav-item:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      body:not(.dark-mode) .nav-title.collapsible:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      /* Header stays white (already is) but ensure consistency */
+      body:not(.dark-mode) .header {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+      
+      /* Ensure search box looks good on white */
+      body:not(.dark-mode) .filter-input,
+      body:not(.dark-mode) .sidebar-search {
+        background: #F8F9FA !important;
+        background-color: #F8F9FA !important;
+        border: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .filter-input:focus,
+      body:not(.dark-mode) .sidebar-search:focus {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-color: #2563eb !important;
+      }
+      
+      /* Override breadcrumbs */
+      .breadcrumbs a {
+        color: #2563eb;
+      }
+      
+      .breadcrumbs a:hover {
+        color: #1d4ed8;
+        background-color: #dbeafe;
+      }
+      
+      /* Override filter icon */
+      .filter-icon {
+        color: #2563eb;
+      }
+      
+      /* Override deployment info on hover */
+      .deployment-date:hover {
+        color: #2563eb;
+      }
+      
+      /* Dark mode adjustments */
+      body.dark-mode {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --primary-light: #1e3a8a;
+        --accent: #60a5fa;
+      }
+      
+      body.dark-mode .nav-item.active {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+        color: #60a5fa !important;
+      }
+      
+      body.dark-mode .nav-item:hover {
+        background-color: rgba(59, 130, 246, 0.05) !important;
+      }
+      
+      body.dark-mode a {
+        color: #60a5fa;
+      }
+      
+      body.dark-mode a:hover {
+        color: #93bbfc;
+      }
+    </style>
+    
+    
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Claude + CLAUDE.md Documentation Workflow Guide",
+  "description": "This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it to...",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-08-07T14:41:11.176Z",
+  "dateModified": "2025-08-07T14:41:11.176Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Claude Workflow Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/claude-workflow-guide.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">@knowcode/doc-builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.9.23">Last updated: Aug 7, 2025, 02:41 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Search menu..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title toggle-all-nav expanded" href="#" id="nav-toggle-all" title="Collapse/Expand All">
+          <i class="ph ph-caret-down" id="toggle-all-icon"></i> Documentation
+        </a>
+        <div class="nav-content">
+        <a href="README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="ph ph-file-text"></i> Overview</a>
+        <a href="about-doc-builder.html" class="nav-item" data-tooltip="About @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> About Doc Builder</a>
+        <a href="documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Index</a>
+        <a href="image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="ph ph-file-text"></i> Image Modal Test</a>
+        <a href="vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel Cli Setup Guide</a>
+        <a href="vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-book"></i> Guides
+        </a>
+        <div class="nav-content" id="nav-guides-1">
+        <a href="guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="ph ph-file-text"></i> Authentication Default Change</a>
+        <a href="guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Authentication Guide</a>
+        <a href="guides/claude-workflow-guide.html" class="nav-item active" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Claude Workflow Guide</a>
+        <a href="guides/configuration-guide.html" class="nav-item" data-tooltip="This guide explains how @knowcode/doc-builder handles configuration files and settings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Configuration Guide</a>
+        <a href="guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Standards</a>
+        <a href="guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Html Embedding Guide</a>
+        <a href="guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Image Modal Guide</a>
+        <a href="guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Phosphor Icons Guide</a>
+        <a href="guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication</a>
+        <a href="guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication Troubleshooting</a>
+        <a href="guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Public Site Deployment</a>
+        <a href="guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Search Engine Verification Guide</a>
+        <a href="guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Seo Guide</a>
+        <a href="guides/seo-optimization-guide.html" class="nav-item" data-tooltip="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> SEO Optimization Guide for @knowcode/doc-builder</a>
+        <a href="guides/supabase-authentication-complete-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes built-in Supabase authentication that provides enterprise-grade security with zero configuration."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Supabase Authentication Complete Guide</a>
+        <a href="guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Troubleshooting Guide</a>
+        <a href="guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-chat-circle-dots"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="prompts/beautiful-documentation-design.html" class="nav-item" data-tooltip="🎨 Beautiful Documentation Design Guide."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Beautiful Documentation Design</a>
+        <a href="prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Markdown Document Standards</a>
+        <a href="prompts/project-rename-strategy-sasha-publish.html" class="nav-item" data-tooltip="This document outlines the comprehensive strategy for renaming the @knowcode/doc-builder project to &quot;sasha-publish&quot;, including all package references,..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Project Rename Strategy Sasha Publish</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-test-questions-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-folder"></i> Test Questions
+        </a>
+        <div class="nav-content collapsed" id="nav-test-questions-1">
+        <a href="test-questions/how-does-it-work%3F.html" class="nav-item" data-tooltip="This is a test file to verify that question marks work properly in filenames."><i class="ph ph-file-text"></i> How Does It Work?</a>
+        <a href="test-questions/step-1%3A%20getting-started.html" class="nav-item" data-tooltip="Step 1: Getting Started."><i class="ph ph-file-text"></i> Step 1: Getting Started</a>
+        <a href="test-questions/what-is-the-purpose.html" class="nav-item" data-tooltip="Understanding the purpose of our documentation system"><i class="ph ph-file-text"></i> What Is The Purpose?</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>Claude + CLAUDE.md Documentation Workflow Guide</h1>
+<h2>Overview</h2>
+<p>This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it to Vercel using the @knowcode/doc-builder tool.</p>
+<h2>Workflow Overview</h2>
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph TD
+    A[Start Project] --> B[Setup CLAUDE.md]
+    B --> C[Configure doc-builder]
+    C --> D[Create Documentation with Claude]
+    D --> E[Build Static Site]
+    E --> F[Deploy to Vercel]
+    F --> G[Live Documentation]
+    
+    B -.-> H[Refine Instructions]
+    H -.-> D
+    
+    D --> I{Review Quality}
+    I -->|Needs Improvement| H
+    I -->|Good| E
+    
+    style A fill:#e1f5fe
+    style G fill:#c8e6c9
+    style H fill:#fff3e0</div>
+    </div>
+<h2>Step 1: Setting Up CLAUDE.md</h2>
+<h3>1.1 Project-Level CLAUDE.md</h3>
+<p>Create a comprehensive <code>CLAUDE.md</code> file in your project root with specific instructions for documentation. Here&#39;s a complete example based on best practices:</p>
+<pre><code class="language-markdown"># CLAUDE.md - [Your Project Name]
+
+This file provides comprehensive guidance for Claude Code when working in this project.
+
+## Project Overview
+
+**Name**: Your Project  
+**Purpose**: Brief description of what your project does  
+**Technology Stack**: List your key technologies (e.g., Node.js, React, AWS)
+
+## Documentation Standards
+
+### Document Title Format
+- Use `# Document Title`
+- Include metadata:
+  - **Generated**: YYYY-MM-DD HH:MM UTC
+  - **Status**: Draft/In Progress/Complete
+  - **Verified**: ✅ (for verified information) / ❓ (for speculated information)
+
+### Document Structure
+- All documentation goes in the `/docs` directory
+- Use hierarchical folder structure:
+  - `docs/guides/` - How-to guides and tutorials
+  - `docs/api/` - API reference documentation
+  - `docs/architecture/` - System design and architecture
+  - `docs/deployment/` - Deployment and operations guides
+  - `docs/troubleshooting/` - Common issues and solutions
+
+### Naming Conventions
+- Analysis documents: `analysis-{topic}-{specifics}.md`
+- Design documents: `design-{component}-{feature}.md`
+- Implementation plans: `plan-{feature}-implementation.md`
+- Technical guides: `{component}-{topic}-guide.md`
+- API docs: `api-{service}-reference.md`
+- Testing documents: `test-{component}-{type}.md`
+
+### Content Requirements
+
+#### 1. Mermaid Diagrams
+- Include diagrams wherever they help explain complex concepts
+- Use consistent node naming and styling
+- Add clear labels and descriptions
+- Example:
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph TD
+    A[User Request] --> B{Authentication}
+    B -->|Valid| C[Process Request]
+    B -->|Invalid| D[Return 401]
+    C --> E[Return Response]</div>
+    </div>
+
+#### 2. Information Verification
+- Mark all information as either verified (✅) or speculated (❓)
+- Include sources for verified information
+- Clearly indicate assumptions
+- Example:
+  - ✅ This API endpoint requires authentication (verified in auth.js:45)
+  - ❓ Response time should be under 200ms (performance requirement assumed)
+
+#### 3. Code Examples
+- Use proper syntax highlighting with language identifiers
+- Include context and explanations
+- Show both correct and incorrect usage where applicable
+- Add error handling in examples
+- Example:
+```javascript
+// ✅ Correct way to call the API
+try {
+  const response = await api.getData({ userId: 123 });
+  console.log(&#39;Data:&#39;, response.data);
+} catch (error) {
+  console.error(&#39;API Error:&#39;, error.message);
+}
+
+// ❌ Incorrect - missing error handling
+const response = await api.getData({ userId: 123 });
+</code></pre>
+<h4>4. Practical Examples</h4>
+<ul>
+<li>Include real-world scenarios</li>
+<li>Show complete workflows</li>
+<li>Add curl/httpie examples for APIs</li>
+<li>Include sample data</li>
+</ul>
+<h3>Writing Style</h3>
+<ul>
+<li>Use clear, concise language</li>
+<li>Write for your audience&#39;s technical level</li>
+<li>Use active voice</li>
+<li>Keep paragraphs short (3-4 sentences)</li>
+<li>Use bullet points for lists</li>
+<li>Bold important terms on first use</li>
+</ul>
+<h3>Standard Sections</h3>
+<p>Every technical document should include:</p>
+<ol>
+<li><strong>Overview</strong> - Brief description of the topic</li>
+<li><strong>Prerequisites</strong> - What the reader needs to know/have</li>
+<li><strong>Main Content</strong> - The core information</li>
+<li><strong>Examples</strong> - Practical demonstrations</li>
+<li><strong>Troubleshooting</strong> - Common issues and solutions</li>
+<li><strong>References</strong> - Links to related documentation</li>
+</ol>
+<h3>Tables and Structured Data</h3>
+<p>Use tables for comparing options or listing properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>No</td>
+<td>Whether the item is active</td>
+</tr>
+</tbody></table>
+<h3>File Organization</h3>
+<ul>
+<li>Active files in appropriate directories</li>
+<li>Move unused files to <code>archive/</code> with descriptive names</li>
+<li>Temporary files must include &quot;temp&quot; in filename</li>
+<li>Example structure:<pre><code>docs/
+├── guides/
+│   ├── setup-guide.md
+│   └── deployment-guide.md
+├── api/
+│   └── rest-api-reference.md
+└── archive/
+    └── old-setup-guide-2024.md
+</code></pre>
+</li>
+</ul>
+<h2>Git and Version Control</h2>
+<h3>Commit Practices</h3>
+<ul>
+<li>Commit after material changes or milestones</li>
+<li>Use descriptive commit messages</li>
+<li>Group related changes</li>
+<li>Format: <code>type: Brief description</code></li>
+<li>Types: feat, fix, docs, style, refactor, test, chore</li>
+</ul>
+<h3>Documentation Updates</h3>
+<ul>
+<li>Update documentation when code changes</li>
+<li>Keep CHANGELOG.md current</li>
+<li>Document breaking changes prominently</li>
+</ul>
+<h2>Quality Standards</h2>
+<h3>Completeness</h3>
+<ul>
+<li>Cover all aspects of the topic</li>
+<li>Include edge cases</li>
+<li>Document error scenarios</li>
+<li>Add performance considerations</li>
+</ul>
+<h3>Accuracy</h3>
+<ul>
+<li>Verify technical details</li>
+<li>Test all code examples</li>
+<li>Review with subject matter experts</li>
+<li>Update when implementation changes</li>
+</ul>
+<h3>Maintenance</h3>
+<ul>
+<li>Review documentation quarterly</li>
+<li>Update version numbers</li>
+<li>Check for broken links</li>
+<li>Verify code examples still work</li>
+</ul>
+<h2>Special Considerations</h2>
+<h3>Security</h3>
+<ul>
+<li>Never include credentials or sensitive data</li>
+<li>Document security requirements</li>
+<li>Include authentication examples without real tokens</li>
+<li>Note security best practices</li>
+</ul>
+<h3>Performance</h3>
+<ul>
+<li>Document performance implications</li>
+<li>Include benchmarks where relevant</li>
+<li>Note resource requirements</li>
+<li>Add optimization tips</li>
+</ul>
+<h3>Accessibility</h3>
+<ul>
+<li>Use semantic markdown</li>
+<li>Include alt text for images</li>
+<li>Ensure good heading hierarchy</li>
+<li>Write clear link text (not &quot;click here&quot;)</li>
+</ul>
+<h2>AI-Specific Instructions</h2>
+<p>When generating documentation:</p>
+<ol>
+<li><strong>Always include the metadata header</strong> with generation date and verification status</li>
+<li><strong>Create working examples</strong> that can be copy-pasted</li>
+<li><strong>Add troubleshooting sections</strong> for common problems</li>
+<li><strong>Include mermaid diagrams</strong> for workflows and architectures</li>
+<li><strong>Mark speculated information</strong> clearly with <i style="font-size: 1.2em" class="ph ph-question" aria-label="question"></i></li>
+<li><strong>Follow the naming conventions</strong> exactly</li>
+<li><strong>Create comprehensive content</strong> - aim for completeness over brevity</li>
+<li><strong>Add cross-references</strong> to related documentation</li>
+</ol>
+<h2>Project-Specific Patterns</h2>
+<p>[Add your project-specific patterns here, such as:]</p>
+<ul>
+<li>API authentication flow</li>
+<li>Database connection patterns</li>
+<li>Error handling conventions</li>
+<li>Logging standards</li>
+<li>Testing approaches</li>
+</ul>
+<h2>Common Code Snippets</h2>
+<p>[Add frequently used code patterns for consistency:]</p>
+<pre><code class="language-javascript">// Standard error handling pattern
+function handleError(error) {
+  logger.error(&#39;Operation failed:&#39;, {
+    message: error.message,
+    stack: error.stack,
+    timestamp: new Date().toISOString()
+  });
+  // ... rest of error handling
+}
+</code></pre>
+<h2>References</h2>
+<ul>
+<li><a href="/README.md">Project README</a></li>
+<li><a href="/docs/api/">API Documentation</a></li>
+<li><a href="/docs/architecture/">Architecture Overview</a></li>
+<li><a href="/CONTRIBUTING.md">Contributing Guide</a></li>
+</ul>
+<pre><code>
+### 1.2 Setting Up Admin/Background/Environment Facts
+
+For Claude to generate accurate and consistent content, include key organizational and environmental facts in your CLAUDE.md. This ensures all generated documentation uses correct information:
+
+```markdown
+## Organization &amp; Environment Facts
+
+### Company Information
+- **Organization Name**: Knowcode Ltd
+- **Website**: https://knowcode.tech
+- **Contact Email**: support@knowcode.tech
+- **GitHub Organization**: https://github.com/knowcode
+- **NPM Organization**: @knowcode
+
+### Author Information
+- **Primary Author**: Lindsay Smith
+- **Author Email**: lindsay@knowcode.tech
+- **Author Title**: Lead Developer
+- **GitHub Handle**: @lindsaysmith
+- **Twitter/X Handle**: @planbbackups
+
+### Project Environment
+- **Production URL**: https://doc-builder-delta.vercel.app
+- **Staging URL**: https://doc-builder-staging.vercel.app
+- **Documentation URL**: https://docs.knowcode.tech
+- **API Base URL**: https://api.knowcode.tech
+- **CDN URL**: https://cdn.knowcode.tech
+
+### Default Settings
+- **Default Language**: en-US
+- **Timezone**: UTC
+- **Date Format**: YYYY-MM-DD
+- **Copyright Year**: 2025
+- **License**: MIT
+- **Version**: 1.6.2
+
+### SEO Defaults
+- **Default Author**: Lindsay Smith
+- **Organization Type**: Software Company
+- **Twitter Handle**: @planbbackups
+- **LinkedIn**: https://linkedin.com/company/knowcode
+- **Facebook Page**: https://facebook.com/knowcode
+
+### Technical Stack
+- **Primary Language**: JavaScript/TypeScript
+- **Node Version**: 20.x LTS
+- **Package Manager**: npm (not yarn or pnpm)
+- **Cloud Provider**: AWS (primary), Vercel (hosting)
+- **Region**: eu-west-1
+- **Container Registry**: Docker Hub
+
+### Communication Standards
+- **Support Response Time**: 24-48 hours
+- **Documentation Language**: US English
+- **Tone**: Professional but friendly
+- **Technical Level**: Intermediate developers
+
+### Branding Guidelines
+- **Company Tagline**: &quot;Beautiful documentation with the least effort possible&quot;
+- **Primary Color**: #0070f3 (Vercel blue)
+- **Logo**: ✨ (sparkle emoji)
+- **Font Family**: Inter, system-ui
+</code></pre>
+<p>When these facts are included in your CLAUDE.md, Claude will:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Use correct contact information in examples</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Reference the right URLs in documentation</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Apply consistent author attribution</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Generate accurate meta tags for SEO</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Use proper organizational context</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Follow established technical standards</li>
+</ul>
+<h3>1.3 Global CLAUDE.md Best Practices</h3>
+<p>Your global <code>~/.claude/CLAUDE.md</code> should include universal standards that apply to all projects. Here&#39;s an expanded example:</p>
+<pre><code class="language-markdown"># Global CLAUDE.md Instructions
+
+## Universal Documentation Standards
+
+### Visual Elements
+- Where it makes sense, include diagrams (Mermaid preferred)
+- Use skeleton loaders for UI components
+- For Trello board screenshots:
+  - Save as: @docs/product-requirements/Screenshot YYYY-MM-DD at HH.MM.SS.png
+  - Ensure columns are top-justified
+  - Color-code columns by risk level
+
+### Information Verification
+- Mark all verified vs. speculated information as a general document standard
+- Use ✅ for verified information with source references
+- Use ❓ for assumptions or unverified information
+
+### Development Practices
+- Use Docker V2 for containerization
+- Name temporary test files with &quot;temp&quot; in the filename
+- Do git commits after material changes or milestones
+- Archive unused files by moving to archive/ and renaming
+- After debugging, suggest archiving old unused code
+
+### Directory Organization
+- Create all new markdown docs in the /docs directory
+- Put documents in relevant subdirectories
+- MD docs will always go under the /docs directory
+- Maintain clear folder hierarchies
+
+### Build and Deployment
+- Carefully manage container sizes to prevent bloat
+- Use multi-stage builds for Docker
+- Remove unnecessary dependencies during build
+- Leverage .dockerignore effectively
+- Consider Alpine or slim base images
+- Be cautious with npx vs npm caching issues
+
+### Documentation Maintenance
+- Always maintain a CHANGELOG.md for significant changes
+- Check responsive breakpoints for consistency
+- Use table approach for columns in MD files when appropriate
+
+### Vercel-Specific
+- For public access, disable project/deployment protection in Vercel console
+- Remember to disable Vercel authentication for public projects
+
+### Git Workflow
+- Commit after every big milestone or completed major task
+- Use descriptive commit messages
+- Group related changes in single commits
+</code></pre>
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph LR
+    A[Global CLAUDE.md] --> B[Document Standards]
+    A --> C[Git Workflow]
+    A --> D[Quality Checks]
+    A --> E[Security Practices]
+    A --> F[Development Tools]
+    
+    B --> B1[Naming Conventions]
+    B --> B2[Markdown Standards]
+    B --> B3[Diagram Requirements]
+    B --> B4[Verification Marks]
+    
+    C --> C1[Commit After Milestones]
+    C --> C2[Archive Unused Code]
+    C --> C3[Descriptive Messages]
+    
+    D --> D1[Responsive Testing]
+    D --> D2[Changelog Updates]
+    D --> D3[Documentation Reviews]
+    
+    E --> E1[No Credentials]
+    E --> E2[Access Controls]
+    E --> E3[Secure Defaults]
+    
+    F --> F1[Docker V2]
+    F --> F2[Build Optimization]
+    F --> F3[Caching Strategies]</div>
+    </div>
+<h3>1.4 Benefits of Environment Facts in Documentation</h3>
+<p>Including these environmental facts in your CLAUDE.md provides several key benefits:</p>
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph TD
+    A[Environment Facts in CLAUDE.md] --> B[Accurate Content]
+    A --> C[Consistent Branding]
+    A --> D[Proper Attribution]
+    A --> E[SEO Optimization]
+    
+    B --> B1[Correct URLs in examples]
+    B --> B2[Valid email addresses]
+    B --> B3[Accurate version numbers]
+    
+    C --> C1[Company name consistency]
+    C --> C2[Tagline usage]
+    C --> C3[Brand colors]
+    
+    D --> D1[Author metadata]
+    D --> D2[Copyright notices]
+    D --> D3[License references]
+    
+    E --> E1[Meta tag generation]
+    E --> E2[Social media tags]
+    E --> E3[Structured data]
+    
+    style A fill:#e3f2fd
+    style B fill:#c8e6c9
+    style C fill:#fff9c4
+    style D fill:#ffccbc
+    style E fill:#d1c4e9</div>
+    </div>
+<h4>Example: Without Environment Facts</h4>
+<pre><code class="language-javascript">// Claude might generate:
+const API_URL = &#39;https://api.example.com&#39;;  // ❓ Generic placeholder
+const author = &#39;Your Name&#39;;                 // ❓ Placeholder
+const email = &#39;email@example.com&#39;;          // ❓ Generic example
+</code></pre>
+<h4>Example: With Environment Facts</h4>
+<pre><code class="language-javascript">// Claude will generate:
+const API_URL = &#39;https://api.knowcode.tech&#39;;      // ✅ Actual API URL
+const author = &#39;Lindsay Smith&#39;;                    // ✅ Correct author
+const email = &#39;support@knowcode.tech&#39;;             // ✅ Real contact email
+</code></pre>
+<h2>Step 2: Initialize doc-builder</h2>
+<pre><code class="language-bash"># Install doc-builder
+npm install -D @knowcode/doc-builder
+
+# Initialize configuration
+npx doc-builder init
+</code></pre>
+<h3>2.1 Configure doc-builder.config.js</h3>
+<pre><code class="language-javascript">module.exports = {
+  siteName: &#39;Your Project Documentation&#39;,
+  siteDescription: &#39;Comprehensive documentation for Your Project&#39;,
+  docsDir: &#39;docs&#39;,
+  outputDir: &#39;html&#39;,
+  features: {
+    authentication: false,  // Set true for private docs
+    changelog: true,
+    mermaid: true,
+    darkMode: true
+  }
+};
+</code></pre>
+<h2>Step 3: Documentation Creation Workflow with Claude</h2>
+<h3>3.1 Effective Prompting Strategy</h3>
+<div class="mermaid-wrapper">
+      <div class="mermaid">sequenceDiagram
+    participant User
+    participant Claude
+    participant CLAUDE.md
+    participant Documentation
+    
+    User->>Claude: Request documentation
+    Claude->>CLAUDE.md: Check project standards
+    CLAUDE.md-->>Claude: Return guidelines
+    Claude->>Documentation: Create/Update docs
+    Claude->>User: Confirm completion
+    User->>Claude: Review & refine
+    Claude->>Documentation: Apply refinements</div>
+    </div>
+<h3>3.2 Example Documentation Requests</h3>
+<h4>Initial Architecture Documentation</h4>
+<pre><code>&quot;Create comprehensive architecture documentation for our authentication system. Include:
+- System overview with mermaid diagrams
+- Component interactions
+- API endpoints
+- Security considerations
+- Deployment architecture&quot;
+</code></pre>
+<h4>API Documentation</h4>
+<pre><code>&quot;Document all REST API endpoints in our user service. For each endpoint include:
+- HTTP method and path
+- Request/response schemas
+- Authentication requirements
+- Example requests with curl
+- Error responses&quot;
+</code></pre>
+<h4>Setup Guide</h4>
+<pre><code>&quot;Create a detailed setup guide for new developers including:
+- Prerequisites
+- Environment setup steps
+- Configuration options
+- Common issues and solutions
+- Development workflow&quot;
+</code></pre>
+<h3>3.3 Claude Interaction Best Practices</h3>
+<ol>
+<li><strong>Be Specific</strong>: Provide clear requirements and expected structure</li>
+<li><strong>Iterate</strong>: Review generated content and request refinements</li>
+<li><strong>Verify</strong>: Ask Claude to mark verified vs speculated information</li>
+<li><strong>Examples</strong>: Request concrete examples and code snippets</li>
+<li><strong>Diagrams</strong>: Explicitly request mermaid diagrams for visual clarity</li>
+</ol>
+<h2>Step 4: Building Documentation Site</h2>
+<h3>4.1 Development Workflow</h3>
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph LR
+    A[Write Docs] --> B[Preview Locally]
+    B --> C{Looks Good?}
+    C -->|No| A
+    C -->|Yes| D[Build Site]
+    D --> E[Test Build]
+    E --> F{All Good?}
+    F -->|No| A
+    F -->|Yes| G[Ready to Deploy]
+    
+    style A fill:#fff3e0
+    style G fill:#c8e6c9</div>
+    </div>
+<h3>4.2 Commands</h3>
+<pre><code class="language-bash"># Start development server
+npm run dev:docs
+
+# Build static site
+npm run build:docs
+
+# Preview built site
+npx serve html
+</code></pre>
+<h2>Step 5: Deploying to Vercel</h2>
+<h3>5.1 First-Time Setup</h3>
+<pre><code class="language-bash"># Deploy to Vercel (interactive)
+npx doc-builder deploy
+
+# Or with npm script
+npm run deploy:docs
+</code></pre>
+<h3>5.2 Vercel Configuration</h3>
+<p>The tool automatically creates <code>vercel.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;outputDirectory&quot;: &quot;html&quot;,
+  &quot;routes&quot;: [
+    {
+      &quot;src&quot;: &quot;/(.*)&quot;,
+      &quot;dest&quot;: &quot;/$1&quot;
+    }
+  ]
+}
+</code></pre>
+<h3>5.3 Deployment Workflow</h3>
+<div class="mermaid-wrapper">
+      <div class="mermaid">stateDiagram-v2
+    [*] --> LocalDevelopment
+    LocalDevelopment --> BuildDocs: npm run build:docs
+    BuildDocs --> TestLocally: npx serve html
+    TestLocally --> Deploy: npx doc-builder deploy
+    Deploy --> VercelProcessing
+    VercelProcessing --> LiveSite: Success
+    VercelProcessing --> ErrorHandling: Failed
+    ErrorHandling --> LocalDevelopment: Fix issues
+    LiveSite --> [*]</div>
+    </div>
+<h2>Step 6: Continuous Documentation Updates</h2>
+<h3>6.1 Update Workflow</h3>
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph TD
+    A[Code Changes] --> B{Docs Needed?}
+    B -->|Yes| C[Update Documentation]
+    B -->|No| End[End]
+    C --> D[Use Claude for Updates]
+    D --> E[Review Changes]
+    E --> F[Build & Test]
+    F --> G[Deploy Updates]
+    G --> H[Update CHANGELOG.md]
+    H --> End
+    
+    style A fill:#ffebee
+    style G fill:#e8f5e9</div>
+    </div>
+<h3>6.2 Maintaining Documentation Quality</h3>
+<ol>
+<li><strong>Regular Reviews</strong>: Schedule periodic documentation reviews</li>
+<li><strong>Automated Checks</strong>: Add documentation linting to CI/CD</li>
+<li><strong>User Feedback</strong>: Create feedback mechanism for documentation</li>
+<li><strong>Version Tracking</strong>: Maintain documentation versions with code versions</li>
+</ol>
+<h2>Advanced CLAUDE.md Refinements</h2>
+<h3>7.1 Project-Specific Instructions</h3>
+<pre><code class="language-markdown">## Project-Specific Documentation Rules
+
+### Component Documentation
+- Each major component needs its own guide
+- Include architecture decisions
+- Document integration points
+- Add performance considerations
+- Note dependencies and version requirements
+
+### Code Examples
+- Use the project&#39;s primary language (e.g., TypeScript, JavaScript)
+- Include error handling in all examples
+- Show both correct and incorrect usage
+- Add inline comments for clarity
+- Test all examples before including
+- Include import statements
+
+### API Documentation
+- Document all public endpoints
+- Include authentication requirements
+- Show request/response examples
+- Document rate limits
+- Include error response codes
+- Add curl examples for testing
+
+### Diagrams
+- Use mermaid for all flow diagrams
+- Include sequence diagrams for APIs
+- Add state diagrams for complex logic
+- Create entity relationship diagrams for data models
+- Use consistent styling and colors
+- Add titles to all diagrams
+
+### Testing Documentation
+- Document test setup requirements
+- Include example test cases
+- Show how to run specific test suites
+- Document mocking strategies
+- Include performance benchmarks
+
+### Deployment Documentation
+- Include environment-specific configurations
+- Document secret management
+- Show deployment commands
+- Include rollback procedures
+- Document monitoring setup
+</code></pre>
+<h3>7.2 Documentation Templates</h3>
+<p>Create templates in your CLAUDE.md:</p>
+<pre><code class="language-markdown">## Documentation Templates
+
+### API Endpoint Template
+</code></pre>
+<h2>[HTTP Method] /api/[endpoint]</h2>
+<p><strong>Purpose</strong>: [Brief description]</p>
+<h3>Request</h3>
+<ul>
+<li><strong>Headers</strong>: <ul>
+<li><code>Authorization: Bearer [token]</code></li>
+<li><code>Content-Type: application/json</code></li>
+</ul>
+</li>
+<li><strong>Body</strong>:<pre><code class="language-json">{
+  &quot;field&quot;: &quot;value&quot;
+}
+</code></pre>
+</li>
+</ul>
+<h3>Response</h3>
+<ul>
+<li><strong>Success (200)</strong>:<pre><code class="language-json">{
+  &quot;data&quot;: {}
+}
+</code></pre>
+</li>
+<li><strong>Error (4xx/5xx)</strong>:<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Description&quot;
+}
+</code></pre>
+</li>
+</ul>
+<h3>Examples</h3>
+<pre><code class="language-bash">curl -X POST https://api.example.com/endpoint \
+  -H &quot;Authorization: Bearer token&quot; \
+  -d &#39;{&quot;field&quot;: &quot;value&quot;}&#39;
+</code></pre>
+<pre><code>
+## Best Practices Summary
+
+### Documentation Creation
+1. ✅ Use CLAUDE.md to maintain consistency across all documentation
+2. ✅ Include visual diagrams (Mermaid) for complex concepts and workflows
+3. ✅ Provide practical, working examples that can be copy-pasted
+4. ✅ Mark verification status (✅/❓) for all technical information
+5. ✅ Keep documentation close to code in the /docs directory
+6. ✅ Include metadata headers with timestamps and status
+7. ✅ Add troubleshooting sections for common issues
+8. ✅ Cross-reference related documentation
+
+### Claude Interaction
+1. ✅ Provide clear, specific requests with expected output format
+2. ✅ Reference existing patterns from CLAUDE.md
+3. ✅ Request iterative improvements - review and refine
+4. ✅ Verify technical accuracy of generated content
+5. ✅ Ask for troubleshooting sections explicitly
+6. ✅ Request examples with error handling
+7. ✅ Specify diagram types needed (sequence, flow, state)
+8. ✅ Ask Claude to check its own work against CLAUDE.md standards
+
+### Documentation Maintenance
+1. ✅ Update docs when code changes
+2. ✅ Archive outdated documentation
+3. ✅ Maintain CHANGELOG.md
+4. ✅ Review documentation quarterly
+5. ✅ Test all code examples
+6. ✅ Check for broken links
+7. ✅ Update version references
+
+### Deployment
+1. ✅ Test locally before deploying (npm run dev:docs)
+2. ✅ Build and verify output (npm run build:docs)
+3. ✅ Use preview deployments first
+4. ✅ Configure custom domains if needed
+5. ✅ Enable HTTPS (automatic with Vercel)
+6. ✅ Monitor deployment health
+7. ✅ Disable Vercel authentication for public docs
+8. ✅ Commit documentation changes before deploying
+
+## Common Issues and Solutions
+
+### Issue 1: Claude Not Following Standards
+**Solution**: Refine CLAUDE.md with more specific examples and explicit requirements
+
+### Issue 2: Documentation Build Fails
+**Solution**: Check markdown syntax, ensure all links are valid, verify mermaid syntax
+
+### Issue 3: Vercel Deployment Issues
+**Solution**: Check vercel.json configuration, ensure output directory is correct
+
+### Issue 4: Navigation Not Generated
+**Solution**: Verify folder structure follows conventions, check for special characters in filenames
+
+## Conclusion
+
+This workflow enables efficient, high-quality documentation creation by:
+- Leveraging Claude&#39;s capabilities with clear guidelines
+- Using doc-builder for beautiful, searchable output
+- Deploying seamlessly to Vercel for instant access
+- Maintaining consistency through CLAUDE.md refinements
+
+The key to success is iterative refinement of your CLAUDE.md file to capture your team&#39;s specific documentation needs and standards.
+
+## Document History
+
+| Date | Author | Changes |
+|------|--------|---------|
+| 2025-07-21 | Claude | Initial creation |
+| 2025-07-23 | Lindsay Smith | Added section on environment facts for accurate content generation |
+</code></pre>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false,
+        mermaidEnhanced: true
+      }
+    };
+    </script>
+    <script src="../js/main.js"></script>
+    
+</body>
+</html>

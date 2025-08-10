@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This document defines the documentation standards and conventions for the @knowcode/doc-builder project. All documentation created for or by this project...">
+    <title>Document Standards for @knowcode/doc-builder</title>
+    
+    <meta name="generator" content="@knowcode/doc-builder by Knowcode Ltd">
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, document, use">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/documentation-standards.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/documentation-standards.html">
+    <meta property="og:title" content="Document Standards for @knowcode/doc-builder">
+    <meta property="og:description" content="This document defines the documentation standards and conventions for the @knowcode/doc-builder project. All documentation created for or by this project...">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="Document Standards for @knowcode/doc-builder">
+    <meta name="twitter:description" content="This document defines the documentation standards and conventions for the @knowcode/doc-builder project. All documentation created for or by this project...">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/notion-style.css">
+    
+    
+    <!-- Blue theme and white background overrides for static output -->
+    <style>
+      /* Override green colors with blue */
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #dbeafe;
+        --accent: #3b82f6;
+        --color-accent-green: #2563eb;
+        --color-accent-emerald: #3b82f6;
+        
+        /* White backgrounds for cleaner appearance */
+        --color-bg-secondary: #FFFFFF;
+        --color-bg-tertiary: #FAFAFA;
+        --color-bg-hover: #F8F9FA;
+      }
+      
+      /* Override green status colors with blue variants */
+      .nav-item.active {
+        background-color: #dbeafe !important;
+        color: #1d4ed8 !important;
+      }
+      
+      .nav-item:hover {
+        background-color: #eff6ff !important;
+      }
+      
+      /* Override complete/success icons to blue */
+      .ph-check-circle[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override README/home icon color */
+      .ph-house[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override links */
+      a {
+        color: #2563eb;
+      }
+      
+      a:hover {
+        color: #1d4ed8;
+      }
+      
+      /* Override buttons and interactive elements */
+      .theme-toggle:hover,
+      .menu-toggle:hover {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+      
+      /* Override nav title hover */
+      .nav-title:hover {
+        background-color: #eff6ff;
+      }
+      
+      /* White backgrounds for sidebar and navigation */
+      body:not(.dark-mode) .sidebar {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .nav-section {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .nav-content {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .navigation {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      /* Subtle separation for nav sections */
+      body:not(.dark-mode) .nav-section + .nav-section {
+        border-top: 1px solid #F3F4F6;
+      }
+      
+      /* Adjust hover states for white backgrounds */
+      body:not(.dark-mode) .nav-item:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      body:not(.dark-mode) .nav-title.collapsible:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      /* Header stays white (already is) but ensure consistency */
+      body:not(.dark-mode) .header {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+      
+      /* Ensure search box looks good on white */
+      body:not(.dark-mode) .filter-input,
+      body:not(.dark-mode) .sidebar-search {
+        background: #F8F9FA !important;
+        background-color: #F8F9FA !important;
+        border: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .filter-input:focus,
+      body:not(.dark-mode) .sidebar-search:focus {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-color: #2563eb !important;
+      }
+      
+      /* Override breadcrumbs */
+      .breadcrumbs a {
+        color: #2563eb;
+      }
+      
+      .breadcrumbs a:hover {
+        color: #1d4ed8;
+        background-color: #dbeafe;
+      }
+      
+      /* Override filter icon */
+      .filter-icon {
+        color: #2563eb;
+      }
+      
+      /* Override deployment info on hover */
+      .deployment-date:hover {
+        color: #2563eb;
+      }
+      
+      /* Dark mode adjustments */
+      body.dark-mode {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --primary-light: #1e3a8a;
+        --accent: #60a5fa;
+      }
+      
+      body.dark-mode .nav-item.active {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+        color: #60a5fa !important;
+      }
+      
+      body.dark-mode .nav-item:hover {
+        background-color: rgba(59, 130, 246, 0.05) !important;
+      }
+      
+      body.dark-mode a {
+        color: #60a5fa;
+      }
+      
+      body.dark-mode a:hover {
+        color: #93bbfc;
+      }
+    </style>
+    
+    
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Document Standards for @knowcode/doc-builder",
+  "description": "This document defines the documentation standards and conventions for the @knowcode/doc-builder project. All documentation created for or by this project...",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-08-07T14:41:11.181Z",
+  "dateModified": "2025-08-07T14:41:11.181Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/documentation-standards.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Documentation Standards",
+        "item": "https://doc-builder-delta.vercel.app/guides/documentation-standards.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">@knowcode/doc-builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.9.23">Last updated: Aug 7, 2025, 02:41 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Search menu..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title toggle-all-nav expanded" href="#" id="nav-toggle-all" title="Collapse/Expand All">
+          <i class="ph ph-caret-down" id="toggle-all-icon"></i> Documentation
+        </a>
+        <div class="nav-content">
+        <a href="README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="ph ph-file-text"></i> Overview</a>
+        <a href="about-doc-builder.html" class="nav-item" data-tooltip="About @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> About Doc Builder</a>
+        <a href="documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Index</a>
+        <a href="image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="ph ph-file-text"></i> Image Modal Test</a>
+        <a href="vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel Cli Setup Guide</a>
+        <a href="vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-book"></i> Guides
+        </a>
+        <div class="nav-content" id="nav-guides-1">
+        <a href="guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="ph ph-file-text"></i> Authentication Default Change</a>
+        <a href="guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Authentication Guide</a>
+        <a href="guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Claude Workflow Guide</a>
+        <a href="guides/configuration-guide.html" class="nav-item" data-tooltip="This guide explains how @knowcode/doc-builder handles configuration files and settings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Configuration Guide</a>
+        <a href="guides/documentation-standards.html" class="nav-item active" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Standards</a>
+        <a href="guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Html Embedding Guide</a>
+        <a href="guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Image Modal Guide</a>
+        <a href="guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Phosphor Icons Guide</a>
+        <a href="guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication</a>
+        <a href="guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication Troubleshooting</a>
+        <a href="guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Public Site Deployment</a>
+        <a href="guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Search Engine Verification Guide</a>
+        <a href="guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Seo Guide</a>
+        <a href="guides/seo-optimization-guide.html" class="nav-item" data-tooltip="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> SEO Optimization Guide for @knowcode/doc-builder</a>
+        <a href="guides/supabase-authentication-complete-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes built-in Supabase authentication that provides enterprise-grade security with zero configuration."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Supabase Authentication Complete Guide</a>
+        <a href="guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Troubleshooting Guide</a>
+        <a href="guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-chat-circle-dots"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="prompts/beautiful-documentation-design.html" class="nav-item" data-tooltip="🎨 Beautiful Documentation Design Guide."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Beautiful Documentation Design</a>
+        <a href="prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Markdown Document Standards</a>
+        <a href="prompts/project-rename-strategy-sasha-publish.html" class="nav-item" data-tooltip="This document outlines the comprehensive strategy for renaming the @knowcode/doc-builder project to &quot;sasha-publish&quot;, including all package references,..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Project Rename Strategy Sasha Publish</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-test-questions-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-folder"></i> Test Questions
+        </a>
+        <div class="nav-content collapsed" id="nav-test-questions-1">
+        <a href="test-questions/how-does-it-work%3F.html" class="nav-item" data-tooltip="This is a test file to verify that question marks work properly in filenames."><i class="ph ph-file-text"></i> How Does It Work?</a>
+        <a href="test-questions/step-1%3A%20getting-started.html" class="nav-item" data-tooltip="Step 1: Getting Started."><i class="ph ph-file-text"></i> Step 1: Getting Started</a>
+        <a href="test-questions/what-is-the-purpose.html" class="nav-item" data-tooltip="Understanding the purpose of our documentation system"><i class="ph ph-file-text"></i> What Is The Purpose?</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>Document Standards for @knowcode/doc-builder</h1>
+<h2>Overview</h2>
+<p>This document defines the documentation standards and conventions for the @knowcode/doc-builder project. All documentation created for or by this project should follow these guidelines to ensure consistency, clarity, and maintainability.</p>
+<h2>Document Structure Standards</h2>
+<h3>Document Header Format</h3>
+<p>Every document MUST include the following metadata at the top:</p>
+<pre><code class="language-markdown"># Document Title
+
+**Generated**: YYYY-MM-DD HH:MM UTC
+**Status**: Draft/In Progress/Complete  
+**Verified**: ✅ (for verified information) / ❓ (for speculated information)
+
+## Overview
+
+Brief description of the document&#39;s contents and purpose.
+</code></pre>
+<h3>Section Organization</h3>
+<ol>
+<li><strong>Title</strong> (H1) - Single, descriptive title</li>
+<li><strong>Metadata</strong> - Generation date, status, verification</li>
+<li><strong>Overview</strong> - Brief summary of document purpose</li>
+<li><strong>Main Content</strong> - Organized with clear headings</li>
+<li><strong>Document History</strong> - Track significant changes</li>
+</ol>
+<h2>Naming Conventions</h2>
+<h3>Document File Names</h3>
+<p>Use lowercase with hyphens, following these patterns:</p>
+<ul>
+<li><strong>Feature Documentation</strong>: <code>feature-{name}-guide.md</code></li>
+<li><strong>API Documentation</strong>: <code>api-{endpoint}-reference.md</code></li>
+<li><strong>Technical Guides</strong>: <code>{component}-{topic}-guide.md</code></li>
+<li><strong>Architecture Documents</strong>: <code>architecture-{system}-overview.md</code></li>
+<li><strong>Implementation Plans</strong>: <code>plan-{feature}-implementation.md</code></li>
+<li><strong>Analysis Documents</strong>: <code>analysis-{topic}-{specifics}.md</code></li>
+<li><strong>Troubleshooting Guides</strong>: <code>troubleshoot-{issue}-guide.md</code></li>
+<li><strong>Change Logs</strong>: <code>CHANGELOG.md</code> (always uppercase)</li>
+</ul>
+<h3>Special Files</h3>
+<ul>
+<li><code>README.md</code> - Project overview and getting started</li>
+<li><code>CHANGELOG.md</code> - Version history following Keep a Changelog format</li>
+<li><code>CLAUDE.md</code> - AI assistant guidance (project-specific)</li>
+<li><code>DOCUMENT-STANDARDS.md</code> - This file</li>
+</ul>
+<h2>Content Standards</h2>
+<h3>1. Mermaid Diagrams</h3>
+<p>Include diagrams wherever they help explain complex concepts:</p>
+<pre><code class="language-markdown"><div class="mermaid-wrapper">
+      <div class="mermaid">graph TD
+    A[User Input] --> B{Valid?}
+    B -->|Yes| C[Process]
+    B -->|No| D[Error]
+    C --> E[Output]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style E fill:#9f9,stroke:#333,stroke-width:2px</div>
+    </div>
+</code></pre>
+<p>Guidelines:</p>
+<ul>
+<li>Use consistent node naming</li>
+<li>Add clear labels and descriptions</li>
+<li>Apply styling for better visual hierarchy</li>
+<li>Include diagram titles where appropriate</li>
+</ul>
+<h3>2. Information Verification</h3>
+<p>Mark all information with verification status:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Verified</strong>: Information confirmed through testing or official sources</li>
+<li><i style="font-size: 1.2em" class="ph ph-question" aria-label="question"></i> <strong>Speculated</strong>: Assumptions or unconfirmed information</li>
+<li><i style="font-size: 1.2em" class="ph ph-warning-circle" aria-label="warning"></i> <strong>Warning</strong>: Important caveats or potential issues</li>
+<li><i style="font-size: 1.2em" class="ph ph-barricade" aria-label="under construction"></i> <strong>In Progress</strong>: Features or documentation under development</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-markdown">### Feature Status
+- ✅ **Markdown parsing**: Fully implemented and tested
+- ❓ **Performance impact**: Estimated 100ms for 50 files
+- ⚠️ **Large files**: May timeout on files &gt; 10MB
+- 🚧 **Search feature**: Currently in development
+</code></pre>
+<h3>3. Code Examples</h3>
+<p>Always include practical, tested examples:</p>
+<pre><code class="language-javascript">// Good example - with context and error handling
+const { build } = require(&#39;@knowcode/doc-builder&#39;);
+
+const config = {
+  siteName: &#39;My Documentation&#39;,
+  docsDir: &#39;./docs&#39;,
+  outputDir: &#39;./dist&#39;
+};
+
+try {
+  await build(config);
+  console.log(&#39;✅ Build successful&#39;);
+} catch (error) {
+  console.error(&#39;❌ Build failed:&#39;, error.message);
+}
+</code></pre>
+<p>Guidelines:</p>
+<ul>
+<li>Use syntax highlighting</li>
+<li>Include error handling</li>
+<li>Add helpful comments</li>
+<li>Show both correct and incorrect usage</li>
+<li>Test all examples before documenting</li>
+</ul>
+<h3>4. Command Examples</h3>
+<p>Format commands clearly with descriptions:</p>
+<pre><code class="language-bash"># Install the package
+npm install -D @knowcode/doc-builder
+
+# Build documentation
+npx doc-builder build
+
+# Start development server
+npx doc-builder dev --port 3000
+
+# Deploy to Vercel
+npx doc-builder deploy --prod
+</code></pre>
+<h2>Version Control Standards</h2>
+<h3>Changelog Management</h3>
+<p>ALWAYS maintain <code>CHANGELOG.md</code> for all significant or material changes:</p>
+<pre><code class="language-markdown">## [1.4.12] - 2025-07-21
+
+### Fixed
+- Fixed h1 title alignment to extend full width
+- Added negative margins to counteract padding
+
+### Background
+- The h1 was appearing offset due to content padding
+- Now extends full width for better hierarchy
+</code></pre>
+<p>Categories:</p>
+<ul>
+<li><strong>Added</strong> - New features</li>
+<li><strong>Changed</strong> - Changes to existing functionality</li>
+<li><strong>Deprecated</strong> - Soon-to-be removed features</li>
+<li><strong>Removed</strong> - Removed features</li>
+<li><strong>Fixed</strong> - Bug fixes</li>
+<li><strong>Security</strong> - Security fixes</li>
+<li><strong>Background</strong> - Context for the changes</li>
+</ul>
+<h3>Commit Messages</h3>
+<p>Follow conventional commits:</p>
+<ul>
+<li><code>feat:</code> New features</li>
+<li><code>fix:</code> Bug fixes</li>
+<li><code>docs:</code> Documentation changes</li>
+<li><code>chore:</code> Maintenance tasks</li>
+<li><code>refactor:</code> Code refactoring</li>
+<li><code>test:</code> Test additions/changes</li>
+</ul>
+<h2>Markdown Best Practices</h2>
+<h3>Headers</h3>
+<pre><code class="language-markdown"># Main Title (H1 - one per document)
+
+## Major Section (H2)
+
+### Subsection (H3)
+
+#### Detail Level (H4)
+</code></pre>
+<ul>
+<li>Use hierarchical structure</li>
+<li>Don&#39;t skip levels</li>
+<li>Keep headers concise but descriptive</li>
+</ul>
+<h3>Lists</h3>
+<p>Unordered lists for non-sequential items:</p>
+<pre><code class="language-markdown">- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+</code></pre>
+<p>Numbered lists for sequential steps:</p>
+<pre><code class="language-markdown">1. First step
+2. Second step
+3. Third step
+</code></pre>
+<h3>Tables</h3>
+<p>Keep tables readable and well-formatted:</p>
+<pre><code class="language-markdown">| Feature | Status | Version | Notes |
+|---------|--------|---------|-------|
+| Mermaid | ✅ Ready | 1.0.0 | Full support |
+| Search | 🚧 WIP | 1.5.0 | In development |
+| Auth | ✅ Ready | 1.3.0 | Optional feature |
+</code></pre>
+<h3>Links</h3>
+<ul>
+<li>Use descriptive link text: <code>[View deployment guide](./deploy.md)</code></li>
+<li>Avoid: <code>[click here](./deploy.md)</code></li>
+<li>Prefer relative links for internal docs</li>
+<li>Use absolute URLs for external resources</li>
+</ul>
+<h2>Quality Standards</h2>
+<h3>Clarity</h3>
+<ul>
+<li>Write for your target audience</li>
+<li>Define technical terms on first use</li>
+<li>Use simple language where possible</li>
+<li>Include examples for complex concepts</li>
+</ul>
+<h3>Completeness</h3>
+<ul>
+<li>Cover all aspects of the topic</li>
+<li>Include edge cases and limitations</li>
+<li>Document prerequisites</li>
+<li>Provide troubleshooting guidance</li>
+</ul>
+<h3>Accuracy</h3>
+<ul>
+<li>Verify all technical details</li>
+<li>Test code examples</li>
+<li>Update when implementation changes</li>
+<li>Mark speculation clearly</li>
+</ul>
+<h3>Consistency</h3>
+<ul>
+<li>Use same terminology throughout</li>
+<li>Follow naming conventions</li>
+<li>Maintain style consistency</li>
+<li>Cross-reference related documents</li>
+</ul>
+<h2>Document Types</h2>
+<h3>1. Feature Documentation</h3>
+<p>Structure:</p>
+<pre><code class="language-markdown"># Feature Name
+
+**Generated**: [date]
+**Status**: Complete
+**Verified**: ✅
+
+## Overview
+What the feature does and why it exists
+
+## Usage
+How to use the feature with examples
+
+## Configuration
+Available options and settings
+
+## Examples
+Practical use cases
+
+## Troubleshooting
+Common issues and solutions
+</code></pre>
+<h3>2. Technical Guides</h3>
+<p>Structure:</p>
+<pre><code class="language-markdown"># Technical Guide: [Topic]
+
+**Generated**: [date]
+**Status**: Complete
+**Verified**: ✅
+
+## Overview
+Technical context and goals
+
+## Architecture
+System design and components
+
+## Implementation
+Step-by-step technical details
+
+## Testing
+How to verify functionality
+
+## Performance
+Benchmarks and optimization
+</code></pre>
+<h3>3. API Documentation</h3>
+<p>Structure:</p>
+<pre><code class="language-markdown"># API: [Endpoint/Function Name]
+
+**Generated**: [date]
+**Status**: Complete
+**Verified**: ✅
+
+## Overview
+What the API does
+
+## Parameters
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+
+## Response
+Expected response format
+
+## Examples
+Request/response examples
+
+## Error Handling
+Possible errors and meanings
+</code></pre>
+<h2>File Organization</h2>
+<h3>Directory Structure</h3>
+<pre><code>doc-builder/
+├── README.md                    # Project overview
+├── CHANGELOG.md                 # Version history
+├── CLAUDE.md                    # AI assistant guide
+├── DOCUMENT-STANDARDS.md        # This file
+├── docs/                        # Additional documentation
+│   ├── guides/                  # How-to guides
+│   ├── api/                     # API documentation
+│   ├── architecture/            # System design docs
+│   └── troubleshooting/         # Problem-solving guides
+</code></pre>
+<h3>File Management</h3>
+<ul>
+<li>Keep active documentation in appropriate directories</li>
+<li>Archive outdated docs with date suffix: <code>old-guide-2025-01-15.md</code></li>
+<li>Remove unused files after archiving</li>
+<li>Maintain README.md in each directory explaining contents</li>
+</ul>
+<h2>Special Considerations</h2>
+<h3>Security</h3>
+<ul>
+<li>Never include credentials or API keys</li>
+<li>Use placeholders for sensitive data: <code>API_KEY=&lt;your-api-key-here&gt;</code></li>
+<li>Document security implications</li>
+<li>Include security warnings where relevant</li>
+</ul>
+<h3>Performance</h3>
+<ul>
+<li>Document performance characteristics</li>
+<li>Include benchmarks where applicable</li>
+<li>Note resource requirements</li>
+<li>Provide optimization tips</li>
+</ul>
+<h3>Accessibility</h3>
+<ul>
+<li>Use clear, simple language</li>
+<li>Provide alt text for images</li>
+<li>Structure documents logically</li>
+<li>Consider screen reader users</li>
+</ul>
+<h2>Document Maintenance</h2>
+<h3>Review Schedule</h3>
+<ul>
+<li>Technical docs: Review with each minor version</li>
+<li>API docs: Review with any API change</li>
+<li>Guides: Review quarterly</li>
+<li>README: Update with significant changes</li>
+</ul>
+<h3>Update Process</h3>
+<ol>
+<li>Check document metadata</li>
+<li>Verify technical accuracy</li>
+<li>Update examples</li>
+<li>Test code snippets</li>
+<li>Update changelog</li>
+<li>Commit with descriptive message</li>
+</ol>
+<h3>Document History</h3>
+<p>Include at the bottom of long-lived documents:</p>
+<pre><code class="language-markdown">## Document History
+
+| Date | Version | Author | Changes |
+|------|---------|--------|---------|
+| 2025-07-21 | 1.0 | System | Initial creation |
+| 2025-07-22 | 1.1 | Dev | Added examples |
+</code></pre>
+<h2>Tools and Automation</h2>
+<h3>Building Documentation</h3>
+<p>The doc-builder automatically:</p>
+<ul>
+<li>Generates navigation from folder structure</li>
+<li>Extracts summaries for tooltips</li>
+<li>Renders mermaid diagrams</li>
+<li>Applies syntax highlighting</li>
+<li>Creates responsive layouts</li>
+</ul>
+<h3>Preview Changes</h3>
+<pre><code class="language-bash"># Preview documentation locally
+npx doc-builder dev
+
+# Build and check output
+npx doc-builder build
+open html/index.html
+</code></pre>
+<h2>Conclusion</h2>
+<p>Following these standards ensures:</p>
+<ul>
+<li>Consistent, professional documentation</li>
+<li>Easy navigation and discovery</li>
+<li>Clear communication of technical concepts</li>
+<li>Maintainable documentation over time</li>
+</ul>
+<p>Remember: Good documentation is as important as good code. It enables others (including your future self) to understand, use, and maintain the project effectively.</p>
+<hr>
+<h2>Document History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2025-07-21</td>
+<td>1.0</td>
+<td>System</td>
+<td>Initial creation from project standards</td>
+</tr>
+</tbody></table>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false,
+        mermaidEnhanced: true
+      }
+    };
+    </script>
+    <script src="../js/main.js"></script>
+    
+</body>
+</html>

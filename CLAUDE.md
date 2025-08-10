@@ -62,3 +62,25 @@ The system supports different icon weights via configuration:
   - Status field
   - Verification status
 - We do not want these metadata fields in the project documentation
+
+## NPM Publishing
+
+### Easy Publishing Workflow
+
+The simple way to publish to npm:
+
+1. **Update version** in `package.json`
+2. **Commit changes**: `git add . && git commit -m "feat: description"`
+3. **Publish**: `npm publish`
+
+### Prerequisites
+
+- Logged into npm: `npm whoami` 
+- Version not already published
+- Working directory clean
+
+### Notes
+
+- Use `npm publish` directly instead of the interactive script
+- No need for complex automation - npm handles everything
+- Package automatically includes all necessary files via package.json

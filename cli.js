@@ -76,13 +76,17 @@ program
   .option('--menu-closed', 'start with navigation menu closed')
   .option('--no-auth', 'build without authentication (for public sites)')
   .option('--no-attachments', 'skip copying attachment files (Excel, PDF, etc.)')
+  .option('--no-static', 'disable static output generation (default: enabled)')
+  .option('--static-dir <dir>', 'directory for static output (default: html-static)')
   .addHelpText('after', `
 ${chalk.yellow('Examples:')}
-  ${chalk.gray('$')} doc-builder build                        ${chalk.gray('# Build with defaults')}
+  ${chalk.gray('$')} doc-builder build                        ${chalk.gray('# Build with defaults (includes static)')}
   ${chalk.gray('$')} doc-builder build --input docs --output dist
   ${chalk.gray('$')} doc-builder build --preset notion-inspired ${chalk.gray('# Use Notion-inspired preset')}
   ${chalk.gray('$')} doc-builder build --config my-config.js  ${chalk.gray('# Use custom config')}
   ${chalk.gray('$')} doc-builder build --no-auth              ${chalk.gray('# Build public site without authentication')}
+  ${chalk.gray('$')} doc-builder build --no-static            ${chalk.gray('# Skip static output generation')}
+  ${chalk.gray('$')} doc-builder build --static-dir public    ${chalk.gray('# Use custom static output directory')}
 `)
   .action(async (options) => {
     const spinner = ora('Building documentation...').start();
@@ -95,6 +99,16 @@ ${chalk.yellow('Examples:')}
         // Temporarily disable authentication for this build
         config.features = config.features || {};
         config.features.authentication = false;
+      }
+      
+      // Handle static output options
+      if (options.static === false) {
+        config.features = config.features || {};
+        config.features.staticOutput = false;
+      }
+      
+      if (options.staticDir) {
+        config.staticOutputDir = options.staticDir;
       }
       
       await build(config);

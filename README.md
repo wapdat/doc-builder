@@ -74,7 +74,7 @@ This aligns perfectly with our mission: beautiful documentation should be access
 ### 🎯 Advanced Features  
 - 🔍 **SEO Optimized** - Meta tags & structured data
 - 🔐 **Optional Auth** - Supabase authentication (opt-in)
-- 📊 **Mermaid Diagrams** - Built-in diagram support
+- 📊 **Mermaid Diagrams** - Enhanced styling with rounded corners & Notion-inspired themes
 - 🖼️ **Image Modals** - Click any image for full-screen view
 - 🌙 **Dark Mode** - Automatic theme switching
 - ☁️ **Vercel Deploy** - One-command deployment
@@ -217,6 +217,7 @@ module.exports = {
     authentication: 'supabase',  // or false for no auth
     changelog: true,
     mermaid: true,
+    mermaidEnhanced: true,      // Enhanced styling with rounded corners
     darkMode: true,
     attachments: true           // Copy PDFs, Excel files, etc. (default: true)
   },
@@ -230,22 +231,67 @@ module.exports = {
 };
 ```
 
-### 🔐 Authentication Setup
+### 🔐 Supabase Authentication
 
-For secure documentation sites, use Supabase authentication:
+Secure your documentation with enterprise-grade authentication powered by **Supabase**. Built-in credentials mean zero configuration required!
 
+#### ✨ Authentication Features
+
+| Feature | Description |
+|---------|-------------|
+| 🔐 **Enterprise Security** | JWT tokens, bcrypt hashing, Row Level Security |
+| 🏗️ **Zero Configuration** | Built-in Supabase credentials - just enable and go |
+| 🌐 **Domain-based Access** | No site registration needed - uses your domain automatically |
+| 📁 **Private Directory Support** | `/private/` folders automatically protected |
+| 👥 **Multi-user Management** | Unlimited users with fine-grained access control |
+| 🔄 **Session Management** | Auto-refresh tokens, persistent sessions |
+| 🎨 **Beautiful Login Pages** | Auto-generated login/logout pages with your theme |
+
+#### 🚀 Quick Setup
+
+**Option 1: Private Directory (Recommended)**
 ```bash
-# Initialize authentication
-npx @knowcode/doc-builder auth:init
-
-# Add your site to database  
-npx @knowcode/doc-builder auth:add-site --domain docs.example.com --name "My Docs"
-
-# Grant user access
-npx @knowcode/doc-builder auth:grant --email user@example.com --site-id xxx
+# Create private folder - authentication automatically enabled!
+mkdir docs/private
+echo "# Secret Documentation" > docs/private/admin.md
+npx @knowcode/doc-builder deploy
 ```
 
-See the [Supabase Authentication Guide](docs/guides/supabase-auth-setup-guide.md) for complete setup instructions.
+**Option 2: Global Authentication**
+```javascript
+// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: 'supabase'  // Protect entire site
+  }
+};
+```
+
+#### 👥 User Management
+
+```bash
+# Grant user access to your domain (SQL in Supabase dashboard)
+INSERT INTO docbuilder_access (user_id, domain)
+VALUES (
+    (SELECT id FROM auth.users WHERE email = 'user@example.com'),
+    'your-docs-domain.vercel.app'
+);
+```
+
+#### 🔧 Authentication Modes
+
+- **🌍 Global Auth**: Entire site requires login (`authentication: 'supabase'`)
+- **📁 Private Directory**: Only `/private/` folders protected (automatic)
+- **🔄 Hybrid**: Public docs + private sections (most flexible)
+
+#### 📚 Complete Guide
+
+See the [Complete Supabase Authentication Guide](docs/guides/authentication-guide.md) for:
+- Detailed setup instructions
+- Database schema setup
+- User management workflows  
+- Security best practices
+- Troubleshooting guide
 
 ### 📎 Attachment Support
 

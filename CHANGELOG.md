@@ -5,6 +5,25 @@ All notable changes to @knowcode/doc-builder will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.18] - 2025-08-02
+
+### Added
+- **Enhanced Mermaid Styling** - Diagrams now feature rounded corners (8px radius) for a more polished appearance
+- **Notion-Inspired Themes** - Custom color palettes for both light and dark modes that integrate seamlessly with the overall design
+- **Configurable Enhancement** - New `mermaidEnhanced` configuration option to enable/disable enhanced styling (default: true)
+- **Improved Typography** - Better spacing, margins, and font consistency in Mermaid diagrams
+- **Theme Transition Support** - Smooth transitions when switching between light and dark modes
+
+### Fixed
+- **JavaScript Initialization** - Resolved banner element null reference error that was preventing Mermaid diagrams from rendering
+- **CSS Specificity** - Enhanced CSS selectors to ensure rounded corner styling is properly applied
+- **Debugging Support** - Added comprehensive logging for troubleshooting Mermaid configuration issues
+
+### Technical
+- Enhanced `configureMermaidTheme()` function with custom theme variables
+- Added conditional CSS styling using `[data-mermaid-enhanced="true"]` selector
+- Improved error handling for missing DOM elements during initialization
+
 ## [1.9.2] - 2025-07-28
 
 ### Added

@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive guide to implementing enterprise-grade authentication in @knowcode/doc-builder using Supabase.">
+    <title>Complete Supabase Authentication Guide</title>
+    
+    <meta name="generator" content="@knowcode/doc-builder by Knowcode Ltd">
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, authentication, supabase">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/supabase-authentication-complete-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/supabase-authentication-complete-guide.html">
+    <meta property="og:title" content="Complete Supabase Authentication Guide">
+    <meta property="og:description" content="A comprehensive guide to implementing enterprise-grade authentication in @knowcode/doc-builder using Supabase.">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="Complete Supabase Authentication Guide">
+    <meta name="twitter:description" content="A comprehensive guide to implementing enterprise-grade authentication in @knowcode/doc-builder using Supabase.">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/notion-style.css">
+    
+    
+    <!-- Blue theme and white background overrides for static output -->
+    <style>
+      /* Override green colors with blue */
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #dbeafe;
+        --accent: #3b82f6;
+        --color-accent-green: #2563eb;
+        --color-accent-emerald: #3b82f6;
+        
+        /* White backgrounds for cleaner appearance */
+        --color-bg-secondary: #FFFFFF;
+        --color-bg-tertiary: #FAFAFA;
+        --color-bg-hover: #F8F9FA;
+      }
+      
+      /* Override green status colors with blue variants */
+      .nav-item.active {
+        background-color: #dbeafe !important;
+        color: #1d4ed8 !important;
+      }
+      
+      .nav-item:hover {
+        background-color: #eff6ff !important;
+      }
+      
+      /* Override complete/success icons to blue */
+      .ph-check-circle[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override README/home icon color */
+      .ph-house[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override links */
+      a {
+        color: #2563eb;
+      }
+      
+      a:hover {
+        color: #1d4ed8;
+      }
+      
+      /* Override buttons and interactive elements */
+      .theme-toggle:hover,
+      .menu-toggle:hover {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+      
+      /* Override nav title hover */
+      .nav-title:hover {
+        background-color: #eff6ff;
+      }
+      
+      /* White backgrounds for sidebar and navigation */
+      body:not(.dark-mode) .sidebar {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .nav-section {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .nav-content {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .navigation {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      /* Subtle separation for nav sections */
+      body:not(.dark-mode) .nav-section + .nav-section {
+        border-top: 1px solid #F3F4F6;
+      }
+      
+      /* Adjust hover states for white backgrounds */
+      body:not(.dark-mode) .nav-item:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      body:not(.dark-mode) .nav-title.collapsible:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      /* Header stays white (already is) but ensure consistency */
+      body:not(.dark-mode) .header {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+      
+      /* Ensure search box looks good on white */
+      body:not(.dark-mode) .filter-input,
+      body:not(.dark-mode) .sidebar-search {
+        background: #F8F9FA !important;
+        background-color: #F8F9FA !important;
+        border: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .filter-input:focus,
+      body:not(.dark-mode) .sidebar-search:focus {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-color: #2563eb !important;
+      }
+      
+      /* Override breadcrumbs */
+      .breadcrumbs a {
+        color: #2563eb;
+      }
+      
+      .breadcrumbs a:hover {
+        color: #1d4ed8;
+        background-color: #dbeafe;
+      }
+      
+      /* Override filter icon */
+      .filter-icon {
+        color: #2563eb;
+      }
+      
+      /* Override deployment info on hover */
+      .deployment-date:hover {
+        color: #2563eb;
+      }
+      
+      /* Dark mode adjustments */
+      body.dark-mode {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --primary-light: #1e3a8a;
+        --accent: #60a5fa;
+      }
+      
+      body.dark-mode .nav-item.active {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+        color: #60a5fa !important;
+      }
+      
+      body.dark-mode .nav-item:hover {
+        background-color: rgba(59, 130, 246, 0.05) !important;
+      }
+      
+      body.dark-mode a {
+        color: #60a5fa;
+      }
+      
+      body.dark-mode a:hover {
+        color: #93bbfc;
+      }
+    </style>
+    
+    
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Complete Supabase Authentication Guide",
+  "description": "A comprehensive guide to implementing enterprise-grade authentication in @knowcode/doc-builder using Supabase.",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-08-07T14:41:11.205Z",
+  "dateModified": "2025-08-07T14:41:11.205Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/supabase-authentication-complete-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Supabase Authentication Complete Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/supabase-authentication-complete-guide.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">@knowcode/doc-builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.9.23">Last updated: Aug 7, 2025, 02:41 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Search menu..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title toggle-all-nav expanded" href="#" id="nav-toggle-all" title="Collapse/Expand All">
+          <i class="ph ph-caret-down" id="toggle-all-icon"></i> Documentation
+        </a>
+        <div class="nav-content">
+        <a href="README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="ph ph-file-text"></i> Overview</a>
+        <a href="about-doc-builder.html" class="nav-item" data-tooltip="About @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> About Doc Builder</a>
+        <a href="documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Index</a>
+        <a href="image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="ph ph-file-text"></i> Image Modal Test</a>
+        <a href="vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel Cli Setup Guide</a>
+        <a href="vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-book"></i> Guides
+        </a>
+        <div class="nav-content" id="nav-guides-1">
+        <a href="guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="ph ph-file-text"></i> Authentication Default Change</a>
+        <a href="guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Authentication Guide</a>
+        <a href="guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Claude Workflow Guide</a>
+        <a href="guides/configuration-guide.html" class="nav-item" data-tooltip="This guide explains how @knowcode/doc-builder handles configuration files and settings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Configuration Guide</a>
+        <a href="guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Standards</a>
+        <a href="guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Html Embedding Guide</a>
+        <a href="guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Image Modal Guide</a>
+        <a href="guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Phosphor Icons Guide</a>
+        <a href="guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication</a>
+        <a href="guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication Troubleshooting</a>
+        <a href="guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Public Site Deployment</a>
+        <a href="guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Search Engine Verification Guide</a>
+        <a href="guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Seo Guide</a>
+        <a href="guides/seo-optimization-guide.html" class="nav-item" data-tooltip="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> SEO Optimization Guide for @knowcode/doc-builder</a>
+        <a href="guides/supabase-authentication-complete-guide.html" class="nav-item active" data-tooltip="@knowcode/doc-builder includes built-in Supabase authentication that provides enterprise-grade security with zero configuration."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Supabase Authentication Complete Guide</a>
+        <a href="guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Troubleshooting Guide</a>
+        <a href="guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-chat-circle-dots"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="prompts/beautiful-documentation-design.html" class="nav-item" data-tooltip="🎨 Beautiful Documentation Design Guide."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Beautiful Documentation Design</a>
+        <a href="prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Markdown Document Standards</a>
+        <a href="prompts/project-rename-strategy-sasha-publish.html" class="nav-item" data-tooltip="This document outlines the comprehensive strategy for renaming the @knowcode/doc-builder project to &quot;sasha-publish&quot;, including all package references,..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Project Rename Strategy Sasha Publish</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-test-questions-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-folder"></i> Test Questions
+        </a>
+        <div class="nav-content collapsed" id="nav-test-questions-1">
+        <a href="test-questions/how-does-it-work%3F.html" class="nav-item" data-tooltip="This is a test file to verify that question marks work properly in filenames."><i class="ph ph-file-text"></i> How Does It Work?</a>
+        <a href="test-questions/step-1%3A%20getting-started.html" class="nav-item" data-tooltip="Step 1: Getting Started."><i class="ph ph-file-text"></i> Step 1: Getting Started</a>
+        <a href="test-questions/what-is-the-purpose.html" class="nav-item" data-tooltip="Understanding the purpose of our documentation system"><i class="ph ph-file-text"></i> What Is The Purpose?</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>Complete Supabase Authentication Guide</h1>
+<p>A comprehensive guide to implementing enterprise-grade authentication in @knowcode/doc-builder using Supabase.</p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#authentication-modes">Authentication Modes</a></li>
+<li><a href="#quick-setup">Quick Setup</a></li>
+<li><a href="#database-setup">Database Setup</a></li>
+<li><a href="#user-management">User Management</a></li>
+<li><a href="#security-features">Security Features</a></li>
+<li><a href="#configuration-options">Configuration Options</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#advanced-topics">Advanced Topics</a></li>
+</ul>
+<h2>Overview</h2>
+<p>@knowcode/doc-builder includes built-in <strong>Supabase authentication</strong> that provides enterprise-grade security with zero configuration. The system uses JWT tokens, domain-based access control, and automatic session management to protect your documentation.</p>
+<h3>Why Supabase?</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><i style="font-size: 1.2em" class="ph ph-lock-key" aria-label="secure"></i> <strong>Enterprise Security</strong></td>
+<td>JWT tokens, bcrypt password hashing, Row Level Security</td>
+</tr>
+<tr>
+<td><i style="font-size: 1.2em" class="ph ph-users" aria-label="team"></i> <strong>Scalable User Management</strong></td>
+<td>Handles millions of users with fine-grained access control</td>
+</tr>
+<tr>
+<td><i style="font-size: 1.2em" class="ph ph-globe-hemisphere-west" aria-label="world"></i> <strong>Global Infrastructure</strong></td>
+<td>Built on PostgreSQL with worldwide edge locations</td>
+</tr>
+<tr>
+<td><i style="font-size: 1.2em" class="ph ph-money" aria-label="money"></i> <strong>Generous Free Tier</strong></td>
+<td>50,000 monthly active users at no cost</td>
+</tr>
+<tr>
+<td><i style="font-size: 1.2em" class="ph ph-arrows-clockwise" aria-label="refresh"></i> <strong>Real-time Updates</strong></td>
+<td>Live permission changes without restarts</td>
+</tr>
+<tr>
+<td><i style="font-size: 1.2em" class="ph ph-shield" aria-label="security"></i> <strong>Built-in Security</strong></td>
+<td>Multi-factor auth, OAuth providers, audit logs</td>
+</tr>
+</tbody></table>
+<h2>How It Works</h2>
+<p>The authentication system follows this flow:</p>
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph TD
+    A[User visits documentation page] --> B{Has valid JWT token?}
+    B -->|No| C[Redirect to login page]
+    B -->|Yes| D[Verify token with Supabase]
+    
+    C --> E[User enters credentials]
+    E --> F[Authenticate with Supabase]
+    F --> G{Valid credentials?}
+    G -->|No| H[Show error message]
+    G -->|Yes| I[Issue JWT token]
+    
+    I --> J[Check domain access in database]
+    D --> J
+    
+    J --> K{User has access to domain?}
+    K -->|Yes| L[Show protected content]
+    K -->|No| M[Show access denied page]
+    
+    style A fill:#e1f5fe
+    style L fill:#c8e6c9
+    style M fill:#ffcdd2
+    style H fill:#ffcdd2</div>
+    </div>
+<h3>Technical Architecture</h3>
+<ol>
+<li><strong>Client-Side Check</strong>: JavaScript checks for valid JWT token on page load</li>
+<li><strong>Supabase Verification</strong>: Token verified against Supabase auth service</li>
+<li><strong>Domain-Based Access</strong>: User access checked against <code>docbuilder_access</code> table</li>
+<li><strong>Content Display</strong>: Protected content shown only to authorized users</li>
+<li><strong>Session Management</strong>: Automatic token refresh and session persistence</li>
+</ol>
+<h2>Authentication Modes</h2>
+<p>@knowcode/doc-builder supports three authentication modes:</p>
+<h3>1. <i style="font-size: 1.2em" class="ph ph-globe-hemisphere-west" aria-label="world"></i> Global Authentication</h3>
+<p><strong>When to use</strong>: Entire documentation site requires login</p>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: &#39;supabase&#39;  // Entire site protected
+  }
+};
+</code></pre>
+<p><strong>Behavior</strong>:</p>
+<ul>
+<li>All pages require authentication</li>
+<li>Redirects to login if not authenticated</li>
+<li>Shows access denied if user lacks domain access</li>
+</ul>
+<h3>2. <i style="font-size: 1.2em" class="ph ph-folder" aria-label="folder"></i> Private Directory Authentication</h3>
+<p><strong>When to use</strong>: Public docs with some private sections (most common)</p>
+<pre><code class="language-bash"># Create private directory - authentication automatically enabled
+mkdir docs/private
+echo &quot;# Admin Documentation&quot; &gt; docs/private/admin-guide.md
+</code></pre>
+<p><strong>Behavior</strong>:</p>
+<ul>
+<li>Public pages accessible to everyone</li>
+<li><code>/private/</code> folders require authentication</li>
+<li>Seamless navigation between public and private content</li>
+</ul>
+<h3>3. <i style="font-size: 1.2em" class="ph ph-arrows-clockwise" aria-label="refresh"></i> Hybrid Mode</h3>
+<p><strong>When to use</strong>: Complex access requirements</p>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: &#39;supabase&#39;,      // Global auth enabled
+    privateDirectoryAuth: true      // Also check private directories
+  }
+};
+</code></pre>
+<p><strong>Behavior</strong>:</p>
+<ul>
+<li>Combines global and directory-based authentication</li>
+<li>Granular control over different sections</li>
+<li>Advanced user permission management</li>
+</ul>
+<h2>Quick Setup</h2>
+<h3>Option 1: Zero Configuration (Recommended)</h3>
+<p>The easiest way to get started - built-in credentials included:</p>
+<pre><code class="language-bash"># 1. Create private content
+mkdir docs/private
+echo &quot;# Secret Documentation&quot; &gt; docs/private/admin.md
+
+# 2. Deploy with authentication automatically enabled
+npx @knowcode/doc-builder deploy
+
+# 3. Add users in Supabase dashboard
+# Visit your deployed site - authentication is ready!
+</code></pre>
+<h3>Option 2: Custom Configuration</h3>
+<p>For advanced users who want to use their own Supabase project:</p>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  siteName: &#39;My Secure Docs&#39;,
+  
+  features: {
+    authentication: &#39;supabase&#39;
+  },
+  
+  auth: {
+    supabaseUrl: process.env.SUPABASE_URL || &#39;https://your-project.supabase.co&#39;,
+    supabaseAnonKey: process.env.SUPABASE_ANON_KEY || &#39;your-anon-key&#39;
+  }
+};
+</code></pre>
+<h2>Database Setup</h2>
+<h3>Automatic Setup (Built-in Project)</h3>
+<p>If you&#39;re using the built-in Supabase project (recommended), the database is already configured. Skip to <a href="#user-management">User Management</a>.</p>
+<h3>Manual Setup (Custom Project)</h3>
+<p>If using your own Supabase project, run this SQL in the Supabase SQL editor:</p>
+<pre><code class="language-sql">-- Create access control table
+CREATE TABLE docbuilder_access (
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+    domain TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW(),
+    PRIMARY KEY (user_id, domain)
+);
+
+-- Create indexes for performance
+CREATE INDEX idx_docbuilder_access_domain ON docbuilder_access(domain);
+CREATE INDEX idx_docbuilder_access_user_id ON docbuilder_access(user_id);
+
+-- Enable Row Level Security
+ALTER TABLE docbuilder_access ENABLE ROW LEVEL SECURITY;
+
+-- RLS Policy: Users can only see their own access records
+CREATE POLICY &quot;Users see own access&quot; ON docbuilder_access
+    FOR SELECT USING (user_id = auth.uid());
+
+-- RLS Policy: Service role can manage all access
+CREATE POLICY &quot;Service role manages access&quot; ON docbuilder_access
+    FOR ALL USING (current_setting(&#39;role&#39;) = &#39;service_role&#39;);
+
+-- Create trigger to update timestamp
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$ language &#39;plpgsql&#39;;
+
+CREATE TRIGGER update_docbuilder_access_updated_at 
+    BEFORE UPDATE ON docbuilder_access
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+</code></pre>
+<h3>Database Schema</h3>
+<p>The authentication system uses a simple schema:</p>
+<pre><code class="language-sql">-- Table: docbuilder_access
+-- Purpose: Controls which users can access which documentation domains
+
+Column        Type         Description
+-----------   -----------  ----------------------------------
+user_id       UUID         Reference to auth.users(id)
+domain        TEXT         Domain name (e.g., docs.example.com)
+created_at    TIMESTAMPTZ  When access was granted
+updated_at    TIMESTAMPTZ  Last modified timestamp
+</code></pre>
+<h2>User Management</h2>
+<h3>Creating Users</h3>
+<p><strong>Option 1: Supabase Dashboard</strong></p>
+<ol>
+<li>Visit your Supabase project dashboard</li>
+<li>Go to Authentication → Users</li>
+<li>Click &quot;Invite user&quot;</li>
+<li>Enter email address</li>
+<li>User receives signup email</li>
+</ol>
+<p><strong>Option 2: User Self-Registration</strong><br>Users can sign up at your login page if enabled in Supabase settings.</p>
+<h3>Granting Access</h3>
+<p>Grant a user access to your documentation domain:</p>
+<pre><code class="language-sql">-- Grant access to a single user
+INSERT INTO docbuilder_access (user_id, domain)
+VALUES (
+    (SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;),
+    &#39;docs.example.com&#39;
+);
+
+-- Grant access to multiple users
+INSERT INTO docbuilder_access (user_id, domain)
+SELECT id, &#39;docs.example.com&#39; 
+FROM auth.users 
+WHERE email IN (
+    &#39;admin@example.com&#39;,
+    &#39;developer@example.com&#39;,
+    &#39;manager@example.com&#39;
+);
+
+-- Grant access to all existing users (be careful!)
+INSERT INTO docbuilder_access (user_id, domain)
+SELECT id, &#39;docs.example.com&#39; FROM auth.users;
+</code></pre>
+<h3>Revoking Access</h3>
+<p>Remove a user&#39;s access to your documentation:</p>
+<pre><code class="language-sql">-- Remove specific user access
+DELETE FROM docbuilder_access 
+WHERE user_id = (SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;)
+  AND domain = &#39;docs.example.com&#39;;
+
+-- Remove all access for a domain (nuclear option)
+DELETE FROM docbuilder_access WHERE domain = &#39;docs.example.com&#39;;
+</code></pre>
+<h3>Bulk User Management</h3>
+<p><strong>Add users from CSV:</strong></p>
+<pre><code class="language-sql">-- Create temporary table
+CREATE TEMP TABLE user_emails (email TEXT);
+
+-- Insert emails (replace with your list)
+INSERT INTO user_emails VALUES 
+(&#39;user1@example.com&#39;),
+(&#39;user2@example.com&#39;),
+(&#39;user3@example.com&#39;);
+
+-- Grant access to all
+INSERT INTO docbuilder_access (user_id, domain)
+SELECT u.id, &#39;docs.example.com&#39;
+FROM auth.users u
+JOIN user_emails e ON u.email = e.email;
+</code></pre>
+<p><strong>View all users with access:</strong></p>
+<pre><code class="language-sql">SELECT 
+    u.email,
+    u.created_at as user_created,
+    da.created_at as access_granted,
+    da.domain
+FROM auth.users u
+JOIN docbuilder_access da ON u.id = da.user_id
+WHERE da.domain = &#39;docs.example.com&#39;
+ORDER BY da.created_at DESC;
+</code></pre>
+<h2>Security Features</h2>
+<h3>What&#39;s Included</h3>
+<table>
+<thead>
+<tr>
+<th>Security Feature</th>
+<th>Implementation</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>JWT Authentication</strong></td>
+<td>Industry-standard tokens</td>
+<td>Stateless, secure authentication</td>
+</tr>
+<tr>
+<td><strong>Password Hashing</strong></td>
+<td>bcrypt with salt</td>
+<td>Passwords never stored in plaintext</td>
+</tr>
+<tr>
+<td><strong>Row Level Security</strong></td>
+<td>PostgreSQL RLS policies</td>
+<td>Database-level access control</td>
+</tr>
+<tr>
+<td><strong>Session Management</strong></td>
+<td>Automatic token refresh</td>
+<td>Seamless user experience</td>
+</tr>
+<tr>
+<td><strong>HTTPS Only</strong></td>
+<td>Enforced in production</td>
+<td>Encrypted data transmission</td>
+</tr>
+<tr>
+<td><strong>Domain Validation</strong></td>
+<td>Runtime domain checking</td>
+<td>Prevents unauthorized access</td>
+</tr>
+<tr>
+<td><strong>Content Protection</strong></td>
+<td>Client-side verification</td>
+<td>No content served to unauthorized users</td>
+</tr>
+</tbody></table>
+<h3>Security Best Practices</h3>
+<ol>
+<li><p><strong>Use Environment Variables</strong> (for custom projects):</p>
+<pre><code class="language-bash"># .env.local
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your-anon-key
+</code></pre>
+</li>
+<li><p><strong>Regular Access Audits</strong>:</p>
+<pre><code class="language-sql">-- Review user access monthly
+SELECT u.email, da.domain, da.created_at
+FROM auth.users u
+JOIN docbuilder_access da ON u.id = da.user_id
+ORDER BY da.created_at DESC;
+</code></pre>
+</li>
+<li><p><strong>Monitor Authentication Logs</strong>:</p>
+<ul>
+<li>Check Supabase dashboard for login attempts</li>
+<li>Review failed authentication events</li>
+<li>Set up alerts for suspicious activity</li>
+</ul>
+</li>
+<li><p><strong>Custom Domain Setup</strong>:</p>
+<pre><code class="language-bash"># Use professional domains for better security
+https://docs.yourcompany.com  # Good
+https://random-string.vercel.app  # Less secure
+</code></pre>
+</li>
+</ol>
+<h2>Configuration Options</h2>
+<h3>Basic Configuration</h3>
+<pre><code class="language-javascript">// doc-builder.config.js - Minimal setup
+module.exports = {
+  features: {
+    authentication: &#39;supabase&#39;  // Enable authentication
+  }
+};
+</code></pre>
+<h3>Advanced Configuration</h3>
+<pre><code class="language-javascript">// doc-builder.config.js - Full configuration
+module.exports = {
+  siteName: &#39;Secure Documentation&#39;,
+  siteDescription: &#39;Private company documentation&#39;,
+  
+  features: {
+    authentication: &#39;supabase&#39;,         // Enable Supabase auth
+    privateDirectoryAuth: true,        // Also protect /private/ directories
+    mermaid: true,                     // Enable diagrams
+    tooltips: true,                    // Enable tooltips
+    phosphorIcons: true               // Use Phosphor icons
+  },
+  
+  auth: {
+    // Optional: Use custom Supabase project
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+    
+    // Optional: Custom login page settings
+    loginPageTitle: &#39;Access Documentation&#39;,
+    loginPageSubtitle: &#39;Enter your credentials to continue&#39;
+  },
+  
+  // SEO settings work with authentication
+  seo: {
+    author: &#39;Your Company&#39;,
+    keywords: [&#39;documentation&#39;, &#39;secure&#39;, &#39;private&#39;],
+    ogImage: &#39;/images/og-secure.png&#39;
+  }
+};
+</code></pre>
+<h3>Environment Variables</h3>
+<pre><code class="language-bash"># .env.local - For custom Supabase projects
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCI...
+
+# Optional: Custom domain for authentication
+AUTH_DOMAIN=docs.yourcompany.com
+</code></pre>
+<h2>Troubleshooting</h2>
+<h3>Common Issues</h3>
+<h4><i style="font-size: 1.2em" class="ph ph-magnifying-glass" aria-label="search"></i> <strong>Users can&#39;t log in</strong></h4>
+<p><strong>Symptoms</strong>: Login form shows errors, authentication fails</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check Supabase project is active and accessible</li>
+<li>Verify credentials in config file</li>
+<li>Ensure user exists in <code>auth.users</code> table</li>
+<li>Check user&#39;s email is confirmed (if confirmation required)</li>
+</ol>
+<pre><code class="language-sql">-- Check if user exists
+SELECT email, email_confirmed_at FROM auth.users WHERE email = &#39;user@example.com&#39;;
+
+-- Check user access
+SELECT * FROM docbuilder_access 
+WHERE user_id = (SELECT id FROM auth.users WHERE email = &#39;user@example.com&#39;);
+</code></pre>
+<h4><i style="font-size: 1.2em" class="ph ph-arrows-clockwise" aria-label="refresh"></i> <strong>Content flashes before redirect</strong></h4>
+<p><strong>Symptoms</strong>: Protected content briefly visible before login redirect</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Update to latest version (<code>npm install @knowcode/doc-builder@latest</code>)</li>
+<li>Check network speed - slow connections may see flashing</li>
+<li>Verify authentication script is loading properly</li>
+</ol>
+<pre><code class="language-html">&lt;!-- This CSS is automatically included to prevent flashing --&gt;
+&lt;style&gt;
+  body { visibility: hidden; opacity: 0; }
+  body.authenticated { visibility: visible; opacity: 1; }
+&lt;/style&gt;
+</code></pre>
+<h4><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> <strong>Access denied after login</strong></h4>
+<p><strong>Symptoms</strong>: User logs in successfully but sees &quot;Access Denied&quot; page</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check user has entry in <code>docbuilder_access</code> table</li>
+<li>Verify domain matches exactly (including subdomains)</li>
+<li>Check RLS policies are correctly configured</li>
+</ol>
+<pre><code class="language-sql">-- Debug access check
+SELECT 
+    u.email,
+    da.domain,
+    &#39;Expected: &#39; || &#39;your-actual-domain.com&#39; as expected_domain
+FROM auth.users u
+LEFT JOIN docbuilder_access da ON u.id = da.user_id
+WHERE u.email = &#39;user@example.com&#39;;
+</code></pre>
+<h4><i style="font-size: 1.2em" class="ph ph-plug" aria-label="plugin"></i> <strong>Authentication not working locally</strong></h4>
+<p><strong>Symptoms</strong>: Authentication works on deployment but not locally</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check localhost is included in Supabase allowed origins</li>
+<li>Use <code>http://localhost:3000</code> exactly in Supabase settings</li>
+<li>Clear browser cache and cookies</li>
+</ol>
+<h3>Debug Checklist</h3>
+<p>When authentication isn&#39;t working:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Check browser console for JavaScript errors</li>
+<li><input disabled="" type="checkbox"> Verify JWT token in DevTools → Application → Local Storage</li>
+<li><input disabled="" type="checkbox"> Test Supabase connection in browser network tab</li>
+<li><input disabled="" type="checkbox"> Confirm domain in database matches deployment URL</li>
+<li><input disabled="" type="checkbox"> Check Supabase project is active and not paused</li>
+<li><input disabled="" type="checkbox"> Verify user email is confirmed (if required)</li>
+<li><input disabled="" type="checkbox"> Test with a fresh incognito browser window</li>
+</ul>
+<h3>Getting Help</h3>
+<ol>
+<li><strong>Check the logs</strong>: Browser console and Supabase dashboard</li>
+<li><strong>Test components</strong>: Try logging in directly to Supabase dashboard</li>
+<li><strong>Verify setup</strong>: Run through setup steps again</li>
+<li><strong>Ask for help</strong>: Open an issue on GitHub with full error details</li>
+</ol>
+<h2>Advanced Topics</h2>
+<h3>Custom Authentication Pages</h3>
+<p>While @knowcode/doc-builder generates beautiful login pages automatically, you can customize them:</p>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  auth: {
+    // Custom login page configuration
+    loginPageTitle: &#39;Secure Access Required&#39;,
+    loginPageSubtitle: &#39;Please authenticate to view our documentation&#39;,
+    
+    // Custom styling (advanced)
+    customLoginCSS: `
+      .auth-box { 
+        border-radius: 12px; 
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      }
+    `
+  }
+};
+</code></pre>
+<h3>Multi-Domain Setup</h3>
+<p>For organizations with multiple documentation sites:</p>
+<pre><code class="language-sql">-- Grant user access to multiple domains
+INSERT INTO docbuilder_access (user_id, domain) VALUES
+((SELECT id FROM auth.users WHERE email = &#39;admin@example.com&#39;), &#39;docs.example.com&#39;),
+((SELECT id FROM auth.users WHERE email = &#39;admin@example.com&#39;), &#39;api.example.com&#39;),
+((SELECT id FROM auth.users WHERE email = &#39;admin@example.com&#39;), &#39;internal.example.com&#39;);
+
+-- View user&#39;s access across all domains
+SELECT u.email, array_agg(da.domain) as accessible_domains
+FROM auth.users u
+JOIN docbuilder_access da ON u.id = da.user_id
+GROUP BY u.id, u.email;
+</code></pre>
+<h3>OAuth Integration</h3>
+<p>Enable social login through Supabase (optional):</p>
+<ol>
+<li><p><strong>In Supabase Dashboard</strong>:</p>
+<ul>
+<li>Go to Authentication → Settings</li>
+<li>Enable desired providers (Google, GitHub, etc.)</li>
+<li>Configure OAuth credentials</li>
+</ul>
+</li>
+<li><p><strong>Update your config</strong>:</p>
+</li>
+</ol>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  auth: {
+    enableOAuth: true,
+    oauthProviders: [&#39;google&#39;, &#39;github&#39;]
+  }
+};
+</code></pre>
+<h3>Role-Based Access Control</h3>
+<p>Implement different permission levels:</p>
+<pre><code class="language-sql">-- Add role column to access table
+ALTER TABLE docbuilder_access ADD COLUMN role TEXT DEFAULT &#39;reader&#39;;
+
+-- Grant different roles
+INSERT INTO docbuilder_access (user_id, domain, role) VALUES
+((SELECT id FROM auth.users WHERE email = &#39;admin@example.com&#39;), &#39;docs.example.com&#39;, &#39;admin&#39;),
+((SELECT id FROM auth.users WHERE email = &#39;editor@example.com&#39;), &#39;docs.example.com&#39;, &#39;editor&#39;),
+((SELECT id FROM auth.users WHERE email = &#39;reader@example.com&#39;), &#39;docs.example.com&#39;, &#39;reader&#39;);
+</code></pre>
+<h3>API Access Control</h3>
+<p>Protect API documentation or interactive content:</p>
+<pre><code class="language-javascript">// In your custom HTML pages
+&lt;script&gt;
+async function checkAuthForAPI() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (!user) {
+        // Redirect to login or show error
+        return false;
+    }
+    return true;
+}
+
+// Use in interactive demos
+if (await checkAuthForAPI()) {
+    // Show API explorer or interactive content
+}
+&lt;/script&gt;
+</code></pre>
+<h2>Conclusion</h2>
+<p>Supabase authentication in @knowcode/doc-builder provides enterprise-grade security with minimal setup. The system handles everything from user management to session persistence, letting you focus on creating great documentation.</p>
+<p><strong>Key takeaways</strong>:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-rocket-launch" aria-label="launch"></i> <strong>Zero configuration</strong> required with built-in credentials</li>
+<li><i style="font-size: 1.2em" class="ph ph-globe" aria-label="global"></i> <strong>Domain-based access</strong> control eliminates complex site registration</li>
+<li><i style="font-size: 1.2em" class="ph ph-folder" aria-label="folder"></i> <strong>Private directory</strong> support for hybrid public/private docs</li>
+<li><i style="font-size: 1.2em" class="ph ph-lock" aria-label="locked"></i> <strong>Enterprise security</strong> with JWT tokens and Row Level Security</li>
+<li><i style="font-size: 1.2em" class="ph ph-users" aria-label="team"></i> <strong>Scalable user management</strong> supporting unlimited users</li>
+</ul>
+<p>For most use cases, simply creating a <code>/private/</code> directory and running <code>npx @knowcode/doc-builder deploy</code> is all you need to secure your documentation.</p>
+<p>Need help? Check the <a href="#troubleshooting">troubleshooting section</a> or open an issue on GitHub.</p>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false,
+        mermaidEnhanced: true
+      }
+    };
+    </script>
+    <script src="../js/main.js"></script>
+    
+</body>
+</html>

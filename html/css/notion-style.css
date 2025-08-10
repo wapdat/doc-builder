@@ -459,6 +459,43 @@ pre code {
   color: var(--color-text-primary);
 }
 
+/* Banner types */
+.banner-warning {
+  background: var(--color-accent-yellow-bg);
+  border-bottom: 1px solid var(--color-accent-yellow);
+}
+
+.banner-warning .banner-icon {
+  color: var(--color-accent-yellow);
+}
+
+.banner-info {
+  background: var(--color-accent-blue-bg);
+  border-bottom: 1px solid var(--color-accent-blue);
+}
+
+.banner-info .banner-icon {
+  color: var(--color-accent-blue);
+}
+
+.banner-success {
+  background: var(--color-accent-green-bg);
+  border-bottom: 1px solid var(--color-accent-green);
+}
+
+.banner-success .banner-icon {
+  color: var(--color-accent-green);
+}
+
+.banner-error {
+  background: var(--color-accent-red-bg);
+  border-bottom: 1px solid var(--color-accent-red);
+}
+
+.banner-error .banner-icon {
+  color: var(--color-accent-red);
+}
+
 /* Breadcrumbs - definition moved to line 888 to avoid duplication */
 
 .breadcrumb-item {
@@ -1092,6 +1129,82 @@ tr:hover {
   border-radius: var(--radius-lg);
   overflow-x: auto;
   margin: var(--space-2) 0;
+  transition: all var(--duration-normal);
+}
+
+/* Enhanced Mermaid SVG Styling */
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Enhanced Mermaid Styling - only applied when mermaidEnhanced is enabled */
+[data-mermaid-enhanced="true"] .mermaid svg .node rect,
+[data-mermaid-enhanced="true"] .mermaid svg .node polygon,
+[data-mermaid-enhanced="true"] .mermaid svg .node circle,
+[data-mermaid-enhanced="true"] .mermaid svg .node ellipse {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Enhanced rectangle shapes with rounded corners */
+[data-mermaid-enhanced="true"] .mermaid svg .node rect {
+  rx: 8px !important;
+  ry: 8px !important;
+}
+
+/* Enhanced flowchart nodes */
+[data-mermaid-enhanced="true"] .mermaid svg .flowchart-node {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08)) !important;
+}
+
+/* Smoother connection lines */
+[data-mermaid-enhanced="true"] .mermaid svg .flowchart-link {
+  stroke-width: 2px !important;
+  fill: none !important;
+}
+
+/* Enhanced text styling */
+[data-mermaid-enhanced="true"] .mermaid svg .node text,
+[data-mermaid-enhanced="true"] .mermaid svg .edgeLabel text {
+  font-family: var(--font-sans) !important;
+  font-size: var(--text-base) !important;
+  font-weight: var(--font-medium) !important;
+}
+
+/* Hover effects for interactive elements */
+[data-mermaid-enhanced="true"] .mermaid svg .node:hover rect,
+[data-mermaid-enhanced="true"] .mermaid svg .node:hover polygon,
+[data-mermaid-enhanced="true"] .mermaid svg .node:hover circle,
+[data-mermaid-enhanced="true"] .mermaid svg .node:hover ellipse {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Enhanced cluster/subgraph styling */
+[data-mermaid-enhanced="true"] .mermaid svg .cluster rect {
+  rx: 12px !important;
+  ry: 12px !important;
+  stroke-dasharray: none !important;
+  opacity: 0.8 !important;
+}
+
+/* Decision diamond improvements */
+[data-mermaid-enhanced="true"] .mermaid svg .flowchart-node polygon {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1)) !important;
+}
+
+/* Process node styling */
+[data-mermaid-enhanced="true"] .mermaid svg .flowchart-node rect {
+  stroke-width: 1.5px !important;
+}
+
+/* Edge label background */
+[data-mermaid-enhanced="true"] .mermaid svg .edgeLabel .label {
+  background: var(--color-bg-card) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: var(--space-1) var(--space-2) !important;
+  border: 1px solid var(--color-border-default) !important;
 }
 
 /* Mermaid Full Screen Viewer */
@@ -2245,5 +2358,69 @@ body.has-private-access .private-nav {
     padding: var(--space-2) var(--space-3);
   }
 }
-  opacity: 0.6;
+
+/* Print styles - hide breadcrumbs and other UI elements for clean PDF output */
+@media print {
+  /* Hide breadcrumbs completely when printing */
+  .breadcrumbs {
+    display: none !important;
+  }
+  
+  /* Hide navigation and header elements for clean printing */
+  .navigation,
+  .menu-toggle,
+  .theme-toggle,
+  .auth-btn,
+  .header {
+    display: none !important;
+  }
+  
+  /* Adjust main content area for printing without breadcrumbs */
+  .main-content {
+    margin-top: 0 !important;
+    min-height: auto !important;
+    padding-top: var(--space-4);
+  }
+  
+  /* Ensure content takes full width for printing */
+  .content-area {
+    max-width: none !important;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Optimize text for printing */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  /* Hide interactive elements */
+  .image-modal,
+  .tooltip,
+  button:not(.copy-btn) {
+    display: none !important;
+  }
+  
+  /* Ensure code blocks print well */
+  pre, code {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Page break optimization */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    color: black !important;
+  }
+  
+  /* Avoid breaking images */
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+    height: auto !important;
+  }
 }

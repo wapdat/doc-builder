@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.">
+    <title>Troubleshooting Guide for @knowcode/doc-builder</title>
+    
+    <meta name="generator" content="@knowcode/doc-builder by Knowcode Ltd">
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, issues, check">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html">
+    <meta property="og:title" content="Troubleshooting Guide for @knowcode/doc-builder">
+    <meta property="og:description" content="This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="Troubleshooting Guide for @knowcode/doc-builder">
+    <meta name="twitter:description" content="This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/notion-style.css">
+    
+    
+    <!-- Blue theme and white background overrides for static output -->
+    <style>
+      /* Override green colors with blue */
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #dbeafe;
+        --accent: #3b82f6;
+        --color-accent-green: #2563eb;
+        --color-accent-emerald: #3b82f6;
+        
+        /* White backgrounds for cleaner appearance */
+        --color-bg-secondary: #FFFFFF;
+        --color-bg-tertiary: #FAFAFA;
+        --color-bg-hover: #F8F9FA;
+      }
+      
+      /* Override green status colors with blue variants */
+      .nav-item.active {
+        background-color: #dbeafe !important;
+        color: #1d4ed8 !important;
+      }
+      
+      .nav-item:hover {
+        background-color: #eff6ff !important;
+      }
+      
+      /* Override complete/success icons to blue */
+      .ph-check-circle[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override README/home icon color */
+      .ph-house[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override links */
+      a {
+        color: #2563eb;
+      }
+      
+      a:hover {
+        color: #1d4ed8;
+      }
+      
+      /* Override buttons and interactive elements */
+      .theme-toggle:hover,
+      .menu-toggle:hover {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+      
+      /* Override nav title hover */
+      .nav-title:hover {
+        background-color: #eff6ff;
+      }
+      
+      /* White backgrounds for sidebar and navigation */
+      body:not(.dark-mode) .sidebar {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .nav-section {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .nav-content {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .navigation {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      /* Subtle separation for nav sections */
+      body:not(.dark-mode) .nav-section + .nav-section {
+        border-top: 1px solid #F3F4F6;
+      }
+      
+      /* Adjust hover states for white backgrounds */
+      body:not(.dark-mode) .nav-item:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      body:not(.dark-mode) .nav-title.collapsible:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      /* Header stays white (already is) but ensure consistency */
+      body:not(.dark-mode) .header {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+      
+      /* Ensure search box looks good on white */
+      body:not(.dark-mode) .filter-input,
+      body:not(.dark-mode) .sidebar-search {
+        background: #F8F9FA !important;
+        background-color: #F8F9FA !important;
+        border: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .filter-input:focus,
+      body:not(.dark-mode) .sidebar-search:focus {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-color: #2563eb !important;
+      }
+      
+      /* Override breadcrumbs */
+      .breadcrumbs a {
+        color: #2563eb;
+      }
+      
+      .breadcrumbs a:hover {
+        color: #1d4ed8;
+        background-color: #dbeafe;
+      }
+      
+      /* Override filter icon */
+      .filter-icon {
+        color: #2563eb;
+      }
+      
+      /* Override deployment info on hover */
+      .deployment-date:hover {
+        color: #2563eb;
+      }
+      
+      /* Dark mode adjustments */
+      body.dark-mode {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --primary-light: #1e3a8a;
+        --accent: #60a5fa;
+      }
+      
+      body.dark-mode .nav-item.active {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+        color: #60a5fa !important;
+      }
+      
+      body.dark-mode .nav-item:hover {
+        background-color: rgba(59, 130, 246, 0.05) !important;
+      }
+      
+      body.dark-mode a {
+        color: #60a5fa;
+      }
+      
+      body.dark-mode a:hover {
+        color: #93bbfc;
+      }
+    </style>
+    
+    
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Troubleshooting Guide for @knowcode/doc-builder",
+  "description": "This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-08-07T14:41:11.208Z",
+  "dateModified": "2025-08-07T14:41:11.208Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Troubleshooting Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/troubleshooting-guide.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">@knowcode/doc-builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.9.23">Last updated: Aug 7, 2025, 02:41 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Search menu..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title toggle-all-nav expanded" href="#" id="nav-toggle-all" title="Collapse/Expand All">
+          <i class="ph ph-caret-down" id="toggle-all-icon"></i> Documentation
+        </a>
+        <div class="nav-content">
+        <a href="README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="ph ph-file-text"></i> Overview</a>
+        <a href="about-doc-builder.html" class="nav-item" data-tooltip="About @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> About Doc Builder</a>
+        <a href="documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Index</a>
+        <a href="image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="ph ph-file-text"></i> Image Modal Test</a>
+        <a href="vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel Cli Setup Guide</a>
+        <a href="vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-book"></i> Guides
+        </a>
+        <div class="nav-content" id="nav-guides-1">
+        <a href="guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="ph ph-file-text"></i> Authentication Default Change</a>
+        <a href="guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Authentication Guide</a>
+        <a href="guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Claude Workflow Guide</a>
+        <a href="guides/configuration-guide.html" class="nav-item" data-tooltip="This guide explains how @knowcode/doc-builder handles configuration files and settings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Configuration Guide</a>
+        <a href="guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Standards</a>
+        <a href="guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Html Embedding Guide</a>
+        <a href="guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Image Modal Guide</a>
+        <a href="guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Phosphor Icons Guide</a>
+        <a href="guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication</a>
+        <a href="guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication Troubleshooting</a>
+        <a href="guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Public Site Deployment</a>
+        <a href="guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Search Engine Verification Guide</a>
+        <a href="guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Seo Guide</a>
+        <a href="guides/seo-optimization-guide.html" class="nav-item" data-tooltip="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> SEO Optimization Guide for @knowcode/doc-builder</a>
+        <a href="guides/supabase-authentication-complete-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes built-in Supabase authentication that provides enterprise-grade security with zero configuration."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Supabase Authentication Complete Guide</a>
+        <a href="guides/troubleshooting-guide.html" class="nav-item active" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Troubleshooting Guide</a>
+        <a href="guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-chat-circle-dots"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="prompts/beautiful-documentation-design.html" class="nav-item" data-tooltip="🎨 Beautiful Documentation Design Guide."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Beautiful Documentation Design</a>
+        <a href="prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Markdown Document Standards</a>
+        <a href="prompts/project-rename-strategy-sasha-publish.html" class="nav-item" data-tooltip="This document outlines the comprehensive strategy for renaming the @knowcode/doc-builder project to &quot;sasha-publish&quot;, including all package references,..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Project Rename Strategy Sasha Publish</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-test-questions-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-folder"></i> Test Questions
+        </a>
+        <div class="nav-content collapsed" id="nav-test-questions-1">
+        <a href="test-questions/how-does-it-work%3F.html" class="nav-item" data-tooltip="This is a test file to verify that question marks work properly in filenames."><i class="ph ph-file-text"></i> How Does It Work?</a>
+        <a href="test-questions/step-1%3A%20getting-started.html" class="nav-item" data-tooltip="Step 1: Getting Started."><i class="ph ph-file-text"></i> Step 1: Getting Started</a>
+        <a href="test-questions/what-is-the-purpose.html" class="nav-item" data-tooltip="Understanding the purpose of our documentation system"><i class="ph ph-file-text"></i> What Is The Purpose?</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>Troubleshooting Guide for @knowcode/doc-builder</h1>
+<h2>Overview</h2>
+<p>This guide helps you resolve common issues when using @knowcode/doc-builder. Most problems have simple solutions, and this guide covers the most frequent ones.</p>
+<h2>NPX Cache Issues</h2>
+<h3>Problem</h3>
+<p>The most common issue users face is npx caching an older version of doc-builder.</p>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> Running <code>npx @knowcode/doc-builder</code> shows an old version number</li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> New features aren&#39;t available despite updating</li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> Bug fixes don&#39;t appear to be working</li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> Version shown doesn&#39;t match npm registry</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="language-bash">$ npx @knowcode/doc-builder@latest --version
+1.4.11  # Old version!
+
+# But npm shows:
+$ npm view @knowcode/doc-builder version
+1.4.22  # Latest version
+</code></pre>
+<h3>Solution</h3>
+<pre><code class="language-bash"># Method 1: Clear the npx cache
+npx clear-npx-cache
+
+# Method 2: Force the latest version
+npx @knowcode/doc-builder@latest
+
+# Method 3: Specify exact version
+npx @knowcode/doc-builder@1.4.22
+</code></pre>
+<h3>Why This Happens</h3>
+<div class="mermaid-wrapper">
+      <div class="mermaid">graph TD
+    A[Run npx @knowcode/doc-builder] --> B{Package in cache?}
+    B -->|Yes| C[Use cached version]
+    B -->|No| D[Download from npm]
+    C --> E[May be outdated!]
+    D --> F[Latest version]
+    
+    style C fill:#ffcdd2
+    style E fill:#ffcdd2
+    style F fill:#c8e6c9</div>
+    </div>
+<p>NPX caches packages to improve performance, but this cache doesn&#39;t automatically update when new versions are published.</p>
+<h3>Prevention</h3>
+<ol>
+<li><p><strong>Always use @latest for current version:</strong></p>
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest deploy
+</code></pre>
+</li>
+<li><p><strong>For development, install globally:</strong></p>
+<pre><code class="language-bash">npm install -g @knowcode/doc-builder
+doc-builder deploy
+</code></pre>
+</li>
+<li><p><strong>For projects, install as dev dependency:</strong></p>
+<pre><code class="language-bash">npm install --save-dev @knowcode/doc-builder
+npx doc-builder deploy  # Uses local version
+</code></pre>
+</li>
+</ol>
+<h2>Build Issues</h2>
+<h3>No Markdown Files Found</h3>
+<p><strong>Error:</strong> <code>No markdown files found in docs directory</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><p><strong>Check directory structure:</strong></p>
+<pre><code class="language-bash">ls -la docs/
+# Should show .md files
+</code></pre>
+</li>
+<li><p><strong>Ensure correct file extensions:</strong></p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>README.md</code></li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>guide.md</code></li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> <code>README.txt</code></li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> <code>guide.markdown</code></li>
+</ul>
+</li>
+<li><p><strong>Use custom input directory:</strong></p>
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest build --input my-docs
+</code></pre>
+</li>
+</ol>
+<h3>Build Output Missing</h3>
+<p><strong>Problem:</strong> HTML files not generated</p>
+<p><strong>Check:</strong></p>
+<ol>
+<li>Look in <code>html/</code> directory (default output)</li>
+<li>Check for build errors in console</li>
+<li>Verify markdown files are valid</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-bash"># Clean build
+rm -rf html/
+npx @knowcode/doc-builder@latest build
+
+# Check output
+ls -la html/
+</code></pre>
+<h2>Deployment Issues</h2>
+<h3>Vercel CLI Not Found</h3>
+<p><strong>Error:</strong> <code>Vercel CLI not found!</code></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-bash"># Install Vercel CLI globally
+npm install -g vercel
+
+# Verify installation
+vercel --version
+
+# Then retry deployment
+npx @knowcode/doc-builder@latest deploy
+</code></pre>
+<h3>Deployment Fails</h3>
+<p><strong>Common causes:</strong></p>
+<ol>
+<li><p><strong>Not Logged Into Vercel</strong></p>
+<pre><code class="language-bash"># Login to Vercel first
+vercel login
+</code></pre>
+</li>
+<li><p><strong>Build Not Complete</strong></p>
+<pre><code class="language-bash"># Build before deploy
+npx @knowcode/doc-builder@latest build
+npx @knowcode/doc-builder@latest deploy
+</code></pre>
+</li>
+<li><p><strong>Project Name Already Taken</strong></p>
+<ul>
+<li>Choose a different project name</li>
+<li>Or delete the existing project in Vercel dashboard</li>
+</ul>
+</li>
+</ol>
+<h3>Wrong Production URL Displayed</h3>
+<p><strong>Problem:</strong> Deployment shows incorrect URL</p>
+<p><strong>Solution 1:</strong> Update to latest version</p>
+<pre><code class="language-bash"># Clear cache and update
+npx clear-npx-cache
+npx @knowcode/doc-builder@latest deploy
+</code></pre>
+<p><strong>Solution 2:</strong> Set custom URL</p>
+<pre><code class="language-bash"># Set your actual production URL
+npx @knowcode/doc-builder@latest set-production-url https://my-docs.vercel.app
+</code></pre>
+<h2>Configuration Issues</h2>
+<h3>Config File Not Loading</h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Default settings used instead of custom config</li>
+<li>Site name shows &quot;Documentation&quot;</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><p><strong>Check file name:</strong></p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>doc-builder.config.js</code></li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> <code>docbuilder.config.js</code></li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> <code>doc-builder-config.js</code></li>
+</ul>
+</li>
+<li><p><strong>Verify export format:</strong></p>
+<pre><code class="language-javascript">// Correct
+module.exports = {
+  siteName: &#39;My Docs&#39;
+};
+
+// Wrong
+export default {
+  siteName: &#39;My Docs&#39;
+};
+</code></pre>
+</li>
+<li><p><strong>Use explicit config path:</strong></p>
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest build --config ./my-config.js
+</code></pre>
+</li>
+</ol>
+<h2>Authentication Issues</h2>
+<h3>Login Page Not Working</h3>
+<p><strong>Check:</strong></p>
+<ol>
+<li>Authentication enabled in config</li>
+<li>Credentials match exactly (case-sensitive)</li>
+<li>Cookies enabled in browser</li>
+</ol>
+<p><strong>Debug:</strong></p>
+<pre><code class="language-javascript">// doc-builder.config.js
+module.exports = {
+  features: {
+    authentication: true  // Must be true
+  },
+  auth: {
+    username: &#39;admin&#39;,    // Case sensitive!
+    password: &#39;secret&#39;    // Case sensitive!
+  }
+};
+</code></pre>
+<h2>Styling Issues</h2>
+<h3>CSS Not Loading</h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Plain HTML without styling</li>
+<li>404 errors for CSS files</li>
+</ul>
+<p><strong>Fixed in:</strong> v1.2.0+</p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>Update to latest version</li>
+<li>Check browser console for 404 errors</li>
+<li>Verify <code>html/css/</code> directory exists after build</li>
+</ol>
+<h3>Dark Mode Not Working</h3>
+<p><strong>Check:</strong></p>
+<ol>
+<li>Feature enabled in config</li>
+<li>Browser supports CSS variables</li>
+<li>No conflicting styles</li>
+</ol>
+<h2>Development Server Issues</h2>
+<h3>Port Already in Use</h3>
+<p><strong>Error:</strong> <code>Port 3000 is already in use</code></p>
+<p><strong>Solutions:</strong></p>
+<pre><code class="language-bash"># Use different port
+npx @knowcode/doc-builder@latest dev --port 8080
+
+# Find process using port
+lsof -i :3000  # macOS/Linux
+netstat -ano | findstr :3000  # Windows
+</code></pre>
+<h3>Hot Reload Not Working</h3>
+<p><strong>Common causes:</strong></p>
+<ol>
+<li>File system events not supported</li>
+<li>Saving files outside watched directory</li>
+<li>Browser cache</li>
+</ol>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Hard refresh browser (Ctrl/Cmd + Shift + R)</li>
+<li>Check that files are in <code>docs/</code> directory</li>
+<li>Restart dev server</li>
+</ul>
+<h2>Platform-Specific Issues</h2>
+<h3>Windows Path Issues</h3>
+<p><strong>Problem:</strong> Paths with backslashes cause errors</p>
+<p><strong>Solution:</strong> Use forward slashes or escape backslashes:</p>
+<pre><code class="language-javascript">// Bad
+docsDir: &#39;C:\Users\me\docs&#39;
+
+// Good
+docsDir: &#39;C:/Users/me/docs&#39;
+// Or
+docsDir: &#39;C:\\Users\\me\\docs&#39;
+</code></pre>
+<h3>macOS Permission Issues</h3>
+<p><strong>Error:</strong> <code>EACCES: permission denied</code></p>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>Don&#39;t use sudo with npm/npx</li>
+<li>Fix npm permissions:<pre><code class="language-bash">mkdir ~/.npm-global
+npm config set prefix &#39;~/.npm-global&#39;
+echo &#39;export PATH=~/.npm-global/bin:$PATH&#39; &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</code></pre>
+</li>
+</ol>
+<h2>Getting Help</h2>
+<h3>Debug Information</h3>
+<p>When reporting issues, include:</p>
+<ol>
+<li><p><strong>Version information:</strong></p>
+<pre><code class="language-bash">npx @knowcode/doc-builder@latest --version
+node --version
+npm --version
+</code></pre>
+</li>
+<li><p><strong>Error messages:</strong> Full error output</p>
+</li>
+<li><p><strong>Configuration:</strong> Your <code>doc-builder.config.js</code> (remove passwords)</p>
+</li>
+<li><p><strong>Directory structure:</strong></p>
+<pre><code class="language-bash">tree -L 2  # or ls -la
+</code></pre>
+</li>
+</ol>
+<h3>Support Channels</h3>
+<ol>
+<li><strong>GitHub Issues:</strong> Report bugs and feature requests</li>
+<li><strong>npm Page:</strong> Check for updates and documentation</li>
+<li><strong>This Guide:</strong> Reference for common problems</li>
+</ol>
+<h2>Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Old version running</td>
+<td><code>npx clear-npx-cache</code></td>
+</tr>
+<tr>
+<td>Vercel deploy fails</td>
+<td><code>vercel login</code> then retry</td>
+</tr>
+<tr>
+<td>No markdown found</td>
+<td>Check <code>docs/</code> directory exists</td>
+</tr>
+<tr>
+<td>CSS not loading</td>
+<td>Update to latest version</td>
+</tr>
+<tr>
+<td>Port in use</td>
+<td><code>--port 8080</code></td>
+</tr>
+<tr>
+<td>Config not loading</td>
+<td>Check filename and format</td>
+</tr>
+<tr>
+<td>404 after deploy</td>
+<td>Check Deployment Protection settings</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Document History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2025-07-21</td>
+<td>1.0</td>
+<td>System</td>
+<td>Initial troubleshooting guide</td>
+</tr>
+</tbody></table>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false,
+        mermaidEnhanced: true
+      }
+    };
+    </script>
+    <script src="../js/main.js"></script>
+    
+</body>
+</html>

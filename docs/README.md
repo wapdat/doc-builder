@@ -115,6 +115,12 @@ npx @knowcode/doc-builder@latest deploy
 
 Configuration is fully managed through the CLI tools - no manual file editing required! The tool handles all settings automatically during setup and deployment.
 
+### 🔄 Auto-Configuration
+- **Auto-creation**: If no `doc-builder.config.js` exists, one is created with all default settings
+- **Auto-update**: When upgrading versions, new features are automatically added to your config
+- **Safe migration**: Your customizations are preserved while adding new defaults
+- **Backup protection**: Config files are backed up before major updates
+
 <table>
 <tr>
 <td width="50%">

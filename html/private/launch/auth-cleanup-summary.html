@@ -6,6 +6,7 @@
     <meta name="description" content="All references to the old client-side authentication system have been removed from @knowcode/doc-builder. The project now exclusively uses Supabase for...">
     <title>Authentication System Cleanup Summary</title>
     
+    <meta name="generator" content="@knowcode/doc-builder by Knowcode Ltd">
     <meta name="author" content="Lindsay Smith">
     <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, supabase, authentication">
     <meta name="robots" content="index, follow">
@@ -44,6 +45,8 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="/css/notion-style.css">
+    
+    
     
     
     <!-- Hide content until auth check -->
@@ -98,8 +101,8 @@
     "name": "Knowcode Ltd",
     "url": "https://knowcode.tech"
   },
-  "datePublished": "2025-07-29T08:43:30.929Z",
-  "dateModified": "2025-07-29T08:43:30.929Z",
+  "datePublished": "2025-08-07T14:41:11.105Z",
+  "dateModified": "2025-08-07T14:41:11.105Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://doc-builder-delta.vercel.app/private/launch/auth-cleanup-summary.html"
@@ -144,7 +147,7 @@
             
             <div class="header-actions">
                 <div class="deployment-info">
-                    <span class="deployment-date" title="Built with doc-builder v1.9.5">Last updated: Jul 29, 2025, 08:43 AM UTC</span>
+                    <span class="deployment-date" title="Built with doc-builder v1.9.23">Last updated: Aug 7, 2025, 02:41 PM UTC</span>
                 </div>
                 
                 
@@ -164,16 +167,7 @@
         </div>
     </header>
     
-    <!-- Preview Banner -->
-    <div id="preview-banner" class="preview-banner">
-        <div class="banner-content">
-            <i class="fas fa-exclamation-triangle banner-icon"></i>
-            <span class="banner-text">This documentation is a preview version - some content may be incomplete</span>
-            <button id="dismiss-banner" class="banner-dismiss" aria-label="Dismiss banner">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    </div>
+    
     
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs" id="breadcrumbs">
@@ -186,72 +180,85 @@
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="filter-box">
-                    <input type="text" placeholder="Filter items..." class="filter-input" id="nav-filter">
+                    <input type="text" placeholder="Search menu..." class="filter-input" id="nav-filter">
                     <i class="fas fa-search filter-icon"></i>
                 </div>
             </div>
             <nav class="navigation">
                 
       <div class="nav-section" data-level="0">
-        <a class="nav-title" href="/README.html"  >
-          <i class="fas fa-home"></i> Documentation
+        <a class="nav-title toggle-all-nav expanded" href="#" id="nav-toggle-all" title="Collapse/Expand All">
+          <i class="ph ph-caret-down" id="toggle-all-icon"></i> Documentation
         </a>
-        <div class="nav-content" >
-        <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="fas fa-file-alt"></i> Overview</a>
-        <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="fas fa-file-alt"></i> Documentation Index</a>
-        <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="fas fa-file-alt"></i> Image Modal Test</a>
-        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="fas fa-file-alt"></i> Vercel Cli Setup Guide</a>
-        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="fas fa-file-alt"></i> Vercel First Time Setup Guide</a></div></div>
+        <div class="nav-content">
+        <a href="/README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="ph ph-file-text"></i> Overview</a>
+        <a href="/about-doc-builder.html" class="nav-item" data-tooltip="About @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #059669;"></i> About Doc Builder</a>
+        <a href="/documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Index</a>
+        <a href="/image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="ph ph-file-text"></i> Image Modal Test</a>
+        <a href="/vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="ph ph-check-circle" style="color: #059669;"></i> Vercel Cli Setup Guide</a>
+        <a href="/vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="ph ph-check-circle" style="color: #059669;"></i> Vercel First Time Setup Guide</a></div></div>
       <div class="nav-section" data-level="1">
         <a class="nav-title collapsible" href="#" data-target="nav-guides-1" >
-          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Guides
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-book"></i> Guides
         </a>
         <div class="nav-content collapsed" id="nav-guides-1">
-        <a href="/guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="fas fa-file-alt"></i> Authentication Default Change</a>
-        <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="fas fa-file-alt"></i> Authentication Guide</a>
-        <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="fas fa-file-alt"></i> Claude Workflow Guide</a>
-        <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="fas fa-file-alt"></i> Documentation Standards</a>
-        <a href="/guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="fas fa-file-alt"></i> Html Embedding Guide</a>
-        <a href="/guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="fas fa-file-alt"></i> Image Modal Guide</a>
-        <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="fas fa-file-alt"></i> Phosphor Icons Guide</a>
-        <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="fas fa-file-alt"></i> Private Directory Authentication</a>
-        <a href="/guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="fas fa-file-alt"></i> Private Directory Authentication Troubleshooting</a>
-        <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="fas fa-file-alt"></i> Public Site Deployment</a>
-        <a href="/guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="fas fa-file-alt"></i> Search Engine Verification Guide</a>
-        <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="fas fa-file-alt"></i> Seo Guide</a>
-        <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search..."><i class="fas fa-file-alt"></i> Seo Optimization Guide</a>
-        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Troubleshooting Guide</a>
-        <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="fas fa-file-alt"></i> Windows Setup Guide</a></div></div>
+        <a href="/guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="ph ph-file-text"></i> Authentication Default Change</a>
+        <a href="/guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="ph ph-check-circle" style="color: #059669;"></i> Authentication Guide</a>
+        <a href="/guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Claude Workflow Guide</a>
+        <a href="/guides/configuration-guide.html" class="nav-item" data-tooltip="This guide explains how @knowcode/doc-builder handles configuration files and settings."><i class="ph ph-check-circle" style="color: #059669;"></i> Configuration Guide</a>
+        <a href="/guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Standards</a>
+        <a href="/guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="ph ph-check-circle" style="color: #059669;"></i> Html Embedding Guide</a>
+        <a href="/guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="ph ph-check-circle" style="color: #059669;"></i> Image Modal Guide</a>
+        <a href="/guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Phosphor Icons Guide</a>
+        <a href="/guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="ph ph-check-circle" style="color: #059669;"></i> Private Directory Authentication</a>
+        <a href="/guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="ph ph-check-circle" style="color: #059669;"></i> Private Directory Authentication Troubleshooting</a>
+        <a href="/guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="ph ph-check-circle" style="color: #059669;"></i> Public Site Deployment</a>
+        <a href="/guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="ph ph-check-circle" style="color: #059669;"></i> Search Engine Verification Guide</a>
+        <a href="/guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="ph ph-check-circle" style="color: #059669;"></i> Seo Guide</a>
+        <a href="/guides/seo-optimization-guide.html" class="nav-item" data-tooltip="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings."><i class="ph ph-check-circle" style="color: #059669;"></i> SEO Optimization Guide for @knowcode/doc-builder</a>
+        <a href="/guides/supabase-authentication-complete-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes built-in Supabase authentication that provides enterprise-grade security with zero configuration."><i class="ph ph-check-circle" style="color: #059669;"></i> Supabase Authentication Complete Guide</a>
+        <a href="/guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #059669;"></i> Troubleshooting Guide</a>
+        <a href="/guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="ph ph-check-circle" style="color: #059669;"></i> Windows Setup Guide</a></div></div>
       <div class="nav-section private-nav" data-level="1">
         <a class="nav-title collapsible expanded" href="#" data-target="nav-private-1" >
-          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Private
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-lock"></i> Private
         </a>
         <div class="nav-content" id="nav-private-1">
-        <a href="/private/cache-control-anti-pattern.html" class="nav-item" data-tooltip="Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites."><i class="fas fa-file-alt"></i> Cache Control Anti Pattern</a>
-        <a href="/private/next-steps-walkthrough.html" class="nav-item" data-tooltip="Now that we&#039;ve implemented Supabase authentication, let&#039;s walk through testing the implementation and preparing for deployment."><i class="fas fa-file-alt"></i> Next Steps Walkthrough</a>
-        <a href="/private/supabase-auth-implementation-completed.html" class="nav-item" data-tooltip="This document records the successful implementation of Supabase authentication in @knowcode/doc-builder v1.7.5+."><i class="fas fa-file-alt"></i> Supabase Auth Implementation Completed</a>
-        <a href="/private/supabase-auth-implementation-plan.html" class="nav-item" data-tooltip="Supabase Auth Implementation Plan for @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Supabase Auth Implementation Plan</a>
-        <a href="/private/supabase-auth-integration-plan.html" class="nav-item" data-tooltip="Supabase Authentication Integration Plan for @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Supabase Auth Integration Plan</a>
-        <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="fas fa-file-alt"></i> Supabase Auth Setup Guide</a>
-        <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="fas fa-file-alt"></i> Test Private Doc</a>
-        <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="fas fa-file-alt"></i> User Management Tooling</a></div></div>
+        <a href="/private/cache-control-anti-pattern.html" class="nav-item" data-tooltip="Cache Control Anti-Pattern: Why Aggressive Cache-Busting is Bad for Documentation Sites."><i class="ph ph-check-circle" style="color: #059669;"></i> Cache Control Anti Pattern</a>
+        <a href="/private/next-steps-walkthrough.html" class="nav-item" data-tooltip="Now that we&#039;ve implemented Supabase authentication, let&#039;s walk through testing the implementation and preparing for deployment."><i class="ph ph-check-circle" style="color: #059669;"></i> Next Steps Walkthrough</a>
+        <a href="/private/supabase-auth-implementation-completed.html" class="nav-item" data-tooltip="This document records the successful implementation of Supabase authentication in @knowcode/doc-builder v1.7.5+."><i class="ph ph-check-circle" style="color: #059669;"></i> Supabase Auth Implementation Completed</a>
+        <a href="/private/supabase-auth-implementation-plan.html" class="nav-item" data-tooltip="Supabase Auth Implementation Plan for @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #059669;"></i> Supabase Auth Implementation Plan</a>
+        <a href="/private/supabase-auth-integration-plan.html" class="nav-item" data-tooltip="Supabase Authentication Integration Plan for @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #059669;"></i> Supabase Auth Integration Plan</a>
+        <a href="/private/supabase-auth-setup-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase."><i class="ph ph-check-circle" style="color: #059669;"></i> Supabase Auth Setup Guide</a>
+        <a href="/private/test-private-doc.html" class="nav-item" data-tooltip="Test Private Document."><i class="ph ph-file-text"></i> Test Private Doc</a>
+        <a href="/private/user-management-tooling.html" class="nav-item" data-tooltip="The user management system is a set of tools designed to manage user access to Supabase-authenticated documentation sites built with."><i class="ph ph-check-circle" style="color: #059669;"></i> User Management Tooling</a></div></div>
       <div class="nav-section private-nav" data-level="2">
         <a class="nav-title collapsible expanded" href="/private/launch/README.html" data-target="nav-private-launch-2" >
-          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Launch
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-rocket-launch"></i> Launch
         </a>
         <div class="nav-content" id="nav-private-launch-2">
-        <a href="/private/launch/README.html" class="nav-item" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="fas fa-file-alt"></i> Launch Overview</a>
-        <a href="/private/launch/auth-cleanup-summary.html" class="nav-item active" data-tooltip="All references to the old client-side authentication system have been removed from @knowcode/doc-builder."><i class="fas fa-file-alt"></i> Auth Cleanup Summary</a>
-        <a href="/private/launch/bubble-plugin-specification.html" class="nav-item" data-tooltip="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers..."><i class="fas fa-file-alt"></i> Bubble Plugin Specification</a>
-        <a href="/private/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="fas fa-file-alt"></i> Go To Market Strategy</a>
-        <a href="/private/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="fas fa-file-alt"></i> Launch Announcements</a>
-        <a href="/private/launch/vercel-deployment-auth-setup.html" class="nav-item" data-tooltip="Vercel Deployment Authentication Setup Guide."><i class="fas fa-file-alt"></i> Vercel Deployment Auth Setup</a></div></div>
+        <a href="/private/launch/README.html" class="nav-item" data-tooltip="This directory contains all documentation related to the commercial launch of @knowcode/doc-builder, including go-to-market strategy, platform..."><i class="ph ph-check-circle" style="color: #059669;"></i> Launch Overview</a>
+        <a href="/private/launch/auth-cleanup-summary.html" class="nav-item active" data-tooltip="All references to the old client-side authentication system have been removed from @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #059669;"></i> Auth Cleanup Summary</a>
+        <a href="/private/launch/bubble-plugin-specification.html" class="nav-item" data-tooltip="This document outlines the technical specification for creating a Bubble.io plugin that integrates @knowcode/doc-builder, enabling Bubble developers..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Bubble Plugin Specification</a>
+        <a href="/private/launch/go-to-market-strategy.html" class="nav-item" data-tooltip="Go-to-Market Strategy &amp; Product Launch Plan."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Go To Market Strategy</a>
+        <a href="/private/launch/launch-announcements.html" class="nav-item" data-tooltip="This document contains ready-to-use announcement templates for launching @knowcode/doc-builder across various platforms and channels."><i class="ph ph-check-circle" style="color: #059669;"></i> Launch Announcements</a>
+        <a href="/private/launch/vercel-deployment-auth-setup.html" class="nav-item" data-tooltip="Vercel Deployment Authentication Setup Guide."><i class="ph ph-check-circle" style="color: #059669;"></i> Vercel Deployment Auth Setup</a></div></div>
       <div class="nav-section" data-level="1">
         <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
-          <i class="fas fa-chevron-right collapse-icon"></i><i class="fas fa-folder"></i> Prompts
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-chat-circle-dots"></i> Prompts
         </a>
         <div class="nav-content collapsed" id="nav-prompts-1">
-        <a href="/prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="fas fa-file-alt"></i> Markdown Document Standards</a></div></div>
+        <a href="/prompts/beautiful-documentation-design.html" class="nav-item" data-tooltip="🎨 Beautiful Documentation Design Guide."><i class="ph ph-check-circle" style="color: #059669;"></i> Beautiful Documentation Design</a>
+        <a href="/prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Markdown Document Standards</a>
+        <a href="/prompts/project-rename-strategy-sasha-publish.html" class="nav-item" data-tooltip="This document outlines the comprehensive strategy for renaming the @knowcode/doc-builder project to &quot;sasha-publish&quot;, including all package references,..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Project Rename Strategy Sasha Publish</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-test-questions-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-folder"></i> Test Questions
+        </a>
+        <div class="nav-content collapsed" id="nav-test-questions-1">
+        <a href="/test-questions/how-does-it-work%3F.html" class="nav-item" data-tooltip="This is a test file to verify that question marks work properly in filenames."><i class="ph ph-file-text"></i> How Does It Work?</a>
+        <a href="/test-questions/step-1%3A%20getting-started.html" class="nav-item" data-tooltip="Step 1: Getting Started."><i class="ph ph-file-text"></i> Step 1: Getting Started</a>
+        <a href="/test-questions/what-is-the-purpose.html" class="nav-item" data-tooltip="Understanding the purpose of our documentation system"><i class="ph ph-file-text"></i> What Is The Purpose?</a></div></div>
             </nav>
             <div class="resize-handle"></div>
         </aside>
@@ -265,27 +272,27 @@
 <h2>Changes Made</h2>
 <h3>1. Removed Files</h3>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/assets/js/auth.js</code> - Old client-side auth script deleted</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>/assets/js/auth.js</code> - Old client-side auth script deleted</li>
 </ul>
 <h3>2. Updated Documentation</h3>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/authentication-guide.md</code> - Completely rewritten for Supabase only</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/public-site-deployment.md</code> - Updated migration section</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/supabase-auth-setup-guide.md</code> - Removed old auth references</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/launch/bubble-plugin-specification.md</code> - Updated to Supabase auth</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Created <code>/docs/guides/supabase-auth-implementation-completed.md</code> - Records completion</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/authentication-guide.md</code> - Completely rewritten for Supabase only</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/public-site-deployment.md</code> - Updated migration section</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/guides/supabase-auth-setup-guide.md</code> - Removed old auth references</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <code>/docs/launch/bubble-plugin-specification.md</code> - Updated to Supabase auth</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Created <code>/docs/guides/supabase-auth-implementation-completed.md</code> - Records completion</li>
 </ul>
 <h3>3. CLI Updates</h3>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Updated help text in <code>cli.js</code> to reference Supabase authentication</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Removed &quot;password protection&quot; terminology</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> All auth references now point to Supabase</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Updated help text in <code>cli.js</code> to reference Supabase authentication</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Removed &quot;password protection&quot; terminology</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> All auth references now point to Supabase</li>
 </ul>
 <h3>4. Configuration Changes</h3>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Default config has <code>authentication: false</code></li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Notion preset has <code>authentication: false</code> </li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> Only Supabase auth can be enabled with <code>authentication: &#39;supabase&#39;</code></li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Default config has <code>authentication: false</code></li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Notion preset has <code>authentication: false</code> </li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Only Supabase auth can be enabled with <code>authentication: &#39;supabase&#39;</code></li>
 </ul>
 <h2>Current State</h2>
 <h3>Authentication Options</h3>
@@ -322,11 +329,11 @@ auth: {
 </ol>
 <h2>No Traces Remain</h2>
 <ul>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> No username/password fields in config</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> No client-side credential checking</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> No references to &quot;basic auth&quot; in active code</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> No old auth.js files</li>
-<li><i class="ph ph-check-circle" aria-label="checked"></i> All documentation updated</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> No username/password fields in config</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> No client-side credential checking</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> No references to &quot;basic auth&quot; in active code</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> No old auth.js files</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> All documentation updated</li>
 </ul>
 <p>The cleanup is complete. @knowcode/doc-builder now has a clean, secure authentication system powered exclusively by Supabase.</p>
 
@@ -340,7 +347,8 @@ auth: {
     window.docBuilderConfig = {
       features: {
         showPdfDownload: true,
-        menuDefaultOpen: false
+        menuDefaultOpen: false,
+        mermaidEnhanced: true
       }
     };
     </script>

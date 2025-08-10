@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.">
+    <title>SEO Optimization Guide for @knowcode/doc-builder</title>
+    
+    <meta name="generator" content="@knowcode/doc-builder by Knowcode Ltd">
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, SEO, optimization">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html">
+    <meta property="og:title" content="SEO Optimization Guide for @knowcode/doc-builder">
+    <meta property="og:description" content="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="SEO Optimization Guide for @knowcode/doc-builder">
+    <meta name="twitter:description" content="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/notion-style.css">
+    
+    
+    <!-- Blue theme and white background overrides for static output -->
+    <style>
+      /* Override green colors with blue */
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #dbeafe;
+        --accent: #3b82f6;
+        --color-accent-green: #2563eb;
+        --color-accent-emerald: #3b82f6;
+        
+        /* White backgrounds for cleaner appearance */
+        --color-bg-secondary: #FFFFFF;
+        --color-bg-tertiary: #FAFAFA;
+        --color-bg-hover: #F8F9FA;
+      }
+      
+      /* Override green status colors with blue variants */
+      .nav-item.active {
+        background-color: #dbeafe !important;
+        color: #1d4ed8 !important;
+      }
+      
+      .nav-item:hover {
+        background-color: #eff6ff !important;
+      }
+      
+      /* Override complete/success icons to blue */
+      .ph-check-circle[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override README/home icon color */
+      .ph-house[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override links */
+      a {
+        color: #2563eb;
+      }
+      
+      a:hover {
+        color: #1d4ed8;
+      }
+      
+      /* Override buttons and interactive elements */
+      .theme-toggle:hover,
+      .menu-toggle:hover {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+      
+      /* Override nav title hover */
+      .nav-title:hover {
+        background-color: #eff6ff;
+      }
+      
+      /* White backgrounds for sidebar and navigation */
+      body:not(.dark-mode) .sidebar {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .nav-section {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .nav-content {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .navigation {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      /* Subtle separation for nav sections */
+      body:not(.dark-mode) .nav-section + .nav-section {
+        border-top: 1px solid #F3F4F6;
+      }
+      
+      /* Adjust hover states for white backgrounds */
+      body:not(.dark-mode) .nav-item:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      body:not(.dark-mode) .nav-title.collapsible:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      /* Header stays white (already is) but ensure consistency */
+      body:not(.dark-mode) .header {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+      
+      /* Ensure search box looks good on white */
+      body:not(.dark-mode) .filter-input,
+      body:not(.dark-mode) .sidebar-search {
+        background: #F8F9FA !important;
+        background-color: #F8F9FA !important;
+        border: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .filter-input:focus,
+      body:not(.dark-mode) .sidebar-search:focus {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-color: #2563eb !important;
+      }
+      
+      /* Override breadcrumbs */
+      .breadcrumbs a {
+        color: #2563eb;
+      }
+      
+      .breadcrumbs a:hover {
+        color: #1d4ed8;
+        background-color: #dbeafe;
+      }
+      
+      /* Override filter icon */
+      .filter-icon {
+        color: #2563eb;
+      }
+      
+      /* Override deployment info on hover */
+      .deployment-date:hover {
+        color: #2563eb;
+      }
+      
+      /* Dark mode adjustments */
+      body.dark-mode {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --primary-light: #1e3a8a;
+        --accent: #60a5fa;
+      }
+      
+      body.dark-mode .nav-item.active {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+        color: #60a5fa !important;
+      }
+      
+      body.dark-mode .nav-item:hover {
+        background-color: rgba(59, 130, 246, 0.05) !important;
+      }
+      
+      body.dark-mode a {
+        color: #60a5fa;
+      }
+      
+      body.dark-mode a:hover {
+        color: #93bbfc;
+      }
+    </style>
+    
+    
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "SEO Optimization Guide for @knowcode/doc-builder",
+  "description": "Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings.",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-08-07T14:41:11.202Z",
+  "dateModified": "2025-08-07T14:41:11.202Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Seo Optimization Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/seo-optimization-guide.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">@knowcode/doc-builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.9.23">Last updated: Aug 7, 2025, 02:41 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Search menu..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title toggle-all-nav expanded" href="#" id="nav-toggle-all" title="Collapse/Expand All">
+          <i class="ph ph-caret-down" id="toggle-all-icon"></i> Documentation
+        </a>
+        <div class="nav-content">
+        <a href="README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="ph ph-file-text"></i> Overview</a>
+        <a href="about-doc-builder.html" class="nav-item" data-tooltip="About @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> About Doc Builder</a>
+        <a href="documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Index</a>
+        <a href="image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="ph ph-file-text"></i> Image Modal Test</a>
+        <a href="vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel Cli Setup Guide</a>
+        <a href="vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-book"></i> Guides
+        </a>
+        <div class="nav-content" id="nav-guides-1">
+        <a href="guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="ph ph-file-text"></i> Authentication Default Change</a>
+        <a href="guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Authentication Guide</a>
+        <a href="guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Claude Workflow Guide</a>
+        <a href="guides/configuration-guide.html" class="nav-item" data-tooltip="This guide explains how @knowcode/doc-builder handles configuration files and settings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Configuration Guide</a>
+        <a href="guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Standards</a>
+        <a href="guides/html-embedding-guide.html" class="nav-item" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Html Embedding Guide</a>
+        <a href="guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Image Modal Guide</a>
+        <a href="guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Phosphor Icons Guide</a>
+        <a href="guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication</a>
+        <a href="guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication Troubleshooting</a>
+        <a href="guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Public Site Deployment</a>
+        <a href="guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Search Engine Verification Guide</a>
+        <a href="guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Seo Guide</a>
+        <a href="guides/seo-optimization-guide.html" class="nav-item active" data-tooltip="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> SEO Optimization Guide for @knowcode/doc-builder</a>
+        <a href="guides/supabase-authentication-complete-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes built-in Supabase authentication that provides enterprise-grade security with zero configuration."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Supabase Authentication Complete Guide</a>
+        <a href="guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Troubleshooting Guide</a>
+        <a href="guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-chat-circle-dots"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="prompts/beautiful-documentation-design.html" class="nav-item" data-tooltip="🎨 Beautiful Documentation Design Guide."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Beautiful Documentation Design</a>
+        <a href="prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Markdown Document Standards</a>
+        <a href="prompts/project-rename-strategy-sasha-publish.html" class="nav-item" data-tooltip="This document outlines the comprehensive strategy for renaming the @knowcode/doc-builder project to &quot;sasha-publish&quot;, including all package references,..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Project Rename Strategy Sasha Publish</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-test-questions-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-folder"></i> Test Questions
+        </a>
+        <div class="nav-content collapsed" id="nav-test-questions-1">
+        <a href="test-questions/how-does-it-work%3F.html" class="nav-item" data-tooltip="This is a test file to verify that question marks work properly in filenames."><i class="ph ph-file-text"></i> How Does It Work?</a>
+        <a href="test-questions/step-1%3A%20getting-started.html" class="nav-item" data-tooltip="Step 1: Getting Started."><i class="ph ph-file-text"></i> Step 1: Getting Started</a>
+        <a href="test-questions/what-is-the-purpose.html" class="nav-item" data-tooltip="Understanding the purpose of our documentation system"><i class="ph ph-file-text"></i> What Is The Purpose?</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>SEO Optimization Guide</h1>
+<h2>Overview</h2>
+<p>@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features that automatically optimize your documentation for search engines. This guide explains what these features do, how to use them effectively, and provides references to authoritative SEO resources.</p>
+<h2>Why SEO Matters for Documentation</h2>
+<p>Good SEO helps your documentation:</p>
+<ul>
+<li><strong>Rank higher</strong> in search results (Google, Bing, DuckDuckGo)</li>
+<li><strong>Get more organic traffic</strong> from developers searching for solutions</li>
+<li><strong>Improve click-through rates</strong> with compelling titles and descriptions</li>
+<li><strong>Reach the right audience</strong> with targeted keywords</li>
+<li><strong>Build domain authority</strong> and credibility</li>
+</ul>
+<p>According to <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google&#39;s Search Quality Guidelines</a>, high-quality technical documentation that helps users is prioritized in search results.</p>
+<h2>What Our SEO Features Do</h2>
+<h3>1. Automatic Meta Tag Generation</h3>
+<p>Doc-builder automatically generates essential HTML meta tags for every page:</p>
+<pre><code class="language-html">&lt;!-- Page Title - Shows in browser tabs and search results --&gt;
+&lt;title&gt;Your Page Title | Site Name&lt;/title&gt;
+
+&lt;!-- Meta Description - The snippet shown in search results --&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Your page description here&quot;&gt;
+
+&lt;!-- Keywords - Helps search engines understand topic relevance --&gt;
+&lt;meta name=&quot;keywords&quot; content=&quot;keyword1, keyword2, keyword3&quot;&gt;
+
+&lt;!-- Author Information --&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Your Name&quot;&gt;
+
+&lt;!-- Canonical URL - Prevents duplicate content issues --&gt;
+&lt;link rel=&quot;canonical&quot; href=&quot;https://yoursite.com/page.html&quot;&gt;
+
+&lt;!-- Language and Region --&gt;
+&lt;meta property=&quot;og:locale&quot; content=&quot;en_US&quot;&gt;
+</code></pre>
+<h3>2. Open Graph Protocol (Facebook, LinkedIn, Slack)</h3>
+<p>Ensures your documentation looks professional when shared on social media:</p>
+<pre><code class="language-html">&lt;meta property=&quot;og:type&quot; content=&quot;article&quot;&gt;
+&lt;meta property=&quot;og:title&quot; content=&quot;Page Title&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;Page description&quot;&gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;https://yoursite.com/page.html&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;https://yoursite.com/og-image.png&quot;&gt;
+&lt;meta property=&quot;og:site_name&quot; content=&quot;Your Site Name&quot;&gt;
+</code></pre>
+<p>Learn more: <a href="https://ogp.me/">Open Graph Protocol Official Documentation</a></p>
+<h3>3. Twitter Card Tags</h3>
+<p>Optimizes how your documentation appears on Twitter/X:</p>
+<pre><code class="language-html">&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;
+&lt;meta name=&quot;twitter:site&quot; content=&quot;@yourhandle&quot;&gt;
+&lt;meta name=&quot;twitter:title&quot; content=&quot;Page Title&quot;&gt;
+&lt;meta name=&quot;twitter:description&quot; content=&quot;Page description&quot;&gt;
+&lt;meta name=&quot;twitter:image&quot; content=&quot;https://yoursite.com/twitter-image.png&quot;&gt;
+</code></pre>
+<p>Test your cards: <a href="https://cards-dev.twitter.com/validator">Twitter Card Validator</a></p>
+<h3>4. Structured Data (JSON-LD)</h3>
+<p>Helps search engines understand your content structure and display rich snippets:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;TechArticle&quot;,
+  &quot;headline&quot;: &quot;Your Page Title&quot;,
+  &quot;description&quot;: &quot;Your page description&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Person&quot;,
+    &quot;name&quot;: &quot;Author Name&quot;
+  },
+  &quot;publisher&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;Your Organization&quot;,
+    &quot;url&quot;: &quot;https://yoursite.com&quot;
+  },
+  &quot;datePublished&quot;: &quot;2025-01-22&quot;,
+  &quot;dateModified&quot;: &quot;2025-01-22&quot;,
+  &quot;breadcrumb&quot;: {
+    &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+    &quot;itemListElement&quot;: [...]
+  }
+}
+</code></pre>
+<p>Validate your structured data: <a href="https://search.google.com/test/rich-results">Google&#39;s Rich Results Test</a></p>
+<h3>5. Automatic Sitemap Generation</h3>
+<p>Creates a <code>sitemap.xml</code> file that helps search engines discover all your pages:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://yoursite.com/index.html&lt;/loc&gt;
+    &lt;lastmod&gt;2025-01-22&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;!-- More URLs --&gt;
+&lt;/urlset&gt;
+</code></pre>
+<p>Submit your sitemap: <a href="https://search.google.com/search-console">Google Search Console</a></p>
+<h3>6. Robots.txt Generation</h3>
+<p>Controls how search engines crawl your site:</p>
+<pre><code>User-agent: *
+Allow: /
+Sitemap: https://yoursite.com/sitemap.xml
+</code></pre>
+<h2>Front Matter Support (v1.5.5+)</h2>
+<p>@knowcode/doc-builder now supports YAML front matter for page-specific SEO customization:</p>
+<pre><code class="language-yaml">---
+title: &quot;Complete Guide to Authentication | @knowcode/doc-builder&quot;
+description: &quot;Learn how to secure your documentation with password protection. Step-by-step guide with code examples and best practices.&quot;
+keywords: [&quot;authentication&quot;, &quot;security&quot;, &quot;password protection&quot;, &quot;doc-builder&quot;, &quot;documentation&quot;]
+---
+</code></pre>
+<h3>Priority System</h3>
+<p>SEO fields are determined by priority:</p>
+<ol>
+<li><strong>Title</strong>: Front matter → H1 heading → Filename</li>
+<li><strong>Description</strong>: Front matter → Smart extraction → First paragraph</li>
+<li><strong>Keywords</strong>: Front matter + Content extraction + Global keywords</li>
+</ol>
+<h2>Title Optimization</h2>
+<h3>Best Practices (2025 Standards)</h3>
+<ol>
+<li><strong>Length</strong>: Keep titles between 50-60 characters</li>
+<li><strong>Keywords First</strong>: Place primary keywords at the beginning</li>
+<li><strong>Branding</strong>: Use customizable title templates</li>
+<li><strong>Unique</strong>: Each page should have a unique title</li>
+</ol>
+<h3>Title Templates</h3>
+<p>Configure title format in <code>doc-builder.config.js</code>:</p>
+<pre><code class="language-javascript">seo: {
+  titleTemplate: &#39;{pageTitle} | {siteName}&#39;,  // Default
+  // or
+  titleTemplate: &#39;{pageTitle} - {siteName} Docs&#39;,
+  // or  
+  titleTemplate: &#39;{siteName}: {pageTitle}&#39;
+}
+</code></pre>
+<h3>Examples</h3>
+<p>Good titles:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> &quot;Authentication Guide | Doc Builder&quot; (38 chars)</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> &quot;SEO Best Practices for Documentation | MyDocs&quot; (45 chars)</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> &quot;Quick Start: Deploy to Vercel | Doc Builder&quot; (43 chars)</li>
+</ul>
+<p>Bad titles:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> &quot;Guide&quot; (5 chars - too short)</li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> &quot;The Complete Comprehensive Guide to Setting Up Authentication and Security for Your Documentation Website | Doc Builder&quot; (118 chars - too long)</li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> &quot;Page Title | Site Name | Category | Subcategory&quot; (keyword stuffing)</li>
+</ul>
+<h2>Meta Descriptions</h2>
+<h3>Best Practices</h3>
+<ol>
+<li><strong>Length</strong>: 140-160 characters (ideal for 2025)</li>
+<li><strong>Action-Oriented</strong>: Include call-to-action</li>
+<li><strong>Keywords</strong>: Natural keyword inclusion</li>
+<li><strong>Unique</strong>: Avoid duplicate descriptions</li>
+<li><strong>Value Proposition</strong>: Explain what users will learn</li>
+</ol>
+<h3>Smart Description Extraction</h3>
+<p>Doc-builder uses intelligent extraction:</p>
+<ol>
+<li>Checks for front matter description</li>
+<li>Looks for intro paragraph after H1</li>
+<li>Falls back to first paragraph</li>
+<li>Ensures optimal length with word boundaries</li>
+</ol>
+<h3>Examples</h3>
+<p>Good descriptions:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> &quot;Learn how to implement authentication in your documentation site. Step-by-step guide with code examples and security best practices.&quot; (139 chars)</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> &quot;Optimize your documentation for search engines with our comprehensive SEO guide. Covers titles, descriptions, and keyword strategies.&quot; (143 chars)</li>
+</ul>
+<p>Bad descriptions:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> &quot;This page is about authentication.&quot; (35 chars - too short)</li>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> &quot;Authentication authentication authentication...&quot; (keyword stuffing)</li>
+</ul>
+<h2>Keywords Strategy</h2>
+<h3>Modern Keyword Approach (2025)</h3>
+<ol>
+<li><strong>Topic Clusters</strong>: Focus on related topics, not single keywords</li>
+<li><strong>User Intent</strong>: Answer specific questions</li>
+<li><strong>Long-tail Keywords</strong>: Target conversational phrases</li>
+<li><strong>Natural Language</strong>: Write for humans, not algorithms</li>
+</ol>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">seo: {
+  autoKeywords: true,      // Extract from content
+  keywordLimit: 7,         // Max per page
+  keywords: [              // Global keywords
+    &quot;documentation&quot;,
+    &quot;static site&quot;,
+    &quot;vercel&quot;
+  ]
+}
+</code></pre>
+<h3>Front Matter Keywords</h3>
+<pre><code class="language-yaml">---
+keywords: 
+  - &quot;authentication guide&quot;
+  - &quot;secure documentation&quot;
+  - &quot;password protection&quot;
+  - &quot;doc-builder security&quot;
+---
+</code></pre>
+<h2>Using the SEO Check Command (v1.5.8+)</h2>
+<p>The <code>seo-check</code> command analyzes your <strong>generated HTML files</strong> to ensure they&#39;re properly optimized:</p>
+<pre><code class="language-bash"># First, build your documentation
+doc-builder build
+
+# Then analyze the generated HTML
+doc-builder seo-check
+
+# Check specific HTML file
+doc-builder seo-check html/guide.html
+</code></pre>
+<h3>What It Analyzes in HTML</h3>
+<p>The command inspects the actual HTML output that search engines see:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Title tags</strong> - Presence and optimal length (50-60 chars)</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Meta descriptions</strong> - Quality and character count (140-160)</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Keywords meta tag</strong> - Presence of relevant keywords</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Canonical URLs</strong> - Prevents duplicate content penalties</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>H1 tags</strong> - Ensures proper heading structure</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Open Graph tags</strong> - Social media optimization</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Twitter Card tags</strong> - Twitter/X optimization</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> <strong>Structured data</strong> - JSON-LD implementation</li>
+</ul>
+<h3>Example Output</h3>
+<pre><code>🔍 Analyzing SEO in generated HTML files...
+
+📊 SEO Analysis Complete
+
+Analyzed 14 files
+
+❌ Found 2 issues:
+
+  guides/api.html:
+    Title too long (75 chars, max 60)
+    Suggestion: API Reference Documentation for Doc Build...
+
+  setup.html:
+    Missing meta description
+    
+💡 8 suggestions:
+
+  index.html: Description too short (95 chars, ideal 140-160)
+  guides/auth.html: No keywords meta tag found
+  api/endpoints.html: Missing canonical URL
+  tutorials/intro.html: H1 differs from page title
+  guides/deploy.html: Missing Open Graph tags
+</code></pre>
+<h2>Advanced Configuration</h2>
+<h3>Per-Page Customization</h3>
+<p>Each markdown file can have custom SEO:</p>
+<pre><code class="language-markdown">---
+title: &quot;Custom Page Title for SEO&quot;
+description: &quot;Override the auto-generated description with this custom one that&#39;s perfectly optimized.&quot;
+keywords: [&quot;specific&quot;, &quot;page&quot;, &quot;keywords&quot;]
+---
+
+# Different H1 for Display
+
+Your content here...
+</code></pre>
+<h3>Global SEO Settings</h3>
+<p>Configure in <code>doc-builder.config.js</code>:</p>
+<pre><code class="language-javascript">module.exports = {
+  siteName: &#39;My Documentation&#39;,
+  siteDescription: &#39;Default description for all pages&#39;,
+  
+  seo: {
+    enabled: true,
+    siteUrl: &#39;https://docs.example.com&#39;,
+    author: &#39;Your Name&#39;,
+    twitterHandle: &#39;@yourhandle&#39;,
+    language: &#39;en-US&#39;,
+    
+    // Title customization
+    titleTemplate: &#39;{pageTitle} | {siteName}&#39;,
+    
+    // Description settings
+    descriptionFallback: &#39;smart&#39;,  // or &#39;first-paragraph&#39;
+    
+    // Keywords
+    keywords: [&#39;documentation&#39;, &#39;guides&#39;],
+    autoKeywords: true,
+    keywordLimit: 7,
+    
+    // Organization
+    organization: {
+      name: &#39;Your Company&#39;,
+      url: &#39;https://example.com&#39;,
+      logo: &#39;https://example.com/logo.png&#39;
+    },
+    
+    // Social
+    ogImage: &#39;/og-default.png&#39;,
+    
+    // Technical
+    generateSitemap: true,
+    generateRobotsTxt: true,
+    customMetaTags: []
+  }
+};
+</code></pre>
+<h2>Common SEO Mistakes to Avoid</h2>
+<h3>1. Duplicate Content</h3>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> Same description on multiple pages</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Unique descriptions for each page</li>
+</ul>
+<h3>2. Keyword Stuffing</h3>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> &quot;Guide guide documentation guide tutorial guide&quot;</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Natural keyword usage in context</li>
+</ul>
+<h3>3. Ignoring Mobile</h3>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> Long titles that get cut off on mobile</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Test how titles appear on different devices</li>
+</ul>
+<h3>4. Missing Descriptions</h3>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> Leaving description blank</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Always provide meaningful descriptions</li>
+</ul>
+<h3>5. Generic Titles</h3>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-x-circle" aria-label="error"></i> &quot;Documentation&quot;, &quot;Guide&quot;, &quot;Page 1&quot;</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Specific, descriptive titles</li>
+</ul>
+<h2>SEO Checklist</h2>
+<p>Before publishing, ensure:</p>
+<ul>
+<li><input disabled="" type="checkbox"> All pages have unique titles (50-60 chars)</li>
+<li><input disabled="" type="checkbox"> All pages have meta descriptions (140-160 chars)</li>
+<li><input disabled="" type="checkbox"> Important pages have front matter SEO</li>
+<li><input disabled="" type="checkbox"> Run <code>doc-builder seo-check</code> and fix issues</li>
+<li><input disabled="" type="checkbox"> Set <code>seo.siteUrl</code> in config for proper URLs</li>
+<li><input disabled="" type="checkbox"> Verify Google site ownership with <code>google-verify</code></li>
+<li><input disabled="" type="checkbox"> Submit sitemap.xml to Google Search Console</li>
+<li><input disabled="" type="checkbox"> Test mobile appearance</li>
+</ul>
+<h2>Best Practices for 2025</h2>
+<h3>AI and Semantic Search</h3>
+<ul>
+<li>Write for topic clusters, not just keywords</li>
+<li>Focus on user intent and questions</li>
+<li>Use natural, conversational language</li>
+<li>Structure content with clear hierarchies</li>
+</ul>
+<h3>Technical Excellence</h3>
+<ul>
+<li>Ensure fast page load times</li>
+<li>Use structured data (automatic with doc-builder)</li>
+<li>Implement proper heading hierarchy</li>
+<li>Include alt text for images</li>
+</ul>
+<h3>Content Quality</h3>
+<ul>
+<li>Write comprehensive, valuable content</li>
+<li>Update regularly to maintain freshness</li>
+<li>Include examples and practical applications</li>
+<li>Link to related documentation</li>
+</ul>
+<h2>Monitoring and Improvement</h2>
+<h3>Track Performance</h3>
+<ol>
+<li>Set up Google Search Console</li>
+<li>Monitor search impressions and clicks</li>
+<li>Track ranking positions</li>
+<li>Analyze user queries</li>
+</ol>
+<h3>Continuous Optimization</h3>
+<ol>
+<li>Update titles based on performance</li>
+<li>A/B test different descriptions</li>
+<li>Expand content for high-value pages</li>
+<li>Build internal links between related docs</li>
+</ol>
+<h2>External SEO Tools and Resources</h2>
+<h3>Essential SEO Tools</h3>
+<h4>1. <strong>Google Search Console</strong> - <a href="https://search.google.com/search-console">search.google.com/search-console</a></h4>
+<ul>
+<li>Monitor your documentation&#39;s search performance</li>
+<li>Submit sitemaps for faster indexing</li>
+<li>Find crawl errors and indexing issues</li>
+<li>See which queries bring users to your docs</li>
+<li><strong>Free tool from Google</strong></li>
+</ul>
+<h4>2. <strong>Google PageSpeed Insights</strong> - <a href="https://pagespeed.web.dev">pagespeed.web.dev</a></h4>
+<ul>
+<li>Test page load performance</li>
+<li>Get specific optimization suggestions</li>
+<li>Check Core Web Vitals scores</li>
+<li>Mobile and desktop analysis</li>
+<li><strong>Free tool</strong></li>
+</ul>
+<h4>3. <strong>Ahrefs Webmaster Tools</strong> - <a href="https://ahrefs.com/webmaster-tools">ahrefs.com/webmaster-tools</a></h4>
+<ul>
+<li>Free SEO health monitoring</li>
+<li>Backlink analysis</li>
+<li>Keyword rankings</li>
+<li>Site audit features</li>
+<li><strong>Free version available</strong></li>
+</ul>
+<h4>4. <strong>Schema Markup Validator</strong> - <a href="https://validator.schema.org">validator.schema.org</a></h4>
+<ul>
+<li>Validate your structured data</li>
+<li>Test JSON-LD implementation</li>
+<li>Find schema errors</li>
+<li><strong>Free tool</strong></li>
+</ul>
+<h4>5. <strong>Open Graph Debugger</strong> - <a href="https://www.opengraph.xyz">opengraph.xyz</a></h4>
+<ul>
+<li>Preview how your docs appear on social media</li>
+<li>Debug Open Graph tags</li>
+<li>Test different URLs</li>
+<li><strong>Free tool</strong></li>
+</ul>
+<h3>SEO Learning Resources</h3>
+<h4>Beginner Resources</h4>
+<ol>
+<li><p><strong>Google SEO Starter Guide</strong> - <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide">developers.google.com/search/docs/fundamentals/seo-starter-guide</a></p>
+<ul>
+<li>Official guide from Google</li>
+<li>Covers all SEO basics</li>
+<li>Best practices straight from the source</li>
+</ul>
+</li>
+<li><p><strong>Moz Beginner&#39;s Guide to SEO</strong> - <a href="https://moz.com/beginners-guide-to-seo">moz.com/beginners-guide-to-seo</a></p>
+<ul>
+<li>Comprehensive 7-chapter guide</li>
+<li>Visual explanations</li>
+<li>Industry-standard resource</li>
+</ul>
+</li>
+</ol>
+<h4>Advanced Resources</h4>
+<ol start="3">
+<li><p><strong>Ahrefs SEO Guide</strong> - <a href="https://ahrefs.com/seo">ahrefs.com/seo</a></p>
+<ul>
+<li>Data-driven strategies</li>
+<li>Advanced techniques</li>
+<li>Case studies and examples</li>
+</ul>
+</li>
+<li><p><strong>Search Engine Journal</strong> - <a href="https://searchenginejournal.com">searchenginejournal.com</a></p>
+<ul>
+<li>Latest SEO news and updates</li>
+<li>Algorithm change analysis</li>
+<li>Expert insights</li>
+</ul>
+</li>
+<li><p><strong>Technical SEO Guide</strong> - <a href="https://developers.google.com/search/docs/advanced/guidelines">developers.google.com/search/docs/advanced/guidelines</a></p>
+<ul>
+<li>Google&#39;s technical requirements</li>
+<li>Crawling and indexing details</li>
+<li>Advanced implementation</li>
+</ul>
+</li>
+</ol>
+<h3>Keyword Research Tools</h3>
+<ol>
+<li><p><strong>Google Keyword Planner</strong> - <a href="https://ads.google.com/keywordplanner">ads.google.com/keywordplanner</a></p>
+<ul>
+<li>Free with Google Ads account</li>
+<li>Search volume data</li>
+<li>Keyword suggestions</li>
+</ul>
+</li>
+<li><p><strong>Ubersuggest</strong> - <a href="https://neilpatel.com/ubersuggest">neilpatel.com/ubersuggest</a></p>
+<ul>
+<li>Free keyword research</li>
+<li>Content ideas</li>
+<li>Competitor analysis</li>
+</ul>
+</li>
+<li><p><strong>Answer The Public</strong> - <a href="https://answerthepublic.com">answerthepublic.com</a></p>
+<ul>
+<li>Find questions people ask</li>
+<li>Visual keyword research</li>
+<li>Great for documentation topics</li>
+</ul>
+</li>
+<li><p><strong>Google Trends</strong> - <a href="https://trends.google.com">trends.google.com</a></p>
+<ul>
+<li>Track keyword popularity over time</li>
+<li>Compare search terms</li>
+<li>Find rising topics</li>
+</ul>
+</li>
+</ol>
+<h3>Performance Testing</h3>
+<ol>
+<li><p><strong>GTmetrix</strong> - <a href="https://gtmetrix.com">gtmetrix.com</a></p>
+<ul>
+<li>Detailed performance reports</li>
+<li>Waterfall charts</li>
+<li>Historical tracking</li>
+</ul>
+</li>
+<li><p><strong>WebPageTest</strong> - <a href="https://webpagetest.org">webpagetest.org</a></p>
+<ul>
+<li>Advanced performance testing</li>
+<li>Multiple location testing</li>
+<li>Video capture of page load</li>
+</ul>
+</li>
+<li><p><strong>Lighthouse</strong> (Built into Chrome DevTools)</p>
+<ul>
+<li>Performance, SEO, and accessibility audits</li>
+<li>Actionable recommendations</li>
+<li>CLI version available</li>
+</ul>
+</li>
+</ol>
+<h3>Documentation-Specific SEO Tips</h3>
+<p>According to <a href="https://developers.google.com/style/seo">Google&#39;s Documentation Best Practices</a>:</p>
+<ol>
+<li><strong>Use descriptive URLs</strong> - <code>/guides/authentication</code> not <code>/page1</code></li>
+<li><strong>Create comprehensive content</strong> - Answer the full question</li>
+<li><strong>Use code examples</strong> - Show, don&#39;t just tell</li>
+<li><strong>Keep content fresh</strong> - Update regularly</li>
+<li><strong>Internal linking</strong> - Connect related topics</li>
+</ol>
+<h2>Quick Reference</h2>
+<h3>Front Matter Template</h3>
+<pre><code class="language-yaml">---
+title: &quot;Your SEO Optimized Title Here | Brand&quot;
+description: &quot;A compelling 140-160 character description that includes keywords and encourages clicks from search results.&quot;
+keywords: [&quot;primary keyword&quot;, &quot;secondary keyword&quot;, &quot;long-tail phrase&quot;]
+author: &quot;Your Name&quot;
+date: &quot;2025-01-22&quot;
+---
+</code></pre>
+<h3>CLI Commands</h3>
+<pre><code class="language-bash"># Build your documentation
+doc-builder build
+
+# Check SEO of generated HTML
+doc-builder seo-check
+
+# Add Google verification
+doc-builder google-verify YOUR_CODE
+
+# Deploy with SEO optimization
+doc-builder deploy
+</code></pre>
+<h3>SEO Checklist</h3>
+<p>Before publishing:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Run <code>doc-builder build</code> to generate HTML</li>
+<li><input disabled="" type="checkbox"> Run <code>doc-builder seo-check</code> to find issues</li>
+<li><input disabled="" type="checkbox"> Fix any critical SEO problems</li>
+<li><input disabled="" type="checkbox"> Add front matter to important pages</li>
+<li><input disabled="" type="checkbox"> Set production URL in config</li>
+<li><input disabled="" type="checkbox"> Generate and submit sitemap</li>
+<li><input disabled="" type="checkbox"> Set up Google Search Console</li>
+<li><input disabled="" type="checkbox"> Add Google Analytics (optional)</li>
+<li><input disabled="" type="checkbox"> Test social media previews</li>
+<li><input disabled="" type="checkbox"> Check page load speed</li>
+</ul>
+<h2>Monitoring Success</h2>
+<h3>Key Metrics to Track</h3>
+<ol>
+<li><strong>Organic Traffic</strong> - Visitors from search engines</li>
+<li><strong>Search Impressions</strong> - How often you appear in results</li>
+<li><strong>Click-Through Rate (CTR)</strong> - Percentage who click</li>
+<li><strong>Average Position</strong> - Where you rank for keywords</li>
+<li><strong>Page Load Time</strong> - Speed affects rankings</li>
+</ol>
+<h3>Tools for Monitoring</h3>
+<ul>
+<li><strong>Google Analytics 4</strong> - <a href="https://analytics.google.com">analytics.google.com</a></li>
+<li><strong>Google Search Console</strong> - Track search performance</li>
+<li><strong>Ahrefs/SEMrush</strong> - Competitive analysis</li>
+<li><strong>Custom dashboards</strong> - Combine multiple data sources</li>
+</ul>
+<h2>Next Steps</h2>
+<ol>
+<li><p><strong>Immediate Actions</strong>:</p>
+<ul>
+<li>Add front matter to your top 10 pages</li>
+<li>Run <code>seo-check</code> and fix critical issues</li>
+<li>Set up Google Search Console</li>
+</ul>
+</li>
+<li><p><strong>This Week</strong>:</p>
+<ul>
+<li>Optimize all page titles and descriptions</li>
+<li>Submit sitemap to search engines</li>
+<li>Test and fix page load speed</li>
+</ul>
+</li>
+<li><p><strong>Ongoing</strong>:</p>
+<ul>
+<li>Monitor search performance weekly</li>
+<li>Update content based on user queries</li>
+<li>Build internal links between related docs</li>
+<li>Keep content fresh and accurate</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>For more help, see the <a href="./search-engine-verification-guide.md">Search Engine Verification Guide</a> or join the <a href="https://github.com/knowcode/doc-builder/discussions">doc-builder community</a>.</p>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false,
+        mermaidEnhanced: true
+      }
+    };
+    </script>
+    <script src="../js/main.js"></script>
+    
+</body>
+</html>

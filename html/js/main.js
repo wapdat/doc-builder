@@ -18,14 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const sidebar = document.querySelector('.sidebar');
   const breadcrumbs = document.querySelector('.breadcrumbs');
   
-  if (bannerDismissed) {
-    banner.classList.add('hidden');
-  } else {
-    // Show banner and adjust layout
-    banner.classList.add('visible');
-    mainWrapper.classList.add('banner-visible');
-    sidebar.classList.add('banner-visible');
-    breadcrumbs?.classList.add('banner-visible');
+  if (banner) {
+    if (bannerDismissed) {
+      banner.classList.add('hidden');
+    } else {
+      // Show banner and adjust layout
+      banner.classList.add('visible');
+      mainWrapper?.classList.add('banner-visible');
+      sidebar?.classList.add('banner-visible');
+      breadcrumbs?.classList.add('banner-visible');
+    }
   }
   
   // Handle banner dismissal
@@ -54,6 +56,84 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeMermaidFullScreen();
 });
 
+// Mermaid Theme Configuration
+function configureMermaidTheme() {
+  // Check if enhanced styling is enabled (passed from config)
+  const enhancedStyling = window.docBuilderConfig?.features?.mermaidEnhanced !== false;
+  
+  // Set data attribute for CSS styling
+  document.documentElement.setAttribute('data-mermaid-enhanced', enhancedStyling.toString());
+  
+  // Get current theme (light/dark mode)
+  const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+  
+  // Notion-inspired color palette
+  const lightTheme = {
+    primaryColor: '#F7F6F3',           // Light background for shapes
+    primaryTextColor: '#37352F',       // Dark text
+    primaryBorderColor: '#E3E2E0',     // Subtle borders
+    lineColor: '#787774',              // Connection lines
+    secondaryColor: '#EDEBE9',         // Secondary backgrounds
+    tertiaryColor: '#E9E9E7',          // Tertiary elements
+    background: '#FFFFFF',             // Diagram background
+    fontSize: '16px',                  // Text size
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+  };
+  
+  const darkTheme = {
+    primaryColor: '#2F2F2F',           // Dark background for shapes
+    primaryTextColor: '#E3E2E0',       // Light text
+    primaryBorderColor: '#454545',     // Darker borders
+    lineColor: '#9B9A97',              // Lighter connection lines
+    secondaryColor: '#404040',         // Secondary backgrounds
+    tertiaryColor: '#4A4A4A',          // Tertiary elements
+    background: '#1A1A1A',             // Dark diagram background
+    fontSize: '16px',                  // Text size
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+  };
+  
+  const currentTheme = isDarkMode ? darkTheme : lightTheme;
+  
+  // Initialize Mermaid with custom theme (only if enhanced styling is enabled)
+  const mermaidConfig = {
+    startOnLoad: false,  // We'll manually start it after configuration
+    theme: enhancedStyling ? 'base' : 'default',
+    ...(enhancedStyling && { themeVariables: currentTheme }),
+    flowchart: {
+      curve: 'basis',                  // Smoother curves
+      padding: 20,                     // More padding around elements
+      nodeSpacing: 50,                 // Space between nodes
+      rankSpacing: 50,                 // Space between ranks
+      marginX: 20,                     // Horizontal margins
+      marginY: 20                      // Vertical margins
+    },
+    sequence: {
+      actorMargin: 50,
+      width: 150,
+      height: 65,
+      boxMargin: 10,
+      boxTextMargin: 5,
+      noteMargin: 10,
+      messageMargin: 35
+    },
+    ...(enhancedStyling && {
+      gantt: {
+        leftPadding: 75,
+        gridLineStartPadding: 35,
+        fontSize: 12,
+        sectionFontSize: 24
+      }
+    })
+  };
+  
+  mermaid.initialize(mermaidConfig);
+  
+  // Manually render all mermaid diagrams after configuration
+  setTimeout(() => {
+    mermaid.run();
+  }, 100);
+}
+
 // Mermaid Full Screen Viewer
 function initializeMermaidFullScreen() {
   // Wait for Mermaid to initialize
@@ -61,6 +141,9 @@ function initializeMermaidFullScreen() {
     setTimeout(initializeMermaidFullScreen, 100);
     return;
   }
+
+  // Configure Mermaid with enhanced styling
+  configureMermaidTheme();
 
   // Find all Mermaid diagrams and wrap them with full-screen controls
   const mermaidDivs = document.querySelectorAll('.mermaid');
@@ -950,6 +1033,49 @@ function initCollapsibleNavigation() {
       expandSectionByCurrentURL();
     }
   }, 200);
+  
+  // Handle toggle-all button for root navigation
+  const toggleAllButton = document.getElementById('nav-toggle-all');
+  if (toggleAllButton) {
+    toggleAllButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const icon = document.getElementById('toggle-all-icon');
+      const isExpanded = toggleAllButton.classList.contains('expanded');
+      
+      // Get all collapsible sections (excluding the root)
+      const allSections = document.querySelectorAll('.nav-section[data-level]:not([data-level="0"]) .nav-title.collapsible');
+      const allContents = document.querySelectorAll('.nav-section[data-level]:not([data-level="0"]) .nav-content.collapsed, .nav-section[data-level]:not([data-level="0"]) .nav-content:not(.collapsed)');
+      
+      if (isExpanded) {
+        // Collapse all sections
+        toggleAllButton.classList.remove('expanded');
+        icon.className = 'ph ph-caret-right';
+        
+        allSections.forEach(section => {
+          section.classList.remove('expanded');
+        });
+        
+        allContents.forEach(content => {
+          if (content.id) { // Only collapse if it has an id (is collapsible)
+            content.classList.add('collapsed');
+          }
+        });
+      } else {
+        // Expand all sections
+        toggleAllButton.classList.add('expanded');
+        icon.className = 'ph ph-caret-down';
+        
+        allSections.forEach(section => {
+          section.classList.add('expanded');
+        });
+        
+        allContents.forEach(content => {
+          content.classList.remove('collapsed');
+        });
+      }
+    });
+  }
   
   const collapsibleTitles = document.querySelectorAll('.nav-title.collapsible');
   

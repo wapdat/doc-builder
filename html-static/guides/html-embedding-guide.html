@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@knowcode/doc-builder now supports embedding custom HTML files in your documentation, enabling you to include interactive demos, widgets, and other web...">
+    <title>HTML Embedding Guide | @knowcode/doc-builder</title>
+    
+    <meta name="generator" content="@knowcode/doc-builder by Knowcode Ltd">
+    <meta name="author" content="Lindsay Smith">
+    <meta name="keywords" content="documentation, markdown, static site generator, vercel, notion-style, html, your">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://doc-builder-delta.vercel.app/guides/html-embedding-guide.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://doc-builder-delta.vercel.app/guides/html-embedding-guide.html">
+    <meta property="og:title" content="HTML Embedding Guide | @knowcode/doc-builder">
+    <meta property="og:description" content="@knowcode/doc-builder now supports embedding custom HTML files in your documentation, enabling you to include interactive demos, widgets, and other web...">
+    <meta property="og:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    <meta property="og:site_name" content="@knowcode/doc-builder">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@planbbackups">
+    <meta name="twitter:creator" content="@planbbackups">
+    <meta name="twitter:title" content="HTML Embedding Guide | @knowcode/doc-builder">
+    <meta name="twitter:description" content="@knowcode/doc-builder now supports embedding custom HTML files in your documentation, enabling you to include interactive demos, widgets, and other web...">
+    <meta name="twitter:image" content="https://doc-builder-delta.vercel.app/og-default.png">
+    
+    <!-- Custom Meta Tags -->
+    <meta name="google-site-verification" content="FtzcDTf5BQ9K5EfnGazQkgU2U4FiN3ITzM7gHwqUAqQ">
+    <meta name="msvalidate.01" content="B2D8C4C12C530D47AA962B24CAA09630">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/notion-style.css">
+    
+    
+    <!-- Blue theme and white background overrides for static output -->
+    <style>
+      /* Override green colors with blue */
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #dbeafe;
+        --accent: #3b82f6;
+        --color-accent-green: #2563eb;
+        --color-accent-emerald: #3b82f6;
+        
+        /* White backgrounds for cleaner appearance */
+        --color-bg-secondary: #FFFFFF;
+        --color-bg-tertiary: #FAFAFA;
+        --color-bg-hover: #F8F9FA;
+      }
+      
+      /* Override green status colors with blue variants */
+      .nav-item.active {
+        background-color: #dbeafe !important;
+        color: #1d4ed8 !important;
+      }
+      
+      .nav-item:hover {
+        background-color: #eff6ff !important;
+      }
+      
+      /* Override complete/success icons to blue */
+      .ph-check-circle[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override README/home icon color */
+      .ph-house[style*="color: #059669"] {
+        color: #2563eb !important;
+      }
+      
+      /* Override links */
+      a {
+        color: #2563eb;
+      }
+      
+      a:hover {
+        color: #1d4ed8;
+      }
+      
+      /* Override buttons and interactive elements */
+      .theme-toggle:hover,
+      .menu-toggle:hover {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+      
+      /* Override nav title hover */
+      .nav-title:hover {
+        background-color: #eff6ff;
+      }
+      
+      /* White backgrounds for sidebar and navigation */
+      body:not(.dark-mode) .sidebar {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .nav-section {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .nav-content {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      body:not(.dark-mode) .navigation {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+      }
+      
+      /* Subtle separation for nav sections */
+      body:not(.dark-mode) .nav-section + .nav-section {
+        border-top: 1px solid #F3F4F6;
+      }
+      
+      /* Adjust hover states for white backgrounds */
+      body:not(.dark-mode) .nav-item:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      body:not(.dark-mode) .nav-title.collapsible:hover {
+        background-color: #F8F9FA !important;
+      }
+      
+      /* Header stays white (already is) but ensure consistency */
+      body:not(.dark-mode) .header {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+      
+      /* Ensure search box looks good on white */
+      body:not(.dark-mode) .filter-input,
+      body:not(.dark-mode) .sidebar-search {
+        background: #F8F9FA !important;
+        background-color: #F8F9FA !important;
+        border: 1px solid #E5E7EB !important;
+      }
+      
+      body:not(.dark-mode) .filter-input:focus,
+      body:not(.dark-mode) .sidebar-search:focus {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-color: #2563eb !important;
+      }
+      
+      /* Override breadcrumbs */
+      .breadcrumbs a {
+        color: #2563eb;
+      }
+      
+      .breadcrumbs a:hover {
+        color: #1d4ed8;
+        background-color: #dbeafe;
+      }
+      
+      /* Override filter icon */
+      .filter-icon {
+        color: #2563eb;
+      }
+      
+      /* Override deployment info on hover */
+      .deployment-date:hover {
+        color: #2563eb;
+      }
+      
+      /* Dark mode adjustments */
+      body.dark-mode {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --primary-light: #1e3a8a;
+        --accent: #60a5fa;
+      }
+      
+      body.dark-mode .nav-item.active {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+        color: #60a5fa !important;
+      }
+      
+      body.dark-mode .nav-item:hover {
+        background-color: rgba(59, 130, 246, 0.05) !important;
+      }
+      
+      body.dark-mode a {
+        color: #60a5fa;
+      }
+      
+      body.dark-mode a:hover {
+        color: #93bbfc;
+      }
+    </style>
+    
+    
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HTML Embedding Guide",
+  "description": "@knowcode/doc-builder now supports embedding custom HTML files in your documentation, enabling you to include interactive demos, widgets, and other web...",
+  "author": {
+    "@type": "Person",
+    "name": "Lindsay Smith"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Knowcode Ltd",
+    "url": "https://knowcode.tech"
+  },
+  "datePublished": "2025-08-07T14:41:11.184Z",
+  "dateModified": "2025-08-07T14:41:11.184Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://doc-builder-delta.vercel.app/guides/html-embedding-guide.html"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "@knowcode/doc-builder",
+        "item": "https://doc-builder-delta.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://doc-builder-delta.vercel.app/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Html Embedding Guide",
+        "item": "https://doc-builder-delta.vercel.app/guides/html-embedding-guide.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">@knowcode/doc-builder</a>
+            
+            <div class="header-actions">
+                <div class="deployment-info">
+                    <span class="deployment-date" title="Built with doc-builder v1.9.23">Last updated: Aug 7, 2025, 02:41 PM UTC</span>
+                </div>
+                
+                
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" id="breadcrumbs">
+        <!-- Breadcrumbs will be generated by JavaScript -->
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="filter-box">
+                    <input type="text" placeholder="Search menu..." class="filter-input" id="nav-filter">
+                    <i class="fas fa-search filter-icon"></i>
+                </div>
+            </div>
+            <nav class="navigation">
+                
+      <div class="nav-section" data-level="0">
+        <a class="nav-title toggle-all-nav expanded" href="#" id="nav-toggle-all" title="Collapse/Expand All">
+          <i class="ph ph-caret-down" id="toggle-all-icon"></i> Documentation
+        </a>
+        <div class="nav-content">
+        <a href="README.html" class="nav-item" data-tooltip="@knowcode/doc-builder."><i class="ph ph-file-text"></i> Overview</a>
+        <a href="about-doc-builder.html" class="nav-item" data-tooltip="About @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> About Doc Builder</a>
+        <a href="documentation-index.html" class="nav-item" data-tooltip="This directory contains additional documentation for the @knowcode/doc-builder project, organized by topic and purpose."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Index</a>
+        <a href="image-modal-test.html" class="nav-item" data-tooltip="This document tests the new image modal functionality in doc-builder."><i class="ph ph-file-text"></i> Image Modal Test</a>
+        <a href="vercel-cli-setup-guide.html" class="nav-item" data-tooltip="This guide provides comprehensive instructions for installing the Vercel CLI across different operating systems."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel Cli Setup Guide</a>
+        <a href="vercel-first-time-setup-guide.html" class="nav-item" data-tooltip="This guide walks you through the Vercel deployment process when using ."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Vercel First Time Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible expanded" href="#" data-target="nav-guides-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-book"></i> Guides
+        </a>
+        <div class="nav-content" id="nav-guides-1">
+        <a href="guides/authentication-default-change.html" class="nav-item" data-tooltip="Starting from version 1.7.4, @knowcode/doc-builder now defaults to no authentication for all documentation sites."><i class="ph ph-file-text"></i> Authentication Default Change</a>
+        <a href="guides/authentication-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder supports enterprise-grade authentication through Supabase - a secure, scalable authentication platform."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Authentication Guide</a>
+        <a href="guides/claude-workflow-guide.html" class="nav-item" data-tooltip="This guide demonstrates an efficient workflow for using Claude Code with a refined CLAUDE.md file to create high-quality documentation and deploy it..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Claude Workflow Guide</a>
+        <a href="guides/configuration-guide.html" class="nav-item" data-tooltip="This guide explains how @knowcode/doc-builder handles configuration files and settings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Configuration Guide</a>
+        <a href="guides/documentation-standards.html" class="nav-item" data-tooltip="This document defines the documentation standards and conventions for the @knowcode/doc-builder project."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Documentation Standards</a>
+        <a href="guides/html-embedding-guide.html" class="nav-item active" data-tooltip="Starting from version 1.9.2, doc-builder treats HTML files ( and ) as attachments that are automatically copied to your output directory during the..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Html Embedding Guide</a>
+        <a href="guides/image-modal-guide.html" class="nav-item" data-tooltip="When users click on any image in your generated documentation, it opens in a professional modal overlay with: Full-screen viewing experience Smooth..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Image Modal Guide</a>
+        <a href="guides/phosphor-icons-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder automatically converts Unicode emojis in your markdown files to beautiful Phosphor icons in the generated HTML."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Phosphor Icons Guide</a>
+        <a href="guides/private-directory-authentication.html" class="nav-item" data-tooltip="The @knowcode/doc-builder provides flexible authentication options to protect your documentation."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication</a>
+        <a href="guides/private-directory-authentication-troubleshooting.html" class="nav-item" data-tooltip="Private Directory Authentication Troubleshooting."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Private Directory Authentication Troubleshooting</a>
+        <a href="guides/public-site-deployment.html" class="nav-item" data-tooltip="The @knowcode/doc-builder now supports deploying public documentation sites without authentication."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Public Site Deployment</a>
+        <a href="guides/search-engine-verification-guide.html" class="nav-item" data-tooltip="Search engine verification provides access to powerful webmaster tools:."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Search Engine Verification Guide</a>
+        <a href="guides/seo-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes comprehensive SEO (Search Engine Optimization) features to help your documentation rank better in search results and..."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Seo Guide</a>
+        <a href="guides/seo-optimization-guide.html" class="nav-item" data-tooltip="Comprehensive guide to optimizing documentation for search engines. Learn SEO best practices, use built-in features, and improve your rankings."><i class="ph ph-check-circle" style="color: #2563eb;"></i> SEO Optimization Guide for @knowcode/doc-builder</a>
+        <a href="guides/supabase-authentication-complete-guide.html" class="nav-item" data-tooltip="@knowcode/doc-builder includes built-in Supabase authentication that provides enterprise-grade security with zero configuration."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Supabase Authentication Complete Guide</a>
+        <a href="guides/troubleshooting-guide.html" class="nav-item" data-tooltip="This guide helps you resolve common issues when using @knowcode/doc-builder."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Troubleshooting Guide</a>
+        <a href="guides/windows-setup-guide.html" class="nav-item" data-tooltip="This guide helps Windows users set up the complete AI-powered documentation workflow using Claude Code, @knowcode/doc-builder, and Vercel."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Windows Setup Guide</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-prompts-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-chat-circle-dots"></i> Prompts
+        </a>
+        <div class="nav-content collapsed" id="nav-prompts-1">
+        <a href="prompts/beautiful-documentation-design.html" class="nav-item" data-tooltip="🎨 Beautiful Documentation Design Guide."><i class="ph ph-check-circle" style="color: #2563eb;"></i> Beautiful Documentation Design</a>
+        <a href="prompts/markdown-document-standards.html" class="nav-item" data-tooltip="Detailed introduction to the topic..."><i class="ph ph-pencil-simple" style="color: #d97706;"></i> Markdown Document Standards</a>
+        <a href="prompts/project-rename-strategy-sasha-publish.html" class="nav-item" data-tooltip="This document outlines the comprehensive strategy for renaming the @knowcode/doc-builder project to &quot;sasha-publish&quot;, including all package references,..."><i class="ph ph-x-circle" style="color: #dc2626;"></i> Project Rename Strategy Sasha Publish</a></div></div>
+      <div class="nav-section" data-level="1">
+        <a class="nav-title collapsible" href="#" data-target="nav-test-questions-1" >
+          <i class="ph ph-caret-right collapse-icon"></i><i class="ph ph-folder"></i> Test Questions
+        </a>
+        <div class="nav-content collapsed" id="nav-test-questions-1">
+        <a href="test-questions/how-does-it-work%3F.html" class="nav-item" data-tooltip="This is a test file to verify that question marks work properly in filenames."><i class="ph ph-file-text"></i> How Does It Work?</a>
+        <a href="test-questions/step-1%3A%20getting-started.html" class="nav-item" data-tooltip="Step 1: Getting Started."><i class="ph ph-file-text"></i> Step 1: Getting Started</a>
+        <a href="test-questions/what-is-the-purpose.html" class="nav-item" data-tooltip="Understanding the purpose of our documentation system"><i class="ph ph-file-text"></i> What Is The Purpose?</a></div></div>
+            </nav>
+            <div class="resize-handle"></div>
+        </aside>
+        
+        <!-- Content Area -->
+        <main class="content">
+            <div class="content-inner">
+                <h1>HTML Embedding Guide</h1>
+<p>@knowcode/doc-builder now supports embedding custom HTML files in your documentation, enabling you to include interactive demos, widgets, and other web content using iframes.</p>
+<h2>Overview</h2>
+<p>Starting from version 1.9.2, doc-builder treats HTML files (<code>.html</code> and <code>.htm</code>) as attachments that are automatically copied to your output directory during the build process. This allows you to:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-globe" aria-label="global"></i> Include interactive demos and examples</li>
+<li><i style="font-size: 1.2em" class="ph ph-chart-bar" aria-label="chart"></i> Embed custom visualizations or dashboards  </li>
+<li><i style="font-size: 1.2em" class="ph ph-wrench" aria-label="settings"></i> Add third-party widgets or tools</li>
+<li><i style="font-size: 1.2em" class="ph ph-game-controller" aria-label="gaming"></i> Create interactive tutorials or games</li>
+<li><i style="font-size: 1.2em" class="ph ph-device-mobile" aria-label="mobile"></i> Include responsive web applications</li>
+</ul>
+<h2>How It Works</h2>
+<ol>
+<li><strong>Place HTML files</strong> anywhere in your <code>docs</code> directory</li>
+<li><strong>Build your documentation</strong> using <code>npx @knowcode/doc-builder build</code></li>
+<li><strong>Reference the HTML files</strong> in your markdown using iframes or direct links</li>
+</ol>
+<p>The HTML files maintain their relative paths from the docs directory, making it easy to organize and reference them.</p>
+<h2>Basic Usage</h2>
+<h3>Step 1: Create Your HTML File</h3>
+<p>Create an HTML file in your docs directory:</p>
+<pre><code>docs/
+├── README.md
+├── guides/
+│   └── html-embedding-guide.md
+└── examples/
+    └── interactive-demo.html
+</code></pre>
+<h3>Step 2: Embed in Markdown</h3>
+<p>Use an iframe to embed the HTML file in your markdown documentation:</p>
+<pre><code class="language-html">&lt;iframe src=&quot;/examples/interactive-demo.html&quot; 
+        width=&quot;100%&quot; 
+        height=&quot;600&quot; 
+        frameborder=&quot;0&quot;
+        style=&quot;border: 1px solid #e5e7eb; border-radius: 8px;&quot;&gt;
+&lt;/iframe&gt;
+</code></pre>
+<h3>Step 3: Build and Deploy</h3>
+<p>Run the build command:</p>
+<pre><code class="language-bash">npx @knowcode/doc-builder build
+</code></pre>
+<p>The HTML file will be copied to <code>html/examples/interactive-demo.html</code> and will be accessible when you deploy your documentation.</p>
+<h2>Live Example</h2>
+<p>Here&#39;s an embedded interactive demo:</p>
+<iframe src="/examples/interactive-demo.html" 
+        width="100%" 
+        height="700" 
+        frameborder="0"
+        style="border: 1px solid #e5e7eb; border-radius: 8px; margin: 20px 0;">
+</iframe>
+
+<h2>Advanced Usage</h2>
+<h3>Responsive Iframes</h3>
+<p>Make your embedded content responsive using a wrapper div:</p>
+<pre><code class="language-html">&lt;div style=&quot;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&quot;&gt;
+  &lt;iframe src=&quot;/examples/dashboard.html&quot; 
+          style=&quot;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+<h3>Direct Links</h3>
+<p>You can also link directly to HTML files:</p>
+<pre><code class="language-markdown">[Open Interactive Demo](/examples/interactive-demo.html)
+</code></pre>
+<h3>Multiple HTML Files</h3>
+<p>Organize complex projects with multiple HTML files:</p>
+<pre><code>docs/
+├── demos/
+│   ├── chart-demo.html
+│   ├── form-demo.html
+│   └── assets/
+│       ├── demo.css
+│       └── demo.js
+└── widgets/
+    ├── calculator.html
+    └── converter.html
+</code></pre>
+<h2>Security Considerations</h2>
+<p>When embedding HTML content, consider these security best practices:</p>
+<ol>
+<li><strong>Trust Your Content</strong>: Only embed HTML files from trusted sources</li>
+<li><strong>Sandbox Iframes</strong>: Use the <code>sandbox</code> attribute for additional security:<pre><code class="language-html">&lt;iframe src=&quot;/examples/demo.html&quot; 
+        sandbox=&quot;allow-scripts allow-same-origin&quot;&gt;
+&lt;/iframe&gt;
+</code></pre>
+</li>
+<li><strong>HTTPS Only</strong>: Ensure your documentation is served over HTTPS</li>
+<li><strong>Content Security Policy</strong>: Consider implementing CSP headers on your server</li>
+</ol>
+<h2>Best Practices</h2>
+<h3>1. Keep It Lightweight</h3>
+<ul>
+<li>Minimize external dependencies in your HTML files</li>
+<li>Optimize images and assets</li>
+<li>Use inline styles and scripts when possible</li>
+</ul>
+<h3>2. Make It Responsive</h3>
+<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+</code></pre>
+<h3>3. Match Your Theme</h3>
+<p>Use CSS that complements your documentation&#39;s design:</p>
+<pre><code class="language-css">body {
+    font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+</code></pre>
+<h3>4. Provide Fallbacks</h3>
+<p>Include a message for users who can&#39;t view iframes:</p>
+<pre><code class="language-html">&lt;iframe src=&quot;/examples/demo.html&quot;&gt;
+  &lt;p&gt;Your browser doesn&#39;t support iframes. 
+     &lt;a href=&quot;/examples/demo.html&quot;&gt;View the demo directly&lt;/a&gt;.&lt;/p&gt;
+&lt;/iframe&gt;
+</code></pre>
+<h2>Common Use Cases</h2>
+<h3>Interactive Code Playgrounds</h3>
+<p>Embed code editors or REPLs for hands-on learning:</p>
+<pre><code class="language-html">&lt;iframe src=&quot;/playground/javascript-basics.html&quot; 
+        width=&quot;100%&quot; height=&quot;500&quot;&gt;
+&lt;/iframe&gt;
+</code></pre>
+<h3>API Documentation</h3>
+<p>Include interactive API explorers:</p>
+<pre><code class="language-html">&lt;iframe src=&quot;/api-explorer/rest-api.html&quot; 
+        width=&quot;100%&quot; height=&quot;600&quot;&gt;
+&lt;/iframe&gt;
+</code></pre>
+<h3>Data Visualizations</h3>
+<p>Embed charts, graphs, or dashboards:</p>
+<pre><code class="language-html">&lt;iframe src=&quot;/visualizations/sales-dashboard.html&quot; 
+        width=&quot;100%&quot; height=&quot;400&quot;&gt;
+&lt;/iframe&gt;
+</code></pre>
+<h3>Form Examples</h3>
+<p>Show working form implementations:</p>
+<pre><code class="language-html">&lt;iframe src=&quot;/forms/contact-form.html&quot; 
+        width=&quot;100%&quot; height=&quot;500&quot;&gt;
+&lt;/iframe&gt;
+</code></pre>
+<h2>Troubleshooting</h2>
+<h3>HTML File Not Found</h3>
+<ul>
+<li>Ensure the HTML file is in your <code>docs</code> directory</li>
+<li>Check the file path in your iframe <code>src</code> attribute</li>
+<li>Verify the file was copied during build (check <code>html</code> output directory)</li>
+</ul>
+<h3>Styling Issues</h3>
+<ul>
+<li>Use viewport meta tag for mobile compatibility</li>
+<li>Test in both light and dark themes</li>
+<li>Consider iframe border and padding</li>
+</ul>
+<h3>Performance Concerns</h3>
+<ul>
+<li>Lazy load iframes that are below the fold</li>
+<li>Minimize external resource requests</li>
+<li>Optimize images and assets</li>
+</ul>
+<h2>Limitations</h2>
+<ul>
+<li>HTML files are copied as-is without processing</li>
+<li>Relative links in HTML files should account for the output structure</li>
+<li>Large HTML files may impact build time</li>
+<li>Some hosting providers may have iframe restrictions</li>
+</ul>
+<h2>Summary</h2>
+<p>HTML embedding support in @knowcode/doc-builder provides a powerful way to enhance your documentation with interactive content. By treating HTML files as attachments, you can easily include demos, widgets, and custom web content while maintaining the simplicity of markdown-based documentation.</p>
+<p>Remember to:</p>
+<ul>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Place HTML files in your docs directory</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Use iframes to embed content</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Follow security best practices</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Test responsive behavior</li>
+<li><i style="font-size: 1.2em" class="ph ph-check-circle" aria-label="checked"></i> Keep performance in mind</li>
+</ul>
+<p>This feature opens up endless possibilities for creating rich, interactive documentation that goes beyond static content!</p>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+    // Pass configuration to frontend
+    window.docBuilderConfig = {
+      features: {
+        showPdfDownload: true,
+        menuDefaultOpen: false,
+        mermaidEnhanced: true
+      }
+    };
+    </script>
+    <script src="../js/main.js"></script>
+    
+</body>
+</html>

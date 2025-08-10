@@ -1,6 +1,6 @@
 {
   "name": "@knowcode/doc-builder",
-  "version": "1.9.5",
+  "version": "1.9.24",
   "description": "Reusable documentation builder for markdown-based sites with Vercel deployment support",
   "main": "index.js",
   "bin": {
@@ -8,9 +8,7 @@
   },
   "scripts": {
     "postinstall": "node scripts/setup.js || true",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish:npm": "./publish.sh",
-    "release": "./publish.sh"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "documentation",
@@ -39,7 +37,8 @@
     "gray-matter": "^4.0.3",
     "marked": "^15.0.12",
     "ora": "5.4.1",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "semver": "^7.7.2"
   },
   "engines": {
     "node": ">=14.0.0"

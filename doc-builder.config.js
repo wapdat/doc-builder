@@ -1,16 +1,53 @@
 module.exports = {
-  "siteName": "@knowcode/doc-builder",
-  "siteDescription": "Beautiful documentation with the least effort possible",
+  "configVersion": "1.9.23",
   "docsDir": "docs",
   "outputDir": "html",
-  "productionUrl": "https://doc-builder-delta.vercel.app",
+  "siteName": "@knowcode/doc-builder",
+  "siteDescription": "Beautiful documentation with the least effort possible",
+  "favicon": "✨",
   "features": {
     "authentication": false,
     "changelog": true,
     "mermaid": true,
+    "mermaidEnhanced": true,
+    "tooltips": true,
+    "search": false,
     "darkMode": true,
     "phosphorIcons": true,
-    "menuDefaultOpen": false
+    "phosphorWeight": "regular",
+    "phosphorSize": "1.2em",
+    "normalizeTitle": true,
+    "showPdfDownload": true,
+    "menuDefaultOpen": false,
+    "attachments": true,
+    "dynamicNavIcons": true,
+    "subtleColors": true,
+    "privateDirectoryAuth": false,
+    "banner": false,
+    "staticOutput": true
+  },
+  "staticOutputDir": "html-static",
+  "auth": {
+    "supabaseUrl": "https://xcihhnfcitjrwbynxmka.supabase.co",
+    "supabaseAnonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjaWhobmZjaXRqcndieW54bWthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0Mzc2MzcsImV4cCI6MjA2OTAxMzYzN30.zvWp3JFIR8fBIiwuFF5gqOR_Kxb42baZS5fsBz60XOY"
+  },
+  "changelog": {
+    "daysBack": 14,
+    "enabled": true
+  },
+  "banner": {
+    "enabled": false,
+    "text": "This documentation is a preview version - some content may be incomplete",
+    "icon": "fas fa-exclamation-triangle",
+    "type": "warning",
+    "dismissible": true
+  },
+  "folderOrder": [],
+  "folderDescriptions": {},
+  "folderIcons": {},
+  "deployment": {
+    "platform": "vercel",
+    "outputDirectory": "html"
   },
   "seo": {
     "enabled": true,
@@ -25,13 +62,18 @@ module.exports = {
       "vercel",
       "notion-style"
     ],
-    "generateSitemap": true,
-    "generateRobotsTxt": true,
-    "ogImage": "/og-default.png",
+    "titleTemplate": "{pageTitle} | {siteName}",
+    "autoKeywords": true,
+    "keywordLimit": 7,
+    "descriptionFallback": "smart",
     "organization": {
       "name": "Knowcode Ltd",
-      "url": "https://knowcode.tech"
+      "url": "https://knowcode.tech",
+      "logo": ""
     },
+    "ogImage": "/og-default.png",
+    "generateSitemap": true,
+    "generateRobotsTxt": true,
     "customMetaTags": [
       {
         "name": "google-site-verification",
@@ -42,5 +84,43 @@ module.exports = {
         "content": "B2D8C4C12C530D47AA962B24CAA09630"
       }
     ]
-  }
+  },
+  "attachmentTypes": [
+    ".pdf",
+    ".doc",
+    ".docx",
+    ".xls",
+    ".xlsx",
+    ".csv",
+    ".ppt",
+    ".pptx",
+    ".txt",
+    ".rtf",
+    ".html",
+    ".htm",
+    ".zip",
+    ".tar",
+    ".gz",
+    ".7z",
+    ".rar",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".svg",
+    ".webp",
+    ".ico",
+    ".bmp",
+    ".json",
+    ".xml",
+    ".yaml",
+    ".yml",
+    ".toml",
+    ".mp4",
+    ".mp3",
+    ".wav",
+    ".avi",
+    ".mov"
+  ],
+  "productionUrl": "https://doc-builder-delta.vercel.app"
 };

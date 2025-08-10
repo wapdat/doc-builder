@@ -2,6 +2,8 @@
 
 > **🎉 Update v1.8.2**: Supabase credentials are now automatically configured! No manual setup needed - just enable authentication and add users to the database.
 
+> **📚 Looking for complete documentation?** See the [Complete Supabase Authentication Guide](supabase-authentication-complete-guide.md) for detailed setup, troubleshooting, and advanced features.
+
 ## Overview
 
 @knowcode/doc-builder supports enterprise-grade authentication through **Supabase** - a secure, scalable authentication platform. This guide explains how to protect your documentation with proper user authentication and access control.
@@ -247,3 +249,18 @@ If you were using the old authentication system:
 Supabase authentication provides enterprise-grade security for your documentation while maintaining ease of use. With proper setup, you get secure, scalable authentication that grows with your needs.
 
 For public documentation that doesn't need authentication, simply set `authentication: false` or use the `--no-auth` flag during build/deploy.
+
+## 📚 Next Steps
+
+For comprehensive documentation including advanced features, troubleshooting, and detailed setup instructions, see:
+
+**[Complete Supabase Authentication Guide](supabase-authentication-complete-guide.md)**
+
+This detailed guide covers:
+- 🏗️ All authentication modes (Global, Private Directory, Hybrid)
+- 🔧 Advanced configuration options
+- 👥 Bulk user management workflows
+- 🛡️ Security best practices and hardening
+- 🐛 Comprehensive troubleshooting guide
+- 🚀 Performance optimization and monitoring
+- 🔗 Multi-domain and role-based access control

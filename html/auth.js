@@ -27,6 +27,10 @@
     // Check authentication and site access
     async function checkAuth() {
         try {
+            // Check authentication mode
+            const isGlobalAuthEnabled = false;
+            const isPrivateDirectoryAuthEnabled = true;
+            
             // Check if current page is in private directory
             const currentPath = window.location.pathname;
             const isPrivatePage = currentPath.includes('/private/');
@@ -35,11 +39,11 @@
             const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
             
             if (userError || !user) {
-                // Only redirect if we're on a private page
-                if (isPrivatePage) {
+                // Redirect if global auth is enabled OR if we're on a private page with private auth enabled
+                if (isGlobalAuthEnabled || (isPrivateDirectoryAuthEnabled && isPrivatePage)) {
                     redirectToLogin();
                 } else {
-                    // Public page, just show it
+                    // Public page (no global auth and either no private auth or not on private page)
                     document.body.classList.add('authenticated'); // Use same class to show body
                     updateAuthButton(false);
                 }
@@ -55,7 +59,7 @@
                 .single();
             
             if (accessError || !access) {
-                if (isPrivatePage) {
+                if (isGlobalAuthEnabled || (isPrivateDirectoryAuthEnabled && isPrivatePage)) {
                     showAccessDenied();
                 } else {
                     // Public page, show it but don't grant private navigation access
@@ -65,15 +69,21 @@
                 return;
             }
             
-            // User is authenticated and has domain access - grant full access including private nav
+            // User is authenticated and has domain access - grant appropriate access
             console.log('User authenticated and authorized');
             document.body.classList.add('authenticated');
-            document.body.classList.add('has-private-access'); // Grant private navigation access
+            
+            // Grant private navigation access if private directory auth is enabled
+            if (isPrivateDirectoryAuthEnabled || isGlobalAuthEnabled) {
+                document.body.classList.add('has-private-access');
+            }
+            
             updateAuthButton(true);
             
         } catch (error) {
             console.error('Auth check failed:', error);
-            if (window.location.pathname.includes('/private/')) {
+            const isPrivatePage = window.location.pathname.includes('/private/');
+            if (isGlobalAuthEnabled || (isPrivateDirectoryAuthEnabled && isPrivatePage)) {
                 redirectToLogin();
             } else {
                 // Public page, show it anyway

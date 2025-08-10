@@ -36,6 +36,7 @@ docs/
 | Document | Location | Description |
 |----------|----------|-------------|
 | Document Standards | [guides/documentation-standards.md](./guides/documentation-standards.md) | How to write docs for this project |
+| Configuration Guide | [guides/configuration-guide.md](./guides/configuration-guide.md) | Config file management and auto-updates |
 | Authentication Guide | [guides/authentication-guide.md](./guides/authentication-guide.md) | Setting up password protection |
 | Image Modal Guide | [guides/image-modal-guide.md](./guides/image-modal-guide.md) | Full-screen image viewing feature |
 | HTML Embedding Guide | [guides/html-embedding-guide.md](./guides/html-embedding-guide.md) | Embed interactive HTML via iframes |
