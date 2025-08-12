@@ -1468,6 +1468,11 @@ function generateBreadcrumbs() {
   const breadcrumbContainer = document.getElementById('breadcrumbs');
   if (!breadcrumbContainer) return;
   
+  // Check if this is a static build (has data attributes)
+  const isStaticBuild = breadcrumbContainer.classList.contains('breadcrumbs-static');
+  const buildDate = breadcrumbContainer.getAttribute('data-build-date');
+  const docBuilderVersion = breadcrumbContainer.getAttribute('data-doc-builder-version');
+  
   // Decode the URL to handle special characters and spaces
   const currentPath = decodeURIComponent(window.location.pathname);
   let pathSegments = currentPath.split('/').filter(segment => segment !== '');
@@ -1561,7 +1566,46 @@ function generateBreadcrumbs() {
     }
   }).join('<i class="fas fa-chevron-right breadcrumb-separator"></i>');
   
-  breadcrumbContainer.innerHTML = breadcrumbHTML;
+  // For static builds, add timestamp and PDF button to breadcrumbs
+  if (isStaticBuild && buildDate) {
+    // Check if we're on the homepage (only "Home" breadcrumb)
+    const isHomePage = pathSegments.length === 0 || 
+                       (pathSegments.length === 1 && (pathSegments[0] === 'index' || pathSegments[0] === 'README'));
+    
+    if (isHomePage) {
+      // On homepage, just show the timestamp and PDF button in a compact bar
+      const wrapperHTML = `
+        <div class="breadcrumbs-content breadcrumbs-homepage">
+          <div class="breadcrumbs-right">
+            <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${buildDate}</span>
+            <button class="breadcrumb-pdf-btn" onclick="exportToPDF()" title="Export to PDF" aria-label="Export to PDF">
+              <i class="fas fa-file-pdf"></i>
+            </button>
+          </div>
+        </div>
+      `;
+      breadcrumbContainer.innerHTML = wrapperHTML;
+      breadcrumbContainer.classList.add('breadcrumbs-minimal');
+    } else {
+      // Create a wrapper div for layout with breadcrumbs
+      const wrapperHTML = `
+        <div class="breadcrumbs-content">
+          <div class="breadcrumbs-left">
+            ${breadcrumbHTML}
+          </div>
+          <div class="breadcrumbs-right">
+            <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${buildDate}</span>
+            <button class="breadcrumb-pdf-btn" onclick="exportToPDF()" title="Export to PDF" aria-label="Export to PDF">
+              <i class="fas fa-file-pdf"></i>
+            </button>
+          </div>
+        </div>
+      `;
+      breadcrumbContainer.innerHTML = wrapperHTML;
+    }
+  } else {
+    breadcrumbContainer.innerHTML = breadcrumbHTML;
+  }
 }
 
 // Initialize tooltip positioning for navigation items
