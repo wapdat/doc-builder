@@ -1473,6 +1473,13 @@ function generateBreadcrumbs() {
   const buildDate = breadcrumbContainer.getAttribute('data-build-date');
   const docBuilderVersion = breadcrumbContainer.getAttribute('data-doc-builder-version');
   
+  // For static builds, check if content is already pre-rendered
+  if (isStaticBuild && breadcrumbContainer.querySelector('.breadcrumbs-content')) {
+    // Content is pre-rendered, just ensure exportToPDF is available globally
+    window.exportToPDF = exportToPDF;
+    return; // Don't override pre-rendered content
+  }
+  
   // Decode the URL to handle special characters and spaces
   const currentPath = decodeURIComponent(window.location.pathname);
   let pathSegments = currentPath.split('/').filter(segment => segment !== '');
