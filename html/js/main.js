@@ -1567,7 +1567,10 @@ function generateBreadcrumbs() {
   }).join('<i class="fas fa-chevron-right breadcrumb-separator"></i>');
   
   // For static builds, add timestamp and PDF button to breadcrumbs
-  if (isStaticBuild && buildDate) {
+  if (isStaticBuild) {
+    // Use buildDate if available, otherwise use a fallback
+    const displayDate = buildDate || 'Documentation';
+    
     // Check if we're on the homepage (only "Home" breadcrumb)
     const isHomePage = pathSegments.length === 0 || 
                        (pathSegments.length === 1 && (pathSegments[0] === 'index' || pathSegments[0] === 'README'));
@@ -1577,7 +1580,7 @@ function generateBreadcrumbs() {
       const wrapperHTML = `
         <div class="breadcrumbs-content breadcrumbs-homepage">
           <div class="breadcrumbs-right">
-            <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${buildDate}</span>
+            <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${displayDate}</span>
             <button class="breadcrumb-pdf-btn" onclick="exportToPDF()" title="Export to PDF" aria-label="Export to PDF">
               <i class="fas fa-file-pdf"></i>
             </button>
@@ -1594,7 +1597,7 @@ function generateBreadcrumbs() {
             ${breadcrumbHTML}
           </div>
           <div class="breadcrumbs-right">
-            <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${buildDate}</span>
+            <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${displayDate}</span>
             <button class="breadcrumb-pdf-btn" onclick="exportToPDF()" title="Export to PDF" aria-label="Export to PDF">
               <i class="fas fa-file-pdf"></i>
             </button>
@@ -1603,6 +1606,14 @@ function generateBreadcrumbs() {
       `;
       breadcrumbContainer.innerHTML = wrapperHTML;
     }
+    
+    // Debug logging
+    console.log('Static build breadcrumbs generated:', {
+      isStaticBuild,
+      buildDate,
+      isHomePage,
+      pathSegments
+    });
   } else {
     breadcrumbContainer.innerHTML = breadcrumbHTML;
   }
