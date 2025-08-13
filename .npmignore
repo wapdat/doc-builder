@@ -1,4 +1,8 @@
-# Test directories
+# Output directories
+html/
+html-static/
+dist/
+build/
 temp-test/
 test-auth/
 test/
@@ -6,28 +10,48 @@ tests/
 coverage/
 .nyc_output/
 
-# Development files
+# Development and documentation
+docs/
+examples/
+prompts/
+guides/
+private/
+test-questions/
+*.md
+!README.md
+!LICENSE
+!CHANGELOG.md
+
+# SQL files
+*.sql
+
+# Images and screenshots
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+Screenshot*
+
+# Configuration backups
+*.backup.*
+doc-builder.config.js*
+!doc-builder.config.js.example
+
+# Local settings
+.claude/
 .vscode/
 .idea/
 *.log
 *.swp
 .DS_Store
 
-# Build artifacts
-.aws-sam/
-dist/
-build/
-
-# Documentation that shouldn't be in package
-docs/
-examples/
-
 # Git files
 .git/
 .gitignore
+.github/
 
 # CI/CD
-.github/
 .gitlab-ci.yml
 .travis.yml
 
@@ -40,3 +64,15 @@ env.json
 .editorconfig
 .eslintrc*
 .prettierrc*
+
+# Temporary files
+*.tmp
+*.temp
+knowcode-doc-builder-*.tgz
+
+# Test files
+test-*.html
+test-*.js
+
+# AWS SAM
+.aws-sam/

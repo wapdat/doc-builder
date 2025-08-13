@@ -1,6 +1,6 @@
 {
   "name": "@knowcode/doc-builder",
-  "version": "1.9.30",
+  "version": "1.9.31",
   "description": "Reusable documentation builder for markdown-based sites with Vercel deployment support",
   "main": "index.js",
   "bin": {
@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/wapdat/doc-builder#readme",
   "dependencies": {
-    "@knowcode/doc-builder": "^1.4.21",
     "@supabase/supabase-js": "^2.39.0",
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
@@ -40,6 +39,17 @@
     "prompts": "^2.4.2",
     "semver": "^7.7.2"
   },
+  "files": [
+    "cli.js",
+    "index.js",
+    "lib/**/*",
+    "assets/**/*",
+    "scripts/**/*",
+    "templates/**/*",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "engines": {
     "node": ">=14.0.0"
   }

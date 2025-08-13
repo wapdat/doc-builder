@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Static Breadcrumbs</title>
+    <style>
+        body { margin: 0; font-family: Arial; }
+        .breadcrumbs-static {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            padding: 5px 20px;
+            min-height: 28px;
+        }
+        .breadcrumbs-content {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .breadcrumb-date {
+            color: #666;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        .breadcrumb-pdf-btn {
+            background: none;
+            border: 1px solid #666;
+            padding: 2px 8px;
+            cursor: pointer;
+        }
+        .main-content {
+            margin-top: 40px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="breadcrumbs-static">
+        <div class="breadcrumbs-content">
+            <div class="breadcrumbs-right">
+                <span class="breadcrumb-date">Last updated: Aug 12, 2025, 09:42 PM UTC</span>
+                <button class="breadcrumb-pdf-btn">PDF</button>
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <h1>Test Content</h1>
+        <p>This is a test to see if the breadcrumbs are visible.</p>
+    </div>
+</body>
+</html>
