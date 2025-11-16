@@ -1,6 +1,6 @@
 {
   "name": "@knowcode/doc-builder",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "Reusable documentation builder for markdown-based sites with Vercel deployment support",
   "main": "index.js",
   "bin": {
@@ -8,7 +8,8 @@
   },
   "scripts": {
     "postinstall": "node scripts/setup.js || true",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node cli.js build && echo \"Build test passed\"",
+    "build": "node cli.js build"
   },
   "keywords": [
     "documentation",
