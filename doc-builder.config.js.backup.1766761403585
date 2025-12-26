@@ -1,5 +1,5 @@
 module.exports = {
-  "configVersion": "1.10.7",
+  "configVersion": "1.10.6",
   "docsDir": "docs",
   "outputDir": "html",
   "siteName": "@knowcode/doc-builder",
