@@ -1296,6 +1296,31 @@ function initNavigationFilter() {
   });
 }
 
+// Markdown Download functionality
+function downloadMarkdown() {
+  // Get current page path and convert to .md
+  let currentPath = window.location.pathname;
+
+  // Handle different path formats
+  if (currentPath.endsWith('/')) {
+    currentPath += 'index.html';
+  }
+  if (!currentPath.endsWith('.html')) {
+    currentPath += '.html';
+  }
+
+  // Replace .html with .md
+  const mdPath = currentPath.replace(/\.html$/, '.md');
+
+  // Create a link and trigger download
+  const link = document.createElement('a');
+  link.href = mdPath;
+  link.download = mdPath.split('/').pop(); // Get filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 // PDF Export functionality
 function exportToPDF() {
   // Hide UI elements for printing
@@ -1588,6 +1613,9 @@ function generateBreadcrumbs() {
         <div class="breadcrumbs-content breadcrumbs-homepage">
           <div class="breadcrumbs-right">
             <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${displayDate}</span>
+            <button class="breadcrumb-md-btn" onclick="downloadMarkdown()" title="Download Markdown" aria-label="Download Markdown">
+              <i class="fas fa-file-code"></i>
+            </button>
             <button class="breadcrumb-pdf-btn" onclick="exportToPDF()" title="Export to PDF" aria-label="Export to PDF">
               <i class="fas fa-file-pdf"></i>
             </button>
@@ -1605,6 +1633,9 @@ function generateBreadcrumbs() {
           </div>
           <div class="breadcrumbs-right">
             <span class="breadcrumb-date" title="Built with doc-builder v${docBuilderVersion || ''}">Last updated: ${displayDate}</span>
+            <button class="breadcrumb-md-btn" onclick="downloadMarkdown()" title="Download Markdown" aria-label="Download Markdown">
+              <i class="fas fa-file-code"></i>
+            </button>
             <button class="breadcrumb-pdf-btn" onclick="exportToPDF()" title="Export to PDF" aria-label="Export to PDF">
               <i class="fas fa-file-pdf"></i>
             </button>

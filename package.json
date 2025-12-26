@@ -1,6 +1,6 @@
 {
   "name": "@knowcode/doc-builder",
-  "version": "1.10.6",
+  "version": "1.10.7",
   "description": "Reusable documentation builder for markdown-based sites with Vercel deployment support",
   "main": "index.js",
   "bin": {

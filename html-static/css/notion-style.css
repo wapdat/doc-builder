@@ -605,19 +605,19 @@ pre code {
 }
 
 .nav-section[data-level="1"] {
-  margin-left: var(--space-4);
+  margin-left: var(--space-2);
   margin-bottom: var(--space-0-5);
 }
 
 .nav-section[data-level="2"] {
-  margin-left: var(--space-8);
+  margin-left: var(--space-4);
   margin-bottom: var(--space-0-5);
 }
 
 .nav-title {
   display: flex;
   align-items: center;
-  padding: var(--space-1-5) var(--space-3);
+  padding: var(--space-0-5) var(--space-3);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   color: var(--color-text-secondary);
@@ -629,11 +629,11 @@ pre code {
 
 /* Indent nav titles based on their level */
 .nav-section[data-level="1"] .nav-title {
-  padding-left: calc(var(--space-3) + var(--space-4));
+  padding-left: calc(var(--space-3) + var(--space-2));
 }
 
 .nav-section[data-level="2"] .nav-title {
-  padding-left: calc(var(--space-3) + var(--space-8));
+  padding-left: calc(var(--space-3) + var(--space-4));
 }
 
 .nav-title:hover {
@@ -668,27 +668,27 @@ pre code {
 .nav-item {
   display: flex;
   align-items: center;
-  padding: var(--space-1-5) var(--space-3);
+  padding: var(--space-0-5) var(--space-3);
   font-size: var(--text-sm);
   color: var(--color-text-primary);
   text-decoration: none;
   border-radius: var(--radius-md);
   transition: all var(--duration-fast) var(--easing-out);
   margin-bottom: 0;
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
 /* Indent nav items based on their parent section level */
 .nav-section[data-level="0"] .nav-item {
-  padding-left: calc(var(--space-3) + var(--space-6));
+  padding-left: calc(var(--space-3) + var(--space-3));
 }
 
 .nav-section[data-level="1"] .nav-item {
-  padding-left: calc(var(--space-3) + var(--space-10));
+  padding-left: calc(var(--space-3) + var(--space-5));
 }
 
 .nav-section[data-level="2"] .nav-item {
-  padding-left: calc(var(--space-3) + var(--space-12));
+  padding-left: calc(var(--space-3) + var(--space-6));
 }
 
 .nav-item:hover {
@@ -1031,7 +1031,8 @@ tr:hover {
   white-space: nowrap;
 }
 
-/* PDF button in breadcrumbs */
+/* MD and PDF buttons in breadcrumbs */
+.breadcrumb-md-btn,
 .breadcrumb-pdf-btn {
   background: none;
   border: none;
@@ -1043,6 +1044,7 @@ tr:hover {
   font-size: 1rem;
 }
 
+.breadcrumb-md-btn:hover,
 .breadcrumb-pdf-btn:hover {
   background: var(--color-bg-tertiary);
   color: var(--color-text-primary);
@@ -1979,8 +1981,8 @@ tr:hover {
 .nav-title {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2);
+  gap: var(--space-1);
+  padding: var(--space-1);
   color: var(--color-text-primary);
   text-decoration: none;
   font-size: var(--text-sm);
@@ -2029,14 +2031,14 @@ tr:hover {
 .nav-item {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-1-5) var(--space-2);
+  gap: var(--space-1);
+  padding: var(--space-0-5) var(--space-2);
   color: var(--color-text-secondary);
   text-decoration: none;
   font-size: var(--text-sm);
   border-radius: var(--radius-md);
   transition: all var(--duration-fast);
-  margin-bottom: var(--space-0-5);
+  margin-bottom: 0;
 }
 
 .nav-item:hover {
