@@ -1090,22 +1090,29 @@ function initCollapsibleNavigation() {
       
       if (content) {
         const isExpanded = title.classList.contains('expanded');
-        
+
         if (isExpanded) {
           // Collapse this section
           title.classList.remove('expanded');
           content.classList.add('collapsed');
-          
-          // Also collapse all child sections within this content
-          const childSections = content.querySelectorAll('.nav-title.collapsible');
-          childSections.forEach(childTitle => {
-            const childTargetId = childTitle.getAttribute('data-target');
-            const childContent = document.getElementById(childTargetId);
-            if (childContent) {
-              childTitle.classList.remove('expanded');
-              childContent.classList.add('collapsed');
-            }
-          });
+
+          // Recursively collapse ALL nested submenus
+          const collapseAllNested = (parentContent) => {
+            const childSections = parentContent.querySelectorAll('.nav-title.collapsible');
+            childSections.forEach(childTitle => {
+              const childTargetId = childTitle.getAttribute('data-target');
+              const childContent = document.getElementById(childTargetId);
+              if (childContent) {
+                childTitle.classList.remove('expanded');
+                childContent.classList.add('collapsed');
+                // Recursively collapse any nested children
+                collapseAllNested(childContent);
+              }
+            });
+          };
+
+          // Collapse all nested content
+          collapseAllNested(content);
         } else {
           // Expand this section
           title.classList.add('expanded');
