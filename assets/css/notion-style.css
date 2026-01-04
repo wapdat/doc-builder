@@ -597,7 +597,7 @@ pre code {
 }
 
 .nav-section {
-  margin-bottom: 1px;
+  margin-bottom: var(--space-0-5);
 }
 
 .nav-section[data-level="0"] {
@@ -605,19 +605,19 @@ pre code {
 }
 
 .nav-section[data-level="1"] {
-  margin-left: 4px;
-  margin-bottom: 1px;
+  margin-left: var(--space-2);
+  margin-bottom: var(--space-0-5);
 }
 
 .nav-section[data-level="2"] {
-  margin-left: 8px;
-  margin-bottom: 1px;
+  margin-left: var(--space-4);
+  margin-bottom: var(--space-0-5);
 }
 
 .nav-title {
   display: flex;
   align-items: center;
-  padding: 1px var(--space-3);
+  padding: var(--space-0-5) var(--space-3);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   color: var(--color-text-secondary);
@@ -629,11 +629,11 @@ pre code {
 
 /* Indent nav titles based on their level */
 .nav-section[data-level="1"] .nav-title {
-  padding-left: calc(var(--space-1-5) + var(--space-1));
+  padding-left: calc(var(--space-3) + var(--space-2));
 }
 
 .nav-section[data-level="2"] .nav-title {
-  padding-left: calc(var(--space-1-5) + var(--space-2));
+  padding-left: calc(var(--space-3) + var(--space-4));
 }
 
 .nav-title:hover {
@@ -668,7 +668,7 @@ pre code {
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 1px var(--space-3);
+  padding: var(--space-0-5) var(--space-3);
   font-size: var(--text-sm);
   color: var(--color-text-primary);
   text-decoration: none;
@@ -680,15 +680,15 @@ pre code {
 
 /* Indent nav items based on their parent section level */
 .nav-section[data-level="0"] .nav-item {
-  padding-left: calc(var(--space-1-5) + var(--space-1-5));
+  padding-left: calc(var(--space-3) + var(--space-3));
 }
 
 .nav-section[data-level="1"] .nav-item {
-  padding-left: 16px;
+  padding-left: calc(var(--space-3) + var(--space-5));
 }
 
 .nav-section[data-level="2"] .nav-item {
-  padding-left: 18px;
+  padding-left: calc(var(--space-3) + var(--space-6));
 }
 
 .nav-item:hover {
@@ -1975,7 +1975,7 @@ tr:hover {
 
 /* Navigation Sections */
 .nav-section {
-  margin-bottom: 2px;
+  margin-bottom: var(--space-1);
 }
 
 .nav-title {
@@ -2011,7 +2011,7 @@ tr:hover {
 }
 
 .nav-content {
-  padding-left: 8px;
+  padding-left: var(--space-4);
   overflow: hidden;
   transition: max-height var(--duration-normal), opacity var(--duration-normal);
 }
